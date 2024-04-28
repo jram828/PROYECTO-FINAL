@@ -5,7 +5,7 @@ import "./login.css";
 import { Link } from "react-router-dom";
 
 
-import { GoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin } from "@react-oauth/google";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
