@@ -16,10 +16,10 @@ const Login = () => {
     password: "",
   });
 
-  // const [errores, setErrores] = useState({
-  //   cedula: "",
-  //   password: "",
-  // });
+  const [errores, setErrores] = useState({
+    cedula: "",
+    password: "",
+  });
 
   // const dispatch = useDispatch();
 
