@@ -116,7 +116,7 @@ const Login = () => {
                 </button>
               </Link>
       </form>
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
     </div>
   );
 };
