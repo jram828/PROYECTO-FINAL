@@ -5,7 +5,7 @@ import "./login.css";
 import { Link } from "react-router-dom";
 
 
-// import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
@@ -16,10 +16,10 @@ const Login = () => {
     password: "",
   });
 
-  // const [errores, setErrores] = useState({
-  //   cedula: "",
-  //   password: "",
-  // });
+  const [errores, setErrores] = useState({
+    cedula: "",
+    password: "",
+  });
 
   // const dispatch = useDispatch();
 
@@ -65,9 +65,9 @@ const Login = () => {
                 value={userData.cedula}
                 onChange={handleChange}
               />
-              {errores.cedula !== "" && (
+              {/* {errores.cedula !== "" && (
                 <h5 className="errores">{errores.cedula}</h5>
-              )}
+              )} */}
               <label className="label" htmlFor="password">
                 Contraseña:
               </label>
@@ -78,9 +78,9 @@ const Login = () => {
                 value={userData.password}
                 onChange={handleChange}
               />
-             {errores.password !== "" && (
+             {/* {errores.password !== "" && (
                 <h5 className="errores">{errores.password}</h5>
-        )}
+        )} */}
         <br />
              <label htmlFor="tipodeusuario">Tipo de usuario:</label>
 
@@ -96,13 +96,13 @@ const Login = () => {
                 value="Cancelar"
                 className="botonesiniciosesion"
               />
-              {errores.cedula || errores.password ? null : (
+              {/* {errores.cedula || errores.password ? null : ( */}
                 <input
                   type="submit"
                   value="Ingresar"
                   className="botonesiniciosesion"
                 />
-        )}
+        {/* // )} */}
         <br />
               <Link to={"/crearusuario"} onClick={ClickHandlerCrear}>
                 <button className="botonesiniciosesion">Crear Usuario</button>
@@ -116,7 +116,7 @@ const Login = () => {
                 </button>
               </Link>
       </form>
-      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
+      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
     </div>
   );
 };
