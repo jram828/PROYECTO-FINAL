@@ -2,7 +2,7 @@ import { useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "../../App.css";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import { GoogleLogin } from "@react-oauth/google";
@@ -38,12 +38,13 @@ const Login = () => {
     e.preventDefault();
     Loginf(userData);
   };
-
+const navigate = useNavigate();
   const responseMessage = (response) => {
     // dispatch(setAuth(true));
 
-    Loginf();
-    // navigate("/home");
+    // Loginf();
+    
+    navigate("/home");
     console.log(response);
   };
   const errorMessage = (error) => {
