@@ -1,8 +1,9 @@
 import {useNavigate} from "react-router-dom";
 
-var navigate = useNavigate();
 
-export async function login() {
+
+export async function Loginf() {
+  const navigate = useNavigate();
   try {
     navigate("/home");
   } catch (error) {
@@ -11,13 +12,15 @@ export async function login() {
 }
 
 //Acceder al modulo de crear usuario
-export const clickHandlerCrear = (e) => {
+export const ClickHandlerCrear = (e) => {
+   const navigate = useNavigate();
   e.preventDefault();
   navigate("/crearusuario");
 };
 
 //Acceder al modulo de recordar contraseñas
-export const clickHandlerRecordatorio = (e) => {
+export const ClickHandlerRecordatorio = (e) => {
+   const navigate = useNavigate();
   e.preventDefault();
   navigate("/recordatoriocontrasena");
 };

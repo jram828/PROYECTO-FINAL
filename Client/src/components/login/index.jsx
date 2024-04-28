@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { validar } from "../../utils/validacion";
+import { useState} from "react";
+// import { validar } from "../../utils/validacion";
 import "../../App.css";
 import "./login.css";
 import { Link } from "react-router-dom";
-import { useLocation, useNavigate } from "react-router-dom";
+
 
 import { GoogleLogin } from "@react-oauth/google";
-import { useDispatch } from "react-redux";
-import { setAuth } from "../../redux/actions";
+// import { useDispatch } from "react-redux";
+// import { setAuth } from "../../redux/actions";
+import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
-const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
+const Login = () => {
   const [userData, setUserData] = useState({
     cedula: "",
     password: "",
@@ -20,12 +21,12 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
     password: "",
   });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
+    // setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
 
     setUserData({
       ...userData,
@@ -35,13 +36,13 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    login(userData);
+    Loginf(userData);
   };
 
   const responseMessage = (response) => {
-    dispatch(setAuth(true));
+    // dispatch(setAuth(true));
 
-    login();
+    Loginf();
     // navigate("/home");
     console.log(response);
   };
@@ -52,12 +53,6 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
   return (
     <div className="containerLogin">
         <form onSubmit={submitHandler}>
-
-              <img
-                src={logo}
-                alt="Logo Aveza"
-                style={{ height: "90px", width: "100%" }}
-              />
               <label htmlFor="usuario" className="label">
                 Usuario:
               </label>
@@ -85,7 +80,8 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
               />
              {errores.password !== "" && (
                 <h5 className="errores">{errores.password}</h5>
-              )}
+        )}
+        <br />
              <label htmlFor="tipodeusuario">Tipo de usuario:</label>
 
               <select name="tipodeusuario" id="idusuario">
@@ -93,7 +89,7 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
                 <option value="1">Administrador</option>
                 <option value="2">Cliente</option>
               </select>
-
+              <br />
               <input
                 type="button"
                 name="cancelar"
@@ -106,13 +102,14 @@ const Login = ({ login, clickHandlerRecordatorio, clickHandlerCrear }) => {
                   value="Ingresar"
                   className="botonesiniciosesion"
                 />
-              )}
-              <Link to={"/crearusuario"} onClick={clickHandlerCrear}>
+        )}
+        <br />
+              <Link to={"/crearusuario"} onClick={ClickHandlerCrear}>
                 <button className="botonesiniciosesion">Crear Usuario</button>
               </Link>
               <Link
                 to={"/recordatoriocontrasena"}
-                onClick={clickHandlerRecordatorio}
+                onClick={ClickHandlerRecordatorio}
               >
                 <button className="botonesiniciosesion">
                   ¿Olvidó su contraseña?

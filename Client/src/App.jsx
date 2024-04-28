@@ -1,19 +1,14 @@
 
 //Importar modulos necesarios
 import "./App.css";
-import { Routes, Route, useLocation, useNavigate} from "react-router-dom";
-import CrearUsuario from "./components/crearusuario";
-import RecordatorioContrasena from "./components/recordatoriocontrasena";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { Routes, Route, useLocation} from "react-router-dom";
 import Login from './components/login';
-import { clickHandlerCrear, clickHandlerRecordatorio, login } from "./handlers/login";
+import { Loginf, ClickHandlerCrear, ClickHandlerRecordatorio } from "./handlers/login";
 
 function App() {
 
     const location = useLocation();
 
-    const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
 
@@ -30,12 +25,13 @@ function App() {
           path="/"
           element={
             <Login
-              login={login}
-              clickHandlerRecordatorio={clickHandlerRecordatorio}
-              clickHandlerCrear={clickHandlerCrear}
+              login={Loginf}
+              clickHandlerRecordatorio={ClickHandlerRecordatorio}
+              clickHandlerCrear={ClickHandlerCrear}
             />
           }
         />
+        
       </Routes>
     </div>
   );

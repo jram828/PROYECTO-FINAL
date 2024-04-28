@@ -1,0 +1,9 @@
+.containerLogin{
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 250px;
+  width: 300px;
+  justify-content: center;
+}
