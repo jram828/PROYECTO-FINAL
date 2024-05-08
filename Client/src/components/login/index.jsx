@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "../../App.css";
 import "./login.css";
@@ -9,6 +9,7 @@ import { GoogleLogin } from "@react-oauth/google";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+import axios from "axios";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -24,6 +25,43 @@ const Login = () => {
   // const dispatch = useDispatch();
 
   // const navigate = useNavigate();
+
+    const [user, setUser] = useState([]);
+    const [profile, setProfile] = useState([]);
+
+    const login = useGoogleLogin({
+      onSuccess: (codeResponse) => setUser(codeResponse),
+      onError: (error) => console.log("Login Failed:", error),
+    });
+
+    useEffect(() => {
+      if (user) {
+        axios
+          .get(
+            `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.access_token}`,
+                Accept: "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            setProfile(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    }, [user]);
+
+    // log out function to log the user out of google and set the profile array to null
+    const logOut = () => {
+      googleLogout();
+      setProfile(null);
+    };
+
+
+
+
 
   const handleChange = (e) => {
     // setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
