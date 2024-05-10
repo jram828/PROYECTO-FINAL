@@ -15,6 +15,10 @@ import Password from './views/password/password.component';
 import "./App.css";
 import { Routes, Route, useLocation} from "react-router-dom";
 import { useSelector } from 'react-redux';
+import axios from "axios";
+
+//const { URL } = process.env;
+axios.defaults.baseURL = "https://localhost:3001";
 
 function App() {
   

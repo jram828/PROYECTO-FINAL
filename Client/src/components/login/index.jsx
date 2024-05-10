@@ -1,34 +1,32 @@
-import { useEffect, useState} from "react";
+import { useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "./login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setAuth, setUserToken } from "../../redux/actions";
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 
-const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
+const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
   const [userData, setUserData] = useState({
-    cedula: "",
+    email: "",
     password: "",
   });
 
-  const [errores, setErrores] = useState({
-    cedula: "",
-    password: "",
-  });
+  // const [errores, setErrores] = useState({
+  //   cedula: "",
+  //   password: "",
+  // });
 
 
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const userToken = useSelector((state) => state.userToken);
   const handleChange = (e) => {
     // setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
 
@@ -49,7 +47,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
     // Loginf();
     dispatch(setUserToken(user));
     navigate("/home");
-    console.log(response);
+    console.log('User: ',user);
   };
   const errorMessage = (error) => {
     console.log(error);
@@ -81,11 +79,11 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
             </td>
             <td>
               <input
-                type="number"
-                name="cedula"
+                type="text"
+                name="email"
                 id="username"
                 placeholder="Ingrese su Usuario"
-                value={userData.cedula}
+                value={userData.email}
                 onChange={handleChange}
                 className="input"
               />
@@ -94,9 +92,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
           </tr>
           <tr>
             <td colSpan={4}>
-              {errores.cedula !== "" && (
+              {/* {errores.cedula !== "" && (
                 <h5 className="errores">{errores.cedula}</h5>
-              )}
+              )} */}
             </td>
             <td></td>
             <td></td>
@@ -123,9 +121,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
           </tr>
           <tr>
             <td colSpan={4}>
-              {errores.password !== "" && (
+              {/* {errores.password !== "" && (
                 <h5 className="errores">{errores.password}</h5>
-              )}
+              )} */}
             </td>
             <td></td>
             <td></td>
@@ -166,13 +164,13 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
             </td>
             <td className="celdas">
               {" "}
-              {errores.cedula || errores.password ? null : (
+              {/* {errores.cedula || errores.password ? null : (
                 <input
                   type="submit"
                   value="Ingresar"
                   className="button"
                 />
-              )}
+              )} */}
             </td>
             <td className="celdas"></td>
           </tr>
