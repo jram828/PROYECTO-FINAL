@@ -41,16 +41,13 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     Loginf(userData);
   };
 
-  const responseMessage = (response) => {
+  const responseMessage = (response, Loginf) => {
     dispatch(setAuth(true));
     const user = jwtDecode(response.credential);
     // Loginf();
     dispatch(setUserToken(user));
     const userDataGoogle={email:user.email, password:""}
     console.log('User: ', userDataGoogle);
-    console.log("User data: ", userData);
-    setUserData(userDataGoogle)
-    console.log("User data 2: ", userData);
     Loginf(userDataGoogle);
     // navigate("/home");
   };
