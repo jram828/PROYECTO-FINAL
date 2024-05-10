@@ -180,13 +180,13 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
             </td>
             <td className="celdas">
               {" "}
-              {/* {errores.cedula || errores.password ? null : (
+              {/* {errores.cedula || errores.password ? null : ( */}
                 <input
                   type="submit"
                   value="Ingresar"
                   className="button"
                 />
-              )} */}
+              {/* )} */}
             </td>
             <td className="celdas"></td>
           </tr>
