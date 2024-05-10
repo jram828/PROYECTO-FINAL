@@ -46,8 +46,10 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     const user = jwtDecode(response.credential);
     // Loginf();
     dispatch(setUserToken(user));
-    navigate("/home");
-    console.log('User: ',user);
+    const userData={email:user.email, password:""}
+    Loginf(userData);
+    // navigate("/home");
+    console.log('User: ',userData);
   };
   const errorMessage = (error) => {
     console.log(error);
