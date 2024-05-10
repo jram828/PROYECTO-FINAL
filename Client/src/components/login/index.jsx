@@ -4,7 +4,7 @@ import "../../App.css";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { jwtDecode } from "jwt-decode";
 
 import { GoogleLogin } from "@react-oauth/google";
 // import { useDispatch } from "react-redux";
@@ -45,42 +45,42 @@ const Login = () => {
 const navigate = useNavigate();
   const responseMessage = (response) => {
     // dispatch(setAuth(true));
-
+    const decoded = jwtDecode(response.credential);
     // Loginf();
     setUserToken(response.credential);
     navigate("/home");
     console.log('response: ',response);
-    console.log('Token: ', userToken)
+    console.log('Decodificado: ', decoded)
 
-    if (response.credential) {
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response.credential}`,
-          {
-            headers: {
-              Authorization: `Bearer ${response.credential}`,
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          console.log("Response: ", res.data);
-          setProfile(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
-    console.log('Profile: ',profile)
+  //   if (response.credential) {
+  //     axios
+  //       .get(
+  //         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${response}`,
+  //             Accept: "application/json",
+  //           },
+  //         }
+  //       )
+  //       .then((res) => {
+  //         console.log("Response: ", res.data);
+  //         setProfile(res.data);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  //   console.log('Profile: ',profile)
 
-  };
-  const errorMessage = (error) => {
-    console.log(error);
-  };
-  // const { loginWithRedirect } = useAuth0();
+  // };
+  // const errorMessage = (error) => {
+  //   console.log(error);
+  // };
+  // // const { loginWithRedirect } = useAuth0();
 
   
-  useEffect(() => {
+  // useEffect(() => {
       
-    }, [userToken]);
+  //   }, [userToken]);
   return (
     <div className="containerLogin">
       <form onSubmit={submitHandler}>
