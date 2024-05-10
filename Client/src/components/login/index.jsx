@@ -3,6 +3,7 @@ import { useState} from "react";
 import "../../App.css";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 import { GoogleLogin } from "@react-oauth/google";
@@ -50,74 +51,68 @@ const navigate = useNavigate();
   const errorMessage = (error) => {
     console.log(error);
   };
-
+  const { loginWithRedirect } = useAuth0();
   return (
     <div className="containerLogin">
-        <form onSubmit={submitHandler}>
-              <label htmlFor="usuario" className="label">
-                Usuario:
-              </label>
+      <form onSubmit={submitHandler}>
+        <label htmlFor="usuario" className="label">
+          Usuario:
+        </label>
 
-              <input
-                type="text"
-                name="cedula"
-                id="username"
-                placeholder="Ingrese su Usuario"
-                value={userData.cedula}
-                onChange={handleChange}
-              />
-              {/* {errores.cedula !== "" && (
+        <input
+          type="text"
+          name="cedula"
+          id="username"
+          placeholder="Ingrese su Usuario"
+          value={userData.cedula}
+          onChange={handleChange}
+        />
+        {/* {errores.cedula !== "" && (
                 <h5 className="errores">{errores.cedula}</h5>
               )} */}
-              <label className="label" htmlFor="password">
-                Contraseña:
-              </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="Ingrese su contraseña"
-                value={userData.password}
-                onChange={handleChange}
-              />
-             {/* {errores.password !== "" && (
+        <label className="label" htmlFor="password">
+          Contraseña:
+        </label>
+        <input
+          name="password"
+          type="password"
+          placeholder="Ingrese su contraseña"
+          value={userData.password}
+          onChange={handleChange}
+        />
+        {/* {errores.password !== "" && (
                 <h5 className="errores">{errores.password}</h5>
         )} */}
         <br />
-             <label htmlFor="tipodeusuario">Tipo de usuario:</label>
+        <label htmlFor="tipodeusuario">Tipo de usuario:</label>
 
-              <select name="tipodeusuario" id="idusuario">
-                <option value="">Elija una opcion</option>
-                <option value="1">Administrador</option>
-                <option value="2">Cliente</option>
-              </select>
-              <br />
-              <input
-                type="button"
-                name="cancelar"
-                value="Cancelar"
-                className="botonesiniciosesion"
-              />
-              {/* {errores.cedula || errores.password ? null : ( */}
-                <input
-                  type="submit"
-                  value="Ingresar"
-                  className="botonesiniciosesion"
-                />
+        <select name="tipodeusuario" id="idusuario">
+          <option value="">Elija una opcion</option>
+          <option value="1">Administrador</option>
+          <option value="2">Cliente</option>
+        </select>
+        <br />
+        <input
+          type="button"
+          name="cancelar"
+          value="Cancelar"
+          className="botonesiniciosesion"
+        />
+        {/* {errores.cedula || errores.password ? null : ( */}
+        <input type="submit" value="Ingresar" className="botonesiniciosesion" />
         {/* // )} */}
         <br />
-              <Link to={"/crearusuario"} onClick={ClickHandlerCrear}>
-                <button className="botonesiniciosesion">Crear Usuario</button>
-              </Link>
-              <Link
-                to={"/recordatoriocontrasena"}
-                onClick={ClickHandlerRecordatorio}
-              >
-                <button className="botonesiniciosesion">
-                  ¿Olvidó su contraseña?
-                </button>
-              </Link>
+        <Link to={"/crearusuario"} onClick={ClickHandlerCrear}>
+          <button className="botonesiniciosesion">Crear Usuario</button>
+        </Link>
+        <Link to={"/recordatoriocontrasena"} onClick={ClickHandlerRecordatorio}>
+          <button className="botonesiniciosesion">
+            ¿Olvidó su contraseña?
+          </button>
+        </Link>
       </form>
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
+      <button onClick={() => loginWithRedirect()}>Log In</button>
     </div>
   );
 };
