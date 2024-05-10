@@ -19,8 +19,8 @@ export async function Loginf(userData) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { email } = userData;
-  const URL = "/clientes";
   console.log("Datos login:", { email });
+  const URL = "/clientes";
   try {
     const { data } = await axios(URL + `email?email=${email}`);
     console.log("Login 2:", data);
