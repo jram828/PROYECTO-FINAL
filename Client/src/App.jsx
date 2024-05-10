@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux';
 import axios from "axios";
 
 //const { URL } = process.env;
-axios.defaults.baseURL = "https://localhost:3001";
+// axios.defaults.baseURL = "https://localhost:3001";
 
 function App() {
   
