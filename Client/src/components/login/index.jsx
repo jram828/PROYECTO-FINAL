@@ -58,7 +58,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
   console.log("Datos login:", user.email);
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
-    const { data } = await axios(URL + `/email?email=jram828@gmail.com`);
+    const { data } = await axios(URL + `/email?email=${user.email}`);
     console.log("Login 2:", data);
     // const { access } = data;
     //  setAccess(access);
