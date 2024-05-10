@@ -49,7 +49,7 @@ const navigate = useNavigate();
     // Loginf();
     setUserToken(response.credential);
     navigate("/home");
-    console.log(response);
+    console.log('response: ',response);
   };
   const errorMessage = (error) => {
     console.log(error);
