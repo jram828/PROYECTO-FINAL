@@ -50,6 +50,27 @@ const navigate = useNavigate();
     setUserToken(response.credential);
     navigate("/home");
     console.log('response: ',response);
+    console.log('Token: ', userToken)
+
+    if (userToken) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken}`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Response: ", res.data);
+          setProfile(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+    console.log('Profile: ',profile)
+
   };
   const errorMessage = (error) => {
     console.log(error);
@@ -58,26 +79,8 @@ const navigate = useNavigate();
 
   
   useEffect(() => {
-      console.log('Token: ', userToken)
-      if (userToken) {
-        axios
-          .get(
-            `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken}`,
-            {
-              headers: {
-                Authorization: `Bearer ${userToken}`,
-                Accept: "application/json",
-              },
-            }
-          )
-          .then((res) => {
-            console.log('Response: ', res.data)
-            setProfile(res.data);
-          })
-          .catch((err) => console.log(err));
-      }
+      
     }, [userToken]);
-   console.log('Profile: ',profile)
   return (
     <div className="containerLogin">
       <form onSubmit={submitHandler}>
