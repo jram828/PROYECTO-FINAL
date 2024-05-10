@@ -20,14 +20,18 @@ export async function Loginf(userData) {
   const dispatch = useDispatch();
   const { email } = userData;
   console.log("Datos login:", { email });
-  const URL = "/clientes";
+  const URL = "https://legaltech-6u3y.onrender.com/clientes";
   try {
     const { data } = await axios(URL + `email?email=${email}`);
     console.log("Login 2:", data);
     const { access } = data;
-    //  setAccess(access);
-    dispatch(setAuth(access));
-    navigate("/home");
+
+    if (email === data.correo) {
+        dispatch(setAuth(access));
+        navigate("/home");
+      } else {
+        window.alert("Usuario o contraseña incorrectos");
+      }
   } catch (error) {
     window.alert("Usuario o contraseña incorrectos");
   }

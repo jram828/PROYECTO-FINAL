@@ -47,23 +47,19 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     const user = jwtDecode(response.credential);
     // Loginf();
     dispatch(setUserToken(user));
-    // const userDataGoogle={email:user.email, password:""}
-    // console.log('User: ', userDataGoogle);
-    // Loginf(userDataGoogle);
-    // navigate("/home");
-
-  //   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const { email } = userData;
   console.log("Datos login:", user.email);
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
     const { data } = await axios(URL + `/email?email=${user.email}`);
     console.log("Login 2:", data);
-    // const { access } = data;
-    //  setAccess(access);
-    // dispatch(setAuth(access));
-    navigate("/home");
+      // const { access } = data;
+      if (user.email === data.correo) {
+        dispatch(setAuth(true));
+        navigate("/home");
+      } else {
+        window.alert("Usuario o contraseña incorrectos");
+      }
+     
   } catch (error) {
     window.alert("Usuario o contraseña incorrectos");
     }
