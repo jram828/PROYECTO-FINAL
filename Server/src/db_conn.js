@@ -11,7 +11,7 @@ const {
 //   logging: false, 
 //   native: false, 
 // });
-
+console.log('Dbdeploy: ',DB_DEPLOY)
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -50,23 +50,23 @@ const { Caso,
         DocumentoLegalTipoNotificacion 
       } = sequelize.models;
 
-TipoDeCaso.belongsToMany(DocumentoTemplate, { through: 'TipoDeCasoDocumentoTemplate' })
-DocumentoTemplate.belongsToMany(TipoDeCaso, { through: 'TipoDeCasoDocumentoTemplate' })
-DocumentoLegal.belongsToMany(TipoNotificacion, {through: DocumentoLegalTipoNotificacion})
-TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotificacion})
+// TipoDeCaso.belongsToMany(DocumentoTemplate, { through: 'TipoDeCasoDocumentoTemplate' })
+// DocumentoTemplate.belongsToMany(TipoDeCaso, { through: 'TipoDeCasoDocumentoTemplate' })
+// DocumentoLegal.belongsToMany(TipoNotificacion, {through: DocumentoLegalTipoNotificacion})
+// TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotificacion})
 
-DocumentoLegal.belongsTo(DocumentoTemplate)
-DocumentoLegal.belongsTo(Caso)
+// DocumentoLegal.belongsTo(DocumentoTemplate)
+// DocumentoLegal.belongsTo(Caso)
 
-Caso.belongsTo(Abogado)
-Caso.belongsTo(TipoDeCaso)
-Caso.belongsTo(Cliente)
-Caso.hasOne(Cotizacion)
+// Caso.belongsTo(Abogado)
+// Caso.belongsTo(TipoDeCaso)
+// Caso.belongsTo(Cliente)
+// Caso.hasOne(Cotizacion)
 
-Cotizacion.belongsTo(Caso)
-Cotizacion.hasOne(Contrato)
-Contrato.belongsTo(Cotizacion)
-Consulta.belongsTo(Cliente)
+// Cotizacion.belongsTo(Caso)
+// Cotizacion.hasOne(Contrato)
+// Contrato.belongsTo(Cotizacion)
+// Consulta.belongsTo(Cliente)
 
 
 module.exports = {
