@@ -58,6 +58,7 @@ Cotizacion.hasOne(Contrato)
 Contrato.belongsTo(Cotizacion)
 Consulta.belongsTo(Cliente)
 
+
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
