@@ -39,8 +39,10 @@ const getClientByEmailHandler = async (req, res) => {
 
   try {
     const response = await getClientByEmail(email);
+    console.log('Response by email:',response)
     res.status(200).json(response);
   } catch (error) {
+    console.log("Error by email:", error.message);
     res.status(400).json({ error: error.message });
   }
 };
