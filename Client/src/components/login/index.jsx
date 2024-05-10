@@ -58,7 +58,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
   console.log("Datos login:", user.email);
   const URL = "/clientes";
   try {
-    const { data } = await axios(URL + `email?email=${user.email}`);
+    const { data } = await axios(URL + `/email?email=${user.email}`);
     console.log("Login 2:", data);
     const { access } = data;
     //  setAccess(access);
