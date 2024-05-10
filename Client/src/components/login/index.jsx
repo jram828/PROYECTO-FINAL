@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "../../App.css";
 import "./login.css";
@@ -10,6 +10,7 @@ import { GoogleLogin } from "@react-oauth/google";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+import axios from "axios";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -22,6 +23,8 @@ const Login = () => {
     password: "",
   });
 
+    const [profile, setProfile] = useState([]);
+    const [userToken, setUserToken] = useState([]);
   // const dispatch = useDispatch();
 
   // const navigate = useNavigate();
@@ -44,14 +47,35 @@ const navigate = useNavigate();
     // dispatch(setAuth(true));
 
     // Loginf();
-    
+    setUserToken(response.credential);
     navigate("/home");
     console.log(response);
   };
   const errorMessage = (error) => {
     console.log(error);
   };
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
+
+  
+    useEffect(() => {
+      if (userToken) {
+        axios
+          .get(
+            `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken}`,
+            {
+              headers: {
+                Authorization: `Bearer ${userToken}`,
+                Accept: "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            setProfile(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    }, [userToken]);
+   console.log('Profile: ',profile)
   return (
     <div className="containerLogin">
       <form onSubmit={submitHandler}>
@@ -111,8 +135,8 @@ const navigate = useNavigate();
           </button>
         </Link>
       </form>
-      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
-      <button onClick={() => loginWithRedirect()}>Log In</button>
+      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      {/* <button onClick={() => loginWithRedirect()}>Log In</button> */}
     </div>
   );
 };
