@@ -52,13 +52,13 @@ const navigate = useNavigate();
     console.log('response: ',response);
     console.log('Token: ', userToken)
 
-    if (userToken) {
+    if (response.credential) {
       axios
         .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken}`,
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response.credential}`,
           {
             headers: {
-              Authorization: `Bearer ${userToken}`,
+              Authorization: `Bearer ${response.credential}`,
               Accept: "application/json",
             },
           }
