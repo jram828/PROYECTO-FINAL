@@ -71,10 +71,10 @@ const navigate = useNavigate();
   //   }
   //   console.log('Profile: ',profile)
 
-  // };
-  // const errorMessage = (error) => {
-  //   console.log(error);
-  // };
+  };
+  const errorMessage = (error) => {
+    console.log(error);
+  };
   // // const { loginWithRedirect } = useAuth0();
 
   
