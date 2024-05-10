@@ -56,13 +56,13 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
   // const dispatch = useDispatch();
   // const { email } = userData;
   console.log("Datos login:", user.email);
-  const URL = "https://localhost:3001/clientes";
+  const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
     const { data } = await axios(URL + `/email?email=jram828@gmail.com`);
     console.log("Login 2:", data);
-    const { access } = data;
+    // const { access } = data;
     //  setAccess(access);
-    dispatch(setAuth(access));
+    // dispatch(setAuth(access));
     navigate("/home");
   } catch (error) {
     window.alert("Usuario o contraseña incorrectos");
