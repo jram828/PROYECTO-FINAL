@@ -6,6 +6,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useDispatch} from "react-redux";
 import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
@@ -41,15 +42,32 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     Loginf(userData);
   };
 
-  const responseMessage = (response, Loginf) => {
-    dispatch(setAuth(true));
+  const ResponseMessage = async (response) => {
+   
     const user = jwtDecode(response.credential);
     // Loginf();
     dispatch(setUserToken(user));
-    const userDataGoogle={email:user.email, password:""}
-    console.log('User: ', userDataGoogle);
-    Loginf(userDataGoogle);
+    // const userDataGoogle={email:user.email, password:""}
+    // console.log('User: ', userDataGoogle);
+    // Loginf(userDataGoogle);
     // navigate("/home");
+
+  //   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const { email } = userData;
+  console.log("Datos login:", user.email);
+  const URL = "/clientes";
+  try {
+    const { data } = await axios(URL + `email?email=${user.email}`);
+    console.log("Login 2:", data);
+    const { access } = data;
+    //  setAccess(access);
+    dispatch(setAuth(access));
+    navigate("/home");
+  } catch (error) {
+    window.alert("Usuario o contraseña incorrectos");
+    }
+    
   };
   const errorMessage = (error) => {
     console.log(error);
@@ -205,7 +223,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
         </table>
       </form>
       <div className="googleLogin">
-        <GoogleLogin onSuccess={responseMessage} onError={errorMessage}/>
+        <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage}/>
       </div>
     </div>
   );
