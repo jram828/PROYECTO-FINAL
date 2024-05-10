@@ -47,9 +47,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     // Loginf();
     dispatch(setUserToken(user));
     const userData={email:user.email, password:""}
+    console.log('User: ',userData);
     Loginf(userData);
     // navigate("/home");
-    console.log('User: ',userData);
   };
   const errorMessage = (error) => {
     console.log(error);
