@@ -37,9 +37,26 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
     });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
-    Loginf(userData);
+
+  const { email } = userData;
+  console.log("Datos login:", email);
+  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+  try {
+    const { data } = await axios(URL + `email?email=${email}`);
+    console.log("Login 2:", data);
+    const { access } = data;
+
+    if (email === data.correo) {
+        dispatch(setAuth(access));
+        navigate("/home");
+      } else {
+        window.alert("Usuario o contraseña incorrectos");
+      }
+  } catch (error) {
+    window.alert("Usuario o contraseña incorrectos");
+  }
   };
 
   const ResponseMessage = async (response) => {
