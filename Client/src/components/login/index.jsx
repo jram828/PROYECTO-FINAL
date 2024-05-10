@@ -57,7 +57,8 @@ const navigate = useNavigate();
   // const { loginWithRedirect } = useAuth0();
 
   
-    useEffect(() => {
+  useEffect(() => {
+      console.log('Token: ', userToken)
       if (userToken) {
         axios
           .get(
@@ -70,6 +71,7 @@ const navigate = useNavigate();
             }
           )
           .then((res) => {
+            console.log('Response: ', res.data)
             setProfile(res.data);
           })
           .catch((err) => console.log(err));
