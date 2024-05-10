@@ -1,18 +1,18 @@
 import { useEffect, useState} from "react";
 // import { validar } from "../../utils/validacion";
-import "../../App.css";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import { jwtDecode } from "jwt-decode";
-
 import { GoogleLogin } from "@react-oauth/google";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuth, setUserToken } from "../../redux/actions";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
-import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
-import axios from "axios";
+// import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
-const Login = () => {
+
+const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf }) => {
   const [userData, setUserData] = useState({
     cedula: "",
     password: "",
@@ -23,12 +23,12 @@ const Login = () => {
     password: "",
   });
 
-    const [profile, setProfile] = useState([]);
-    const [userToken, setUserToken] = useState([]);
-  // const dispatch = useDispatch();
 
-  // const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const userToken = useSelector((state) => state.userToken);
   const handleChange = (e) => {
     // setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
 
@@ -42,106 +42,171 @@ const Login = () => {
     e.preventDefault();
     Loginf(userData);
   };
-const navigate = useNavigate();
+
   const responseMessage = (response) => {
-    // dispatch(setAuth(true));
-    const decoded = jwtDecode(response.credential);
+    dispatch(setAuth(true));
+    const user = jwtDecode(response.credential);
     // Loginf();
-    setUserToken(response.credential);
+    dispatch(setUserToken(user));
     navigate("/home");
-    console.log('response: ',response);
-    console.log('Decodificado: ', decoded)
-
-  //   if (response.credential) {
-  //     axios
-  //       .get(
-  //         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${response}`,
-  //             Accept: "application/json",
-  //           },
-  //         }
-  //       )
-  //       .then((res) => {
-  //         console.log("Response: ", res.data);
-  //         setProfile(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  //   console.log('Profile: ',profile)
-
+    console.log(response);
   };
   const errorMessage = (error) => {
     console.log(error);
   };
-  // // const { loginWithRedirect } = useAuth0();
 
-  
-  // useEffect(() => {
-      
-  //   }, [userToken]);
+
   return (
     <div className="containerLogin">
       <form onSubmit={submitHandler}>
-        <label htmlFor="usuario" className="label">
-          Usuario:
-        </label>
-
-        <input
-          type="text"
-          name="cedula"
-          id="username"
-          placeholder="Ingrese su Usuario"
-          value={userData.cedula}
-          onChange={handleChange}
-        />
-        {/* {errores.cedula !== "" && (
+        <table>
+          <tr>
+            <td></td>
+            <td colSpan={2} className="celdas">
+              {/* <img
+                src={logo}
+                alt="Logo Legaltech"
+                style={{ height: "90px", width: "100%" }}
+              /> */}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <label htmlFor="usuario" className="label">
+                Usuario:
+              </label>
+            </td>
+            <td>
+              <input
+                type="number"
+                name="cedula"
+                id="username"
+                placeholder="Ingrese su Usuario"
+                value={userData.cedula}
+                onChange={handleChange}
+                className="input"
+              />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colSpan={4}>
+              {errores.cedula !== "" && (
                 <h5 className="errores">{errores.cedula}</h5>
-              )} */}
-        <label className="label" htmlFor="password">
-          Contraseña:
-        </label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Ingrese su contraseña"
-          value={userData.password}
-          onChange={handleChange}
-        />
-        {/* {errores.password !== "" && (
+              )}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <label className="label" htmlFor="password">
+                Contraseña:
+              </label>
+            </td>
+            <td>
+              <input
+                name="password"
+                type="password"
+                placeholder="Ingrese su contraseña"
+                value={userData.password}
+                onChange={handleChange}
+                className="input"
+              />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colSpan={4}>
+              {errores.password !== "" && (
                 <h5 className="errores">{errores.password}</h5>
-        )} */}
-        <br />
-        <label htmlFor="tipodeusuario">Tipo de usuario:</label>
-
-        <select name="tipodeusuario" id="idusuario">
-          <option value="">Elija una opcion</option>
-          <option value="1">Administrador</option>
-          <option value="2">Cliente</option>
-        </select>
-        <br />
-        <input
-          type="button"
-          name="cancelar"
-          value="Cancelar"
-          className="botonesiniciosesion"
-        />
-        {/* {errores.cedula || errores.password ? null : ( */}
-        <input type="submit" value="Ingresar" className="botonesiniciosesion" />
-        {/* // )} */}
-        <br />
-        <Link to={"/crearusuario"} onClick={ClickHandlerCrear}>
-          <button className="botonesiniciosesion">Crear Usuario</button>
-        </Link>
-        <Link to={"/recordatoriocontrasena"} onClick={ClickHandlerRecordatorio}>
-          <button className="botonesiniciosesion">
-            ¿Olvidó su contraseña?
-          </button>
-        </Link>
+              )}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <label htmlFor="tipodeusuario" className="label">Tipo de usuario:</label>
+            </td>
+            <td>
+              <select name="tipodeusuario" id="idusuario" className="select">
+                <option value="">Elija una opcion</option>
+                <option value="1">Administrador</option>
+                <option value="2">Abogado</option>
+                <option value="3">Cliente</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <br></br>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td className="celdas"></td>
+            <td className="celdas">
+              <input
+                type="button"
+                name="cancelar"
+                value="Cancelar"
+                className="button"
+              />
+            </td>
+            <td className="celdas">
+              {" "}
+              {errores.cedula || errores.password ? null : (
+                <input
+                  type="submit"
+                  value="Ingresar"
+                  className="button"
+                />
+              )}
+            </td>
+            <td className="celdas"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td className="celdas">
+              {/* <Link to={"/crearusuario"} onClick={clickHandlerCrear}>
+                <button className="botonesiniciosesion">Crear Usuario</button>
+              </Link> */}
+              <input
+                type="button"
+                name="crearusuario"
+                value="Crear Usuario"
+                className="button"
+                onClick={clickHandlerCrear}
+              />
+            </td>
+            <td className="celdas">
+              <input
+                type="button"
+                name="password"
+                value="¿Olvidó su contraseña?"
+                className="button"
+                onClick={clickHandlerRecordatorio}
+              />
+              {/* </Link> */}
+            </td>
+            <td></td>
+          </tr>
+        </table>
       </form>
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
-      {/* <button onClick={() => loginWithRedirect()}>Log In</button> */}
+      <div className="googleLogin">
+        <GoogleLogin onSuccess={responseMessage} onError={errorMessage}/>
+      </div>
     </div>
   );
 };

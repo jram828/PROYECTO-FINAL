@@ -1,9 +1,9 @@
 import {useNavigate} from "react-router-dom";
+// const navigate = useNavigate();
 
 
 
 export async function Loginf() {
-  const navigate = useNavigate();
   try {
     navigate("/home");
   } catch (error) {
