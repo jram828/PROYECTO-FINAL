@@ -1,9 +1,9 @@
 const { Cliente } = require("../db_conn");
 
-const getClientByEmail = async (email) => {
+const getClientByEmail = async (correo) => {
   const cliente = await Cliente.findOne({
     where: {
-      email,
+      correo,
     },
   });
   return cliente;
