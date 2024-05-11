@@ -1,4 +1,4 @@
-const { Caso } = require("../DB");
+const { Caso } = require("../db_conn");
 
 const getAllCaso = async ()=>{
     const getAllCasoBd = await Caso.findAll({

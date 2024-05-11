@@ -1,4 +1,4 @@
-const { TipoDeCaso } = require("../DB");
+const { TipoDeCaso } = require("../db_conn");
 
 const createTipoDeCaso = async (descripcion) => {
     

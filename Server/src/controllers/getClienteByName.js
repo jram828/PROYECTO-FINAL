@@ -1,4 +1,4 @@
-const { Cliente } = require('../DB');
+const { Cliente } = require("../db_conn");
 
 const getClienteByName = async (nombre)=>{
     // console.log(name)

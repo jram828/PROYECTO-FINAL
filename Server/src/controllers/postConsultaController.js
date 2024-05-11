@@ -1,4 +1,4 @@
-const { Consulta } = require("../DB");
+const { Consulta } = require("../db_conn");
 
 const createConsultaBd = async (nombre, apellido, correo, telefono, consulta) => {
     

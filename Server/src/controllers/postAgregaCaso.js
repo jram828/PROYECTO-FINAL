@@ -1,4 +1,4 @@
-const { Caso } = require("../DB");
+const { Caso } = require("../db_conn");
 
 const createCaso = async (cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDeCasoId) => {
     // console.log('imagen',imagen)

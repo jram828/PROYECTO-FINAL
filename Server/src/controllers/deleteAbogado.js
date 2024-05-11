@@ -1,4 +1,4 @@
-const { Abogado } = require('../DB')
+const { Abogado } = require("../db_conn");
 
 const deleteAbogado = async (cedulaAbogado)=>{
     await Abogado.update(
