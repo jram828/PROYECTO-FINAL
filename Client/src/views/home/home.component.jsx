@@ -20,6 +20,13 @@ function Home() {
       <option value="3">Abogado 3</option>
       
     </select>
+    <br></br>
+       <Link to="/home/crearcliente">
+          <button>Crear cliente</button>
+        </Link>
+        <Link to="/home/crearabogado">
+          <button>Craer abogado</button>
+        </Link>
     
     <br></br>
       <Link to="/home/detail">

@@ -12,6 +12,8 @@ import Consultations from './views/consultations/consultations.component';
 import Statistics from './views/statistics/statistics.component';
 import CreateUser from './views/createUser/createUser.component'
 import Password from './views/password/password.component';
+import CrearAbogado from './views/crearAbogado/crearAbogado.component'
+import CrearCliente from './views/crearCliente/crearCliente.component'
 import "./App.css";
 import { Routes, Route, useLocation} from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -74,7 +76,7 @@ function App() {
           element={isAuthenticated ? <Contract /> : <Landing />}
         /> */}
 
-        <Route path="/home" element={<Home />} />
+        {/*<Route path="/home" element={<Home />} />
         <Route
           path="/home/detail"
           element={isAuthenticated ? <Detail /> : <Landing />}
@@ -111,6 +113,20 @@ function App() {
           path="/home/statistics"
           element={isAuthenticated ? <Statistics /> : <Landing />}
         />
+      </Routes>*/}
+      <Route path='/home' element={<Home/>}/>
+        <Route path='/home/detail' element={<Detail/>}/>
+        <Route path='/home/detail/:id' element={<Detail/>}/>
+        <Route path='/home/cases/:id' element={<Cases/>}/>
+        <Route path='/home/costumers/:id' element={<Costumers/>}/>
+        <Route path='/home/lawyers/:id' element={<Lawyers/>}/>
+        <Route path='/home/documents/:id' element={<Documents/>}/>
+        <Route path='/home/diary' element={<Diary/>}/>
+        <Route path='/home/payments' element={<Payments/>}/>
+        <Route path='/home/consultation' element={<Consultations/>}/>
+        <Route path='/home/statistics' element={<Statistics/>}/>
+        <Route path='/home/crearabogado' element={<CrearAbogado/>}/>
+        <Route path='/home/crearcliente' element={<CrearCliente/>}/>
       </Routes>
     </div>
   );
