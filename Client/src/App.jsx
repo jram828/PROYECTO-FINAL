@@ -76,7 +76,7 @@ function App() {
           element={isAuthenticated ? <Contract /> : <Landing />}
         /> */}
 
-        {/*<Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route
           path="/home/detail"
           element={isAuthenticated ? <Detail /> : <Landing />}
@@ -113,8 +113,18 @@ function App() {
           path="/home/statistics"
           element={isAuthenticated ? <Statistics /> : <Landing />}
         />
-      </Routes>*/}
-      <Route path='/home' element={<Home/>}/>
+        <Route 
+        path='/home/crearabogado' 
+        element={isAuthenticated ? <CrearAbogado /> : <Landing />}
+        />
+
+        <Route 
+        path='/home/crearcliente' 
+        element={isAuthenticated ? <CrearCliente /> : <Landing />}
+        />
+
+      
+      {/*<Route path='/home' element={<Home/>}/>
         <Route path='/home/detail' element={<Detail/>}/>
         <Route path='/home/detail/:id' element={<Detail/>}/>
         <Route path='/home/cases/:id' element={<Cases/>}/>
@@ -126,7 +136,7 @@ function App() {
         <Route path='/home/consultation' element={<Consultations/>}/>
         <Route path='/home/statistics' element={<Statistics/>}/>
         <Route path='/home/crearabogado' element={<CrearAbogado/>}/>
-        <Route path='/home/crearcliente' element={<CrearCliente/>}/>
+    <Route path='/home/crearcliente' element={<CrearCliente/>}/>*/}
       </Routes>
     </div>
   );
