@@ -1,16 +1,32 @@
 const { Router } = require("express");
-const { getClientesHandler, postClienteHandler, getClientByIDHandler, deleteClienteHandler, getClientByEmailHandler } = require('../handlers/clientesHandlers')
 
-const clientesRoutes = Router();
+const {
+  clientesDetailHandler,
+  clientesHandler,
+  postClientesHandler,
+  postEliminaClientes,
+  postActualizaClientes,
+  getClientByEmailHandler,
+  getClientByIDHandler,
+} = require("../handlers/clientesHandlers");
 
-clientesRoutes.get("/",getClientesHandler );
 
-clientesRoutes.get("/cedulaCliente", getClientByIDHandler);
 
-clientesRoutes.get("/email", getClientByEmailHandler);
+const clientesRouter = Router();
 
-clientesRoutes.post("/",postClienteHandler );
+clientesRouter.get("/email", getClientByEmailHandler);
 
-clientesRoutes.delete("/delete",deleteClienteHandler );
 
-module.exports = clientesRoutes;
+clientesRouter.get("/", clientesHandler);
+
+clientesRouter.get("/:id", clientesDetailHandler);
+
+clientesRouter.post("/", postClientesHandler);
+
+clientesRouter.post("/elimina", postEliminaClientes);
+
+clientesRouter.post("/actualiza", postActualizaClientes);
+
+clientesRouter.get("/cedulaCliente", getClientByIDHandler);
+
+module.exports = clientesRouter;

@@ -1,5 +1,4 @@
 import './documents.module.css';
-import React from 'react';
 
 function Documents() {
   return (

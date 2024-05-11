@@ -50,24 +50,35 @@ const { Caso,
         DocumentoLegalTipoNotificacion 
       } = sequelize.models;
 
-// TipoDeCaso.belongsToMany(DocumentoTemplate, { through: 'TipoDeCasoDocumentoTemplate' })
-// DocumentoTemplate.belongsToMany(TipoDeCaso, { through: 'TipoDeCasoDocumentoTemplate' })
-// DocumentoLegal.belongsToMany(TipoNotificacion, {through: DocumentoLegalTipoNotificacion})
-// TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotificacion})
+TipoDeCaso.belongsToMany(DocumentoTemplate, {
+  through: "TipoDeCasoDocumentoTemplate",
+});
+DocumentoTemplate.belongsToMany(TipoDeCaso, {
+  through: "TipoDeCasoDocumentoTemplate",
+});
+DocumentoLegal.belongsToMany(TipoNotificacion, {
+  through: DocumentoLegalTipoNotificacion,
+});
+TipoNotificacion.belongsToMany(DocumentoLegal, {
+  through: DocumentoLegalTipoNotificacion,
+});
 
-// DocumentoLegal.belongsTo(DocumentoTemplate)
-// DocumentoLegal.belongsTo(Caso)
+DocumentoLegal.belongsTo(DocumentoTemplate);
+DocumentoLegal.belongsTo(Caso);
 
-// Caso.belongsTo(Abogado)
-// Caso.belongsTo(TipoDeCaso)
-// Caso.belongsTo(Cliente)
-// Caso.hasOne(Cotizacion)
+//Caso.belongsTo(Abogado)
+//Cliente.hasMany(Caso)
+//Caso.belongsTo(TipoDeCaso)
+TipoDeCaso.hasMany(Caso, { foreignKey: "TipoDeCasoId" });
+//Caso.belongsTo(Cliente)
+Cliente.hasMany(Caso, { foreignKey: "cedulaCliente" });
+Abogado.hasMany(Caso, { foreignKey: "cedulaAbogado" });
+Caso.hasOne(Cotizacion);
 
-// Cotizacion.belongsTo(Caso)
-// Cotizacion.hasOne(Contrato)
-// Contrato.belongsTo(Cotizacion)
-// Consulta.belongsTo(Cliente)
-
+Cotizacion.belongsTo(Caso);
+Cotizacion.hasOne(Contrato);
+Contrato.belongsTo(Cotizacion);
+Consulta.belongsTo(Cliente);
 
 module.exports = {
   ...sequelize.models,

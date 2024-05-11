@@ -1,10 +1,10 @@
-import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createUser.css';
 
 
+// eslint-disable-next-line react/prop-types
 function CreateUser ({crearUsuario}) {
 
   const [ urlImage, setUrlImage] = useState ("")
@@ -85,7 +85,7 @@ function CreateUser ({crearUsuario}) {
           <br />
           <br />
           <div className="nombreapellido">
-            <label for="nombre" className="labelcrearusuario">
+            <label htmlFor="nombre" className="labelcrearusuario">
               Nombre(s):
             </label>
             <input
@@ -96,7 +96,7 @@ function CreateUser ({crearUsuario}) {
               value={userDataCrear.nombres}
               onChange={handleChangeCrear}
             />
-            <label for="apellidos" className="labelcrearusuario">
+            <label htmlFor="apellidos" className="labelcrearusuario">
               Apellido(s):
             </label>
             <input
@@ -112,7 +112,7 @@ function CreateUser ({crearUsuario}) {
           <br />
           <br />
           <div className="cedulaemail">
-            <label for="numerocedula" className="labelcrearusuario">
+            <label htmlFor="numerocedula" className="labelcrearusuario">
               Numero de cédula:
             </label>
             <input
@@ -123,7 +123,7 @@ function CreateUser ({crearUsuario}) {
               value={userDataCrear.cedula}
               onChange={handleChangeCrear}
             />
-            <label for="correo" className="labelcrearusuario">
+            <label htmlFor="correo" className="labelcrearusuario">
               Email:
             </label>
             <input
@@ -139,7 +139,7 @@ function CreateUser ({crearUsuario}) {
           <br />
           <br />
           <div className="direccioncelular">
-            <label for="direccion" className="labelcrearusuario">
+            <label htmlFor="direccion" className="labelcrearusuario">
               Dirección:
             </label>
             <input
@@ -150,7 +150,7 @@ function CreateUser ({crearUsuario}) {
               value={userDataCrear.direccion}
               onChange={handleChangeCrear}
             />
-            <label for="telefono" className="labelcrearusuario">
+            <label htmlFor="telefono" className="labelcrearusuario">
               Celular:
             </label>
             <input
@@ -166,7 +166,7 @@ function CreateUser ({crearUsuario}) {
           <br />
           <br />
           <div className="ciudadcontrasena">
-            <label for="ciudad" className="labelcrearusuario">
+            <label htmlFor="ciudad" className="labelcrearusuario">
               Ciudad:
             </label>
             <input
@@ -177,7 +177,7 @@ function CreateUser ({crearUsuario}) {
               value={userDataCrear.nombre_ciudad}
               onChange={handleChangeCrear}
             />
-            <label for="contrasena" className="labelcrearusuario">
+            <label htmlFor="contrasena" className="labelcrearusuario">
               Contraseña:
             </label>
             <input
@@ -193,7 +193,7 @@ function CreateUser ({crearUsuario}) {
           <br />
           <br />
           <div className="paiscontrasena">
-            <label for="pais" className="labelcrearusuario">
+            <label htmlFor="pais" className="labelcrearusuario">
               Pais:
             </label>
             <input
@@ -204,7 +204,7 @@ function CreateUser ({crearUsuario}) {
               value={userDataCrear.nombre_pais}
               onChange={handleChangeCrear}
             />
-            <label for="codigopostalcontrasena" className="labelcrearusuario">
+            <label htmlFor="codigopostalcontrasena" className="labelcrearusuario">
               Codigo Postal:
             </label>
             <input

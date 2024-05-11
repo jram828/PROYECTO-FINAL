@@ -1,39 +1,37 @@
-import './formCrearCita.css';
+import "./formCrearCita.css";
 
-function FormCita ()  {
-
-    return (
-    <div>
-          <h1 className="titulo">Crear Cita</h1>
-        <form>
-         <div>
-           <div>
-            <label>Tipo de cita:</label>
-            <input/>
-           </div>
-            <label>Fecha:</label>
-            <input/>
-           <br/>
-            <label>Hora:</label>
-            <input/>
-           </div>
-           <div>
-            <label>Personas:</label>
-            <select>
-              <option value="">Seleccionar...</option>
-            </select>
-          </div>
+function FormCita() {
+  return (
+    <div className="container">
+      <h1 className="titulo">Crear Cita</h1>
+      <form className="formulario">
+        <div className="input-row">
           <div>
-             <label>Detalles:</label>
-             <textarea></textarea>
+            <label className="label">Tipo de cita:</label>
+            <input className="input" />
           </div>
-          <div className="botones">
-              <input type="submit" className="botones" value="Guardar" />
-          </div>
-        </form>
+          <label className="label">Fecha:</label>
+          <input className="input" />
+          <br />
+          <label className="label">Hora:</label>
+          <input className="input" />
+        </div>
+        <div className="input-row">
+          <label className="label">Personas:</label>
+          <select className="select">
+            <option value="">Seleccionar...</option>
+          </select>
+        </div>
+        <div className="input-row">
+          <label className="label">Detalles:</label>
+          <textarea className="input"></textarea>
+        </div>
+        <div className="botones">
+          <input type="submit" className="button" value="Guardar" />
+        </div>
+      </form>
     </div>
-      );
-
+  );
 }
 
-export default FormCita
+export default FormCita;

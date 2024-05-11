@@ -1,7 +1,6 @@
 import './landing.module.css';
-import React from 'react';
 import Login from '../../components/login/index';
-import { Loginf, ClickHandlerRecordatorio } from "../../handlers/login";
+import { Loginf} from "../../handlers/login";
 import { useNavigate } from 'react-router-dom';
 
 

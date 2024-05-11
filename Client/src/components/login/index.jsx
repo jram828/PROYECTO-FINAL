@@ -12,7 +12,8 @@ import axios from "axios";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 
-const Login = ({ clickHandlerRecordatorio, clickHandlerCrear, Loginf}) => {
+// eslint-disable-next-line react/prop-types
+const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
