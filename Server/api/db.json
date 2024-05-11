@@ -1,0 +1,253 @@
+{
+    "abogados": [
+        {
+            "id": 1,
+            "identification": "aa123",
+            "matricula": "aa234",
+            "name": "Francisco",
+            "last name": "Urrieta",
+            "email": "franciscourrieta@april.biz",
+            "phone": "+54-12546897",
+            "street": "Las Palmas",
+            "number": "987",
+            "zipcode": "92935",
+            "city": "Buenos Aires",
+            "country": "Argentina"
+        },
+        {
+            "id": 2,
+            "identification": "aa564",
+            "matricula": "aa235",
+            "name": "María",
+            "last name": "Arteaga",
+            "email": "mariaarteaga@april.biz",
+            "phone": "+54-531568974",
+            "street": "Peru",
+            "number": "1546",
+            "zipcode": "4685",
+            "city": "Rosario",
+            "country": "Argentina"
+        },
+        {
+            "id": 3,
+            "identification": "aa236",
+            "matricula": "aa236",
+            "name": "Esteban",
+            "last name": "Rojas",
+            "email": "estebanrojas@april.biz",
+            "phone": "+57-5684563",
+            "street": "Colón",
+            "number": "1003",
+            "zipcode": "1453",
+            "city": "Bogota",
+            "country": "Colombia"
+        },
+        {
+            "id": 4,
+            "identification": "aa237",
+            "matricula": "bb237",
+            "name": "Emerenciano",
+            "last name": "García",
+            "email": "emerencianogarcia@april.biz",
+            "phone": "+54-11356489",
+            "street": "Santa Marta",
+            "zipcode": "83765",
+            "city": "San Juan",
+            "country": "Puerto Rico"
+        },
+        {
+            "id": 5,
+            "identification": "aa238",
+            "matricula": "bb238",
+            "name": "Joaquin",
+            "last name": "Acuña",
+            "email": "joaquinacuna@april.biz",
+            "phone": "+585203647",
+            "street": "Gobernados",
+            "number": "968",
+            "zipcode": "63564",
+            "city": "Caracas",
+            "country": "Venezuela"
+        },
+        {
+            "id": 6,
+            "identification": "C674",
+            "name": "Mauricio",
+            "last name": "Torres",
+            "email": "mauriciotorres@april.biz",
+            "phone": "+54-4523678",
+            "street": "la Tablada",
+            "number": "10565",
+            "zipcode": "65879",
+            "city": "Santa Fe",
+            "country": "Argentina"
+        },
+        {
+            "id": 7,
+            "identification": "b254",
+            "name": "José",
+            "last name": "Bonneto",
+            "email": "josebonneto@april.biz",
+            "phone": "+54-5689648",
+            "street": "Las Flores",
+            "number": "185",
+            "zipcode": "6532",
+            "city": "Mendoza",
+            "country": "Argentina"
+        }
+    ],
+
+    "consultas": [
+            {
+                "id_consulta": 10,
+                "name": "Nicanor",
+                "last name": "Londoño",
+                "email": "nicanorlondono@april.biz",
+                "phone": "+54-1586954",
+                "consultation": "Hola. Buen día, quiero pedirle el divorcio a mi esposa porque pega muy duro y me tiene muy lastimado"
+            },
+            {
+                "id_consulta": 11,
+                "name": "Magali",
+                "last name": "Guerrero",
+                "email": "magaliguerrero@april.biz",
+                "phone": "+54-1256874",
+                "consultation": "Buenas tardes, Quiero demandar a mi vecino porque su perro se orina todas las mañanas en la puerta de mi casa"
+            },
+            {
+                "id_consulta": 12,
+                "name": "Bonifacio",
+                "last name": "Luna",
+                "email": "bonifacioluna@april.biz",
+                "phone": "+54-12548954",
+                "consultation": "Les queria preguntar que acciones puedo hacer para que mi ex novia no me siga acosando por toda la ciudad, hasta puso a sus amigas que me acosaran también"
+            },
+            {
+                "id_consulta": 13,
+                "name": "Carlos",
+                "last name": "Castañeda",
+                "email": "carloscastaneda@april.biz",
+                "phone": "+54-1525464",
+                "consultation": "Muy buenas tardes, quisiera demandar penalmente a un compañero de trabajo que me molesta a toda hora, lo puedo hacer?"
+            },
+            {
+                "id_consulta": 14,
+                "name": "Cristina",
+                "last name": "mecheel",
+                "email": "cristinamecheel@april.biz",
+                "phone": "+54-64859954",
+                "consultation": "Hola, hubo un accidente que involucro a un vehículo mio y hubo un herido, cómo debo proceder"
+            },
+            {
+                "id_consulta": 15,
+                "name": "Joaquin",
+                "last name": "Riviera",
+                "email": "joaquinriviera@april.biz",
+                "phone": "+54-15000054",
+                "consultation": "El perro de mi vecino mordio a mi hijo, Que acciones legales debo Hacer, gracias"
+            },
+            {
+                "id_consulta": 16,
+                "name": "Ricachon",
+                "last name": "Buenahonda",
+                "email": "ricachonbuenahonda@april.biz",
+                "phone": "+54-13699999",
+                "consultation": "Buen día, me diagnosticaron una enfermedad terminal y quisiera redactar mi testamento, Cuanto me saldria"
+            }
+    ],
+
+    "Clientes": [
+        {
+            "id": 1,
+            "identification": "d234",
+            "name": "Estrella",
+            "last name": "Díaz",
+            "email": "estrella@april.biz",
+            "phone": "+54-11723672",
+            "street": "Libertador",
+            "number": "556",
+            "city": "Buenos Aires",
+            "zipcode": "92998",
+            "country": "Argentina"
+        },
+        {
+            "id": 2,
+            "identification": "t564",
+            "name": "Melina",
+            "last name": "Zulián",
+            "email": "Melina@april.biz",
+            "phone": "+54-11726792",
+            "street": "Rey Jorge",
+            "number": "1076",
+            "city": "Rosario",
+            "zipcode": "4685",
+            "country": "Argentina"
+        },
+        {
+            "id": 3,
+            "identification": "d236",
+            "name": "Julián",
+            "last name": "Arango",
+            "email": "julian@april.biz",
+            "phone": "+57-1173687",
+            "street": "Simón Bolívar",
+            "number": "9876",
+            "city": "Bogota",
+            "zipcode": "1453",
+            "country": "Colombia"
+        },
+        {
+            "id": 4,
+            "identification": "d237",
+            "name": "Gustavo",
+            "last name": "Quiroga",
+            "email": "gustavo@april.biz",
+            "phone": "+54-1179674",
+            "street": "Roma",
+            "number": "5576",
+            "city": "San Juan",
+            "zipcode": "8962",
+            "country": "Argentina"
+        },
+        {
+            "id": 5,
+            "identification": "d238",
+            "name": "Joaco",
+            "last name": "Ortega",
+            "email": "joaco@april.biz",
+            "phone": "+54-1171578",
+            "street": "Madre Emilia",
+            "number": "356",
+            "city": "Buenos Aires",
+            "zipcode": "6358",
+            "country": "Argentina"
+        },
+        {
+            "id": 6,
+            "identification": "C674",
+            "name": "Jonatan",
+            "last name": "Avila",
+            "email": "jonatan@april.biz",
+            "phone": "+54-1185671",
+            "street": "Empedrado",
+            "number": "1005",
+            "city": "Buenos Aires",
+            "zipcode": "92934",
+            "country": "Argentina"
+        },
+        {
+            "id": 7,
+            "identification": "b254",
+            "name": "José",
+            "last name": "Rengifo",
+            "email": "jose@april.biz",
+            "phone": "+54-1125648",
+            "street": "Laprida",
+            "number": "1563",
+            "city": "Córdoba",
+            "zipcode": "5684",
+            "country": "Argentina"
+        }
+    ]
+
+}

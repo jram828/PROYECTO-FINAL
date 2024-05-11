@@ -1,9 +1,76 @@
 .containerLogin{
-  background-color: white;
+  background-color: var(--color-two);
   opacity: 0.9;
   border-radius: 10px;
   padding: 10px;
   margin-top: 250px;
-  width: 300px;
+  width: 400px;
+  color: white; 
+  font-family: "Outfit", sans-serif;
   justify-content: center;
+  display: flex;
+      flex-direction: column;
+      align-items: center;
 }
+
+
+.label{
+   font-family: "Outfit", sans-serif;
+  font-size: 120%;
+  color: white;
+  margin: 10px;
+  text-align: left;
+}
+
+   .celdas{
+      justify-content: flex-start;
+      width: 100px;
+   }
+
+   .errores{
+   font-size: 100%;
+   color: red
+}
+
+.input {
+   width: 80%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid white; /* Color del borde */
+   border-radius: 5px;
+   background-color: transparent; /* Fondo transparente */
+   color: white; /* Color del texto */
+   font-family: "Outfit", sans-serif; /* Estilo de fuente */
+   outline: none; /* Elimina el contorno al seleccionar el campo */
+ }
+
+ .select {
+   width: 92%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid white; 
+   border-radius: 5px;
+   background-color: transparent; 
+   color: white; 
+   font-family: "Outfit", sans-serif; 
+   outline: none; 
+ }
+
+ .select option {
+   background-color: var(--color-two); /* Color de fondo */
+   color: white; /* Color del texto */
+   font-family: "Outfit", sans-serif; /* Estilo de fuente */
+}
+ 
+.button {
+  width: 180px;
+  height: auto;
+  font-size: 14px; 
+  letter-spacing: 0.5px; 
+  margin: 2px;
+}
+
+.googleLogin {
+   margin-top: 10px;
+ }
+
