@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './createUser.css';
 
 
 function CreateUser ({crearUsuario}) {
+
+  const [ urlImage, setUrlImage] = useState ("")
   
     const [userDataCrear, setUserDataCrear] = useState({
       email: "",
@@ -29,13 +32,55 @@ function CreateUser ({crearUsuario}) {
       e.preventDefault();
       crearUsuario(userDataCrear)
     };
+
+    const handleChangeImage = async (e) => {
+      e.preventDefault();
+      const file = e.target.files[0];
+
+      console.log(file);
+
+      const data = new FormData();
+
+      console.log(data);
+
+      data.append("file",file);
+      data.append("upload_preset", "Preset_LegalTech");
+
+      const response = await axios.post("https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload", data)
+      
+      setUrlImage(response.data.secure_url)
+      console.log(response)
+
+
+    }
+
+    const handleDeleteImage = (e) => {
+      e.preventDefault();
+      setUrlImage("");
+
+    }
   
     return (
 
       <div className="contenedorcrearusuario">
+        <h1 className="titulo">Crear Usuario</h1>
+        <h2>Foto de perfil</h2>
+        <div>
+          <input type="file" accept="image/*" onChange={handleChangeImage}></input>
+          {urlImage && (
+          <div>
+            <img
+         src={urlImage}
+         style={{ width: '100px', height: '100px' }}/>
+            <button onClick={handleDeleteImage}>Eliminar</button>
+          </div>
+        )}
+        </div>
+
+        
         
         <form method="post" className="formulario" onSubmit={submitHandlerCrear}>
-        <h1 className="titulo">Crear Usuario</h1>
+        
 
           <br />
           <br />
