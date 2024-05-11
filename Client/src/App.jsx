@@ -31,11 +31,7 @@ function App() {
   
   return (
     <div className="App">
-      {/* {location.pathname === "/home" ? (
-        <div className="">
-          <h1 className="titulo">LEGAL TECH</h1>
-        </div>
-      ) : undefined} */}
+
       <Routes>
         <Route path="/" element={<Landing />} />
 
@@ -121,21 +117,6 @@ function App() {
         path='/home/crearcliente' 
         element={isAuthenticated ? <CrearCliente /> : <Landing />}
         />
-
-      
-      {/*<Route path='/home' element={<Home/>}/>
-        <Route path='/home/detail' element={<Detail/>}/>
-        <Route path='/home/detail/:id' element={<Detail/>}/>
-        <Route path='/home/cases/:id' element={<Cases/>}/>
-        <Route path='/home/costumers/:id' element={<Costumers/>}/>
-        <Route path='/home/lawyers/:id' element={<Lawyers/>}/>
-        <Route path='/home/documents/:id' element={<Documents/>}/>
-        <Route path='/home/diary' element={<Diary/>}/>
-        <Route path='/home/payments' element={<Payments/>}/>
-        <Route path='/home/consultation' element={<Consultations/>}/>
-        <Route path='/home/statistics' element={<Statistics/>}/>
-        <Route path='/home/crearabogado' element={<CrearAbogado/>}/>
-    <Route path='/home/crearcliente' element={<CrearCliente/>}/>*/}
       </Routes>
     </div>
   );
