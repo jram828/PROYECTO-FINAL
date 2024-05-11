@@ -1,5 +1,4 @@
 import './order.css';
-import React from 'react';
 
 function Order() {
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import './costumers.module.css';
 
@@ -30,16 +30,6 @@ function Costumers() {
           <Link to='/home'>
           <button >Volver</button>
           </Link>
-
-       {/* <p><strong>Nombre(s):</strong> {nombres}</p>
-        <p><strong>Apellido(s):</strong> {apellidos}</p>
-        <p><strong>Número de cédula:</strong> {cedula}</p>
-        <p><strong>Email:</strong> {email}</p>
-        <p><strong>Dirección:</strong> {direccion}</p>
-        <p><strong>Celular:</strong> {celular}</p>
-        <p><strong>Ciudad:</strong> {ciudad}</p>
-        <p><strong>Código Postal:</strong> {codigo_postal}</p>
-        <p><strong>País:</strong> {pais}</p>*/}
 
       </div>
     </div>

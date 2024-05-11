@@ -1,5 +1,4 @@
 import './crearAbogado.module.css';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CrearAbogado() {
@@ -10,7 +9,7 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="nombreapellido">
-            <label for="nombre" className="labelcrearcliente">
+            <label htmlFor="nombre" className="labelcrearcliente">
               Nombre(s):
             </label>
             <input
@@ -19,7 +18,7 @@ function CrearAbogado() {
               id="name"
               className="cajascrearcliente"             
             />
-            <label for="apellidos" className="labelcrearcliente">
+            <label htmlFor="apellidos" className="labelcrearcliente">
               Apellido(s):
             </label>
             <input
@@ -33,7 +32,7 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="cedulaemail">
-            <label for="numerocedula" className="labelcrearcliente">
+            <label htmlFor="numerocedula" className="labelcrearcliente">
               Numero de cédula:
             </label>
             <input
@@ -42,7 +41,7 @@ function CrearAbogado() {
               id="cedula"
               className="cajascrearcliente"
             />
-            <label for="matricula" className="labelcrearcliente">
+            <label htmlFor="matricula" className="labelcrearcliente">
               Matricula:
             </label>
             <input
@@ -52,7 +51,7 @@ function CrearAbogado() {
           </div>
           <br />
           <br />
-          <label for="correo" className="labelcrearcliente">
+          <label htmlFor="correo" className="labelcrearcliente">
               Email:
             </label>
             <input
@@ -62,7 +61,7 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="direccioncelular">
-            <label for="direccion" className="labelcrearcliente">
+            <label htmlFor="direccion" className="labelcrearcliente">
               Dirección:
             </label>
             <input
@@ -71,7 +70,7 @@ function CrearAbogado() {
               id="address"
               className="cajascrearcliente"
             />
-            <label for="telefono" className="labelcrearcliente">
+            <label htmlFor="telefono" className="labelcrearcliente">
               Celular:
             </label>
             <input
@@ -85,7 +84,7 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="ciudadcontrasena">
-            <label for="ciudad" className="labelcrearcliente">
+            <label htmlFor="ciudad" className="labelcrearcliente">
               Ciudad:
             </label>
             <input
@@ -94,7 +93,7 @@ function CrearAbogado() {
               id="city"
               className="cajascrearcliente"
             />
-            <label for="contrasena" className="labelcrearcliente">
+            <label htmlFor="contrasena" className="labelcrearcliente">
               Contraseña:
             </label>
             <input
@@ -108,7 +107,7 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="paiscontrasena">
-            <label for="pais" className="labelcrearcliente">
+            <label htmlFor="pais" className="labelcrearcliente">
               Pais:
             </label>
             <input
@@ -117,7 +116,7 @@ function CrearAbogado() {
               id="country"
               className="cajascrearcliente"
             />
-            <label for="codigopostalcontrasena" className="labelcrearcliente">
+            <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
               Codigo Postal:
             </label>
             <input

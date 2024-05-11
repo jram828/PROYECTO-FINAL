@@ -1,5 +1,4 @@
 import './filtros.css';
-import React from 'react';
 import Cards from '../cards/index';
 import { useState } from 'react';
 
