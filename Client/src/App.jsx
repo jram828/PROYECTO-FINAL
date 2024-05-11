@@ -13,16 +13,15 @@ import Statistics from './views/statistics/statistics.component';
 import CreateUser from './views/createUser/createUser.component'
 import Password from './views/password/password.component';
 import "./App.css";
-import { Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
-import axios from "axios";
 
 //const { URL } = process.env;
 // axios.defaults.baseURL = "https://localhost:3001";
 
 function App() {
   
-    const location = useLocation();
+    // const location = useLocation();
    const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
