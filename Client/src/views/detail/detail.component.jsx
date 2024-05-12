@@ -1,8 +1,7 @@
 import './detail.module.css';
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { getClienteById } from '../../../../Server/src/controllers/getClienteById';
+import { getClienteById } from '../../handlers/detailCliente';
 
 function Detail() {
   
