@@ -1,25 +1,25 @@
 import './detail.module.css';
-import { Link, useParams } from "react-router-dom";
+import { getClienteById } from "../../handlers/detailCliente";
 import { useState, useEffect } from "react";
-import { getClienteById } from '../../handlers/detailCliente';
+import { useParams, Link } from "react-router-dom";
 
 function Detail() {
   
-    const [usuario, setUsuario] = useState({});
-    const { id } = useParams();
-    console.log('Details id:', id)
-    useEffect(() => {
-      const obtenerUsuario = async (id) => {
-        try {
-          const usuarioActual = await getClienteById(id);
-          setUsuario(usuarioActual);
-        } catch (error) {
-          console.error("Error al obtener el cliente:", error);
-        }
-      };
-    obtenerUsuario(id);
-    }, [id]);
-  
+const [usuario, setUsuario] = useState({});
+  const { id } = useParams();
+  console.log('Details id:', id)
+  useEffect(() => {
+    const obtenerUsuario = async (id) => {
+      try {
+        const usuarioActual = await getClienteById(id);
+        setUsuario(usuarioActual);
+      } catch (error) {
+        console.error("Error al obtener el cliente:", error);
+      }
+    };
+  obtenerUsuario(id);
+  }, [id]);
+
   return (
     <div>
       <div>
@@ -76,5 +76,4 @@ function Detail() {
     </div>
   )
 }
-
 export default Detail
