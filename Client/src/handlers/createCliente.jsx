@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function createClient(userDataCreate) {
+export async function postCliente(userDataCreate) {
   const {
       cedulaCliente,
       nombre,
