@@ -1,7 +1,7 @@
 import './costumers.module.css';
 import React, {useEffect, useState} from 'react';
 import { getClientes } from '../../handlers/todosClientes';
-import userStoreCostumers from '../../store/costumers';
+
 
 
 function Costumers() {
