@@ -6,7 +6,7 @@ import userStoreCostumers from '../../store/costumers';
 
 function Costumers() {
 
-  const addCostumer = userStoreCostumers((state) => state.addCostumer);
+  const setCostumer = userStoreCostumers((state) => state.setCostumer);
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function Costumers() {
       try {
         const listaClientes = await getClientes(); 
         setClientes(listaClientes);
-        addCostumer(listaClientes) 
+        setCostumer(listaClientes) 
       } catch (error) {
         console.error('Error al obtener los clientes:', error);
       }
@@ -23,6 +23,7 @@ function Costumers() {
 
     obtenerClientes(); 
   }, []);
+
 
 
   return (
