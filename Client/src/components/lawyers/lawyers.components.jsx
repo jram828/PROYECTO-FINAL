@@ -1,4 +1,4 @@
-import './lawyers.module.css';
+import './lawyers.css';
 import React, {useEffect,useState} from 'react';
 import { getAbogados } from '../../handlers/todosAbogados';
 import userStoreLawyers from '../../store/lawyers';
@@ -23,7 +23,7 @@ function Lawyers() {
     obtenerAbogados(); 
   }, []);
   return (
-    <select >
+    <select className='select'>
       <option value="">Abogados</option>
       {abogados.map(abogado => (
         <option key={abogado.id} value={abogado.id}>

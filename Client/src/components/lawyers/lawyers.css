@@ -1,0 +1,13 @@
+.select {
+    width: 92%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid white; 
+    border-radius: 5px;
+    background-color: transparent; 
+    color: white; 
+    font-family: "Outfit", sans-serif; 
+    outline: none; 
+    cursor: pointer;
+  }
+ 

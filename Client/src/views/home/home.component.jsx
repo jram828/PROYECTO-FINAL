@@ -1,53 +1,65 @@
-import './home.module.css';
+import './home.css';
 import { Link,  } from 'react-router-dom';
 import Lawyers from '../../components/lawyers/lawyers.components';
 import Costumers from '../../components/costumers/costumers.component';
+import picture from './homepic.jpg'
+import logo from './logo.png'
 
 function Home() {
   
   return (
     <div>
-     
-    <Costumers></Costumers>
-    <Lawyers></Lawyers>
-    
+
+    <div className='container'>
+      <img src={logo} alt='logo'/>
+      <div className='container1'>
+        <Costumers></Costumers>
+        <Lawyers></Lawyers>
+      </div>
+    </div>
+       
     <br></br>
-       <Link to="/home/crearcliente">
-          <button>Crear cliente</button>
+    <div className='container2'>
+      <div className='imagen'>
+        <img src={picture} alt="homeLawyers" />
+      </div>
+      <div className='container3'>
+        <Link to="/home/crearcliente">
+          <button className='btn2'>Crear cliente</button>
         </Link>
         <Link to="/home/crearabogado">
-          <button>Craer abogado</button>
+          <button className='btn2'>Crear abogado</button>
         </Link>
-    
-    <br></br>
-      <Link to="/home/detail">
-        <button>Datos Personales</button>
-      </Link>
-      <Link to="/home/cases/:id">
-        <button>Casos</button>
-      </Link>
-      <Link to="/home/documents/:id">
-        <button>Documentos</button>
-      </Link>
-      <Link to="/home/diary">
-        <button>Agenda</button>
-      </Link>
-      <br></br>
-      <Link to="/home/payments">
-        <button>Pagos</button>
-      </Link>
-      <Link to="/home/consultation">
-        <button>Consultas</button>
-      </Link>
-      <Link to="/home/statistics">
-        <button>Estadisticas</button>
-      </Link>
-      <br/>
-      <br/>
-      <Link to="/">
-        <button>Salir</button>
-      </Link>
+        <br></br>
+        <Link to="/home/detail">
+          <button className='btn'>Datos Personales</button>
+        </Link>
+        <Link to="/home/cases/:id">
+          <button className='btn'>Casos</button>
+        </Link>
+        <Link to="/home/documents/:id">
+          <button className='btn'>Documentos</button>
+        </Link>
+        <Link to="/home/diary">
+          <button className='btn'>Agenda</button>
+        </Link>
+        <Link to="/home/payments">
+          <button className='btn'>Pagos</button>
+        </Link>
+        <Link to="/home/consultation">
+          <button className='btn'>Consultas</button>
+        </Link>
+        <Link to="/home/statistics">
+          <button className='btn'>Estadisticas</button>
+        </Link>
 
+        <br/>
+        <br/>
+        <Link to="/">
+        <button className='btn3'>Salir</button>
+        </Link>
+      </div>
+    </div>
     </div>
   );
 }

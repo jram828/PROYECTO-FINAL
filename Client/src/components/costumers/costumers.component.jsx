@@ -1,4 +1,4 @@
-import './costumers.module.css';
+import './costumers.css';
 import React, {useEffect, useState} from 'react';
 import { getClientes } from '../../handlers/todosClientes';
 import userStoreCostumers from '../../store/costumers';
@@ -26,8 +26,8 @@ function Costumers() {
 
 
   return (
-    <select >
-       <option value="">Clientes</option>
+    <select className='select'>
+       <option value="" className='option'>Clientes</option>
       {clientes.map(cliente => (
         <option key={cliente.id} value={cliente.id}>
           {cliente.nombre} {cliente.apellido}
