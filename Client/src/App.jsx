@@ -73,7 +73,7 @@ function App() {
 
         <Route path="/home" element={<Home />} />
         <Route
-          path="/home/detail"
+          path="/home/detail/:id"
           element={isAuthenticated ? <Detail /> : <Landing />}
         />
         <Route
