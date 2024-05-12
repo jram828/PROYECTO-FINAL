@@ -1,11 +1,7 @@
 const { Caso } = require("../db_conn");
 
 const getAllCaso = async ()=>{
-    const getAllCasoBd = await Caso.findAll({
-        where: {
-          fechaFin: null,
-        },
-      });
+    const getAllCasoBd = await Caso.findAll();
 
     return getAllCasoBd;
 };
@@ -14,3 +10,9 @@ const getAllCaso = async ()=>{
 module.exports = {
     getAllCaso,
 }
+
+// {
+//         where: {
+//           fechaFin: null,
+//         },
+//       }
