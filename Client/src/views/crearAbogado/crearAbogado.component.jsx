@@ -1,15 +1,17 @@
 import './crearAbogado.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import userStoreLawyers from '../../store/lawyers';
+//import { Link } from 'react-router-dom';
+//import userStoreLawyers from '../../store/lawyers';
 import { useState } from 'react';
 import { postAbogado } from '../../handlers/crearAbogado';
+import { Link } from 'react-router-dom';
+
 
 function CrearAbogado() {
   
-    const addLawyer = userStoreLawyers((state) => state.addLawyer);
+  //const addLawyer = userStoreLawyers((state) => state.addLawyer);
   
-    const [datosAbogado, setDatosAbogado] = useState({
+    const [userDataRegistro, setUserDataRegistro] = useState({
       cedulaAbogado: '',
       matricula: '',
       nombre: '',
@@ -22,22 +24,22 @@ function CrearAbogado() {
       ciudad: '',
       pais: ''
     });
-    console.log(datosAbogado)
+    console.log(userDataRegistro)
   
-    const handleChange = (e) => {
+    const handleChangeRegistro = (e) => {
       const { name, value } = e.target;
-      setDatosAbogado(prevState => ({
+      setUserDataRegistro(prevState => ({
         ...prevState,
         [name]: value
       }));
     };
-    console.log(setDatosAbogado)
+    console.log(setUserDataRegistro)
   
-    const handleSubmit = async (e) => {
+    const submitHandlerRegistro = async (e) => {
       e.preventDefault();
       try {
-        await postAbogado(datosAbogado);
-        addLawyer(datosAbogado); 
+        await postAbogado(userDataRegistro);
+        //addLawyer(userDataRegistro); 
   
         window.alert('Abogado creado con éxito');
       } catch (error) {
@@ -46,10 +48,11 @@ function CrearAbogado() {
         window.alert('No se pudo crear el abogado');
       }
     };
-    console.log(addLawyer)
+   
     
 
   return (
+
     <div className="contenedorcrearabogado">
         <form onSubmit={handleSubmit} method="post" className="formulario">
           <h1 className="titulo">Crear abogado</h1>
@@ -61,8 +64,9 @@ function CrearAbogado() {
             </label>
             <input
               type="text"
-              name="nombres"
+              name="nombre"
               id="name"
+
               className="cajascrearabogado"
               onChange={handleChange}       
             />
@@ -71,7 +75,8 @@ function CrearAbogado() {
             </label>
             <input
               type="text"
-              name="apellidos"
+              className="cajaregistrocliente"
+              name="apellido"
               id="lastname"
               className="cajascrearabogado"
               onChange={handleChange}
@@ -82,11 +87,13 @@ function CrearAbogado() {
           <br />
           <div className="cedulamatricula">
             <label htmlFor="numerocedula" className="labelcrearabogado">
+
               Numero de cédula:
             </label>
             <input
-              type="text"
-              name="cedula"
+              type="number"
+              className="cajaregistrocliente"
+              name="cedulaAbogado"
               id="cedula"
               className="cajascrearabogado"
               onChange={handleChange}
@@ -100,9 +107,21 @@ function CrearAbogado() {
               onChange={handleChange}
               className="cajascrearabogado"
             />
+            <label htmlFor="matricula" className="labelregistrodecliente">
+            Matricula:
+          </label>
+          <input
+            type="number"
+            className="cajaregistrocliente"
+            name="matricula"
+            id="matricula"
+            value={userDataRegistro.matricula}
+            onChange={handleChangeRegistro}
+          />
           </div>
           <br />
           <br />
+
 
           <div className='correo'>
             <label htmlFor="correo" className="labelcrearabogado">
@@ -138,8 +157,9 @@ function CrearAbogado() {
               className="cajascrearabogado"
               onChange={handleChange}
             />
-            <label htmlFor="telefono" className="labelcrearcliente">
-              Celular:
+  
+            <label htmlFor="calle" className="labelregistrodecliente">
+              Calle:
             </label>
             <input
               type="text"
@@ -152,6 +172,7 @@ function CrearAbogado() {
   
           <br />
           <br />
+
           <div className="ciudadcontrasena">
             <label htmlFor="ciudad" className="labelcrearabogado">
               Ciudad:
@@ -174,9 +195,9 @@ function CrearAbogado() {
               onChange={handleChange}
             />
           </div>
+          <br />
+          <br />
 
-          <br />
-          <br />
           <div className="paiscontrasena">
             <label htmlFor="pais" className="labelcrearabogado">
               Pais:
@@ -198,17 +219,18 @@ function CrearAbogado() {
               className="cajascrearabogado"
               onChange={handleChange}
             />
-            </div>
-          <br />
+            <br />
+            <br />
+          </div>
+  
           <br />
           <div className="botonescrearabogado">
             <Link><button type="submit" className='button'>Crear</button></Link>
             <Link to='/home'><button className='button'>Volver</button></Link>
           </div>
-          <br />
         </form>
       </div>
-  )
-}
+    );
+  };
 
 export default CrearAbogado

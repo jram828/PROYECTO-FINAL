@@ -1,14 +1,14 @@
 import './crearCliente.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import userStoreCostumers from '../../store/costumers';
+//import userStoreCostumers from '../../store/costumers';
 import { useState } from 'react';
 import { postCliente } from '../../handlers/createCliente';
 
 
 function CrearCliente() {
   
-    const addCostumer = userStoreCostumers((state) => state.addCostumer);
+    //const setCostumer = userStoreCostumers((state) => state.setCostumer);
   
     const [datosCliente, setDatosCliente] = useState({
       cedulaCliente: '',
@@ -37,7 +37,7 @@ function CrearCliente() {
       e.preventDefault();
       try {
         await postCliente(datosCliente);
-        addCostumer(datosCliente); 
+        //setCostumer(datosCliente); 
   
         window.alert('Cliente creado con éxito');
       } catch (error) {
@@ -46,7 +46,7 @@ function CrearCliente() {
         window.alert('No se pudo crear el abogado');
       }
     };
-    console.log(addCostumer)
+    
 
   return (
     <div className="contenedorcrearcliente">
@@ -55,7 +55,7 @@ function CrearCliente() {
           <br />
           <br />
           <div className="nombreapellido">
-            <label for="nombre" className="labelcrearcliente">
+            <label htmlFor="nombre" className="labelcrearcliente">
               Nombre(s):
             </label>
             <input
@@ -65,7 +65,7 @@ function CrearCliente() {
               className="cajascrearcliente"
               onChange={handleChange}
             />
-            <label for="apellidos" className="labelcrearcliente">
+            <label htmlFor="apellidos" className="labelcrearcliente">
               Apellido(s):
             </label>
             <input
@@ -80,7 +80,7 @@ function CrearCliente() {
           <br />
           <br />
           <div className="cedulaemail">
-            <label for="numerocedula" className="labelcrearcliente">
+            <label htmlFor="numerocedula" className="labelcrearcliente">
               Numero de cédula:
             </label>
             <input
@@ -90,7 +90,7 @@ function CrearCliente() {
               className="cajascrearcliente"
               onChange={handleChange}
             />
-            <label for="correo" className="labelcrearcliente">
+            <label htmlFor="correo" className="labelcrearcliente">
               Email:
             </label>
             <input
@@ -104,7 +104,7 @@ function CrearCliente() {
           <br />
           <br />
           <div className="direccioncelular">
-            <label for="direccion" className="labelcrearcliente">
+            <label htmlFor="direccion" className="labelcrearcliente">
               Dirección:
             </label>
             <input
@@ -114,7 +114,7 @@ function CrearCliente() {
               className="cajascrearcliente"
               onChange={handleChange}
             />
-            <label for="telefono" className="labelcrearcliente">
+            <label htmlFor="telefono" className="labelcrearcliente">
               Celular:
             </label>
             <input
@@ -129,7 +129,7 @@ function CrearCliente() {
           <br />
           <br />
           <div className="ciudadcontrasena">
-            <label for="ciudad" className="labelcrearcliente">
+            <label htmlFor="ciudad" className="labelcrearcliente">
               Ciudad:
             </label>
             <input
@@ -139,7 +139,7 @@ function CrearCliente() {
               className="cajascrearcliente"
               onChange={handleChange}
             />
-            <label for="contrasena" className="labelcrearcliente">
+            <label htmlFor="contrasena" className="labelcrearcliente">
               Contraseña:
             </label>
             <input
@@ -154,7 +154,7 @@ function CrearCliente() {
           <br />
           <br />
           <div className="paiscontrasena">
-            <label for="pais" className="labelcrearcliente">
+            <label htmlFor="pais" className="labelcrearcliente">
               Pais:
             </label>
             <input
@@ -164,7 +164,7 @@ function CrearCliente() {
               className="cajascrearcliente"
               onChange={handleChange}
             />
-            <label for="codigopostalcontrasena" className="labelcrearcliente">
+            <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
               Codigo Postal:
             </label>
             <input
@@ -178,8 +178,10 @@ function CrearCliente() {
           <br />
           <br />
           <div className="botonescrearcliente">
+
             <Link><button type='Submit' className='button'>Crear</button></Link>
             <Link to='/home'><button className='button'>Volver</button></Link>
+
           </div>
           <br />
         </form>
