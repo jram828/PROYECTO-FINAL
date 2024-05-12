@@ -2,7 +2,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 //import { setAuth } from "../redux/actions";
 //import { useDispatch } from "react-redux";
-import store from "../../zustand/store";
+import store from "../zustand/store";
 
 setAuthenticated = store ((state)=> state.setAuthenticated ) ;
 
