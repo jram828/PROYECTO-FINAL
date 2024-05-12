@@ -6,7 +6,7 @@ const useStore = create(devtools((set) => ({
   isAuthenticated: false,
   user: {},
   setAuthenticated: (auth) => set({ isAuthenticated: auth }),
-  setUserToken: (userToken) => set({ user: userToken }),
+  setUser: (user) => set({ user: user }),
 }), 'redux'));
 
 export default useStore;
