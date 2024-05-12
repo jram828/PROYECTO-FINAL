@@ -1,12 +1,10 @@
 import create from 'zustand';
-import { devtools } from 'zustand/middleware';
 
-const useStore = create(devtools((set) => ({
-  usuario: {},
+const useAuthStore = create((set) => ({
   isAuthenticated: false,
   user: {},
   setAuthenticated: (auth) => set({ isAuthenticated: auth }),
   setUser: (user) => set({ user: user }),
-}), 'redux'));
+}));
 
-export default useStore;
+export default useAuthStore;

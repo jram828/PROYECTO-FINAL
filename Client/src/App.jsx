@@ -15,15 +15,16 @@ import CrearCliente from './views/crearCliente/crearCliente.component';
 import CrearCaso from './views/CrearCaso/crearCaso';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
-import store from "./zustand/store";
+import useAuthStore from "./zustand/useAuthStore";
 
 //const { URL } = process.env;
 // axios.defaults.baseURL = "https://localhost:3001";
 
 function App() {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  //const isAuthenticated = store((state) => state.isAuthenticated);
   
     // const location = useLocation();
-   const isAuthenticated = store((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
 

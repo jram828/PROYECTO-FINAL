@@ -7,17 +7,21 @@ import { GoogleLogin } from "@react-oauth/google";
 //import { setAuthenticated, setUserToken } from "../../zustand/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import store from "../../zustand/store";
+import useAuthStore from "../../zustand/useAuthStore";
 // import { useDispatch } from "react-redux";
 // import { setAuthenticated } from "../../redux/actions";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
-setAuthenticated = store ((state)=> state.setAuthenticated ) ;
+// setAuthenticated = useAuthStore ((state)=> state.setAuthenticated );
+// setUser = useAuthStore ((state)=> state.setUser );
+// isAuthenticated = useAuthStore ((state)=> state.isAuthenticated );
 
-setUser = store ((state)=> state.setUser ) ;
-isAuthenticated = store ((state)=> state.isAuthenticated ) ;
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setUser = useAuthStore(state => state.setUser);
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -54,7 +58,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const { access } = data;
 
     if (email === data.correo) {
-        dispatch(setAuthenticated(access));
+       setAuthenticated(access);
         console.log("Authenticated", isAuthenticated);
         navigate("/home");
       } else {
@@ -69,7 +73,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
    
     const user = jwtDecode(response.credential);
     // Loginf();
-    dispatch(setUserToken(user));
+    setUser(user);
   console.log("Datos login:", user.email);
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
@@ -77,7 +81,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     console.log("Login 2:", data);
       // const { access } = data;
       if (user.email === data.correo) {
-        dispatch(setAuthenticated(true));
+        setAuthenticated(true);
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");
