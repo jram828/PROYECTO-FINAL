@@ -16,7 +16,6 @@ setAuthenticated = store ((state)=> state.setAuthenticated ) ;
 
 setUser = store ((state)=> state.setUser ) ;
 isAuthenticated = store ((state)=> state.isAuthenticated ) ;
-console.log()
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const [userData, setUserData] = useState({

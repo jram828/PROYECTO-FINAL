@@ -1,9 +1,13 @@
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import { setAuth } from "../redux/actions";
-import { useDispatch } from "react-redux";
+//import { setAuth } from "../redux/actions";
+//import { useDispatch } from "react-redux";
+import store from "../../zustand/store";
 
+setAuthenticated = store ((state)=> state.setAuthenticated ) ;
 
+setUser = store ((state)=> state.setUser ) ;
+isAuthenticated = store ((state)=> state.isAuthenticated ) ;
 
 
 export async function Loginfo() {
@@ -17,7 +21,7 @@ export async function Loginfo() {
 
 export async function Loginf(userData) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const { email } = userData;
   console.log("Datos login:", { email });
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
@@ -27,7 +31,9 @@ export async function Loginf(userData) {
     const { access } = data;
 
     if (email === data.correo) {
-        dispatch(setAuth(access));
+        //dispatch(setAuth(access));
+        setAuthenticated(access);
+        console.log("Authenticated2", isAuthenticated );
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");
