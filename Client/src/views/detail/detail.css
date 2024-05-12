@@ -1,0 +1,65 @@
+.detail-container {
+    background-color: var(--color-two);
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+    color: white;
+    font-family: "Outfit", sans-serif;
+  }
+  
+  .detail-container p {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .detail-form {
+    width: 100%;
+  }
+  
+  .detail-input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .detail-label {
+    font-size: 16px;
+    margin-right: 20px;
+    margin-left: 10px;
+    flex: 1;
+    width: 30%;
+    text-align: left;
+  }
+  
+  .detail-input {
+    width: calc(70% - 20px); /* 70% - padding */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-family: "Outfit", sans-serif;
+    outline: none;
+    flex: 1;
+  }
+  
+  .detail-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .last-input-group label {
+    margin-right: 5px; /* Reduce el espacio entre el label y el input */
+    width: 80px; /* Ajusta el ancho del label según tus necesidades */
+    display: inline-block; /* Hace que el label y el input estén en la misma línea */
+    vertical-align: baseline; /* Alinea verticalmente el label con el input */
+  }
+  
+  .last-input-group input {
+    margin-left: 10px; /* Reduce el espacio entre el label y el input */
+    vertical-align: baseline; /* Alinea verticalmente el input con el label */
+  }

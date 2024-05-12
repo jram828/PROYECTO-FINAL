@@ -1,4 +1,4 @@
-import './crearAbogado.module.css';
+import './crearAbogado.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userStoreLawyers from '../../store/lawyers';
@@ -50,77 +50,92 @@ function CrearAbogado() {
     
 
   return (
-    <div className="contenedorcrearcliente">
+    <div className="contenedorcrearabogado">
         <form onSubmit={handleSubmit} method="post" className="formulario">
-          <h1 className="titulo">Crear cliente</h1>
+          <h1 className="titulo">Crear abogado</h1>
           <br />
           <br />
           <div className="nombreapellido">
-            <label htmlFor="nombre" className="labelcrearcliente">
+            <label htmlFor="nombre" className="labelcrearabogado">
               Nombre(s):
             </label>
             <input
               type="text"
               name="nombres"
               id="name"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}       
             />
-            <label htmlFor="apellidos" className="labelcrearcliente">
+            <label htmlFor="apellidos" className="labelcrearabogado">
               Apellido(s):
             </label>
             <input
               type="text"
               name="apellidos"
               id="lastname"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
           </div>
   
           <br />
           <br />
-          <div className="cedulaemail">
-            <label htmlFor="numerocedula" className="labelcrearcliente">
+          <div className="cedulamatricula">
+            <label htmlFor="numerocedula" className="labelcrearabogado">
               Numero de cédula:
             </label>
             <input
               type="text"
               name="cedula"
               id="cedula"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
-            <label htmlFor="matricula" className="labelcrearcliente">
+            <label htmlFor="matricula" className="labelcrearabogado">
               Matricula:
             </label>
             <input
               name="matricula"
-              type="email"
+              type="text"
               onChange={handleChange}
+              className="cajascrearabogado"
             />
           </div>
           <br />
           <br />
-          <label htmlFor="correo" className="labelcrearcliente">
-              Email:
-            </label>
-            <input
-              name="email"
-              type="text"
-              onChange={handleChange}
-              />
+
+          <div className='correo'>
+            <label htmlFor="correo" className="labelcrearabogado">
+                Email:
+              </label>
+              <input
+                name="email"
+                type="email"
+                onChange={handleChange}
+                className="cajascrearabogado"
+                />
+              <label htmlFor="correo" className="labelcrearabogado">
+                Repetir Email:
+              </label>
+              <input
+                name="email"
+                type="email"
+                onChange={handleChange}
+                className="cajascrearabogado"
+                />
+          </div>
           <br />
           <br />
+
           <div className="direccioncelular">
-            <label htmlFor="direccion" className="labelcrearcliente">
+            <label htmlFor="direccion" className="labelcrearabogado">
               Dirección:
             </label>
             <input
               type="text"
               name="direccion"
               id="address"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
             <label htmlFor="telefono" className="labelcrearcliente">
@@ -130,7 +145,7 @@ function CrearAbogado() {
               type="text"
               name="celular"
               id="celular"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
           </div>
@@ -138,24 +153,24 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="ciudadcontrasena">
-            <label htmlFor="ciudad" className="labelcrearcliente">
+            <label htmlFor="ciudad" className="labelcrearabogado">
               Ciudad:
             </label>
             <input
               type="text"
               name="nombre_ciudad"
               id="city"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
-            <label htmlFor="contrasena" className="labelcrearcliente">
+            <label htmlFor="contrasena" className="labelcrearabogado">
               Contraseña:
             </label>
             <input
               type="password"
               name="password"
               id="password"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
           </div>
@@ -163,32 +178,32 @@ function CrearAbogado() {
           <br />
           <br />
           <div className="paiscontrasena">
-            <label htmlFor="pais" className="labelcrearcliente">
+            <label htmlFor="pais" className="labelcrearabogado">
               Pais:
             </label>
             <input
               type="text"
               name="nombre_pais"
               id="country"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
-            <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
+            <label htmlFor="codigopostalcontrasena" className="labelcrearabogado">
               Codigo Postal:
             </label>
             <input
               type="text"
               name="codigo_postal"
               id="code"
-              className="cajascrearcliente"
+              className="cajascrearabogado"
               onChange={handleChange}
             />
             </div>
           <br />
           <br />
-          <div className="botonescrearcliente">
-            <Link><button type="submit">Crear</button></Link>
-            <Link to='/home'><button>Volver</button></Link>
+          <div className="botonescrearabogado">
+            <Link><button type="submit" className='button'>Crear</button></Link>
+            <Link to='/home'><button className='button'>Volver</button></Link>
           </div>
           <br />
         </form>

@@ -1,4 +1,4 @@
-import './crearCliente.module.css';
+import './crearCliente.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userStoreCostumers from '../../store/costumers';
@@ -97,6 +97,7 @@ function CrearCliente() {
               name="email"
               type="email"
               onChange={handleChange}
+              className="cajascrearcliente"
             />
           </div>
   
@@ -177,8 +178,8 @@ function CrearCliente() {
           <br />
           <br />
           <div className="botonescrearcliente">
-            <Link><button type='Submit'>Crear</button></Link>
-            <Link to='/home'><button>Volver</button></Link>
+            <Link><button type='Submit' className='button'>Crear</button></Link>
+            <Link to='/home'><button className='button'>Volver</button></Link>
           </div>
           <br />
         </form>
