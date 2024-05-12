@@ -50,9 +50,10 @@ h1 {
   padding: 5px 15px; 
   border: none; 
   border-radius: 5px; 
-  font-size: 14px; 
+  font-size: 16px; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  width: 180px;
 }
 
 .button:hover {
@@ -70,9 +71,10 @@ button:focus-visible {
   padding: 5px 15px; 
   border: none; 
   border-radius: 5px; 
-  font-size: 14px; 
+  font-size: 16px; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  width: 180px;
 }
 
 .button2:hover {
