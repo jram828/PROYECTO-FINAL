@@ -1,11 +1,12 @@
 import create from 'zustand';
+import { devtools } from 'zustand/middleware';
 
-const useGlobalStore = create((set) => ({
-  counter: 0,
-  increment: () => set((state) => ({ counter: state.counter + 1 })),
-  decrement: () => set((state) => ({ counter: state.counter - 1 })),
-}));
+const useStore = create(devtools((set) => ({
+  usuario: {},
+  isAuthenticated: false,
+  user: {},
+  setAuthenticated: (auth) => set({ isAuthenticated: auth }),
+  setUserToken: (userToken) => set({ user: userToken }),
+}), 'redux'));
 
-// Estado de la sesión del usuario | acciones para iniciar sesión, cerrar sesión, y actualizar la información del usuario.
-
-export default useGlobalStore;
+export default useStore;

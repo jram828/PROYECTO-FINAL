@@ -1,3 +1,4 @@
+/* 
 import { SET_AUTHENTICATED, SET_USERTOKEN } from "./actions";
 
 
@@ -86,3 +87,4 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
+*/
