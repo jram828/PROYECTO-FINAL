@@ -1,6 +1,6 @@
 const { getClienteById } = require("../controllers/getClienteById");
 const { getAllCliente } = require("../controllers/getAllClientes");
-const { createCliente } = require("../controllers/postClientesControllers");
+const { createCliente } = require("../controllers/postClientesController");
 const { eliminaCliente } = require("../controllers/postEliminaCliente");
 const { actualizaCliente } = require("../controllers/postActualizaClientes");
 const { getClientByEmail } = require("../controllers/getClientByEmail");

@@ -3,8 +3,6 @@ import Landing from './views/landing/landing.component'
 import Home from './views/home/home.component';
 import Detail from './views/detail/detail.component';
 import Cases from './views/cases/cases.component';
-import Costumers from './views/costumers/costumers.component';
-import Lawyers from './views/lawyers/lawyers.components';
 import Documents from './views/documents/documents.component';
 import Diary from './views/diary/diary.components';
 import Payments from './views/payments/payments.component';
@@ -71,7 +69,7 @@ function App() {
           element={isAuthenticated ? <Contract /> : <Landing />}
         /> */}
 
-        <Route path="/home" element={<Home />} />
+        {/*<Route path="/home" element={<Home />} />
         <Route
           path="/home/detail"
           element={isAuthenticated ? <Detail /> : <Landing />}
@@ -116,7 +114,20 @@ function App() {
         <Route 
         path='/home/crearcliente' 
         element={isAuthenticated ? <CrearCliente /> : <Landing />}
-        />
+      />*/}
+      <Route path='/home' element={<Home/>}/>
+        <Route path='/home/detail' element={<Detail/>}/>
+        <Route path='/home/detail/:id' element={<Detail/>}/>
+        <Route path='/home/cases/:id' element={<Cases/>}/>
+        <Route path='/home/costumers/:id' element={<Detail/>}/>
+        <Route path='/home/lawyers/:id' element={<Detail/>}/>
+        <Route path='/home/documents/:id' element={<Documents/>}/>
+        <Route path='/home/diary' element={<Diary/>}/>
+        <Route path='/home/payments' element={<Payments/>}/>
+        <Route path='/home/consultation' element={<Consultations/>}/>
+        <Route path='/home/statistics' element={<Statistics/>}/>
+        <Route path='/home/crearabogado' element={<CrearAbogado/>}/>
+        <Route path='/home/crearcliente' element={<CrearCliente/>}/>
       </Routes>
     </div>
   );
