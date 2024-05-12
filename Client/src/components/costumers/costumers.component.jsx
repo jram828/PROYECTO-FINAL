@@ -26,7 +26,7 @@ function Costumers() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    navigate(`/detail/${e.target.value}`);
+    navigate(`/home/detail/${e.target.value}`);
 
   };
 
