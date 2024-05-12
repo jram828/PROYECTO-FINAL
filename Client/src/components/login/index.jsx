@@ -1,20 +1,22 @@
-import {useState} from "react";
+import { useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-//import { useDispatch} from "react-redux";
-//import { setAuthenticated, setUserToken } from "../../zustand/actions";
+import { useDispatch} from "react-redux";
+import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import useAuthStore from "../../zustand/useAuthStore";
 // import { useDispatch } from "react-redux";
-// import { setAuthenticated } from "../../redux/actions";
+// import { setAuth } from "../../redux/actions";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+
 
 // setAuthenticated = useAuthStore ((state)=> state.setAuthenticated );
 // setUser = useAuthStore ((state)=> state.setUser );
 // isAuthenticated = useAuthStore ((state)=> state.isAuthenticated );
+
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
@@ -34,7 +36,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
 
 
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -58,8 +60,10 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const { access } = data;
 
     if (email === data.correo) {
+
        setAuthenticated(access);
         console.log("Authenticated", isAuthenticated);
+
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");
@@ -81,7 +85,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     console.log("Login 2:", data);
       // const { access } = data;
       if (user.email === data.correo) {
+
         setAuthenticated(true);
+
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");

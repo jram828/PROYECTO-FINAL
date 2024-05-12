@@ -10,4 +10,4 @@ import axios from 'axios';
       console.error('Error al obtener clientes:', error.message);
       throw error;
     }
-  }
+  };

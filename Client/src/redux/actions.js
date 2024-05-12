@@ -1,4 +1,3 @@
-/*
 export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 export const SET_USERTOKEN = "SET_USERTOKEN";
 
@@ -17,4 +16,3 @@ export const setUserToken = (userToken) => {
     payload: userToken,
   };
 };
-*/
