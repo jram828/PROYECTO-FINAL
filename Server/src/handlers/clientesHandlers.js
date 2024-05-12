@@ -46,7 +46,7 @@ const postClientesHandler = async (req, res) => {
     ciudad,
     pais,
   } = req.body;
-
+ console.log('body post cliente: ', req.body)
   try {
     const response = await createCliente(
       cedulaCliente,
