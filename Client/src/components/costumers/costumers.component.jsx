@@ -35,7 +35,7 @@ function Costumers() {
       <option value="">Clientes</option>
       {clientes.map((cliente) => (
         <option key={cliente.id} value={cliente.id}>
-          {cliente.nombre} {cliente.apellido}
+          {cliente.nombre} {cliente.apellido} {cliente.id}
         </option>
       ))}
     </select>
