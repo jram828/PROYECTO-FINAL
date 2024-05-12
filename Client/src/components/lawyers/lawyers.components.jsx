@@ -26,7 +26,7 @@ function Lawyers() {
     <select >
       <option value="">Abogados</option>
       {abogados.map(abogado => (
-        <option key={abogado.id} value={abogado.id}>
+        <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado}>
           {abogado.nombre} {abogado.apellido}
         </option>
       ))}
