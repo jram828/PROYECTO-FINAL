@@ -1,17 +1,21 @@
-import { useState} from "react";
+import {useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import { useDispatch} from "react-redux";
-import { setAuth, setUserToken } from "../../redux/actions";
+//import { useDispatch} from "react-redux";
+//import { setAuthenticated, setUserToken } from "../../zustand/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import store from "../../zustand/store";
 // import { useDispatch } from "react-redux";
-// import { setAuth } from "../../redux/actions";
+// import { setAuthenticated } from "../../redux/actions";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
+setAuthenticated = store ((state)=> state.setAuthenticated ) ;
 
+setUser = store ((state)=> state.setUser ) ;
+isAuthenticated = store ((state)=> state.isAuthenticated ) ;
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const [userData, setUserData] = useState({
@@ -26,7 +30,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
 
 
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -50,7 +54,8 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const { access } = data;
 
     if (email === data.correo) {
-        dispatch(setAuth(access));
+        dispatch(setAuthenticated(access));
+        console.log("Authenticated", isAuthenticated);
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");
@@ -72,7 +77,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     console.log("Login 2:", data);
       // const { access } = data;
       if (user.email === data.correo) {
-        dispatch(setAuth(true));
+        dispatch(setAuthenticated(true));
         navigate("/home");
       } else {
         window.alert("Usuario o contraseña incorrectos");

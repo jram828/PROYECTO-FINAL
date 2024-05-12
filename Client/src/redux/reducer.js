@@ -1,5 +1,5 @@
+/*
 import { SET_AUTHENTICATED, SET_USERTOKEN } from "./actions";
-
 
 let initialState = {
   usuario: {},
@@ -86,3 +86,4 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
+*/

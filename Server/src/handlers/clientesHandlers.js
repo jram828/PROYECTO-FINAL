@@ -1,5 +1,5 @@
 const { getClienteById } = require("../controllers/getClienteById");
-const { getAllCliente } = require("../controllers/getAllClientes");
+const { getAllClientes } = require("../controllers/getAllClientes");
 const { createCliente } = require("../controllers/postClientesController");
 const { eliminaCliente } = require("../controllers/postEliminaCliente");
 const { actualizaCliente } = require("../controllers/postActualizaClientes");
@@ -11,7 +11,7 @@ const clientesHandler = async (req, res) => {
   const { pagina = 1, porPagina = 10 } = req.query;
   const offset = (parseInt(pagina) - 1) * parseInt(porPagina);
   try {
-    const response = await getAllCliente(offset, porPagina);
+    const response = await getAllClientes(offset, porPagina);
     res.status(200).json(response);
     /*}  else {
             const countyByName = await getClienteByName(name)
@@ -46,7 +46,18 @@ const postClientesHandler = async (req, res) => {
     ciudad,
     pais,
   } = req.body;
-
+ console.log("body post cliente: ", {
+   cedulaCliente,
+   nombre,
+   apellido,
+   correo,
+   telefono,
+   calle,
+   numero,
+   codigoPostal,
+   ciudad,
+   pais,
+ });
   try {
     const response = await createCliente(
       cedulaCliente,
