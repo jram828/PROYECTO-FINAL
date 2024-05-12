@@ -35,7 +35,7 @@
   }
   
   .detail-input {
-    width: calc(70% - 20px); /* 70% - padding */
+    width: calc(70% - 20px); 
     padding: 10px;
     border: 1px solid white;
     border-radius: 5px;
@@ -53,13 +53,13 @@
   }
   
   .last-input-group label {
-    margin-right: 5px; /* Reduce el espacio entre el label y el input */
-    width: 80px; /* Ajusta el ancho del label según tus necesidades */
-    display: inline-block; /* Hace que el label y el input estén en la misma línea */
-    vertical-align: baseline; /* Alinea verticalmente el label con el input */
+    margin-right: 5px; 
+    width: 80px; 
+    display: inline-block; 
+    vertical-align: baseline; 
   }
   
   .last-input-group input {
-    margin-left: 10px; /* Reduce el espacio entre el label y el input */
-    vertical-align: baseline; /* Alinea verticalmente el input con el label */
+    margin-left: 10px;
+    vertical-align: baseline; 
   }
