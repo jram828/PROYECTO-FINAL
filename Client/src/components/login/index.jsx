@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 // import { validar } from "../../utils/validacion";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,12 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
+<<<<<<< HEAD
+import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+import axios from "axios";
+=======
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+>>>>>>> 8edb3d829de0f638457ef9b1466cad09df3097bb
 
 
 // eslint-disable-next-line react/prop-types
@@ -26,9 +31,49 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
 
 
+<<<<<<< HEAD
+    const [user, setUser] = useState([]);
+    const [profile, setProfile] = useState([]);
+
+    const login = useGoogleLogin({
+      onSuccess: (codeResponse) => setUser(codeResponse),
+      onError: (error) => console.log("Login Failed:", error),
+    });
+
+    useEffect(() => {
+      if (user) {
+        axios
+          .get(
+            `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.access_token}`,
+                Accept: "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            setProfile(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    }, [user]);
+
+    // log out function to log the user out of google and set the profile array to null
+    const logOut = () => {
+      googleLogout();
+      setProfile(null);
+    };
+
+
+
+
+
+=======
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+>>>>>>> 8edb3d829de0f638457ef9b1466cad09df3097bb
   const handleChange = (e) => {
     // setErrores(validar({ ...userData, [e.target.name]: e.target.value }));
 

@@ -1,11 +1,56 @@
 import './crearCliente.module.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import userStoreCostumers from '../../store/costumers';
+import { useState } from 'react';
+import { postCliente } from '../../handlers/createCliente';
+
 
 function CrearCliente() {
+  
+    const addCostumer = userStoreCostumers((state) => state.addCostumer);
+  
+    const [datosCliente, setDatosCliente] = useState({
+      cedulaCliente: '',
+      nombre: '',
+      apellido: '',
+      correo: '',
+      telefono: '',
+      calle: '',
+      numero: '',
+      codigoPostal: '',
+      ciudad: '',
+      pais: ''
+    });
+    console.log(datosCliente)
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setDatosCliente(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    };
+    console.log(setDatosCliente)
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await postCliente(datosCliente);
+        addCostumer(datosCliente); 
+  
+        window.alert('Cliente creado con éxito');
+      } catch (error) {
+      
+        console.error('Error al crear el abogado:', error.message);
+        window.alert('No se pudo crear el abogado');
+      }
+    };
+    console.log(addCostumer)
+
   return (
     <div className="contenedorcrearcliente">
-        <form method="post" className="formulario">
+        <form onSubmit={handleSubmit} method="post" className="formulario">
           <h1 className="titulo">Crear cliente</h1>
           <br />
           <br />
@@ -17,7 +62,8 @@ function CrearCliente() {
               type="text"
               name="nombres"
               id="name"
-              className="cajascrearcliente"             
+              className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label for="apellidos" className="labelcrearcliente">
               Apellido(s):
@@ -27,6 +73,7 @@ function CrearCliente() {
               name="apellidos"
               id="lastname"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
   
@@ -41,6 +88,7 @@ function CrearCliente() {
               name="cedula"
               id="cedula"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label for="correo" className="labelcrearcliente">
               Email:
@@ -48,6 +96,7 @@ function CrearCliente() {
             <input
               name="email"
               type="email"
+              onChange={handleChange}
             />
           </div>
   
@@ -62,6 +111,7 @@ function CrearCliente() {
               name="direccion"
               id="address"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label for="telefono" className="labelcrearcliente">
               Celular:
@@ -71,6 +121,7 @@ function CrearCliente() {
               name="celular"
               id="celular"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
   
@@ -85,6 +136,7 @@ function CrearCliente() {
               name="nombre_ciudad"
               id="city"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label for="contrasena" className="labelcrearcliente">
               Contraseña:
@@ -94,6 +146,7 @@ function CrearCliente() {
               name="password"
               id="password"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
 
@@ -108,6 +161,7 @@ function CrearCliente() {
               name="nombre_pais"
               id="country"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label for="codigopostalcontrasena" className="labelcrearcliente">
               Codigo Postal:
@@ -117,12 +171,13 @@ function CrearCliente() {
               name="codigo_postal"
               id="code"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             </div>
           <br />
           <br />
           <div className="botonescrearcliente">
-            <Link><button>Crear</button></Link>
+            <Link><button type='Submit'>Crear</button></Link>
             <Link to='/home'><button>Volver</button></Link>
           </div>
           <br />

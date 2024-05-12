@@ -1,10 +1,57 @@
 import './crearAbogado.module.css';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import userStoreLawyers from '../../store/lawyers';
+import { useState } from 'react';
+import { postAbogado } from '../../handlers/crearAbogado';
 
 function CrearAbogado() {
+  
+    const addLawyer = userStoreLawyers((state) => state.addLawyer);
+  
+    const [datosAbogado, setDatosAbogado] = useState({
+      cedulaAbogado: '',
+      matricula: '',
+      nombre: '',
+      apellido: '',
+      correo: '',
+      telefono: '',
+      calle: '',
+      numero: '',
+      codigoPostal: '',
+      ciudad: '',
+      pais: ''
+    });
+    console.log(datosAbogado)
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setDatosAbogado(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    };
+    console.log(setDatosAbogado)
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await postAbogado(datosAbogado);
+        addLawyer(datosAbogado); 
+  
+        window.alert('Abogado creado con éxito');
+      } catch (error) {
+      
+        console.error('Error al crear el abogado:', error.message);
+        window.alert('No se pudo crear el abogado');
+      }
+    };
+    console.log(addLawyer)
+    
+
   return (
     <div className="contenedorcrearcliente">
-        <form method="post" className="formulario">
+        <form onSubmit={handleSubmit} method="post" className="formulario">
           <h1 className="titulo">Crear cliente</h1>
           <br />
           <br />
@@ -16,7 +63,8 @@ function CrearAbogado() {
               type="text"
               name="nombres"
               id="name"
-              className="cajascrearcliente"             
+              className="cajascrearcliente"
+              onChange={handleChange}       
             />
             <label htmlFor="apellidos" className="labelcrearcliente">
               Apellido(s):
@@ -26,6 +74,7 @@ function CrearAbogado() {
               name="apellidos"
               id="lastname"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
   
@@ -40,6 +89,7 @@ function CrearAbogado() {
               name="cedula"
               id="cedula"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label htmlFor="matricula" className="labelcrearcliente">
               Matricula:
@@ -47,6 +97,7 @@ function CrearAbogado() {
             <input
               name="matricula"
               type="email"
+              onChange={handleChange}
             />
           </div>
           <br />
@@ -57,6 +108,7 @@ function CrearAbogado() {
             <input
               name="email"
               type="text"
+              onChange={handleChange}
               />
           <br />
           <br />
@@ -69,6 +121,7 @@ function CrearAbogado() {
               name="direccion"
               id="address"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label htmlFor="telefono" className="labelcrearcliente">
               Celular:
@@ -78,6 +131,7 @@ function CrearAbogado() {
               name="celular"
               id="celular"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
   
@@ -92,6 +146,7 @@ function CrearAbogado() {
               name="nombre_ciudad"
               id="city"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label htmlFor="contrasena" className="labelcrearcliente">
               Contraseña:
@@ -101,6 +156,7 @@ function CrearAbogado() {
               name="password"
               id="password"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
           </div>
 
@@ -115,6 +171,7 @@ function CrearAbogado() {
               name="nombre_pais"
               id="country"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
               Codigo Postal:
@@ -124,12 +181,13 @@ function CrearAbogado() {
               name="codigo_postal"
               id="code"
               className="cajascrearcliente"
+              onChange={handleChange}
             />
             </div>
           <br />
           <br />
           <div className="botonescrearcliente">
-            <Link><button>Crear</button></Link>
+            <Link><button type="submit">Crear</button></Link>
             <Link to='/home'><button>Volver</button></Link>
           </div>
           <br />
