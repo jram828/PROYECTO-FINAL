@@ -11,6 +11,6 @@ import axios from 'axios';
       console.error('Error al obtener abogados:', error.message);
       throw error;
     }
-  };
+  }
 
 

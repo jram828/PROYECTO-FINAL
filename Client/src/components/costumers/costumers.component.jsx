@@ -1,8 +1,8 @@
 import './costumers.module.css';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import { getClientes } from '../../handlers/todosClientes';
 import userStoreCostumers from '../../store/costumers';
-
+import { useNavigate } from "react-router-dom";
 
 function Costumers() {
 
@@ -10,32 +10,36 @@ function Costumers() {
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
-    
     const obtenerClientes = async () => {
       try {
-        const listaClientes = await getClientes(); 
+        const listaClientes = await getClientes();
         setClientes(listaClientes);
-        setCostumer(listaClientes) 
+        setCostumer(listaClientes);
       } catch (error) {
-        console.error('Error al obtener los clientes:', error);
+        console.error("Error al obtener los clientes:", error);
       }
     };
 
-    obtenerClientes(); 
-  }, []);
+    obtenerClientes();
+  }, [setCostumer]);
 
+  const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    navigate(`/detail/${e.target.value}`);
+
+  };
 
   return (
-    <select >
-       <option value="">Clientes</option>
-      {clientes.map(cliente => (
+    <select name="selectclientes" id="selectclientes" onChange={handleChange}>
+      <option value="">Clientes</option>
+      {clientes.map((cliente) => (
         <option key={cliente.id} value={cliente.id}>
           {cliente.nombre} {cliente.apellido}
         </option>
       ))}
     </select>
-  )
+  );
 }
 
 export default Costumers

@@ -1,9 +1,26 @@
 import './detail.module.css';
-import { Link } from 'react-router-dom';
-
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { getClienteById } from '../../../../Server/src/controllers/getClienteById';
 
 function Detail() {
-  const usuario =  {}
+  
+    const [usuario, setUsuario] = useState({});
+    const { id } = useParams();
+    console.log('Details id:', id)
+    useEffect(() => {
+      const obtenerUsuario = async (id) => {
+        try {
+          const usuarioActual = await getClienteById(id);
+          setUsuario(usuarioActual);
+        } catch (error) {
+          console.error("Error al obtener el cliente:", error);
+        }
+      };
+    obtenerUsuario(id);
+    }, [id]);
+  
   return (
     <div>
       <div>
