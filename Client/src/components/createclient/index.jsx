@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./createClient.css";
-import { createClient } from "../../handlers/createClient";
+import { postCliente } from "../../handlers/createCliente"
+import { Link } from 'react-router-dom';
 
-const CreateClient = () => {
+const CreateCliente = () => {
     const [userDataRegistro, setUserDataRegistro] = useState({
       cedulaCliente: "",
       nombre: "",
@@ -25,7 +26,7 @@ const CreateClient = () => {
 
     const submitHandlerRegistro = (e) => {
       e.preventDefault();
-      createClient(userDataRegistro);
+      postCliente(userDataRegistro);
     };
   return (
     <div className="contenedorregistro">
@@ -42,7 +43,7 @@ const CreateClient = () => {
           </label>
           <input
             type="text"
-            name="nombres"
+            name="nombre"
             id="name"
             className="cajaregistrocliente"
             value={userDataRegistro.nombre}
@@ -54,7 +55,7 @@ const CreateClient = () => {
           <input
             type="text"
             className="cajaregistrocliente"
-            name="apellidos"
+            name="apellido"
             id="lastname"
             value={userDataRegistro.apellido}
             onChange={handleChangeRegistro}
@@ -65,11 +66,12 @@ const CreateClient = () => {
           <input
             type="number"
             className="cajaregistrocliente"
-            name="cedula"
+            name="cedulaCliente"
             id="cedula"
-            value={userDataRegistro.cedula}
+            value={userDataRegistro.cedulaCliente}
             onChange={handleChangeRegistro}
           />
+          
         </div>
         <br />
         <br />
@@ -79,10 +81,10 @@ const CreateClient = () => {
           </label>
           <input
             type="email"
-            name="email"
+            name="correo"
             id="email"
             className="cajaregistrocliente"
-            value={userDataRegistro.email}
+            value={userDataRegistro.correo}
             onChange={handleChangeRegistro}
           />
           {/* </div>
@@ -137,7 +139,7 @@ const CreateClient = () => {
           <input
             type="number"
             className="cajaregistrocliente"
-            name="codigopostal"
+            name="codigoPostal"
             id="codigopostal"
             value={userDataRegistro.codigoPostal}
             onChange={handleChangeRegistro}
@@ -151,7 +153,7 @@ const CreateClient = () => {
           </label>
           <input
             type="text"
-            name="nombre_ciudad"
+            name="ciudad"
             id="city"
             className="cajaregistrocliente"
             value={userDataRegistro.ciudad}
@@ -174,21 +176,22 @@ const CreateClient = () => {
 
         <br />
         <div className="documentoagenerar">
-          <input className="botones" type="button" value="Modificar" />
+          
           <input
             className="botones"
             type="submit"
             value="Guardar"
             disabled={
-              !userDataRegistro.email ||
-              !userDataRegistro.cedula ||
+              !userDataRegistro.correo ||
+              !userDataRegistro.cedulaCliente ||
               !userDataRegistro.nombre ||
               !userDataRegistro.apellido
             }
           />
+           <Link to='/home'><button>Volver</button></Link>
         </div>
       </form>
     </div>
   );
 };
-export default CreateClient;
+export default CreateCliente;

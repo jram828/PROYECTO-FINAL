@@ -11,7 +11,8 @@ import Statistics from './views/statistics/statistics.component';
 import CreateUser from './views/createUser/createUser.component'
 import Password from './views/password/password.component';
 import CrearAbogado from './views/crearAbogado/crearAbogado.component'
-import CrearCliente from './views/crearCliente/crearCliente.component'
+import CreateCliente from './components/createclient/index'
+import CrearCaso from './views/CrearCaso/crearCaso';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -119,6 +120,7 @@ function App() {
         <Route path='/home/detail' element={<Detail/>}/>
         <Route path='/home/detail/:id' element={<Detail/>}/>
         <Route path='/home/cases/:id' element={<Cases/>}/>
+        <Route path='/home/cases/crearcaso' element={<CrearCaso/>}/>
         <Route path='/home/costumers/:id' element={<Detail/>}/>
         <Route path='/home/lawyers/:id' element={<Detail/>}/>
         <Route path='/home/documents/:id' element={<Documents/>}/>
@@ -127,7 +129,7 @@ function App() {
         <Route path='/home/consultation' element={<Consultations/>}/>
         <Route path='/home/statistics' element={<Statistics/>}/>
         <Route path='/home/crearabogado' element={<CrearAbogado/>}/>
-        <Route path='/home/crearcliente' element={<CrearCliente/>}/>
+        <Route path='/home/crearcliente' element={<CreateCliente/>}/>
       </Routes>
     </div>
   );
