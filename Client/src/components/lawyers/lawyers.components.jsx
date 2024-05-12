@@ -1,12 +1,14 @@
 import './lawyers.module.css';
 import React, {useEffect,useState} from 'react';
 import { getAbogados } from '../../handlers/todosAbogados';
-import userStoreLawyers from '../../store/lawyers';
+//import userStoreLawyers from '../../store/lawyers';
 
 function Lawyers() {
 
-  const addLawyer = userStoreLawyers((state) => state.addLawyer);
+  //const addLawyer = userStoreLawyers((state) => state.addLawyer);
   const [abogados, setAbogados] = useState([]);
+  const [detalle, setDetalle] = useState({})
+ 
 
   useEffect(() => {
     
@@ -14,7 +16,7 @@ function Lawyers() {
       try {
         const listaAbogados = await getAbogados(); 
         setAbogados(listaAbogados);
-        addLawyer(listaAbogados) 
+        //addLawyer(listaAbogados) 
       } catch (error) {
         console.error('Error al obtener los abogados:', error);
       }

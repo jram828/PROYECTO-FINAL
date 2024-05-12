@@ -1,7 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Lawyers from "../../components/lawyers/lawyers.components";
-import Costumers from "../../components/costumers/costumers.component";
 import { postCaso } from "../../handlers/crearCaso";
 import { getAbogados } from '../../handlers/todosAbogados';
 import { getClientes } from '../../handlers/todosClientes';

@@ -118,7 +118,7 @@ function App() {
       />*/}
          <Route path="/home" element={<Home />} />
         
-         <Route path="/home/detail" element={isAuthenticated ? <Detail /> : <Landing />} />
+         <Route path="/home/detail/:id" element={isAuthenticated ? <Detail /> : <Landing />} />
         
         <Route
           path="/home/cases/:id"
