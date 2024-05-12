@@ -19,7 +19,7 @@ clientesRouter.get("/email", getClientByEmailHandler);
 
 clientesRouter.get("/", clientesHandler);
 
-clientesRouter.get("/:id", clientesDetailHandler);
+// clientesRouter.get("/:id", clientesDetailHandler);
 
 clientesRouter.post("/", postClientesHandler);
 
@@ -27,6 +27,6 @@ clientesRouter.post("/elimina", postEliminaClientes);
 
 clientesRouter.post("/actualiza", postActualizaClientes);
 
-clientesRouter.get("/cedulaCliente", getClientByIDHandler);
+clientesRouter.get("/:cedulaCliente", getClientByIDHandler);
 
 module.exports = clientesRouter;
