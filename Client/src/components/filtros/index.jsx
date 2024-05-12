@@ -1,6 +1,7 @@
 import './filtros.css';
 import Cards from '../cards/index';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Filtros() {
 
@@ -133,7 +134,9 @@ function Filtros() {
 <button onClick={handleMostrarCasos}>Todos los casos</button>
       </div>
       {mostrarCasos && <Cards casos={handleMostrarCasos} />}
+      <Link to='/home/cases/crearcaso'><button>Crear caso</button></Link>
     </div>
+    
   )
 }
 

@@ -1,15 +1,17 @@
 import './crearAbogado.module.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import userStoreLawyers from '../../store/lawyers';
+//import { Link } from 'react-router-dom';
+//import userStoreLawyers from '../../store/lawyers';
 import { useState } from 'react';
 import { postAbogado } from '../../handlers/crearAbogado';
+import { Link } from 'react-router-dom';
+
 
 function CrearAbogado() {
   
-    const addLawyer = userStoreLawyers((state) => state.addLawyer);
+  //const addLawyer = userStoreLawyers((state) => state.addLawyer);
   
-    const [datosAbogado, setDatosAbogado] = useState({
+    const [userDataRegistro, setUserDataRegistro] = useState({
       cedulaAbogado: '',
       matricula: '',
       nombre: '',
@@ -22,22 +24,22 @@ function CrearAbogado() {
       ciudad: '',
       pais: ''
     });
-    console.log(datosAbogado)
+    console.log(userDataRegistro)
   
-    const handleChange = (e) => {
+    const handleChangeRegistro = (e) => {
       const { name, value } = e.target;
-      setDatosAbogado(prevState => ({
+      setUserDataRegistro(prevState => ({
         ...prevState,
         [name]: value
       }));
     };
-    console.log(setDatosAbogado)
+    console.log(setUserDataRegistro)
   
-    const handleSubmit = async (e) => {
+    const submitHandlerRegistro = async (e) => {
       e.preventDefault();
       try {
-        await postAbogado(datosAbogado);
-        addLawyer(datosAbogado); 
+        await postAbogado(userDataRegistro);
+        //addLawyer(userDataRegistro); 
   
         window.alert('Abogado creado con éxito');
       } catch (error) {
@@ -46,154 +48,185 @@ function CrearAbogado() {
         window.alert('No se pudo crear el abogado');
       }
     };
-    console.log(addLawyer)
+   
     
 
   return (
-    <div className="contenedorcrearcliente">
-        <form onSubmit={handleSubmit} method="post" className="formulario">
-          <h1 className="titulo">Crear cliente</h1>
+    
+      <div className="contenedorregistro">
+        <form className="datos" method="post" onSubmit={submitHandlerRegistro}>
+          {/* <div className="logo-aveza">
+            <img src={logo} alt="logo-aveza" />
+          </div> */}
+          <h1 className="titulo">Crear Cliente</h1>
           <br />
           <br />
-          <div className="nombreapellido">
-            <label htmlFor="nombre" className="labelcrearcliente">
+          <div className="nombreapellidos">
+            <label htmlFor="nombre" className="labelregistrodecliente">
               Nombre(s):
             </label>
             <input
               type="text"
-              name="nombres"
+              name="nombre"
               id="name"
-              className="cajascrearcliente"
-              onChange={handleChange}       
+              className="cajaregistrocliente"
+              value={userDataRegistro.nombre}
+              onChange={handleChangeRegistro}
             />
-            <label htmlFor="apellidos" className="labelcrearcliente">
+            <label htmlFor="apellidos" className="labelregistrodecliente">
               Apellido(s):
             </label>
             <input
               type="text"
-              name="apellidos"
+              className="cajaregistrocliente"
+              name="apellido"
               id="lastname"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              value={userDataRegistro.apellido}
+              onChange={handleChangeRegistro}
             />
-          </div>
-  
-          <br />
-          <br />
-          <div className="cedulaemail">
-            <label htmlFor="numerocedula" className="labelcrearcliente">
+            <label htmlFor="numerocedula" className="labelregistrodecliente">
               Numero de cédula:
             </label>
             <input
-              type="text"
-              name="cedula"
+              type="number"
+              className="cajaregistrocliente"
+              name="cedulaAbogado"
               id="cedula"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              value={userDataRegistro.cedulaAbogado}
+              onChange={handleChangeRegistro}
             />
-            <label htmlFor="matricula" className="labelcrearcliente">
-              Matricula:
-            </label>
-            <input
-              name="matricula"
-              type="email"
-              onChange={handleChange}
-            />
+            <label htmlFor="matricula" className="labelregistrodecliente">
+            Matricula:
+          </label>
+          <input
+            type="number"
+            className="cajaregistrocliente"
+            name="matricula"
+            id="matricula"
+            value={userDataRegistro.matricula}
+            onChange={handleChangeRegistro}
+          />
           </div>
           <br />
           <br />
-          <label htmlFor="correo" className="labelcrearcliente">
+          <div className="numerocedula">
+            <label htmlFor="correo" className="labelregistrodecliente">
               Email:
             </label>
             <input
-              name="email"
-              type="text"
-              onChange={handleChange}
-              />
-          <br />
-          <br />
-          <div className="direccioncelular">
-            <label htmlFor="direccion" className="labelcrearcliente">
-              Dirección:
-            </label>
-            <input
-              type="text"
-              name="direccion"
-              id="address"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              type="email"
+              name="correo"
+              id="email"
+              className="cajaregistrocliente"
+              value={userDataRegistro.correo}
+              onChange={handleChangeRegistro}
             />
-            <label htmlFor="telefono" className="labelcrearcliente">
-              Celular:
+            {/* </div>
+          <br />
+          <br />
+          <div className="nombreapellidos"> */}
+            <label htmlFor="telefono" className="labelregistrodecliente">
+              {" "}
+              Teléfono:
+            </label>
+            <input
+              type="number"
+              name="telefono"
+              id="telefono"
+              className="cajaregistrocliente"
+              value={userDataRegistro.telefono}
+              onChange={handleChangeRegistro}
+            />
+  
+            <label htmlFor="calle" className="labelregistrodecliente">
+              Calle:
             </label>
             <input
               type="text"
-              name="celular"
-              id="celular"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              name="calle"
+              id="street"
+              className="cajaregistrocliente"
+              value={userDataRegistro.calle}
+              onChange={handleChangeRegistro}
             />
           </div>
   
           <br />
           <br />
-          <div className="ciudadcontrasena">
-            <label htmlFor="ciudad" className="labelcrearcliente">
+  
+          <div className="nombreapellidos">
+            <label htmlFor="numero" className="labelregistrodecliente">
+              Numero:
+            </label>
+            <input
+              type="text"
+              className="cajaregistrocliente"
+              name="numero"
+              id="numero"
+              value={userDataRegistro.numero}
+              onChange={handleChangeRegistro}
+            />
+  
+            <label htmlFor="codigopostal" className="labelregistrodecliente">
+              Código postal:
+            </label>
+            <input
+              type="number"
+              className="cajaregistrocliente"
+              name="codigoPostal"
+              id="codigopostal"
+              value={userDataRegistro.codigoPostal}
+              onChange={handleChangeRegistro}
+            />
+          </div>
+          <br />
+          <br />
+          <div className="honorarios">
+            <label htmlFor="ciudad" className="labelregistrodecliente">
               Ciudad:
             </label>
             <input
               type="text"
-              name="nombre_ciudad"
+              name="ciudad"
               id="city"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              className="cajaregistrocliente"
+              value={userDataRegistro.ciudad}
+              onChange={handleChangeRegistro}
             />
-            <label htmlFor="contrasena" className="labelcrearcliente">
-              Contraseña:
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="cajascrearcliente"
-              onChange={handleChange}
-            />
-          </div>
-
-          <br />
-          <br />
-          <div className="paiscontrasena">
-            <label htmlFor="pais" className="labelcrearcliente">
+            <label htmlFor="ciudad" className="labelregistrodecliente">
               Pais:
             </label>
             <input
               type="text"
-              name="nombre_pais"
+              name="pais"
               id="country"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              className="cajaregistrocliente"
+              value={userDataRegistro.pais}
+              onChange={handleChangeRegistro}
             />
-            <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
-              Codigo Postal:
-            </label>
+            <br />
+            <br />
+          </div>
+  
+          <br />
+          <div className="documentoagenerar">
+            
             <input
-              type="text"
-              name="codigo_postal"
-              id="code"
-              className="cajascrearcliente"
-              onChange={handleChange}
+              className="botones"
+              type="submit"
+              value="Guardar"
+              disabled={
+                !userDataRegistro.correo ||
+                !userDataRegistro.cedulaAbogado ||
+                !userDataRegistro.nombre ||
+                !userDataRegistro.apellido
+              }
             />
-            </div>
-          <br />
-          <br />
-          <div className="botonescrearcliente">
-            <Link><button type="submit">Crear</button></Link>
             <Link to='/home'><button>Volver</button></Link>
           </div>
-          <br />
         </form>
       </div>
-  )
-}
+    );
+  };
 
 export default CrearAbogado

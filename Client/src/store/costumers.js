@@ -1,11 +1,16 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
-const userStoreCostumers = create((set) => ({
+
+
+const userStoreCostumers = create(devtools((set) => ({
   costumers: [],
-  addCostumer: (newCostumer) => set((state) => ({ costumers: [...state.costumers, newCostumer] })),
-}));
+  setCostumer: (newCostumer) => set( { costumers: newCostumer }),
+})));
 
 export default userStoreCostumers;
+
+
 
 {/*import { create } from 'zustand';
 
