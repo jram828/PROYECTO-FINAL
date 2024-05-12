@@ -34,8 +34,8 @@ function Costumers() {
     <select name="selectclientes" id="selectclientes" onChange={handleChange}>
       <option value="">Clientes</option>
       {clientes.map((cliente) => (
-        <option key={cliente.id} value={cliente.id}>
-          {cliente.nombre} {cliente.apellido} {cliente.id}
+        <option key={cliente.cedulaCliente} value={cliente.cedulaCliente}>
+          {cliente.nombre} {cliente.apellido} {cliente.cedulaCliente}
         </option>
       ))}
     </select>
