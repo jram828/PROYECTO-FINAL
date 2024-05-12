@@ -1,24 +1,16 @@
 import './home.module.css';
 import { Link,  } from 'react-router-dom';
+import Lawyers from '../../components/lawyers/lawyers.components';
+import Costumers from '../../components/costumers/costumers.component';
 
 function Home() {
   
   return (
     <div>
-      <select >
-      <option value="">Clientes</option>
-      <option value="1">Cliente 1</option>
-      <option value="2">Cliente 2</option>
-      <option value="3">Cliente 3</option>
-      
-    </select>
-    <select >
-      <option value="">Abogados</option>
-      <option value="1">Abogado 1</option>
-      <option value="2">Abogado 2</option>
-      <option value="3">Abogado 3</option>
-      
-    </select>
+     
+    <Costumers></Costumers>
+    <Lawyers></Lawyers>
+    
     <br></br>
        <Link to="/home/crearcliente">
           <button>Crear cliente</button>
