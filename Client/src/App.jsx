@@ -74,52 +74,52 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route
           path="/home/detail/:id"
-          element={isAuthenticated ? <Detail /> : <Landing />}
+          element={<Detail />}
         />
         <Route
           path="/home/cases/:id"
-          element={isAuthenticated ? <Cases /> : <Landing />}
+          element={<Cases />}
         />
         <Route
           path="/home/costumers/:id"
-          element={isAuthenticated ? <Costumers /> : <Landing />}
+          element={<Costumers />}
         />
         <Route
           path="/home/lawyers/:id"
-          element={isAuthenticated ? <Lawyers /> : <Landing />}
+          element={<Lawyers />}
         />
         <Route
           path="/home/documents/:id"
-          element={isAuthenticated ? <Documents /> : <Landing />}
+          element={<Documents />}
         />
         <Route
           path="/home/diary"
-          element={isAuthenticated ? <Diary /> : <Landing />}
+          element={<Diary />}
         />
         <Route
           path="/home/payments"
-          element={isAuthenticated ? <Payments /> : <Landing />}
+          element={<Payments />}
         />
         <Route
           path="/home/consultations"
-          element={isAuthenticated ? <Consultations /> : <Landing />}
+          element={<Consultations />}
         />
         <Route
           path="/home/statistics"
-          element={isAuthenticated ? <Statistics /> : <Landing />}
+          element={<Statistics />}
         />
         <Route
           path="/home/crearabogado"
-          element={isAuthenticated ? <CrearAbogado /> : <Landing />}
+          element={<CrearAbogado />}
         />
 
         <Route
           path="/home/crearcliente"
-          element={isAuthenticated ? <CreateCliente /> : <Landing />}
+          element={<CreateCliente />}
         />
         <Route
           path="/home/crearcaso"
-          element={isAuthenticated ? <CrearCaso /> : <Landing />}
+          element={<CrearCaso />}
         />
       </Routes>
     </div>
