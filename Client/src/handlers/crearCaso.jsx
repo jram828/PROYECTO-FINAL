@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-
+import axios from "axios";
 
 export async function postCaso(data) {
   const {
@@ -9,11 +7,11 @@ export async function postCaso(data) {
     fecha,
     fechaFin,
     descripcion,
-    TipoDeCasoId
-    } = data;
-console.log("data del post", data)
+    TipoDeCasoId,
+  } = data;
+  console.log("data del post", data);
 
-  const URL = 'https://legaltech-6u3y.onrender.com/casos';
+  const URL = "https://legaltech-6u3y.onrender.com/casos";
   try {
     await axios.post(URL, {
       cedulaCliente: `${cedulaCliente}`,
@@ -27,5 +25,4 @@ console.log("data del post", data)
   } catch (error) {
     window.alert("No fue posible registrar el caso.");
   }
-
-};
+}

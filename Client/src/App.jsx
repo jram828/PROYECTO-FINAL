@@ -15,9 +15,9 @@ import CreateCliente from './components/createclient/index'
 import CrearCaso from './views/CrearCaso/crearCaso';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
-import useAuthStore from "./zustand/useAuthStore";
-
-
+import { useSelector } from 'react-redux';
+import LawyersPage from './views/lawyers/lawyers.component';
+import CustomersPage from './views/customers/customers.component';
 //const { URL } = process.env;
 // axios.defaults.baseURL = "https://localhost:3001";
 
@@ -32,49 +32,31 @@ function App() {
   
   return (
     <div className="App">
-
       <Routes>
         <Route path="/" element={<Landing />} />
 
         <Route path="/password" element={<Password />} />
         <Route path="/crearusuario" element={<CreateUser />} />
-        {/* <Route
-          path="/generarfactura"
-          element={isAuthenticated ? <GenerarFactura /> : <Landing />}
-        />
+      
+        <Route path='/home' element={<Home/>}/>
+      <Route path='/home/lawyers' element={<LawyersPage/>}/>
+      <Route path='/home/customers' element={<CustomersPage/>}/>
+        <Route path='/home/detail' element={<Detail/>}/>
+        <Route path='/home/detail/:id' element={<Detail/>}/>
+        <Route path='/home/cases/:id' element={<Cases/>}/>
+        <Route path='/home/cases/crearcaso' element={<CrearCaso/>}/>
+        <Route path='/home/costumers/:id' element={<Detail/>}/>
+        <Route path='/home/lawyers/:id' element={<Detail/>}/>
+        <Route path='/home/documents/:id' element={<Documents/>}/>
+        <Route path='/home/diary' element={<Diary/>}/>
+        <Route path='/home/payments' element={<Payments/>}/>
+        <Route path='/home/consultation' element={<Consultations/>}/>
+        <Route path='/home/statistics' element={<Statistics/>}/>
+        <Route path='/home/lawyers/crearabogado' element={<CrearAbogado/>}/>
+        <Route path='/home/customers/crearcliente' element={<CreateCliente/>}/>
+        {/*<Route path="/home" element={<Home />} />
         <Route
-          path="/invoice"
-          element={isAuthenticated ? <Invoice /> : <Landing />}
-        />
-        <Route
-          path="/authorization"
-          element={isAuthenticated ? <Authorization /> : <Landing />}
-        />
-        <Route
-          path="/poder"
-          element={isAuthenticated ? <Poder /> : <Landing />}
-        />
-        <Route
-          path="/bankruptcy"
-          element={isAuthenticated ? <Bankruptcy /> : <Landing />}
-        />
-        <Route
-          path="home/clientregister"
-          element={isAuthenticated ? <Client /> : <Landing />}
-        />
-        <Route
-          path="home/reminders"
-          element={isAuthenticated ? <ConfigReminders/> : <Landing />}
-        />
-
-        <Route
-          path="home/contract"
-          element={isAuthenticated ? <Contract /> : <Landing />}
-        /> */}
-
-       <Route path="/home" element={<Home />} />
-        <Route
-          path="/home/detail"
+          path="/home/detail/:id"
           element={isAuthenticated ? <Detail /> : <Landing />}
         />
         <Route
@@ -109,16 +91,19 @@ function App() {
           path="/home/statistics"
           element={isAuthenticated ? <Statistics /> : <Landing />}
         />
-        <Route 
-        path='/home/crearabogado' 
-        element={isAuthenticated ? <CrearAbogado /> : <Landing />}
+        <Route
+          path="/home/crearabogado"
+          element={isAuthenticated ? <CrearAbogado /> : <Landing />}
         />
 
-        <Route 
-        path='/home/crearcliente' 
-        element={isAuthenticated ? <CrearCliente /> : <Landing />}
-      />
-      
+        <Route
+          path="/home/crearcliente"
+          element={isAuthenticated ? <CreateCliente /> : <Landing />}
+        />
+        <Route
+          path="/home/crearcaso"
+          element={isAuthenticated ? <CrearCaso /> : <Landing />}
+  />*/}
       </Routes>
     </div>
   );

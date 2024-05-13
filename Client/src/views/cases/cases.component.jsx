@@ -1,4 +1,4 @@
-import './cases.module.css';
+import './cases.css';
 import React from 'react';
 import Filtros from '../../components/filtros';
 import Order from '../../components/order';

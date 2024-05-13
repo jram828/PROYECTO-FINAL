@@ -1,11 +1,13 @@
-import './lawyers.module.css';
+import './lawyers.css';
 import React, {useEffect,useState} from 'react';
+
 import { getAbogados } from '../../handlers/todosAbogados';
+
 
 function Lawyers() {
 
-  const addLawyer = userStoreLawyers((state) => state.addLawyer);
   const [abogados, setAbogados] = useState([]);
+  //  const [detalle, setDetalle] = useState({});
 
   useEffect(() => {
     
@@ -13,7 +15,6 @@ function Lawyers() {
       try {
         const listaAbogados = await getAbogados(); 
         setAbogados(listaAbogados);
-        addLawyer(listaAbogados) 
       } catch (error) {
         console.error('Error al obtener los abogados:', error);
       }
@@ -22,7 +23,7 @@ function Lawyers() {
     obtenerAbogados(); 
   }, []);
   return (
-    <select >
+    <select className='select'>
       <option value="">Abogados</option>
       {abogados.map(abogado => (
         <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado}>

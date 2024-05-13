@@ -1,4 +1,4 @@
-.containerCita {
+.contenedorcrearabogado {
     background-color: var(--color-two);
     opacity: 0.9;
     border-radius: 10px;
@@ -9,29 +9,38 @@
     font-family: "Outfit", sans-serif;
   }
   
-  .tituloCita {
+  .titulo {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  .formularioCita {
+  .formulario {
     width: 100%;
   }
   
-  .input-row {
-    margin-bottom: 20px; 
+  .nombreapellido,
+  .cedulamatricula,
+  .correo,
+  .direccioncelular,
+  .ciudadcontrasena,
+  .paiscontrasena {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
   
-  .label {
-    display: block; 
+  .labelcrearabogado {
     font-size: 16px;
-    margin-bottom: 5px;
-    text-align: center;
+    margin-right: 20px;
+    margin-left: 10px;
+    flex: 1;
+    width: 30%;
+    text-align: left;
   }
   
-  .input,
-  .textarea {
-    width: 400px; 
+  .cajascrearabogado {
+    width: calc(70% - 20px); /* 70% - padding */
     padding: 10px;
     border: 1px solid white;
     border-radius: 5px;
@@ -39,23 +48,12 @@
     color: white;
     font-family: "Outfit", sans-serif;
     outline: none;
-  }
-
-  .select{
-    width: 420px; 
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: transparent;
-    color: white;
-    font-family: "Outfit", sans-serif;
-    outline: none;
+    flex: 1;
   }
   
-  .botones {
+  .botonescrearabogado {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    
   }
-  
   

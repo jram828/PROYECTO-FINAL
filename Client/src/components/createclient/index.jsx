@@ -188,7 +188,7 @@ const CreateCliente = () => {
               !userDataRegistro.apellido
             }
           />
-           <Link to='/home'><button>Volver</button></Link>
+           <Link to='/home/customers'><button>Volver</button></Link>
         </div>
       </form>
     </div>

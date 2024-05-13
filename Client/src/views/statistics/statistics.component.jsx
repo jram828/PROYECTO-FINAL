@@ -1,4 +1,4 @@
-import './statistics.module.css';
+import './statistics.css';
 
 function Statistics() {
   return (

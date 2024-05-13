@@ -50,9 +50,10 @@ h1 {
   padding: 5px 15px; 
   border: none; 
   border-radius: 5px; 
-  font-size: 14px; 
+  font-size: 16px; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  width: 180px;
 }
 
 .button:hover {
@@ -61,6 +62,27 @@ h1 {
 
 button:focus,
 button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.button2 {
+  font-family: "Outfit", sans-serif;
+  background-color: var(--color-two); 
+  padding: 5px 15px; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  width: 180px;
+}
+
+.button2:hover {
+  background-color: darken(var(--color-two), 10%); 
+}
+
+button2:focus,
+button2:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
