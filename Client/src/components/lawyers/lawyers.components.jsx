@@ -1,5 +1,6 @@
-import './lawyers.module.css';
-import {useEffect,useState} from 'react';
+import './lawyers.css';
+import React, {useEffect,useState} from 'react';
+
 import { getAbogados } from '../../handlers/todosAbogados';
 
 
@@ -22,7 +23,7 @@ function Lawyers() {
     obtenerAbogados(); 
   }, []);
   return (
-    <select >
+    <select className='select'>
       <option value="">Abogados</option>
       {abogados.map(abogado => (
         <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado}>
