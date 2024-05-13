@@ -1,5 +1,4 @@
 import './crearAbogado.css';
-import React from 'react';
 //import { Link } from 'react-router-dom';
 //import userStoreLawyers from '../../store/lawyers';
 import { useState } from 'react';
@@ -52,62 +51,61 @@ function CrearAbogado() {
     
 
   return (
-
     <div className="contenedorcrearabogado">
-        <form onSubmit={handleSubmit} method="post" className="formulario">
-          <h1 className="titulo">Crear abogado</h1>
-          <br />
-          <br />
-          <div className="nombreapellido">
-            <label htmlFor="nombre" className="labelcrearabogado">
-              Nombre(s):
-            </label>
-            <input
-              type="text"
-              name="nombre"
-              id="name"
+      <form
+        onSubmit={submitHandlerRegistro}
+        method="post"
+        className="formulario"
+      >
+        <h1 className="titulo">Crear abogado</h1>
+        <br />
+        <br />
+        <div className="nombreapellido">
+          <label htmlFor="nombre" className="labelcrearabogado">
+            Nombre(s):
+          </label>
+          <input
+            type="text"
+            name="nombre"
+            id="name"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="apellidos" className="labelcrearabogado">
+            Apellido(s):
+          </label>
+          <input
+            type="text"
+            name="apellido"
+            id="lastname"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+        </div>
 
-              className="cajascrearabogado"
-              onChange={handleChange}       
-            />
-            <label htmlFor="apellidos" className="labelcrearabogado">
-              Apellido(s):
-            </label>
-            <input
-              type="text"
-              className="cajaregistrocliente"
-              name="apellido"
-              id="lastname"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-          </div>
-  
-          <br />
-          <br />
-          <div className="cedulamatricula">
-            <label htmlFor="numerocedula" className="labelcrearabogado">
-
-              Numero de cédula:
-            </label>
-            <input
-              type="number"
-              className="cajaregistrocliente"
-              name="cedulaAbogado"
-              id="cedula"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-            <label htmlFor="matricula" className="labelcrearabogado">
-              Matricula:
-            </label>
-            <input
-              name="matricula"
-              type="text"
-              onChange={handleChange}
-              className="cajascrearabogado"
-            />
-            <label htmlFor="matricula" className="labelregistrodecliente">
+        <br />
+        <br />
+        <div className="cedulamatricula">
+          <label htmlFor="numerocedula" className="labelcrearabogado">
+            Numero de cédula:
+          </label>
+          <input
+            type="number"
+            name="cedulaAbogado"
+            id="cedula"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="matricula" className="labelcrearabogado">
+            Matricula:
+          </label>
+          <input
+            name="matricula"
+            type="text"
+            onChange={handleChangeRegistro}
+            className="cajascrearabogado"
+          />
+          <label htmlFor="matricula" className="labelregistrodecliente">
             Matricula:
           </label>
           <input
@@ -118,119 +116,124 @@ function CrearAbogado() {
             value={userDataRegistro.matricula}
             onChange={handleChangeRegistro}
           />
-          </div>
-          <br />
-          <br />
+        </div>
+        <br />
+        <br />
 
+        <div className="correo">
+          <label htmlFor="correo" className="labelcrearabogado">
+            Email:
+          </label>
+          <input
+            name="email"
+            type="email"
+            onChange={handleChangeRegistro}
+            className="cajascrearabogado"
+          />
+          <label htmlFor="correo" className="labelcrearabogado">
+            Repetir Email:
+          </label>
+          <input
+            name="email"
+            type="email"
+            onChange={handleChangeRegistro}
+            className="cajascrearabogado"
+          />
+        </div>
+        <br />
+        <br />
 
-          <div className='correo'>
-            <label htmlFor="correo" className="labelcrearabogado">
-                Email:
-              </label>
-              <input
-                name="email"
-                type="email"
-                onChange={handleChange}
-                className="cajascrearabogado"
-                />
-              <label htmlFor="correo" className="labelcrearabogado">
-                Repetir Email:
-              </label>
-              <input
-                name="email"
-                type="email"
-                onChange={handleChange}
-                className="cajascrearabogado"
-                />
-          </div>
-          <br />
-          <br />
+        <div className="direccioncelular">
+          <label htmlFor="direccion" className="labelcrearabogado">
+            Dirección:
+          </label>
+          <input
+            type="text"
+            name="direccion"
+            id="address"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
 
-          <div className="direccioncelular">
-            <label htmlFor="direccion" className="labelcrearabogado">
-              Dirección:
-            </label>
-            <input
-              type="text"
-              name="direccion"
-              id="address"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-  
-            <label htmlFor="calle" className="labelregistrodecliente">
-              Calle:
-            </label>
-            <input
-              type="text"
-              name="celular"
-              id="celular"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-          </div>
-  
-          <br />
-          <br />
+          <label htmlFor="calle" className="labelregistrodecliente">
+            Calle:
+          </label>
+          <input
+            type="text"
+            name="celular"
+            id="celular"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+        </div>
 
-          <div className="ciudadcontrasena">
-            <label htmlFor="ciudad" className="labelcrearabogado">
-              Ciudad:
-            </label>
-            <input
-              type="text"
-              name="nombre_ciudad"
-              id="city"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-            <label htmlFor="contrasena" className="labelcrearabogado">
-              Contraseña:
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-          </div>
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <div className="paiscontrasena">
-            <label htmlFor="pais" className="labelcrearabogado">
-              Pais:
-            </label>
-            <input
-              type="text"
-              name="nombre_pais"
-              id="country"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-            <label htmlFor="codigopostalcontrasena" className="labelcrearabogado">
-              Codigo Postal:
-            </label>
-            <input
-              type="text"
-              name="codigo_postal"
-              id="code"
-              className="cajascrearabogado"
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </div>
-  
+        <div className="ciudadcontrasena">
+          <label htmlFor="ciudad" className="labelcrearabogado">
+            Ciudad:
+          </label>
+          <input
+            type="text"
+            name="nombre_ciudad"
+            id="city"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="contrasena" className="labelcrearabogado">
+            Contraseña:
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+        </div>
+        <br />
+        <br />
+
+        <div className="paiscontrasena">
+          <label htmlFor="pais" className="labelcrearabogado">
+            Pais:
+          </label>
+          <input
+            type="text"
+            name="nombre_pais"
+            id="country"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="codigopostalcontrasena" className="labelcrearabogado">
+            Codigo Postal:
+          </label>
+          <input
+            type="text"
+            name="codigo_postal"
+            id="code"
+            className="cajascrearabogado"
+            onChange={handleChangeRegistro}
+          />
           <br />
-          <div className="botonescrearabogado">
-            <Link><button type="submit" className='button'>Crear</button></Link>
-            <Link to='/home'><button className='button'>Volver</button></Link>
-          </div>
-        </form>
-      </div>
-    );
+          <br />
+        </div>
+
+        <br />
+        <div className="botonescrearabogado">
+          <Link>
+            <button type="submit" className="button">
+              Crear
+            </button>
+          </Link>
+          <Link to="/home">
+            <button className="button">Volver</button>
+          </Link>
+        </div>
+      </form>
+    </div>
+  );
   };
 
 export default CrearAbogado
