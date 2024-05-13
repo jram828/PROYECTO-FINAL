@@ -179,8 +179,8 @@ function CrearCliente() {
           <br />
           <div className={style.botonescrearcliente}>
 
-            <Link><button type='Submit' className={style.button}>Crear</button></Link>
-            <Link to='/home'><button className={style.button}>Volver</button></Link>
+            <Link><button type='Submit' className='button'>Crear</button></Link>
+            <Link to='/home/customers'><button className='button'>Volver</button></Link>
 
           </div>
           <br />
