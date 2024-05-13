@@ -1,4 +1,4 @@
-import './detail.module.css';
+import './detail.css';
 import { getClienteById } from "../../handlers/detailCliente";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
