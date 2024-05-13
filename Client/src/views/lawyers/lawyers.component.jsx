@@ -1,4 +1,4 @@
-import './lawyers.module.css';
+import style from './lawyers.module.css';
 import React from 'react';
 import { Link,  } from 'react-router-dom';
 import Cards from '../../components/cards';
@@ -34,32 +34,35 @@ function LawyersPage() {
 
 
   return (
-    <div>
-        <p>Abogados</p>
+    <div className={style.container}>
+        <p className={style.titulo}>Abogados</p>
         <Link to="/home/lawyers/crearabogado">
-          <button>Craer abogado</button>
+          <button className='button'>Crear abogado</button>
         </Link>
         <Link to="/home">
-          <button>Volver</button>
+          <button className='button'>Volver</button>
         </Link>
         
         <br></br>
         <br></br>
-        <select>
-        <option name="">Filtrar por Nombre</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por Pais</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por tipo de caso</option>
-        <option></option>
-        </select>
+        <div className={style.container2}>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por Nombre</option>
+          <option className={style.option}></option>
+          </select>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por Pais</option>
+          <option className={style.option}></option>
+          </select>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por tipo de caso</option>
+          <option className={style.option}></option>
+          </select>
+        </div>
+        
         <br></br>
         <br></br>
-          <button onClick={handleMostrarAbogados}>Ver Todos</button>
+          <button onClick={handleMostrarAbogados} className='button'>Ver Todos</button>
           <div>
           {mostrarAbogados && <Cards items={abogados} />}
           </div>
