@@ -29,10 +29,10 @@ function Home() {
       </div>
       <div className={style.container3}>
         <br />
-        <Link to="/home/crearcliente">
+        <Link to="/home/customers/crearcliente">
           <button className={style.btn2}>Crear cliente</button>
         </Link>
-        <Link to="/home/crearabogado">
+        <Link to="/home/lawyers/crearabogado">
           <button className={style.btn2}>Crear abogado</button>
         </Link>
         

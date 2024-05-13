@@ -30,32 +30,35 @@ function CustomersPage() {
       };
 
   return (
-    <div>
-        <p>clientes</p>
+    <div className={style.container}>
+        <p classname={style.titulo}>clientes</p>
         <Link to="/home/customers/crearcliente">
-          <button>Crear cliente</button>
+          <button className='button'>Crear cliente</button>
         </Link>
         <Link to="/home">
-          <button>Volver</button>
+          <button className='button'>Volver</button>
         </Link>
        
         <br></br>
         <br></br>
-        <select>
-        <option name="">Filtrar por Nombre</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por Pais</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por tipo de caso</option>
-        <option></option>
-        </select>
+        <div className={style.container2}>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por Nombre</option>
+          <option className={style.option}></option>
+          </select>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por Pais</option>
+          <option className={style.option}></option>
+          </select>
+          <select className={style.select}>
+          <option name="" className={style.option}>Filtrar por tipo de caso</option>
+          <option className={style.option}></option>
+          </select>
+        </div>
+        
         <br></br>
         <br></br>
-        <button onClick={handleMostrarClientes}>Ver todos</button>
+        <button onClick={handleMostrarClientes} className='button'>Ver todos</button>
         <div>
           {mostrarClientes && <Cards items={clientes} />}
           </div>
