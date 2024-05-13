@@ -12,7 +12,7 @@
 
 .container2 {
     display: flex;
-    justify-content: space-between; /* Cambio aquí */
+    justify-content: space-between; 
 }
 
 .select {

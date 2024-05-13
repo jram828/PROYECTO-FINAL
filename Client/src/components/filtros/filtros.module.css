@@ -12,8 +12,8 @@
 
 .container2 {
     display: flex;
-    justify-content: space-between; /* Cambio aquí */
-    flex-wrap: wrap; /* Agregado */
+    justify-content: space-between;
+    flex-wrap: wrap; 
 }
 
 .select {

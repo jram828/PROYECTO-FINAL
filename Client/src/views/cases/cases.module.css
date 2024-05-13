@@ -1,4 +1,4 @@
-/* Estilos para el contenedor principal */
+
 .container {
     background-color: var(--color-two);
     opacity: 0.9;
@@ -11,40 +11,40 @@
     font-family: "Outfit", sans-serif;
 }
 
-/* Estilos para el contenedor flex */
+
 .container2 {
     display: flex;
-    justify-content: space-between; /* Espacio entre los elementos */
+    justify-content: space-between; 
 }
 
-/* Estilos para el contenedor de Order */
+
 .ordercontainer {
-    flex-grow: 1; /* Permitir que Order ocupe menos espacio */
-    margin-right: 10px; /* Espacio entre Order y Filtros */
+    flex-grow: 1; 
+    margin-right: 10px; 
 }
 
-/* Estilos para el contenedor de Filtros */
+
 .filtroscontainer {
-    flex-grow: 2; /* Permitir que Filtros ocupe más espacio */
+    flex-grow: 2; 
 }
 
-/* Estilos para Order */
+
 .order {
-    padding: 20px; /* Ajustar el espacio interno según sea necesario */
+    padding: 20px;
     border-radius: 10px;
     background-color: var(--color-two);
     color: white;
     font-family: "Outfit", sans-serif;
 }
 
-/* Estilos para Filtros */
+
 .filtros {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-/* Estilos para los elementos select */
+
 .select {
     padding: 10px;
     margin-right: 10px;
@@ -56,7 +56,7 @@
     font-family: "Outfit", sans-serif;
 }
 
-/* Estilos para las opciones de select */
+
 .option {
     background-color: var(--color-two);
     color: white;
