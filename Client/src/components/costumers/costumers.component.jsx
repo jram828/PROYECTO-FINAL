@@ -31,7 +31,7 @@ function Costumers() {
  const handleChange = (e) => {
     console.log('mensaje cliente')
     const cliente = getClienteById(e.target.value)
-    navigate(`/home/detail/${e.target.value}`);
+    navigate(`/home/detail/customers${e.target.value}`);
 console.log('cliente', cliente)
   };
 

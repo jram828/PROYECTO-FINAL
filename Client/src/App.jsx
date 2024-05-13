@@ -16,6 +16,9 @@ import CrearCaso from './views/CrearCaso/crearCaso';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
 import store from "./zustand/store";
+import Lawyers from './components/lawyers/lawyers.components';
+import LawyersPage from './views/lawyers/lawyers.component';
+import CustomersPage from './views/customers/customers.component';
 
 //const { URL } = process.env;
 // axios.defaults.baseURL = "https://localhost:3001";
@@ -120,6 +123,9 @@ function App() {
         
          <Route path="/home/detail/:id" element={isAuthenticated ? <Detail /> : <Landing />} />
         
+
+         <Route path='/home/lawyers' element={isAuthenticated ? <LawyersPage /> : <Landing />}/>
+      <Route path='/home/customers' element={isAuthenticated ? <CustomersPage /> : <Landing />}/>
         <Route
           path="/home/cases/:id"
           element={isAuthenticated ? <Cases /> : <Landing />}

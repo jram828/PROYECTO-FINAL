@@ -1,0 +1,26 @@
+.tarjetaAbogado {
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0 2rem 4rem black;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction:column;
+    background-color: var(--color-two);
+    align-items: center;
+    border: 1px;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: #050A30;
+    padding: 5rem;
+    cursor: pointer;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    
+}
+
+h2 {
+    font-size: 1rem;
+    color: white; ;
+}
