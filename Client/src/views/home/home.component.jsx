@@ -13,8 +13,8 @@ function Home() {
     <div className='container'>
       <img src={logo} alt='logo'/>
       <div className='container1'>
-        <Costumers></Costumers>
-        <Lawyers></Lawyers>
+        {/*<Costumers></Costumers>
+        <Lawyers></Lawyers>*/}
       </div>
     </div>
        
@@ -24,11 +24,11 @@ function Home() {
         <img src={picture} alt="homeLawyers" />
       </div>
       <div className='container3'>
-        <Link to="/home/crearcliente">
-          <button className='btn2'>Crear cliente</button>
+        <Link to="/home/customers">
+          <button className='btn2'>Clientes</button>
         </Link>
-        <Link to="/home/crearabogado">
-          <button className='btn2'>Crear abogado</button>
+        <Link to="/home/lawyers">
+          <button className='btn2'>Abogados</button>
         </Link>
         <br></br>
         <Link to="/home/detail">

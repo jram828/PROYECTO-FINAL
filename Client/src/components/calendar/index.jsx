@@ -14,7 +14,7 @@ function Calendario() {
     <div>
       <div style={{
         height: "550px",
-        width: "500px",
+        width: "550px",
       }}>
         <Calendar
         localizer={localizer}

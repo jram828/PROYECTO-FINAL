@@ -180,7 +180,7 @@ function CrearCliente() {
           <div className="botonescrearcliente">
 
             <Link><button type='Submit' className='button'>Crear</button></Link>
-            <Link to='/home'><button className='button'>Volver</button></Link>
+            <Link to='/home/customers'><button className='button'>Volver</button></Link>
 
           </div>
           <br />
