@@ -1,4 +1,4 @@
-import './landing.module.css';
+import './landing.css';
 import Login from '../../components/login/index';
 import { Loginf} from "../../handlers/login";
 import { useNavigate } from 'react-router-dom';
