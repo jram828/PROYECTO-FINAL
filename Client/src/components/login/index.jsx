@@ -74,7 +74,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
       
     console.log("Login 2:", data);
       // const { access } = data;
-      if (user.email === data.correo) {
+      if (user.email === data[0].correo) {
         dispatch(setAuth(true));
         navigate("/home");
       } else {
