@@ -72,8 +72,8 @@ Cotizacion.hasOne(Contrato)
 Contrato.belongsTo(Cotizacion)
 Consulta.belongsTo(Cliente)
 
-Cliente.belongsTo(Usuario);
-Abogado.belongsTo(Usuario)
+// Cliente.belongsTo(Usuario);
+// Abogado.belongsTo(Usuario)
 
 
 module.exports = {
