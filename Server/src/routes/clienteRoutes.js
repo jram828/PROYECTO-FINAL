@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes } = require("../handlers/clientesHandlers");
+const { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes, getClientByEmailHandler } = require("../handlers/clientesHandlers");
 
 const clientesRouter = Router();
 
