@@ -1,18 +1,28 @@
-const { deleteAbogado } = require("../controllers/deleteAbogado");
-const { getAbogadoById } = require("../controllers/getAbogadoById");
-const { getAllAbogados } = require("../controllers/getAllAbogados");
-const { createAbogadoBd } = require("../controllers/postAbogadosController");
+const {
+  deleteAbogado,
+} = require("../controllers/controllersAbogados/deleteAbogado");
+const {
+  getAbogadoById,
+} = require("../controllers/controllersAbogados/getAbogadoById");
+const {
+  getAllAbogados,
+} = require("../controllers/controllersAbogados/getAllAbogados");
+const {
+  createAbogadoBd,
+} = require("../controllers/controllersAbogados/postAbogadosController");
 
 const getAbogadosHandler = async (req, res) => {
   try {
-    const response = await getAllAbogados();
+    const response = await getAllAbogados(req.query);
     res.status(200).json(response);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
 
 // Creando Abogados
+// todo esto a continuacion puedo enviarlo como un objeto para evitar errores, pero debo modificarlo en todos los modulos que esten
 const postAbogadosHandler = async (req, res) => {
   const {
     cedulaAbogado,
@@ -40,7 +50,7 @@ const postAbogadosHandler = async (req, res) => {
       numero,
       codigoPostal,
       ciudad,
-      pais
+      pais,
     );
     res.status(200).json(response);
   } catch (error) {

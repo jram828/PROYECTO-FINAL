@@ -1,6 +1,7 @@
-const { Cliente } = require("../db_conn");
 
-const createCliente = async (
+const { Cliente } = require('../../DB')
+
+const createClienteBd = async (
   cedulaCliente,
   nombre,
   apellido,
@@ -31,5 +32,5 @@ const createCliente = async (
 };
 
 module.exports = {
-  createCliente,
+  createClienteBd,
 };

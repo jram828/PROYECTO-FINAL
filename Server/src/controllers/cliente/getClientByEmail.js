@@ -1,4 +1,4 @@
-const { Cliente } = require("../db_conn");
+const { Cliente } = require("../../DB");
 
 const getClientByEmail = async (correo) => {
   const cliente = await Cliente.findOne({

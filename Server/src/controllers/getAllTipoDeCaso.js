@@ -1,4 +1,4 @@
-const { TipoDeCaso } = require("../db_conn");
+const { TipoDeCaso } = require('../DB');
 
 const getAllTipoDeCaso = async(offset,porPagina)=>{
         const consulta= {
