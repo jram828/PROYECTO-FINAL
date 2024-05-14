@@ -15,6 +15,7 @@ clientesRouter.post("/elimina", postEliminaClientes);
 
 clientesRouter.post("/actualiza", postActualizaClientes);
 
+clientesRouter.get("/email", getClientByEmailHandler);
 
 //clientesRoutes.get("/cedulaCliente", getClientByIDHandler);
 

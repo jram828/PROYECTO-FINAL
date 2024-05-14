@@ -6,6 +6,9 @@ const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
 const {
   actualizaCliente,
 } = require("../controllers/cliente/postActualizaClientes");
+const {
+  getClientByEmail,
+} = require("../controllers/cliente/getClientByEmail");
 
 const clientesHandler = async (req, res) => {
   //const { name } = req.query;
@@ -34,6 +37,19 @@ const clientesDetailHandler = async (req, res) => {
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json((error = error.message));
+  }
+};
+
+const getClientByEmailHandler = async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const response = await getClientByEmail(email);
+    console.log("Response by email:", response);
+    res.status(200).json(response);
+  } catch (error) {
+    console.log("Error by email:", error.message);
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -127,4 +143,5 @@ module.exports = {
   postClientesHandler,
   postEliminaClientes,
   postActualizaClientes,
+  getClientByEmailHandler,
 };
