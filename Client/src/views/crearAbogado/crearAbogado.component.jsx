@@ -18,12 +18,14 @@ function CrearAbogado() {
       nombre: '',
       apellido: '',
       correo: '',
+      password:'',
       telefono: '',
       calle: '',
       numero: '',
       codigoPostal: '',
       ciudad: '',
-      pais: ''
+      pais: '',
+      
     });
     console.log(userDataRegistro)
   
@@ -124,6 +126,17 @@ function CrearAbogado() {
               id="email"
               className={style.caja}
               value={userDataRegistro.correo}
+              onChange={handleChangeRegistro}
+            />
+            <label htmlFor="password" className={style.label}>
+              Contraseña:
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="email"
+              className={style.caja}
+              value={userDataRegistro.password}
               onChange={handleChangeRegistro}
             />
             {/* </div>
