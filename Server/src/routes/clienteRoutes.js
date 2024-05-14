@@ -7,7 +7,7 @@ const clientesRouter = Router();
 
 clientesRouter.get("/", clientesHandler);
 
-clientesRouter.get("/:id", clientesDetailHandler);
+clientesRouter.get("/:cedulaCliente", clientesDetailHandler);
 
 clientesRouter.post("/", postClientesHandler);
 
