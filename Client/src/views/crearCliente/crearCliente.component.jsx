@@ -15,6 +15,7 @@ function CrearCliente() {
       nombre: '',
       apellido: '',
       correo: '',
+      password: '',
       telefono: '',
       calle: '',
       numero: '',
@@ -96,6 +97,15 @@ function CrearCliente() {
             <input
               name="email"
               type="email"
+              onChange={handleChange}
+              className={style.cajascrearcliente}
+            />
+             <label htmlFor="passwors" className={style.labelcrearcliente}>
+              Contraseña:
+            </label>
+            <input
+              name="password"
+              type="password"
               onChange={handleChange}
               className={style.cajascrearcliente}
             />

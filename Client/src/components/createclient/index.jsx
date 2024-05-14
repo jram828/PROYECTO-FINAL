@@ -9,6 +9,7 @@ const CreateCliente = () => {
       nombre: "",
       apellido: "",
       correo: "",
+      password:"",
       telefono: "",
       calle: "",
       numero: "",
@@ -75,6 +76,17 @@ const CreateCliente = () => {
             id="email"
             className={style.cajaregistrocliente}
             value={userDataRegistro.correo}
+            onChange={handleChangeRegistro}
+          />
+           <label htmlFor="password" className={style.labelregistrodecliente}>
+            Contraseña:
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className={style.cajaregistrocliente}
+            value={userDataRegistro.password}
             onChange={handleChangeRegistro}
           />
           <label htmlFor="numerocedula" className={style.labelregistrodecliente}>
