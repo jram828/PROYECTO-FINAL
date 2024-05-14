@@ -16,10 +16,7 @@ function Home() {
         <img src={logo} alt='logo'/>
         <img src={legaltech} alt="legaltech" />
       </div>
-      <div className={style.container1}>
-        <Costumers></Costumers>
-        <Lawyers></Lawyers>
-      </div>
+      <br></br>
     </div>
        
     
@@ -29,11 +26,11 @@ function Home() {
       </div>
       <div className={style.container3}>
         <br />
-        <Link to="/home/customers/crearcliente">
-          <button className={style.btn2}>Crear cliente</button>
+        <Link to="/home/customers">
+          <button className={style.btn2}>Cliente</button>
         </Link>
-        <Link to="/home/lawyers/crearabogado">
-          <button className={style.btn2}>Crear abogado</button>
+        <Link to="/home/lawyers">
+          <button className={style.btn2}>Abogado</button>
         </Link>
         
         <Link to="/home/detail">
