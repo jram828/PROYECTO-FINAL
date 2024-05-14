@@ -11,7 +11,8 @@ const createClienteBd = async (
   numero,
   codigoPostal,
   ciudad,
-  pais
+  pais,
+  password
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -24,6 +25,7 @@ const createClienteBd = async (
     codigoPostal,
     ciudad,
     pais,
+    password
   });
   console.log(newCliente);
   return {

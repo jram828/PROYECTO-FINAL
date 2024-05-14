@@ -1,6 +1,6 @@
 const { Cliente } = require("../../DB");
 
-const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,calle,numero,codigoPostal,ciudad,pais) => {
+const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,calle,numero,codigoPostal,ciudad,pais,password) => {
     // console.log('imagen',imagen)
 
     const [updateCount, updateClient] = await Cliente.update({nombre: nombre, 
@@ -11,7 +11,8 @@ const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,ca
                                                             numero: numero,
                                                             codigoPostal: codigoPostal,
                                                             ciudad: ciudad,
-                                                            pais: pais },{
+                                                            pais: pais,
+                                                            password:password },{
         where: {
             cedulaCliente: cedulaCliente
         }

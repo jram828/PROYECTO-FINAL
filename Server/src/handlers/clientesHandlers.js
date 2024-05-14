@@ -26,7 +26,7 @@ const clientesHandler = async (req, res) => {
 };
 
 const clientesDetailHandler = async (req, res) => {
-  const { cedulaCliente } = req.params;
+  const { cedulaCliente } = req.query;
   // res.status(200).send(`Detalle del Usuario ${id}`); //? esto fue de solo prueba de inicio 42:57
 
   try {
@@ -49,6 +49,7 @@ const postClientesHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
+    password
   } = req.body;
 
   try {
@@ -63,6 +64,7 @@ const postClientesHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
+      password
     );
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");
