@@ -70,7 +70,8 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   console.log("Datos login:", user.email);
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
-    const { data } = await axios(URL + `/email?email=${user.email}`);
+      const { data } = await axios(URL + `/?correo=${user.email}`);
+      
     console.log("Login 2:", data);
       // const { access } = data;
       if (user.email === data.correo) {
