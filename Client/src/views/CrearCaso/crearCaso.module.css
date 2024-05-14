@@ -1,3 +1,4 @@
+
 .container {
     background-color: var(--color-two);
     opacity: 0.9;
@@ -8,22 +9,39 @@
     margin: 0 auto;
     color: white;
     font-family: "Outfit", sans-serif;
-  }
-  
-  .titulo {
+}
+
+.titulo {
     font-size: 24px;
     margin-bottom: 20px;
-  }
-  
-  .container2 {
+}
+
+.formulario {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .select {
-    flex: 1;
+    flex-direction: column;
+}
+
+.inputrow {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    align-items: center;
+    
+}
+
+.label {
+    margin-right: 20px;
+    font-weight: bold;
+    flex: 0 0 150px; 
+    width:150px ;
+    margin-top: 10px;
+}
+
+
+.input,
+.select,
+textarea {
+    flex: 1; 
     padding: 10px;
     border: 1px solid white;
     border-radius: 5px;
@@ -31,13 +49,17 @@
     color: white;
     font-family: "Outfit", sans-serif;
     outline: none;
-    margin-right: 10px;
-  }
-  
-  .select option {
+    margin-top: 10px; 
+}
+
+.option {
     background-color: var(--color-two);
     color: white;
     font-family: "Outfit", sans-serif;
-  }
-  
-  
+}
+
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}

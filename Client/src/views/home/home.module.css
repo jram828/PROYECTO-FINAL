@@ -3,17 +3,23 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 55px;
+  height: 65px;
   background-color: var(--color-two);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  z-index: 2;
 }
 
 .container img {
   width: auto;
   max-height: 65px;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  z-index: 1;
+  position: relative;
 }
 
 .container1 {
@@ -30,25 +36,27 @@
 
 .imagen img {
   max-width: 100%;
-  max-height: calc(100vh - 250px);
+  max-height: calc(100vh - 175px);
   object-fit: contain;
+  
 }
 
 
 .container2 {
   display: flex;
   flex-direction: row;
-  
+  align-items: center;
 }
 
 .container3 {
   display: flex;
   flex-direction: column; 
   align-items: center; 
+  height: 100%;
 }
 
 .container3 button {
-  margin-bottom: 21px;
+  margin-bottom: 20px;
   width: 250px; 
 }
 
@@ -63,6 +71,7 @@
   cursor: pointer; 
   transition: background-color 0.3s ease; 
   height: 40px;
+  
 }
 
 .btn:hover {
@@ -85,6 +94,7 @@ btn:focus-visible {
   cursor: pointer; 
   transition: background-color 0.3s ease; 
   height: 40px;
+  
 }
 
 .btn2:hover {
@@ -106,7 +116,8 @@ btn2:focus-visible {
   font-variant: small-caps;
   cursor: pointer; 
   transition: background-color 0.3s ease; 
-  height: 38px;
+  height: 40px;
+  
 }
 
 .btn3:hover {

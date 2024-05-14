@@ -1,4 +1,4 @@
-import './lawyers.css';
+import style from './lawyers.module.css';
 import React, {useEffect,useState} from 'react';
 
 import { getAbogados } from '../../handlers/todosAbogados';
@@ -23,10 +23,10 @@ function Lawyers() {
     obtenerAbogados(); 
   }, []);
   return (
-    <select className='select'>
-      <option value="">Abogados</option>
+    <select className={style.select}>
+      <option value="" className={style.option}>Abogados</option>
       {abogados.map(abogado => (
-        <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado}>
+        <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
           {abogado.nombre} {abogado.apellido}
         </option>
       ))}

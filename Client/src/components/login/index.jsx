@@ -1,6 +1,6 @@
 import {useState} from "react";
 // import { validar } from "../../utils/validacion";
-import "./login.css";
+import style from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { useDispatch} from "react-redux";
@@ -91,12 +91,12 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
 
   return (
-    <div className="containerLogin">
+    <div className={style.containerLogin}>
       <form onSubmit={submitHandler}>
         <table>
           <tr>
             <td></td>
-            <td colSpan={2} className="celdas">
+            <td colSpan={2} className={style.celdas}>
               {/* <img
                 src={logo}
                 alt="Logo Legaltech"
@@ -109,7 +109,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
           <tr>
             <td></td>
             <td>
-              <label htmlFor="usuario" className="label">
+              <label htmlFor="usuario" className={style.label}>
                 Usuario:
               </label>
             </td>
@@ -121,7 +121,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
                 placeholder="Ingrese su Usuario"
                 value={userData.email}
                 onChange={handleChange}
-                className="input"
+                className={style.input}
               />
             </td>
             <td></td>
@@ -139,7 +139,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
           <tr>
             <td></td>
             <td>
-              <label className="label" htmlFor="password">
+              <label className={style.label} htmlFor="password">
                 Contraseña:
               </label>
             </td>
@@ -150,7 +150,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
                 placeholder="Ingrese su contraseña"
                 value={userData.password}
                 onChange={handleChange}
-                className="input"
+                className={style.input}
               />
             </td>
             <td></td>
@@ -168,10 +168,10 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
           <tr>
             <td></td>
             <td>
-              <label htmlFor="tipodeusuario" className="label">Tipo de usuario:</label>
+              <label htmlFor="tipodeusuario" className={style.label}>Tipo de usuario:</label>
             </td>
             <td>
-              <select name="tipodeusuario" id="idusuario" className="select">
+              <select name="tipodeusuario" id="idusuario" className={style.select}>
                 <option value="">Elija una opcion</option>
                 <option value="1">Administrador</option>
                 <option value="2">Abogado</option>
@@ -189,8 +189,8 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
             <td></td>
           </tr>
           <tr>
-            <td className="celdas"></td>
-            <td className="celdas">
+            <td className={style.celdas}></td>
+            <td className={style.celdas}>
               <input
                 type="button"
                 name="cancelar"
@@ -198,7 +198,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
                 className="button"
               />
             </td>
-            <td className="celdas">
+            <td className={style.celdas}>
               {" "}
               {/* {errores.cedula || errores.password ? null : ( */}
                 <input
@@ -208,11 +208,11 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
                 />
               {/* )} */}
             </td>
-            <td className="celdas"></td>
+            <td className={style.celdas}></td>
           </tr>
           <tr>
             <td></td>
-            <td className="celdas">
+            <td className={style.celdas}>
               {/* <Link to={"/crearusuario"} onClick={clickHandlerCrear}>
                 <button className="botonesiniciosesion">Crear Usuario</button>
               </Link> */}
@@ -224,7 +224,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
                 onClick={clickHandlerCrear}
               />
             </td>
-            <td className="celdas">
+            <td className={style.celdas}>
               <input
                 type="button"
                 name="password"
@@ -238,7 +238,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
           </tr>
         </table>
       </form>
-      <div className="googleLogin">
+      <div className={style.GoogleLogin}>
         <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage}/>
       </div>
     </div>

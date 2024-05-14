@@ -1,3 +1,4 @@
+
 .container {
     background-color: var(--color-two);
     opacity: 0.9;
@@ -8,36 +9,56 @@
     margin: 0 auto;
     color: white;
     font-family: "Outfit", sans-serif;
-  }
-  
-  .titulo {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .container2 {
+}
+
+
+.container2 {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .select {
-    flex: 1;
+    justify-content: space-between; 
+}
+
+
+.ordercontainer {
+    flex-grow: 1; 
+    margin-right: 10px; 
+}
+
+
+.filtroscontainer {
+    flex-grow: 2; 
+}
+
+
+.order {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-two);
+    color: white;
+    font-family: "Outfit", sans-serif;
+}
+
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.select {
     padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     border: 1px solid white;
     border-radius: 5px;
     background-color: transparent;
     color: white;
     font-family: "Outfit", sans-serif;
-    outline: none;
-    margin-right: 10px;
-  }
-  
-  .select option {
+}
+
+
+.option {
     background-color: var(--color-two);
     color: white;
     font-family: "Outfit", sans-serif;
-  }
-  
-  
+}
