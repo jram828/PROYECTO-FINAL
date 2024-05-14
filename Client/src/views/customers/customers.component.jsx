@@ -1,33 +1,13 @@
 import style from'./customers.module.css';
 import React from 'react';
 import { Link  } from 'react-router-dom';
-import Cards from '../../components/cards';
-import { useState, useEffect } from 'react';
-import { getClientes } from '../../handlers/todosClientes'
+import SearchBar from '../../components/searchBarClientes';
+import FiltrosClientes from '../../components/filtrosClientes';
+
 
 
 function CustomersPage() {
-    const [clientes, setClientes] = useState([]);
-    const [mostrarClientes, setMostrarClientes] = useState(false);
   
-    useEffect(() => {
-      
-      const obtenerClientes = async () => {
-        try {
-          const listaClientes = await getClientes(); 
-          setClientes(listaClientes);
-        } catch (error) {
-          console.error('Error al obtener los clientes:', error);
-        }
-      };
-  obtenerClientes()
-      
-    }, []);
-
-    const handleMostrarClientes = () => {
-        setMostrarClientes(true);
-        
-      };
 
   return (
     <div className={style.container}>
@@ -39,34 +19,14 @@ function CustomersPage() {
           <button className='button'>Volver</button>
         </Link>
        
-        <br></br>
-        <br></br>
-        <div className={style.container2}>
-          <select className={style.select}>
-          <option name="" className={style.option}>Filtrar por Nombre</option>
-          <option className={style.option}></option>
-          </select>
-          <select className={style.select}>
-          <option name="" className={style.option}>Filtrar por Pais</option>
-          <option className={style.option}></option>
-          </select>
-          <select className={style.select}>
-          <option name="" className={style.option}>Filtrar por tipo de caso</option>
-          <option className={style.option}></option>
-          </select>
-        </div>
+        <SearchBar></SearchBar>
+        <FiltrosClientes></FiltrosClientes>
         
-        <br></br>
-        <br></br>
-        <button onClick={handleMostrarClientes} className='button'>Ver todos</button>
-        <div>
-          {mostrarClientes && <Cards items={clientes} />}
-          </div>
-      <div>
+    </div>
       
      
-    </div>
-    </div>
+   
+    
     
   )
 }
