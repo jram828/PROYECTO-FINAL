@@ -52,7 +52,7 @@ const getAllAbogados = async (filters) => {
     },
     order,
     offset: offset || 0,
-    limit: limit2 || 100, 
+    limit: limit2 || 500, 
   });
 
   return getAllAbogadosBd;
