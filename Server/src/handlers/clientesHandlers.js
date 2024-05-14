@@ -1,7 +1,7 @@
 const { getClienteById } = require("../controllers/cliente/getClienteById");
 const { getAllCliente } = require("../controllers/cliente/getAllClientes");
 const { getClienteByName } = require("../controllers/cliente/getClienteByName");
-const { createCliente } = require("../controllers/postClientesControllers");
+const { createClienteBd } = require("../controllers/cliente/postClientesController");
 const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
 const {
   actualizaCliente,
@@ -49,10 +49,11 @@ const postClientesHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
+    password,
   } = req.body;
 
   try {
-    const response = await createCliente(
+    const response = await createClienteBd(
       cedulaCliente,
       nombre,
       apellido,
@@ -63,6 +64,7 @@ const postClientesHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
+      password,
     );
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");

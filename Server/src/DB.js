@@ -49,13 +49,16 @@ TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotifi
 DocumentoLegal.belongsTo(DocumentoTemplate)
 DocumentoLegal.belongsTo(Caso)
 
-//Caso.belongsTo(Abogado)
-//Cliente.hasMany(Caso)
-//Caso.belongsTo(TipoDeCaso)
-TipoDeCaso.hasMany(Caso, { foreignKey: 'TipoDeCasoId' })
-//Caso.belongsTo(Cliente)
-Cliente.hasMany(Caso, { foreignKey: 'cedulaCliente' })
-Abogado.hasMany(Caso, { foreignKey: 'cedulaAbogado' })
+
+Cliente.hasMany(Caso)
+Caso.belongsTo(Cliente)
+
+Abogado.hasMany(Caso)
+Caso.belongsTo(Abogado)
+
+TipoDeCaso.hasMany(Caso)
+Caso.belongsTo(TipoDeCaso)
+
 Caso.hasOne(Cotizacion)
 
 Cotizacion.belongsTo(Caso)

@@ -1,4 +1,5 @@
-const { createCaso,getAllCaso } = require('../controllers/postAgregaCaso');
+const { createCaso } = require('../controllers/postAgregaCaso');
+const { getAllCaso } = require('../controllers/getAllCaso');
 
 const createCasosHandler = async (req, res)=>{
     const { cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDeCasoId } = req.body;
@@ -15,7 +16,8 @@ const createCasosHandler = async (req, res)=>{
 
 const getCasoHandler = async (req, res)=>{
     try {
-        const response = await getAllCaso()
+        console.log('Esto mando a getAllCaso ',req.query)
+        const response = await getAllCaso(req)
         res.status(200).json(response)
     } catch (error) {
         res.status(400).json({error:error.message})

@@ -1,4 +1,4 @@
-const { Cliente, Abogado } = require('../../db_conn')
+const { Cliente, Abogado } = require('../../DB')
 
 const getLogin = async (password, email)=>{
     const login = await Cliente.findOne({
