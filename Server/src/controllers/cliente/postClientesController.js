@@ -1,6 +1,7 @@
-const { Cliente } = require("../db_conn");
 
-const createCliente = async (
+const { Cliente } = require('../../DB')
+
+const createClienteBd = async (
   cedulaCliente,
   nombre,
   apellido,
@@ -10,7 +11,8 @@ const createCliente = async (
   numero,
   codigoPostal,
   ciudad,
-  pais
+  pais,
+  password
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -23,6 +25,7 @@ const createCliente = async (
     codigoPostal,
     ciudad,
     pais,
+    password
   });
   console.log(newCliente);
   return {
@@ -31,5 +34,5 @@ const createCliente = async (
 };
 
 module.exports = {
-  createCliente,
+  createClienteBd,
 };

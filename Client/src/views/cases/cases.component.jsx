@@ -1,4 +1,4 @@
-import './cases.css';
+import style from './cases.module.css';
 import React from 'react';
 
 
@@ -11,9 +11,10 @@ function Cases() {
         <p>Casos</p>
        
       </div>
-      <Link to='/home'>
-          <button >Volver</button>
-          </Link>
+        <Link to='/home'>
+        <button className='button'>Volver</button>
+        </Link>
+        <Link to='/home/cases/crearcaso'><button className='button'>Crear caso</button></Link>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-const { Cliente } = require("../db_conn");
+const { Cliente } = require("../../DB");
 
 const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,calle,numero,codigoPostal,ciudad,pais) => {
     // console.log('imagen',imagen)

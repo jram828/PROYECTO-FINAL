@@ -54,6 +54,7 @@ h1 {
   cursor: pointer; 
   transition: background-color 0.3s ease; 
   width: 180px;
+  margin: 10px;
 }
 
 .button:hover {

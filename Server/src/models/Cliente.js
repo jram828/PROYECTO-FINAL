@@ -11,31 +11,31 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-          len: [1,20]
+          len: [1,100]
         }
       },
       apellido:{
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-          len: [1,20]
+          len: [1,100]
         }
       },
       correo:{
         type: DataTypes.STRING,
         unique: true,
         validate:{
-          len: [1,50]
+          len: [1,100]
         }
       },
       telefono:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         unique: true
       },
       calle:{
         type: DataTypes.STRING,
         validate:{
-          len: [1,20]
+          len: [1,100]
         }
       },
       numero:{
@@ -50,19 +50,23 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-          len: [1,20]
+          len: [1,100]
         }
       },
       pais:{
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-          len: [1,20]
+          len: [1,100]
         }
       },
       activo:{
         type: DataTypes.BOOLEAN,
         defaultValue: true
+      },
+      password:{
+        type:DataTypes.STRING,
+        allowNull:false
       }
     })
   }

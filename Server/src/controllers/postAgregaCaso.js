@@ -1,16 +1,10 @@
-const { Caso } = require("../db_conn");
+const { Caso } = require("../DB");
 
-const createCaso = async (cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDeCasoId,fechaFin) => {
+const createCaso = async (cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDeCasoId) => {
     // console.log('imagen',imagen)
     console.log('Cliente....',cedulaCliente,'  Abogado..... ',cedulaAbogado)
-    const newCaso = await Caso.create({
-      fecha: fecha,
-      descripcion: descripcion,
-      TipoDeCasoId: TipoDeCasoId,
-      cedulaCliente: cedulaCliente,
-      cedulaAbogado: cedulaAbogado,
-      fechaFin: fechaFin,
-    });
+    const newCaso = await Caso.create({fecha: fecha, descripcion: descripcion,TipoDeCasoId: TipoDeCasoId,
+        cedulaCliente: cedulaCliente,cedulaAbogado: cedulaAbogado})
 
     //  newAbogado.addCliente(clientes);
    

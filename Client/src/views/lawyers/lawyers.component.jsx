@@ -1,4 +1,4 @@
-import './lawyers.module.css';
+import style from './lawyers.module.css';
 import React from 'react';
 import { Link,  } from 'react-router-dom';
 import FiltrosAbogados from '../../components/filtrosAbogados';
@@ -9,13 +9,13 @@ function LawyersPage() {
 
 
   return (
-    <div>
-        <p>Abogados</p>
+    <div className={style.container}>
+        <p className={style.titulo}>Abogados</p>
         <Link to="/home/lawyers/crearabogado">
-          <button>Craer abogado</button>
+          <button className='button'>Crear abogado</button>
         </Link>
         <Link to="/home">
-          <button>Volver</button>
+          <button className='button'>Volver</button>
         </Link>
         <SearchBar></SearchBar>
         

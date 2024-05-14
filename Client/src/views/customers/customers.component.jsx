@@ -1,4 +1,4 @@
-import './customers.module.css';
+import style from'./customers.module.css';
 import React from 'react';
 import { Link  } from 'react-router-dom';
 import SearchBar from '../../components/searchBarClientes';
@@ -10,13 +10,13 @@ function CustomersPage() {
   
 
   return (
-    <div>
-        <p>clientes</p>
+    <div className={style.container}>
+        <p classname={style.titulo}>clientes</p>
         <Link to="/home/customers/crearcliente">
-          <button>Crear cliente</button>
+          <button className='button'>Crear cliente</button>
         </Link>
         <Link to="/home">
-          <button>Volver</button>
+          <button className='button'>Volver</button>
         </Link>
        
         <SearchBar></SearchBar>
