@@ -1,6 +1,13 @@
 const { TipoDeCaso } = require('../../DB');
 
 const getAllTipoDeCaso = async(offset,porPagina)=>{
+        
+        const totalRegistros=TipoDeCaso.count({
+            where: {
+              activo: true
+            }
+          });
+        const totalPagina=Math.ceil(totalRegistros / porPagina); 
         const consulta= {
             where: {
                 activo: true,
@@ -10,7 +17,10 @@ const getAllTipoDeCaso = async(offset,porPagina)=>{
           };
    
          const allTipoDeCaso=await TipoDeCaso.findAll(consulta);
-         return (allTipoDeCaso)
+         return ({
+            totalPaginas: totalPagina,
+            allTipoDeCaso: allTipoDeCaso
+                })
    
  }
 
