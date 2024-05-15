@@ -24,10 +24,10 @@ function Home() {
           <br />
           <br />
           <Link to="/home/customers">
-            <button className={style.btn2}>Cliente</button>
+            <button className={style.btn2}>Clientes</button>
           </Link>
           <Link to="/home/lawyers">
-            <button className={style.btn2}>Abogado</button>
+            <button className={style.btn2}>Abogados</button>
           </Link>
 
           <Link to="/home/detail">
