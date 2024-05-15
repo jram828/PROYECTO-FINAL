@@ -51,7 +51,7 @@ const getAllCliente = async (filters) => {
     },
     order,
     offset: offset || 0,
-    limit: limit2 || 3,
+    limit: limit2 || 100, //3
   };
 
   const allClient = await Cliente.findAll(consulta);

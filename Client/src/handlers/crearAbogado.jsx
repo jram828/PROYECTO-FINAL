@@ -9,6 +9,7 @@ export async function postAbogado(data) {
    nombre,
    apellido,
    correo,
+   password,
    telefono,
    calle,
    numero,
@@ -22,6 +23,7 @@ console.log("data del post", data)
   try {
     await axios.post(URL, {
       correo: `${correo}`,
+      password:`${password}`,
       nombre: `${nombre}`,
       apellido: `${apellido}`,
       cedulaAbogado: `${cedulaAbogado}`,

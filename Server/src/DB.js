@@ -3,10 +3,27 @@ const { Sequelize } = require("sequelize");
 
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,
-} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
+//   logging: false,
+//   native: false,
+// });
+
+
+/* **** Esto va cuando se hace el despliegue en RENDER */
+// console.log("Dbdeploy: ", DB_DEPLOY);
+// const sequelize = new Sequelize(DB_DEPLOY, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//     },
+//   },
+// });
+
+/*  ******   Esto va cuando lo quiero ejecutar localmente */
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
   logging: false, 
   native: false, 
@@ -66,8 +83,8 @@ Cotizacion.hasOne(Contrato)
 Contrato.belongsTo(Cotizacion)
 Consulta.belongsTo(Cliente)
 
-Cliente.belongsTo(Usuario);
-Abogado.belongsTo(Usuario)
+// Cliente.belongsTo(Usuario);
+// Abogado.belongsTo(Usuario)
 
 
 module.exports = {
