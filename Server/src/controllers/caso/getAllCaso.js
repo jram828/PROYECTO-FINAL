@@ -101,7 +101,7 @@ let offset=1
 if (filters.query.porPagina) elementos = filters.query.porPagina;
 if (filters.query.pagina) offset = (filters.query.pagina - 1) * parseInt(elementos)
 
-console.log('offset....',offset,'  elementos........',elementos)
+//console.log('offset....',offset,'  elementos........',elementos)
 const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);  
 const paginaActual=paginarArreglo(arregloOrdenado,offset,elementos)
 console.log(paginaActual)
