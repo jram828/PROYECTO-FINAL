@@ -1,7 +1,7 @@
 const { getClienteById } = require("../controllers/cliente/getClienteById");
 const { getAllCliente } = require("../controllers/cliente/getAllClientes");
 const { getClienteByName } = require("../controllers/cliente/getClienteByName");
-const { createCliente } = require("../controllers/postClientesControllers");
+const { createClienteBd } = require("../controllers/cliente/postClientesController");
 const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
 const {
   actualizaCliente,
@@ -69,7 +69,7 @@ const postClientesHandler = async (req, res) => {
   } = req.body;
 
   try {
-    const response = await createCliente(
+    const response = await createClienteBd(
       cedulaCliente,
       nombre,
       apellido,

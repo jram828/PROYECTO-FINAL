@@ -42,7 +42,7 @@ export const setSource = (source) => {
 
 
 export const getClientes = () => {
-  const endpoint = `${URL}clientes`;
+  const endpoint = `${URL}clientes?pagina=1&porPagina=50`;
   return async (dispatch) => {
       const {data} = await axios.get(endpoint);
           return dispatch({
@@ -53,7 +53,9 @@ export const getClientes = () => {
       };
 
  export const getAbogados = () => {
-  const endpoint = `${URL}abogados?pagina=1&porPagina=10`;
+
+   const endpoint = `${URL}abogados?pagina=1&porPagina=50`;
+   
   return async (dispatch) => {
       const {data} = await axios.get(endpoint);
           return dispatch({

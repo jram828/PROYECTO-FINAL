@@ -40,4 +40,4 @@ console.log("data del post", data)
     window.alert("No fue posible registrar el abogado.");
   }
 
-};
+}
