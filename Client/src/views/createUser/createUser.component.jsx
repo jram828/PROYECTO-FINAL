@@ -31,6 +31,7 @@ function CreateUser () {
   
     const submitHandlerCrear = (e) => {
       e.preventDefault();
+      console.log('Datos crear usuario: ',userDataCrear)
       crearUsuario(userDataCrear)
     };
 
@@ -185,7 +186,7 @@ function CreateUser () {
             <label htmlFor="tipodeusuario">
               Tipo de usuario:
             </label>
-            <select name="tipodeusuario" id="idusuario">
+            <select name="rol" id="idusuario">
               <option value="">Elija una opcion</option>
               <option value="Administrador">Administrador</option>
               <option value="Abogado">Abogado</option>
