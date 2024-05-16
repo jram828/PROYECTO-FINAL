@@ -240,7 +240,7 @@ function CreateUser ({crearUsuario}) {
               name="guardar"
               value="Guardar"
               className="button"
-              disabled={!userDataCrear.email || !userDataCrear.password}
+              disabled={!userDataCrear.correo || !userDataCrear.password}
             />
 
             <Link to="/">
