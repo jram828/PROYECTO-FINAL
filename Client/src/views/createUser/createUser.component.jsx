@@ -183,10 +183,8 @@ function CreateUser () {
           {/* <br />
           <br /> */}
           <div className="ciudadcontrasena">
-            <label htmlFor="tipodeusuario">
-              Tipo de usuario:
-            </label>
-            <select name="rol" id="idusuario">
+            <label htmlFor="tipodeusuario">Tipo de usuario:</label>
+            <select name="rol" id="idusuario" onChange={handleChangeCrear}>
               <option value="">Elija una opcion</option>
               <option value="Administrador">Administrador</option>
               <option value="Abogado">Abogado</option>
