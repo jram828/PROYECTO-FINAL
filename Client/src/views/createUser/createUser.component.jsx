@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createUser.css';
-import { crearUsuario } from '../../../../Server/src/controllers/usuario/insertaUsuario';
+import { crearUsuario } from '../../handlers/crearUsuario';
 
 
 // eslint-disable-next-line react/prop-types
