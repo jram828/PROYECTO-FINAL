@@ -1,36 +1,19 @@
 
-const { Cliente } = require('../../DB')
+const { Usuario } = require('../../DB')
 
-const createClienteBd = async (
-  cedulaCliente,
-  nombre,
-  apellido,
-  correo,
-  telefono,
-  calle,
-  numero,
-  codigoPostal,
-  ciudad,
-  pais
-) => {
-  const newCliente = await Cliente.create({
-    cedulaCliente,
-    nombre,
-    apellido,
+const crearUsuario = async (correo, password, rol, imagen) => {
+  const newUsuario = await Usuario.create({
     correo,
-    telefono,
-    calle,
-    numero,
-    codigoPostal,
-    ciudad,
-    pais,
+    password,
+    rol,
+    imagen,
   });
-  console.log(newCliente);
+  console.log(newUsuario);
   return {
-    ...newCliente.toJSON(),
+    ...newUsuario.toJSON(),
   };
 };
 
 module.exports = {
-  createClienteBd,
+  crearUsuario,
 };
