@@ -1,13 +1,15 @@
 import { useState } from "react";
-import "./createClient.css";
-import { createClient } from "../../handlers/createClient";
+import style from "./createClient.module.css";
+import { postCliente } from "../../handlers/createCliente"
+import { Link } from 'react-router-dom';
 
-const CreateClient = () => {
+const CreateCliente = () => {
     const [userDataRegistro, setUserDataRegistro] = useState({
       cedulaCliente: "",
       nombre: "",
       apellido: "",
       correo: "",
+      password:"",
       telefono: "",
       calle: "",
       numero: "",
@@ -25,71 +27,85 @@ const CreateClient = () => {
 
     const submitHandlerRegistro = (e) => {
       e.preventDefault();
-      createClient(userDataRegistro);
+      postCliente(userDataRegistro);
     };
   return (
-    <div className="contenedorregistro">
-      <form className="datos" method="post" onSubmit={submitHandlerRegistro}>
+    <div className={style.container}>
+      <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
         {/* <div className="logo-aveza">
           <img src={logo} alt="logo-aveza" />
         </div> */}
-        <h1 className="titulo">Crear Cliente</h1>
+        <h1 className={style.titulo}>Crear Cliente</h1>
         <br />
         <br />
-        <div className="nombreapellidos">
-          <label htmlFor="nombre" className="labelregistrodecliente">
+
+        <div className={style.container2}>
+          <label htmlFor="nombre" className={style.labelregistrodecliente}>
             Nombre(s):
           </label>
           <input
             type="text"
-            name="nombres"
+            name="nombre"
             id="name"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             value={userDataRegistro.nombre}
             onChange={handleChangeRegistro}
           />
-          <label htmlFor="apellidos" className="labelregistrodecliente">
+          <label htmlFor="apellidos" className={style.labelregistrodecliente}>
             Apellido(s):
           </label>
           <input
             type="text"
-            className="cajaregistrocliente"
-            name="apellidos"
+            className={style.cajaregistrocliente}
+            name="apellido"
             id="lastname"
             value={userDataRegistro.apellido}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="numerocedula" className="labelregistrodecliente">
-            Numero de cédula:
-          </label>
-          <input
-            type="number"
-            className="cajaregistrocliente"
-            name="cedula"
-            id="cedula"
-            value={userDataRegistro.cedula}
             onChange={handleChangeRegistro}
           />
         </div>
         <br />
         <br />
-        <div className="numerocedula">
-          <label htmlFor="correo" className="labelregistrodecliente">
+
+        <div className={style.container2}>
+          <label htmlFor="correo" className={style.labelregistrodecliente}>
             Email:
           </label>
           <input
             type="email"
-            name="email"
+            name="correo"
             id="email"
-            className="cajaregistrocliente"
-            value={userDataRegistro.email}
+            className={style.cajaregistrocliente}
+            value={userDataRegistro.correo}
             onChange={handleChangeRegistro}
           />
-          {/* </div>
+           <label htmlFor="password" className={style.labelregistrodecliente}>
+            Contraseña:
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className={style.cajaregistrocliente}
+            value={userDataRegistro.password}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="numerocedula" className={style.labelregistrodecliente}>
+            Numero de cédula:
+          </label>
+          <input
+            type="number"
+            className={style.cajaregistrocliente}
+            name="cedulaCliente"
+            id="cedula"
+            value={userDataRegistro.cedulaCliente}
+            onChange={handleChangeRegistro}
+          />
+          </div>
         <br />
         <br />
-        <div className="nombreapellidos"> */}
-          <label htmlFor="telefono" className="labelregistrodecliente">
+
+        <div className={style.container2}>
+          <label htmlFor="telefono" className={style.labelregistrodecliente}>
             {" "}
             Teléfono:
           </label>
@@ -97,19 +113,19 @@ const CreateClient = () => {
             type="number"
             name="telefono"
             id="telefono"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             value={userDataRegistro.telefono}
             onChange={handleChangeRegistro}
           />
 
-          <label htmlFor="calle" className="labelregistrodecliente">
+          <label htmlFor="calle" className={style.labelregistrodecliente}>
             Calle:
           </label>
           <input
             type="text"
             name="calle"
             id="street"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             value={userDataRegistro.calle}
             onChange={handleChangeRegistro}
           />
@@ -118,26 +134,26 @@ const CreateClient = () => {
         <br />
         <br />
 
-        <div className="nombreapellidos">
-          <label htmlFor="numero" className="labelregistrodecliente">
+        <div className={style.container2}>
+          <label htmlFor="numero" className={style.labelregistrodecliente}>
             Numero:
           </label>
           <input
             type="text"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             name="numero"
             id="numero"
             value={userDataRegistro.numero}
             onChange={handleChangeRegistro}
           />
 
-          <label htmlFor="codigopostal" className="labelregistrodecliente">
+          <label htmlFor="codigopostal" className={style.labelregistrodecliente}>
             Código postal:
           </label>
           <input
             type="number"
-            className="cajaregistrocliente"
-            name="codigopostal"
+            className={style.cajaregistrocliente}
+            name="codigoPostal"
             id="codigopostal"
             value={userDataRegistro.codigoPostal}
             onChange={handleChangeRegistro}
@@ -145,26 +161,27 @@ const CreateClient = () => {
         </div>
         <br />
         <br />
-        <div className="honorarios">
-          <label htmlFor="ciudad" className="labelregistrodecliente">
+
+        <div className={style.container2}>
+          <label htmlFor="ciudad" className={style.labelregistrodecliente}>
             Ciudad:
           </label>
           <input
             type="text"
-            name="nombre_ciudad"
+            name="ciudad"
             id="city"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             value={userDataRegistro.ciudad}
             onChange={handleChangeRegistro}
           />
-          <label htmlFor="ciudad" className="labelregistrodecliente">
+          <label htmlFor="ciudad" className={style.labelregistrodecliente}>
             Pais:
           </label>
           <input
             type="text"
             name="pais"
             id="country"
-            className="cajaregistrocliente"
+            className={style.cajaregistrocliente}
             value={userDataRegistro.pais}
             onChange={handleChangeRegistro}
           />
@@ -173,22 +190,23 @@ const CreateClient = () => {
         </div>
 
         <br />
-        <div className="documentoagenerar">
-          <input className="botones" type="button" value="Modificar" />
+        <div className={style.documentoagenerar}>
+          
           <input
-            className="botones"
+            className="button"
             type="submit"
             value="Guardar"
             disabled={
-              !userDataRegistro.email ||
-              !userDataRegistro.cedula ||
+              !userDataRegistro.correo ||
+              !userDataRegistro.cedulaCliente ||
               !userDataRegistro.nombre ||
               !userDataRegistro.apellido
             }
           />
+           <Link to='/home/customers'><button className="button">Volver</button></Link>
         </div>
       </form>
     </div>
   );
 };
-export default CreateClient;
+export default CreateCliente;

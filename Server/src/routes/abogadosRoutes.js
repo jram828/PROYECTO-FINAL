@@ -1,10 +1,5 @@
 const { Router } = require("express");
-const {
-  getAbogadosHandler,
-  postAbogadosHandler,
-  getAbogadoDetailHandler,
-  deleteAbogadoHandler,
-} = require("../handlers/abogadosHandlers");
+const { getAbogadosHandler, postAbogadosHandler, getAbogadoDetailHandler, deleteAbogadoHandler } = require("../handlers/abogadosHandlers");
 
 const abogadosRouter = Router();
 
@@ -14,6 +9,6 @@ abogadosRouter.get("/cedulaAbogado", getAbogadoDetailHandler);
 
 abogadosRouter.post("/", postAbogadosHandler);
 
-abogadosRouter.post("/delete", deleteAbogadoHandler);
+abogadosRouter.post("/delete", deleteAbogadoHandler );
 
-module.exports = abogadosRouter;
+module.exports = abogadosRouter; 

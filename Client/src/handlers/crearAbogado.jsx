@@ -9,6 +9,7 @@ export async function postAbogado(data) {
    nombre,
    apellido,
    correo,
+   password,
    telefono,
    calle,
    numero,
@@ -16,12 +17,13 @@ export async function postAbogado(data) {
    ciudad,
    pais
     } = data;
+console.log("data del post", data)
 
-
-  const URL = 'http://localhost:3001/abogados';
+  const URL = 'https://legaltech-6u3y.onrender.com/abogados';
   try {
     await axios.post(URL, {
       correo: `${correo}`,
+      password:`${password}`,
       nombre: `${nombre}`,
       apellido: `${apellido}`,
       cedulaAbogado: `${cedulaAbogado}`,
@@ -33,9 +35,9 @@ export async function postAbogado(data) {
       codigoPostal: `${codigoPostal}`,
       pais: `${pais}`,
     });
-    window.alert("Se ha registrado el cliente con éxito.");
+    window.alert("Se ha registrado el abogado con éxito.");
   } catch (error) {
-    window.alert("No fue posible registrar el cliente.");
+    window.alert("No fue posible registrar el abogado.");
   }
 
 };

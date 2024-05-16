@@ -1,4 +1,4 @@
-import './payments.module.css';
+import './payments.css';
 
 function Payments() {
   return (

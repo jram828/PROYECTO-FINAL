@@ -1,0 +1,24 @@
+.containerDiary {
+    display: flex;
+    align-items: center;
+  }
+  
+  .agenda {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .calendario {
+    flex: 1;
+    background-color: var(--color-four);
+    border-radius: 10px;
+    margin: 20px;
+    margin-bottom: 100px;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .formCita {
+    flex: 1;
+    margin: 20px;
+    margin-top: 100px;
+  }

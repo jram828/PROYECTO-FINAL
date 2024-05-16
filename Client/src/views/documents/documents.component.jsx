@@ -1,4 +1,4 @@
-import './documents.module.css';
+import './documents.css';
 
 function Documents() {
   return (

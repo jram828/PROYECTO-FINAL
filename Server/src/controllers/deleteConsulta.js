@@ -1,4 +1,4 @@
-const { Consulta } = require("../db_conn");
+const { Consulta } = require('../DB')
 
 const deleteConsulta = async (id)=>{
    

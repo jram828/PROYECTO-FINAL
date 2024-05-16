@@ -1,5 +1,7 @@
 const server = require("./src/server");
-const { conn } = require("./src/db_conn.js");
+
+const { conn } = require("./src/DB");
+
 
 const PORT = 3001;
 

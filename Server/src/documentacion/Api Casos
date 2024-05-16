@@ -1,0 +1,44 @@
+Documentacion
+
+URL para llamar el endpoint
+http://localhost:3001/casos
+
+Metodo http: get
+
+Parametros de entrada:
+
+ordenarPor
+
+Dos valores posibles:
+
+apellidoCliente devuelve casos actuales ordenados por apellido del cliente
+
+apellidoAbogado devuelve casos actuales ordenados por apellido del abogado
+
+En caso de no estar el parametro los devuelde ordenados por fecha.
+
+Filtros (no obligatorio)
+
+apellidoCliente="Apellido por el que se quiere filtrar" para clientes apellidoAbogado="Apellido por el que se quiere filtrar" para abogados tipoCaso="Descripcion" tipo de caso por el que se quiere filtrcar
+
+Paginamiento (no obligatorio) pagina="Numero de pagina" Desde que numero de pagina quiero que me devuelva los elementos. Si no se establece empieza en la pagina 1 porPagina="Cantidd de elementos" cantidad de elementos que quiero mostrar por pagina. Si no se establece muestra 3 elementos por pagina
+
+Retorna un objeto con dos propiedades, un arreglo de objetos que son los registros que estan en la pagina que se esta consultando y la otra propiedad es la cantidad total de paginas.
+
+Ej. de como llamar el endpoint http://localhost:3001/casos?ordenarPor=apellidoCliente&apellidoCliente=Juarez&tipoCaso=Divorcio&pagina=1&porPagina=2
+
+Ordena por apellidoCliente Filtro apellidoCliente=Juarez Filtro tipoCaso=Divorcio Datos de pagina 1. Elementos por pagina 2
+
+Retorna
+
+{ "datosPagina": [ { "id": 5, "descripcion": "Divorcio vincular Gomez - Quiroga", "fecha": "2021-10-11T00:00:00.000Z", "nombreCliente": "Antonio", "apellidoCliente": "Juarez", "nombreabogado": "Aldo", "apellidoAbogado": "Prieto", "tipoCaso": "Divorcio" }, { "id": 7, "descripcion": "Divorcio vincular Diaz - Quiroga", "fecha": "2021-10-11T00:00:00.000Z", "nombreCliente": "Antonio", "apellidoCliente": "Juarez", "nombreabogado": "Aldo", "apellidoAbogado": "Prieto", "tipoCaso": "Divorcio" } ], "totalPaginas": 2 }
+
+Ejemplo de uso
+
+import axios from "axios";
+
+let headersList = { "Accept": "/", "User-Agent": "Thunder Client (https://www.thunderclient.com)" }
+
+let reqOptions = { url: "localhost:3001/casos?ordenarPor=apellidoCliente&apellidoCliente=Juarez&tipoCaso=Divorcio&pagina=1&porPagina=3", method: "GET", headers: headersList, }
+
+let response = await axios.request(reqOptions); 

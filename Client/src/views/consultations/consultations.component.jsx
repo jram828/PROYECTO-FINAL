@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './consultations.css'
 
 function Consultations() {
 
@@ -17,37 +18,37 @@ function Consultations() {
 
   return (
     <div>
-      <div>
+      <div className="detail-container">
         <h2>Formulario de Consultas/Contacto</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Nombre:</label>
-            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        <form onSubmit={handleSubmit} className="detail-form">
+          <div className="detail-input-group">
+            <label htmlFor="nombre" className="detail-label">Nombre:</label>
+            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} className="detail-input" required />
           </div>
-          <div>
-            <label>Apellidos:</label>
-            <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
+          <div className="detail-input-group">
+            <label htmlFor="apellidos" className="detail-label">Apellidos:</label>
+            <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} className="detail-input" required />
           </div>
-          <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <div className="detail-input-group">
+            <label htmlFor="email" className="detail-label">Email:</label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="detail-input" required />
           </div>
-          <div>
-            <label>Teléfono:</label>
-            <input type="tel" value={telefono} onChange={(e) => setTelefono(e.target.value)} required />
+          <div className="detail-input-group">
+            <label htmlFor="telefono" className="detail-label">Teléfono:</label>
+            <input type="tel" value={telefono} onChange={(e) => setTelefono(e.target.value)} className="detail-input" required />
           </div>
-          <div>
-            <label>Mensaje/Consulta:</label>
-            <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} rows="5" required />
+          <div className="detail-input-group">
+            <label htmlFor="mensaje" className="detail-label">Mensaje/Consulta:</label>
+            <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} className="detail-input" rows="5" required />
           </div>
-          <button type="submit">Enviar Consulta</button>
+          <div className="detail-buttons">
+            <button type="submit" className="button">Enviar Consulta</button>
+            <Link to="/home">
+            <button className='button'>Volver</button>
+            </Link>
+          </div>
         </form>
       </div>
-
-      <Link to="/home">
-          <button>Volver</button>
-        </Link>
-
     </div>
   );
 }

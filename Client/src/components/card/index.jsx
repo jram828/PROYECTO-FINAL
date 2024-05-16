@@ -1,22 +1,48 @@
 import './card.css'
+import { Link  } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setSource } from '../../redux/actions';
 
 
 
-function Card({caso}) {
-    const { id, tipo, cedula_cliente, cedula_abogado, fecha, descripción } = caso;
+function Card({item}) {
+
+  const { cedulaAbogado,
+    cedulaCliente, 
+    apellido, 
+    nombre
+     } = item;
+
+     const dispatch = useDispatch()
+
+
+  if (cedulaAbogado) { useEffect(() => {
+    dispatch(setSource('abogado'));
+  }, [dispatch]); 
+} else {
+   useEffect(() => {
+    dispatch(setSource('cliente'));
+  }, [dispatch]);
+  }
+
+
+
+
+      const cedula = item.cedulaAbogado ? item.cedulaAbogado : item.cedulaCliente
+      console.log('item', item)
+      console.log('cedula', cedula);
 
   return (
-    <div>
-        <h1>Caso:{id}</h1>
-    <div>
-       <h2>Tipo de caso: {tipo}</h2>
-       <h2>Cliente: {cedula_cliente}</h2>
-       <h2>Abogado: {cedula_abogado}</h2>
-       <h2>Fecha: {fecha}</h2>
-       <h2>Descripción: {descripción}</h2>
+    <Link  to={`/home/detail/${cedula}`}>
+    <div className='tarjetaAbogado' >
+      <h2>Nombre: {nombre}</h2>
+      <h2>Apellido: {apellido}</h2>
+      <h2>Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
       </div>
-    </div>
+      </Link>
   )
 }
+
 
 export default Card
