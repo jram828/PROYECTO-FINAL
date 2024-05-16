@@ -53,7 +53,7 @@ export const getClientes = () => {
       };
 
  export const getAbogados = () => {
-  const endpoint = `${URL}abogados`;
+  const endpoint = `${URL}abogados?pagina=1&porPagina=10`;
   return async (dispatch) => {
       const {data} = await axios.get(endpoint);
           return dispatch({
