@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createUser.css';
+import { crearUsuario } from '../../../../Server/src/controllers/usuario/insertaUsuario';
 
 
 // eslint-disable-next-line react/prop-types
-function CreateUser ({crearUsuario}) {
+function CreateUser () {
 
   const [ urlImage, setUrlImage] = useState ("")
   
