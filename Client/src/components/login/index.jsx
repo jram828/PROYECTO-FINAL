@@ -9,12 +9,8 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { setAuth } from "../../redux/actions";
-<<<<<<< HEAD
 import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 import axios from "axios";
-=======
-// import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
->>>>>>> 8edb3d829de0f638457ef9b1466cad09df3097bb
 
 
 // eslint-disable-next-line react/prop-types
