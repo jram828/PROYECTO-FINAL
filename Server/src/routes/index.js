@@ -5,6 +5,7 @@ const consultaRouter = require("./consultaRoutes");
 const tipoDeCasosRouter=require('./tipoDeCasosRoutes')
 const casosRouter=require('./casosRoutes')
 const loginRouter = require('./../routes/loginRoute')
+const usuariosRouter = require("./../routes/usuariosRoutes");
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use("/consultas", consultaRouter);
 router.use("/tiposdecasos",tipoDeCasosRouter)
 router.use("/casos",casosRouter)
 router.use("/login",loginRouter)
+router.use("/usuarios", usuariosRouter);
 
 module.exports = router;

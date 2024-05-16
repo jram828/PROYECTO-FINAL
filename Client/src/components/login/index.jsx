@@ -43,15 +43,15 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const submitHandler = async(e) => {
     e.preventDefault();
 
-  const { email } = userData;
-  console.log("Datos login:", email);
-  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+  const { email, password } = userData;
+  console.log("Datos login:", email, password);
+  const URL = "https://legaltech-6u3y.onrender.com/login";
   try {
-    const { data } = await axios(URL + `/email?email=${email}`);
+    const { data } = await axios(URL + `/?email=${email}&password=${password}`);
     console.log("Login 2:", data);
     const { access } = data;
-
-    if (email === data.correo) {
+    console.log('Access: ',access)
+    if (access) {
         dispatch(setAuth(access));
         navigate("/home");
       } else {
@@ -70,10 +70,11 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   console.log("Datos login:", user.email);
   const URL = "https://legaltech-6u3y.onrender.com/clientes";
     try {
-    const { data } = await axios(URL + `/email?email=${user.email}`);
+      const { data } = await axios(URL + `/?correo=${user.email}`);
+      
     console.log("Login 2:", data);
       // const { access } = data;
-      if (user.email === data.correo) {
+      if (user.email === data[0].correo) {
         dispatch(setAuth(true));
         navigate("/home");
       } else {

@@ -10,6 +10,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 //   native: false,
 // });
 
+
+/* **** Esto va cuando se hace el despliegue en RENDER */
 console.log("Dbdeploy: ", DB_DEPLOY);
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -20,6 +22,12 @@ const sequelize = new Sequelize(DB_DEPLOY, {
     },
   },
 });
+
+/*  ******   Esto va cuando lo quiero ejecutar localmente */
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
+//   logging: false, 
+//   native: false, 
+// });
 
 const basename = path.basename(__filename);
 const modelDefiners = [];
@@ -58,13 +66,16 @@ TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotifi
 DocumentoLegal.belongsTo(DocumentoTemplate)
 DocumentoLegal.belongsTo(Caso)
 
-//Caso.belongsTo(Abogado)
-//Cliente.hasMany(Caso)
-//Caso.belongsTo(TipoDeCaso)
-TipoDeCaso.hasMany(Caso, { foreignKey: 'TipoDeCasoId' })
-//Caso.belongsTo(Cliente)
-Cliente.hasMany(Caso, { foreignKey: 'cedulaCliente' })
-Abogado.hasMany(Caso, { foreignKey: 'cedulaAbogado' })
+
+Cliente.hasMany(Caso)
+Caso.belongsTo(Cliente)
+
+Abogado.hasMany(Caso)
+Caso.belongsTo(Abogado)
+
+TipoDeCaso.hasMany(Caso)
+Caso.belongsTo(TipoDeCaso)
+
 Caso.hasOne(Cotizacion)
 
 Cotizacion.belongsTo(Caso)
@@ -72,8 +83,8 @@ Cotizacion.hasOne(Contrato)
 Contrato.belongsTo(Cotizacion)
 Consulta.belongsTo(Cliente)
 
-// Cliente.belongsTo(Usuario);
-// Abogado.belongsTo(Usuario)
+Cliente.belongsTo(Usuario);
+Abogado.belongsTo(Usuario)
 
 
 module.exports = {

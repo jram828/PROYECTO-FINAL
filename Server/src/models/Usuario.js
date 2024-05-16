@@ -16,7 +16,7 @@ module.exports = (sequelize) =>{
         },
         password:{
             type: DataTypes.STRING,
-            unique: true,
+            // unique: true,
             validate:{
                 len: [1,10]
             }
@@ -25,7 +25,7 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             unique: true,
             validate:{
-                len: [1,20]
+                len: [1,255]
             }
         },
         rol: {
