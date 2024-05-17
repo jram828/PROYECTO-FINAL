@@ -2,7 +2,7 @@ const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
 
 // const { mercadopago } = require("mercadopago");
 
-const crearOrden = async (body) => {
+const crearOrden = async (item) => {
   // SDK de Mercado Pago
 
   // Agrega credenciales
@@ -11,7 +11,7 @@ const crearOrden = async (body) => {
       "TEST-7845349164975835-051714-6919a564464a369582bcbc8ff6f8cc4f-1817941600",
   });
 
-  
+  console.log('Body crear orden: ',item)
 const preference = new Preference(client);
   try {
 
@@ -19,9 +19,9 @@ const preference = new Preference(client);
       body: {
         items: [
           {
-            title: body.description,
-            quantity: Number(body.quantity),
-            unit_price: Number(body.price),
+            title: item.description,
+            quantity: Number(item.quantity),
+            unit_price: Number(item.price),
           },
           // {
           //   title: req.body.description,
