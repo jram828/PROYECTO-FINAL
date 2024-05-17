@@ -1,6 +1,6 @@
 const { Cliente, Abogado, Usuario } = require('../../DB')
 
-const getLogin = async (password, email)=>{
+const getPayments = async (password, email)=>{
     const login = await Usuario.findOne({
         where:{
             correo: email,
@@ -27,5 +27,5 @@ const getLogin = async (password, email)=>{
 }
 
 module.exports = {
-    getLogin
+    getPayments
 }

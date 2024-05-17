@@ -5,8 +5,10 @@ const { crearOrdenHandler } = require("../handlers/paymentsHandler");
 const paymentsRouter = Router();
 
 paymentsRouter.get("/", getPaymentsHandler);
-paymentsRouter.get("/crearorden", crearOrdenHandler);
-// paymentsRouter.get("/success", successHandler);
-// paymentsRouter.get("/webhook", webhookHandler);
+paymentsRouter.post("/crearorden", crearOrdenHandler);
+paymentsRouter.get("/success", successHandler);
+paymentsRouter.get("/webhook", webhookHandler);
+paymentsRouter.get("/failure", failureHandler);
+paymentsRouter.get("/pending", pendingHandler);
 
 module.exports = paymentsRouter;

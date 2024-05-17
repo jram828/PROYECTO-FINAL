@@ -20,6 +20,7 @@ const preference = new Preference(client);
         items: [
           {
             title: item.description,
+            description: item.description,
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
           },
@@ -30,10 +31,11 @@ const preference = new Preference(client);
           // },
         ],
         back_urls: {
-          success: "https://legaltech-6u3y.onrender.com/webhook",
-          failure: "https://legaltech-6u3y.onrender.com/webhook",
-          pending: "https://legaltech-6u3y.onrender.com/webhook",
+          success: "https://legaltech-6u3y.onrender.com/success",
+          failure: "https://legaltech-6u3y.onrender.com/failure",
+          pending: "https://legaltech-6u3y.onrender.com/pending",
         },
+        notification_url:"https://legaltech-6u3y.onrender.com/webhook",
         auto_return: "approved",
       },
     });
