@@ -8,9 +8,10 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 //import {Auth0Provider} from "@auth0/auth0-react";
 const container = document.getElementById("root");
 const root = createRoot(container);
+const { GOOGLE_CLIENT_ID } = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 root.render(
-  <GoogleOAuthProvider clientId="526585059274-7hpu57211jdp1ivjc0bec7ba5jkpcdaa.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
 
     <Provider store={store}>
       <BrowserRouter>

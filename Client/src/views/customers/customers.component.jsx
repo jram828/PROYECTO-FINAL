@@ -1,5 +1,4 @@
 import style from'./customers.module.css';
-import React from 'react';
 import { Link  } from 'react-router-dom';
 import SearchBar from '../../components/searchBarClientes';
 import FiltrosClientes from '../../components/filtrosClientes';
@@ -11,7 +10,7 @@ function CustomersPage() {
 
   return (
     <div className={style.container}>
-        <p classname={style.titulo}>clientes</p>
+        <p className={style.titulo}>clientes</p>
         <Link to="/home/customers/crearcliente">
           <button className='button'>Crear cliente</button>
         </Link>

@@ -1,6 +1,5 @@
 
 import style from './crearAbogado.module.css';
-import React from 'react';
 //import { Link } from 'react-router-dom';
 //import userStoreLawyers from '../../store/lawyers';
 import { useState } from 'react';

@@ -8,9 +8,6 @@ import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
-// import { useDispatch } from "react-redux";
-// import { setAuth } from "../../redux/actions";
-
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 
@@ -45,9 +42,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
   const { email, password } = userData;
   console.log("Datos login:", email, password);
-  const URL = "https://legaltech-6u3y.onrender.com/login";
+
   try {
-    const { data } = await axios(URL + `/?email=${email}&password=${password}`);
+    const { data } = await axios(`/login/?email=${email}&password=${password}`);
     console.log("Login 2:", data);
     const { access } = data;
     console.log('Access: ',access)
@@ -68,9 +65,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     // Loginf();
     dispatch(setUserToken(user));
   console.log("Datos login:", user.email);
-  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+
     try {
-      const { data } = await axios(URL + `/?correo=${user.email}`);
+      const { data } = await axios(`/clientes/?correo=${user.email}`);
       
     console.log("Login 2:", data);
       // const { access } = data;

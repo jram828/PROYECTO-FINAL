@@ -18,8 +18,11 @@ import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
-//const { URL } = process.env;
-// axios.defaults.baseURL = "https://localhost:3001";
+import axios from "axios";
+
+// const { URL } = process.env;
+const URL = import.meta.env.VITE_URL_BACK;
+axios.defaults.baseURL = URL;
 
 function App() {
   

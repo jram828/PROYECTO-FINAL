@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../cards/index';
 import { useEffect } from 'react';
 import { getClientes } from '../../redux/actions';
-//import { Link } from 'react-router-dom';
 
 function FiltrosClientes() {
 

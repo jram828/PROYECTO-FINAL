@@ -8,6 +8,8 @@ import { crearUsuario } from '../../handlers/crearUsuario';
 // eslint-disable-next-line react/prop-types
 function CreateUser () {
 
+  const URL_CLOUDINARY = import.meta.env.VITE_URL_CLOUDINARY;
+
   const [ urlImage, setUrlImage] = useState ("")
   
     const [userDataCrear, setUserDataCrear] = useState({
@@ -48,7 +50,7 @@ function CreateUser () {
       data.append("file",file);
       data.append("upload_preset", "Preset_LegalTech");
 
-      const response = await axios.post("https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload", data)
+      const response = await axios.post(URL_CLOUDINARY, data)
       
       setUrlImage(response.data.secure_url)
       console.log(response)

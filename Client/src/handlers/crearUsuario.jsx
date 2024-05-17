@@ -11,7 +11,7 @@ export async function crearUsuario(data) {
     } = data;
 console.log("data del post", data)
 
-  const URL = 'https://legaltech-6u3y.onrender.com/usuarios';
+  const URL = '/usuarios';
   try {
     await axios.post(URL, {
       correo: `${correo}`,
