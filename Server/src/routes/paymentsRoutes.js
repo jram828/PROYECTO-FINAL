@@ -4,9 +4,9 @@ const { getPaymentsHandler } = require("../handlers/paymentsHandler");
 
 const paymentsRouter = Router();
 
-loginRouter.get("/", getPaymentsHandler);
-loginRouter.get("/crearorden", crearOrdenHandler);
-loginRouter.get("/success", successHandler);
-loginRouter.get("/webhook", webhookHandler);
+paymentsRouter.get("/", getPaymentsHandler);
+paymentsRouter.get("/crearorden", crearOrdenHandler);
+paymentsRouter.get("/success", successHandler);
+paymentsRouter.get("/webhook", webhookHandler);
 
 module.exports = {paymentsRouter};
