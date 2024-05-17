@@ -13,8 +13,9 @@ const crearOrden = async () => {
 
   
 const preference = new Preference(client);
+  try {
 
-preference
+    const { response } = await preference
   .create({
     body: {
       items: [
@@ -23,11 +24,25 @@ preference
           quantity: 1,
           unit_price: 200,
         },
+        // {
+        //   title: req.body.description,
+        //   unit_price: Number(req.body.price),
+        //   quantity: Number(req.body.quantity),
+        // },
       ],
+      back_urls: {
+        success: "https://legaltech-6u3y.onrender.com/webhook",
+        failure: "https://legaltech-6u3y.onrender.com/webhook",
+        pending: "https://legaltech-6u3y.onrender.com/webhook",
+      },
+      auto_return: "approved",
     },
   })
-  .then(console.log)
-  .catch(console.log);
+   return response
+  } catch (error) {
+    return error
+}
+
 
   // // Step 2: Initialize the client object
   // const client = new MercadoPagoConfig({
