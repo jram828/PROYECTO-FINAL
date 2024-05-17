@@ -38,6 +38,7 @@ const preference = new Preference(client);
       auto_return: "approved",
     },
   })
+    console.log('Response crear orden:',response)
    return response
   } catch (error) {
     return error
@@ -87,8 +88,6 @@ const preference = new Preference(client);
   //   ],
   // });
 
-  console.log("result crear orden:", newOrden);
-  return newOrden;
 };
 
 module.exports = { crearOrden };
