@@ -1,6 +1,5 @@
 
-import './crearAbogado.css';
-import React from 'react';
+import style from './crearAbogado.module.css';
 //import { Link } from 'react-router-dom';
 //import userStoreLawyers from '../../store/lawyers';
 import { useState } from 'react';
@@ -18,12 +17,14 @@ function CrearAbogado() {
       nombre: '',
       apellido: '',
       correo: '',
+      password:'',
       telefono: '',
       calle: '',
       numero: '',
       codigoPostal: '',
       ciudad: '',
-      pais: ''
+      pais: '',
+      
     });
     console.log(userDataRegistro)
   
@@ -54,79 +55,94 @@ function CrearAbogado() {
 
   return (
     
-      <div className="contenedorregistro">
-        <form className="datos" method="post" onSubmit={submitHandlerRegistro}>
+      <div className={style.container}>
+        <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
           {/* <div className="logo-aveza">
             <img src={logo} alt="logo-aveza" />
           </div> */}
-          <h1 className="titulo">Crear Abogado</h1>
+          <h1 className={style.titulo}>Crear Abogado</h1>
           <br />
           <br />
-          <div className="nombreapellidos">
-            <label htmlFor="nombre" className="labelregistrodecliente">
+          <div className={style.container2}>
+            <label htmlFor="nombre" className={style.label}>
               Nombre(s):
             </label>
             <input
               type="text"
               name="nombre"
               id="name"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.nombre}
               onChange={handleChangeRegistro}
             />
-            <label htmlFor="apellidos" className="labelregistrodecliente">
+            <label htmlFor="apellidos" className={style.label}>
               Apellido(s):
             </label>
             <input
               type="text"
-              className="cajaregistrocliente"
+              className={style.caja}
               name="apellido"
               id="lastname"
               value={userDataRegistro.apellido}
               onChange={handleChangeRegistro}
             />
-            <label htmlFor="numerocedula" className="labelregistrodecliente">
+          </div>
+          <br />
+          <br />
+          <div className={style.container2}>
+            <label htmlFor="numerocedula" className={style.label}>
               Numero de cédula:
             </label>
             <input
               type="number"
-              className="cajaregistrocliente"
+              className={style.caja}
               name="cedulaAbogado"
               id="cedula"
               value={userDataRegistro.cedulaAbogado}
               onChange={handleChangeRegistro}
             />
-            <label htmlFor="matricula" className="labelregistrodecliente">
-            Matricula:
-          </label>
-          <input
-            type="number"
-            className="cajaregistrocliente"
-            name="matricula"
-            id="matricula"
-            value={userDataRegistro.matricula}
-            onChange={handleChangeRegistro}
-          />
+            <label htmlFor="matricula" className={style.label}>
+              Matricula:
+            </label>
+            <input
+              type="number"
+              className={style.caja}
+              name="matricula"
+              id="matricula"
+              value={userDataRegistro.matricula}
+              onChange={handleChangeRegistro}
+            />
           </div>
           <br />
           <br />
-          <div className="numerocedula">
-            <label htmlFor="correo" className="labelregistrodecliente">
+          <div className={style.container2}>
+            <label htmlFor="correo" className={style.label}>
               Email:
             </label>
             <input
               type="email"
               name="correo"
               id="email"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.correo}
+              onChange={handleChangeRegistro}
+            />
+            <label htmlFor="password" className={style.label}>
+              Contraseña:
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="email"
+              className={style.caja}
+              value={userDataRegistro.password}
               onChange={handleChangeRegistro}
             />
             {/* </div>
           <br />
           <br />
           <div className="nombreapellidos"> */}
-            <label htmlFor="telefono" className="labelregistrodecliente">
+            <label htmlFor="telefono" className={style.label}>
               {" "}
               Teléfono:
             </label>
@@ -134,19 +150,19 @@ function CrearAbogado() {
               type="number"
               name="telefono"
               id="telefono"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.telefono}
               onChange={handleChangeRegistro}
             />
   
-            <label htmlFor="calle" className="labelregistrodecliente">
+            <label htmlFor="calle" className={style.label}>
               Calle:
             </label>
             <input
               type="text"
               name="calle"
               id="street"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.calle}
               onChange={handleChangeRegistro}
             />
@@ -155,25 +171,25 @@ function CrearAbogado() {
           <br />
           <br />
   
-          <div className="nombreapellidos">
-            <label htmlFor="numero" className="labelregistrodecliente">
+          <div className={style.container2}>
+            <label htmlFor="numero" className={style.label}>
               Numero:
             </label>
             <input
               type="text"
-              className="cajaregistrocliente"
+              className={style.caja}
               name="numero"
               id="numero"
               value={userDataRegistro.numero}
               onChange={handleChangeRegistro}
             />
   
-            <label htmlFor="codigopostal" className="labelregistrodecliente">
+            <label htmlFor="codigopostal" className={style.label}>
               Código postal:
             </label>
             <input
               type="number"
-              className="cajaregistrocliente"
+              className={style.caja}
               name="codigoPostal"
               id="codigopostal"
               value={userDataRegistro.codigoPostal}
@@ -182,26 +198,26 @@ function CrearAbogado() {
           </div>
           <br />
           <br />
-          <div className="honorarios">
-            <label htmlFor="ciudad" className="labelregistrodecliente">
+          <div className={style.container2}>
+            <label htmlFor="ciudad" className={style.label}>
               Ciudad:
             </label>
             <input
               type="text"
               name="ciudad"
               id="city"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.ciudad}
               onChange={handleChangeRegistro}
             />
-            <label htmlFor="ciudad" className="labelregistrodecliente">
+            <label htmlFor="ciudad" className={style.label}>
               Pais:
             </label>
             <input
               type="text"
               name="pais"
               id="country"
-              className="cajaregistrocliente"
+              className={style.caja}
               value={userDataRegistro.pais}
               onChange={handleChangeRegistro}
             />
@@ -210,10 +226,10 @@ function CrearAbogado() {
           </div>
   
           <br />
-          <div className="documentoagenerar">
+          <div className={style.documentoagenerar}>
             
             <input
-              className="botones"
+              className="button"
               type="submit"
               value="Guardar"
               disabled={
@@ -223,7 +239,7 @@ function CrearAbogado() {
                 !userDataRegistro.apellido
               }
             />
-            <Link to='/home/lawyers'><button>Volver</button></Link>
+            <Link to='/home/lawyers'><button className='button'>Volver</button></Link>
           </div>
         </form>
       </div>

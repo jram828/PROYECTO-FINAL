@@ -1,4 +1,4 @@
-import './crearCliente.css';
+import style from './crearCliente.module.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 //import userStoreCostumers from '../../store/costumers';
@@ -15,6 +15,7 @@ function CrearCliente() {
       nombre: '',
       apellido: '',
       correo: '',
+      password: '',
       telefono: '',
       calle: '',
       numero: '',
@@ -49,135 +50,144 @@ function CrearCliente() {
     
 
   return (
-    <div className="contenedorcrearcliente">
-        <form onSubmit={handleSubmit} method="post" className="formulario">
-          <h1 className="titulo">Crear cliente</h1>
+    <div className={style.container}>
+        <form onSubmit={handleSubmit} method="post" className={style.formulario}>
+          <h1 className={style.titulo}>Crear cliente</h1>
           <br />
           <br />
-          <div className="nombreapellido">
-            <label htmlFor="nombre" className="labelcrearcliente">
+          <div className={style.nombreapellido}>
+            <label htmlFor="nombre" className={style.labelcrearcliente}>
               Nombre(s):
             </label>
             <input
               type="text"
               name="nombres"
               id="name"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
-            <label htmlFor="apellidos" className="labelcrearcliente">
+            <label htmlFor="apellidos" className={style.labelcrearcliente}>
               Apellido(s):
             </label>
             <input
               type="text"
               name="apellidos"
               id="lastname"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
           </div>
   
           <br />
           <br />
-          <div className="cedulaemail">
-            <label htmlFor="numerocedula" className="labelcrearcliente">
+          <div className={style.cedulaemail}>
+            <label htmlFor="numerocedula" className={style.labelcrearcliente}>
               Numero de cédula:
             </label>
             <input
               type="text"
               name="cedula"
               id="cedula"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
-            <label htmlFor="correo" className="labelcrearcliente">
+            <label htmlFor="correo" className={style.labelcrearcliente}>
               Email:
             </label>
             <input
               name="email"
               type="email"
               onChange={handleChange}
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
+            />
+             <label htmlFor="passwors" className={style.labelcrearcliente}>
+              Contraseña:
+            </label>
+            <input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              className={style.cajascrearcliente}
             />
           </div>
   
           <br />
           <br />
-          <div className="direccioncelular">
-            <label htmlFor="direccion" className="labelcrearcliente">
+          <div className={style.direccioncelular}>
+            <label htmlFor="direccion" className={style.cajascrearcliente}>
               Dirección:
             </label>
             <input
               type="text"
               name="direccion"
               id="address"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
-            <label htmlFor="telefono" className="labelcrearcliente">
+            <label htmlFor="telefono" className={style.labelcrearcliente}>
               Celular:
             </label>
             <input
               type="text"
               name="celular"
               id="celular"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
           </div>
   
           <br />
           <br />
-          <div className="ciudadcontrasena">
-            <label htmlFor="ciudad" className="labelcrearcliente">
+          <div className={style.ciudadcontrasena}>
+            <label htmlFor="ciudad" className={style.labelcrearcliente}>
               Ciudad:
             </label>
             <input
               type="text"
               name="nombre_ciudad"
               id="city"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
-            <label htmlFor="contrasena" className="labelcrearcliente">
+            <label htmlFor="contrasena" className={style.labelcrearcliente}>
               Contraseña:
             </label>
             <input
               type="password"
               name="password"
               id="password"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
           </div>
 
           <br />
           <br />
-          <div className="paiscontrasena">
-            <label htmlFor="pais" className="labelcrearcliente">
+          <div className={style.paiscontrasena}>
+            <label htmlFor="pais" className={style.labelcrearcliente}>
               Pais:
             </label>
             <input
               type="text"
               name="nombre_pais"
               id="country"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
-            <label htmlFor="codigopostalcontrasena" className="labelcrearcliente">
+            <label htmlFor="codigopostalcontrasena" className={style.labelcrearcliente}>
               Codigo Postal:
             </label>
             <input
               type="text"
               name="codigo_postal"
               id="code"
-              className="cajascrearcliente"
+              className={style.cajascrearcliente}
               onChange={handleChange}
             />
             </div>
           <br />
           <br />
-          <div className="botonescrearcliente">
+          <div className={style.botonescrearcliente}>
 
             <Link><button type='Submit' className='button'>Crear</button></Link>
             <Link to='/home/customers'><button className='button'>Volver</button></Link>

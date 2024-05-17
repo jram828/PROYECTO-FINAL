@@ -1,6 +1,6 @@
-const { getAllTipoDeCaso } = require('../controllers/getAllTipoDeCaso.js')
-const { createTipoDeCaso } = require('../controllers/createTipoDeCaso.js')
-const { deleteConsulta } = require('../controllers/deleteConsulta')
+const { getAllTipoDeCaso } = require('../controllers/tipodeCaso/getAllTipoDeCaso.js')
+const { createTipoDeCaso } = require('../controllers/tipodeCaso/createTipoDeCaso.js')
+const { deleteTipoDeCaso } = require('../controllers/tipodeCaso/deleteTipoDeCaso.js')
 
 const getTipoDeCasoHandler = async (req, res)=>{
     try {
@@ -21,4 +21,15 @@ const postTipoDeCasoHandler = async (req, res) =>{
     }
 }
 
-module.exports={postTipoDeCasoHandler,getTipoDeCasoHandler}
+const deleteTipoDeCasoHandler = async (req, res) =>{
+    const { TipoDeCasoid } = req.body
+    try {
+        const response = await deleteTipoDeCaso( TipoDeCasoid)
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+
+
+module.exports={postTipoDeCasoHandler,getTipoDeCasoHandler,deleteTipoDeCasoHandler}

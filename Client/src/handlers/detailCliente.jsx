@@ -3,7 +3,7 @@ import axios from 'axios';
 
   export async function getClienteById(id) {
     try {
-      const response = await axios.get(`https://legaltech-6u3y.onrender.com/clientes/${id}`);
+      const response = await axios.get(`/clientes/${id}`);
       return response.data
      
     } catch (error) {

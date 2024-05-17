@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link,  } from 'react-router-dom';
 import { postCaso } from "../../handlers/crearCaso";
 import { getAbogados } from "../../handlers/todosAbogados";
 import { getClientes } from "../../handlers/todosClientes";
+import style from './crearCaso.module.css';
 
 function CrearCaso() {
   const [userDataRegistro, setUserDataRegistro] = useState({
@@ -68,71 +70,72 @@ function CrearCaso() {
   };
 
   return (
-    <div className="container">
-      <h1 className="titulo">Crear caso</h1>
-      <form onSubmit={submitHandlerRegistro} className="formulario">
-        <div className="input-row">
-          <div>
-            <label className="label">Tipo de caso:</label>
-
+    <div className={style.container}>
+      <h1 className={style.titulo}>Crear caso</h1>
+      <form onSubmit={submitHandlerRegistro} className={style.formulario}>
+        <div className={style.inputrow}>
+          
+            <label className={style.label}>Tipo de caso:</label>
             <input
-              className="input"
+              className={style.input}
               name="TipoDeCasoId"
               id="TipoDeCasoId"
               value={userDataRegistro.TipoDeCasoId}
               onChange={handleChangeRegistro}
             ></input>
-          </div>
-          <label className="label">Fecha:</label>
+          
+          <label className={style.label}>Fecha:</label>
           <input
-            className="input"
+            className={style.input}
             name="fecha"
             id="fecha"
             value={userDataRegistro.fecha}
             onChange={handleChangeRegistro}
           />
-          <br />
-          <label className="label">Fecha Final:</label>
+          
+          <label className={style.label}>Fecha Final:</label>
           <input
-            className="input"
+            className={style.input}
             name="fechaFin"
             id="fechaFin"
             value={userDataRegistro.fechaFin}
             onChange={handleChangeRegistro}
           />
         </div>
-        <div className="input-row">
-          <label className="label">Abogado:</label>
+        <div className={style.inputrow}>
+          <label className={style.label}>Abogado:</label>
           <select
             name="cedulaAbogado"
             id="cedulaAbogado"
+            className={style.select}
             onChange={(event) => handleChangeRegistro(event)}
           >
-            <option value="">Abogados</option>
+            <option value="" className={style.option}>Abogados</option>
             {abogados.map((abogado) => (
-              <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado}>
+              <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
                 {abogado.nombre} {abogado.apellido} {abogado.cedulaAbogado}
               </option>
             ))}
           </select>
-          <label className="label">Cliente:</label>
+          <label className={style.label}>Cliente:</label>
           <select
             name="cedulaCliente"
             id="cedulaCliente"
             onChange={handleChangeRegistro}
+            className={style.select}
           >
-            <option value="">Clientes</option>
+            <option value="" className={style.option}>Clientes</option>
             {clientes.map((cliente) => (
-              <option key={cliente.cedulaCliente} value={cliente.cedulaCliente}>
+              <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.option}>
                 {cliente.nombre} {cliente.apellido}
               </option>
             ))}
           </select>
         </div>
-        <div className="input-row">
-          <label className="label">Descripcion:</label>
+        <div className={style.inputrow}>
+          <label className={style.label}>Descripcion:</label>
           <textarea
-            className="input"
+            className={style.input}
             name="descripcion"
             id="descripcion"
             value={userDataRegistro.descripcion}
@@ -141,6 +144,9 @@ function CrearCaso() {
         </div>
         <div className="botones">
           <input type="submit" className="button" value="Guardar" />
+          <Link to="/home/cases/:id">
+          <button className='button'>Volver</button>
+          </Link>
         </div>
       </form>
     </div>

@@ -11,12 +11,12 @@ function Password() {
 
       <form>
         <br />
-        <div className="recordar-password">
+        {/* <div className="recordar-password">
           <label className="label-password" htmlFor="usuario">
             Usuario:
           </label>
           <input type="text" name="usuario" id="username" />
-        </div>
+        </div> */}
         <br />
         <br />
         <div className="recordar-password">

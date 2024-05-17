@@ -18,8 +18,11 @@ import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
-//const { URL } = process.env;
-// axios.defaults.baseURL = "https://localhost:3001";
+import axios from "axios";
+
+// const { URL } = process.env;
+// const URL = import.meta.env.VITE_URL_BACK;
+axios.defaults.baseURL = "https://legaltech-6u3y.onrender.com";
 
 function App() {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
@@ -42,7 +45,7 @@ function App() {
       <Route path='/home/lawyers' element={<LawyersPage/>}/>
       <Route path='/home/customers' element={<CustomersPage/>}/>
         <Route path='/home/detail' element={<Detail/>}/>
-        <Route path='/home/detail/:id' element={<Detail/>}/>
+        <Route path='/home/detail/:cedula' element={<Detail/>}/>
         <Route path='/home/cases/:id' element={<Cases/>}/>
         <Route path='/home/cases/crearcaso' element={<CrearCaso/>}/>
         <Route path='/home/costumers/:id' element={<Detail/>}/>
@@ -57,48 +60,48 @@ function App() {
         {/*<Route path="/home" element={<Home />} />
         <Route
           path="/home/detail/:id"
-          element={isAuthenticated ? <Detail /> : <Landing />}
+          element={<Detail />}
         />
         <Route
           path="/home/cases/:id"
-          element={isAuthenticated ? <Cases /> : <Landing />}
+          element={<Cases />}
         />
         <Route
           path="/home/costumers/:id"
-          element={isAuthenticated ? <Costumers /> : <Landing />}
+          element={<Costumers />}
         />
         <Route
           path="/home/lawyers/:id"
-          element={isAuthenticated ? <Lawyers /> : <Landing />}
+          element={<Lawyers />}
         />
         <Route
           path="/home/documents/:id"
-          element={isAuthenticated ? <Documents /> : <Landing />}
+          element={<Documents />}
         />
         <Route
           path="/home/diary"
-          element={isAuthenticated ? <Diary /> : <Landing />}
+          element={<Diary />}
         />
         <Route
           path="/home/payments"
-          element={isAuthenticated ? <Payments /> : <Landing />}
+          element={<Payments />}
         />
         <Route
           path="/home/consultations"
-          element={isAuthenticated ? <Consultations /> : <Landing />}
+          element={<Consultations />}
         />
         <Route
           path="/home/statistics"
-          element={isAuthenticated ? <Statistics /> : <Landing />}
+          element={<Statistics />}
         />
         <Route
           path="/home/crearabogado"
-          element={isAuthenticated ? <CrearAbogado /> : <Landing />}
+          element={<CrearAbogado />}
         />
 
         <Route
           path="/home/crearcliente"
-          element={isAuthenticated ? <CreateCliente /> : <Landing />}
+          element={<CreateCliente />}
         />
         <Route
           path="/home/crearcaso"

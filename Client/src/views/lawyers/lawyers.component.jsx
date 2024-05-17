@@ -1,70 +1,28 @@
-import './lawyers.module.css';
+import style from './lawyers.module.css';
 import React from 'react';
 import { Link,  } from 'react-router-dom';
-import Cards from '../../components/cards';
-import { getAbogados } from '../../handlers/todosAbogados';
-import { useState, useEffect } from 'react';
+import FiltrosAbogados from '../../components/filtrosAbogados';
+import SearchBar from '../../components/searchBarAbogado';
 
 
 function LawyersPage() {
 
-    
-    const [abogados, setAbogados] = useState([]);
-    const [mostrarAbogados, setMostrarAbogados] = useState(false);
-  
-    useEffect(() => {
-      
-      const obtenerAbogados = async () => {
-        try {
-          const listaAbogados = await getAbogados(); 
-          setAbogados(listaAbogados);
-        } catch (error) {
-          console.error('Error al obtener los abogados:', error);
-        }
-      };
-  obtenerAbogados()
-      
-    }, []);
-
-    const handleMostrarAbogados = () => {
-        setMostrarAbogados(true);
-        
-      };
-    
-
 
   return (
-    <div>
-        <p>Abogados</p>
+    <div className={style.container}>
+        <p className={style.titulo}>Abogados</p>
         <Link to="/home/lawyers/crearabogado">
-          <button>Craer abogado</button>
+          <button className='button'>Crear abogado</button>
         </Link>
         <Link to="/home">
-          <button>Volver</button>
+          <button className='button'>Volver</button>
         </Link>
+        <SearchBar></SearchBar>
         
-        <br></br>
-        <br></br>
-        <select>
-        <option name="">Filtrar por Nombre</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por Pais</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por tipo de caso</option>
-        <option></option>
-        </select>
-        <br></br>
-        <br></br>
-          <button onClick={handleMostrarAbogados}>Ver Todos</button>
-          <div>
-          {mostrarAbogados && <Cards items={abogados} />}
-          </div>
+       <FiltrosAbogados></FiltrosAbogados>
     </div>
   )
 }
+
 
 export default LawyersPage

@@ -1,7 +1,7 @@
-import './cases.css';
-import React from 'react';
-import Filtros from '../../components/filtros';
-import Order from '../../components/order';
+import style from './cases.module.css';
+
+
+
 import { Link } from 'react-router-dom';
 
 function Cases() {
@@ -9,12 +9,12 @@ function Cases() {
     <div>
       <div>
         <p>Casos</p>
-        <Order></Order>
-       <Filtros></Filtros>
+       
       </div>
-      <Link to='/home'>
-          <button >Volver</button>
-          </Link>
+        <Link to='/home'>
+        <button className='button'>Volver</button>
+        </Link>
+        <Link to='/home/cases/crearcaso'><button className='button'>Crear caso</button></Link>
     </div>
   )
 }

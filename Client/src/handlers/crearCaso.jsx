@@ -11,7 +11,7 @@ export async function postCaso(data) {
   } = data;
   console.log("data del post", data);
 
-  const URL = "https://legaltech-6u3y.onrender.com/casos";
+  const URL = "/casos";
   try {
     await axios.post(URL, {
       cedulaCliente: `${cedulaCliente}`,

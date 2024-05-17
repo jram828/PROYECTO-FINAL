@@ -28,9 +28,9 @@ export async function Loginf(userData) {
   const dispatch = useDispatch();
   const { email } = userData;
   console.log("Datos login:", { email });
-  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+  // const URL = "/clientes";
   try {
-    const { data } = await axios(URL + `email?email=${email}`);
+    const { data } = await axios(`/clientes/email?email=${email}`);
     console.log("Login 2:", data);
     const { access } = data;
 

@@ -1,5 +1,5 @@
-import './costumers.css';
-import React, {useEffect, useState} from 'react';
+import style from './costumers.module.css';
+import {useEffect, useState} from 'react';
 
 import { getClientes } from '../../handlers/todosClientes';
 import { useNavigate } from "react-router-dom";
@@ -28,10 +28,10 @@ function Costumers() {
 
 
   return (
-    <select className='select'>
-       <option value="" className='option'>Clientes</option>
+    <select className={style.select}>
+       <option value="" className={style.option}>Clientes</option>
       {clientes.map(cliente => (
-        <option key={cliente.cedulaCliente} value={cliente.cedulaCliente}>
+        <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.option}>
           {cliente.nombre} {cliente.apellido}
         </option>
       ))}
