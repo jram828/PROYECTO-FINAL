@@ -15,7 +15,7 @@ const crearOrden = async () => {
 const preference = new Preference(client);
   try {
 
-    const { response } = await preference
+    const response = await preference
   .create({
     body: {
       items: [
@@ -30,12 +30,12 @@ const preference = new Preference(client);
         //   quantity: Number(req.body.quantity),
         // },
       ],
-      back_urls: {
-        success: "https://legaltech-6u3y.onrender.com/webhook",
-        failure: "https://legaltech-6u3y.onrender.com/webhook",
-        pending: "https://legaltech-6u3y.onrender.com/webhook",
-      },
-      auto_return: "approved",
+      // back_urls: {
+      //   success: "https://legaltech-6u3y.onrender.com/webhook",
+      //   failure: "https://legaltech-6u3y.onrender.com/webhook",
+      //   pending: "https://legaltech-6u3y.onrender.com/webhook",
+      // },
+      // auto_return: "approved",
     },
   })
     console.log('Response crear orden:',response)
