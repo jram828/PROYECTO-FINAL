@@ -28,10 +28,10 @@ const crearOrden = async () => {
 
   // Step 6: Make the request
   payment.create({ body, requestOptions }).then(console.log).catch(console.log);
-  mercadopago.configure({
-    access_token:
-      "TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
-  });
+  // mercadopago.configure({
+  //   access_token:
+  //     "TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
+  // });
 
   // const newOrden = await mercadopago.preferences.create({
   //   item: [
