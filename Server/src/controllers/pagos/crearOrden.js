@@ -21,7 +21,7 @@ const preference = new Preference(client);
           {
             title: item.description,
             quantity: Number(item.quantity),
-            unit_price: Number(item.price),
+            unit_price: Number(item.unit_price),
           },
           // {
           //   title: req.body.description,
