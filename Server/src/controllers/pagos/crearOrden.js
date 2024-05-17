@@ -44,7 +44,7 @@ const crearOrden = async () => {
   //   ],
   // });
 
-  console.log("result crear orden:", newOrden);
+  console.log("result crear orden:", payment);
   return newOrden;
 };
 
