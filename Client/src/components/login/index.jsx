@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState} from "react";
 // import { validar } from "../../utils/validacion";
 import style from "./login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +11,17 @@ import axios from "axios";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 
+// setAuthenticated = useAuthStore ((state)=> state.setAuthenticated );
+// setUser = useAuthStore ((state)=> state.setUser );
+// isAuthenticated = useAuthStore ((state)=> state.isAuthenticated );
+
+
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setUser = useAuthStore(state => state.setUser);
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -63,7 +72,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
    
     const user = jwtDecode(response.credential);
     // Loginf();
-    dispatch(setUserToken(user));
+    setUser(user);
   console.log("Datos login:", user.email);
 
     try {

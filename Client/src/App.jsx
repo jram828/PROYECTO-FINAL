@@ -25,9 +25,10 @@ import axios from "axios";
 axios.defaults.baseURL = "https://legaltech-6u3y.onrender.com";
 
 function App() {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  //const isAuthenticated = store((state) => state.isAuthenticated);
   
     // const location = useLocation();
-   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
 

@@ -10,12 +10,13 @@ function Costumers() {
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
+    
     const obtenerClientes = async () => {
       try {
-        const listaClientes = await getClientes();
+        const listaClientes = await getClientes(); 
         setClientes(listaClientes);
       } catch (error) {
-        console.error("Error al obtener los clientes:", error);
+        console.error('Error al obtener los clientes:', error);
       }
     };
 
@@ -24,10 +25,7 @@ function Costumers() {
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    navigate(`/detail/${e.target.value}`);
 
-  };
 
   return (
     <select className={style.select}>
@@ -38,7 +36,7 @@ function Costumers() {
         </option>
       ))}
     </select>
-  );
+  )
 }
 
 export default Costumers
