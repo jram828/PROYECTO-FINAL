@@ -15,7 +15,7 @@ const crearOrden = async () => {
   const body = {
     transaction_amount: 20,
     description: "honorarios",
-    payment_method_id: "COP",
+    payment_method_id: "credit_card",
     payer: {
       email: "jram828@yahoo.com",
     },
