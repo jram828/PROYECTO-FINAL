@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getPaymentsHandler, successHandler, failureHandler, pendingHandler } = require("../handlers/paymentsHandler");
+const { getPaymentsHandler, successHandler, failureHandler, pendingHandler, webhookHandler } = require("../handlers/paymentsHandler");
 const { crearOrdenHandler } = require("../handlers/paymentsHandler");
 
 const paymentsRouter = Router();
