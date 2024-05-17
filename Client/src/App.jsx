@@ -21,8 +21,8 @@ import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 
 // const { URL } = process.env;
-const URL = import.meta.env.VITE_URL_BACK;
-axios.defaults.baseURL = URL;
+// const URL = import.meta.env.VITE_URL_BACK;
+axios.defaults.baseURL = "https://legaltech-6u3y.onrender.com";
 
 function App() {
   
