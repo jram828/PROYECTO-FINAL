@@ -45,7 +45,7 @@ const crearOrden = async () => {
   // });
 
   console.log("result crear orden:", payment);
-  return newOrden;
+  return payment;
 };
 
 module.exports = { crearOrden };
