@@ -8,7 +8,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 //import {Auth0Provider} from "@auth0/auth0-react";
 const container = document.getElementById("root");
 const root = createRoot(container);
-const { GOOGLE_CLIENT_ID } = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 root.render(
   <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
