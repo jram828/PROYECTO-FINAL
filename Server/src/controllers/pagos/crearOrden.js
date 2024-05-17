@@ -1,6 +1,6 @@
 const { mercadopago } = require("mercadopago");
 
-const crearOrden = async (descripcion) => {
+const crearOrden = async () => {
   mercadopago.configure({
     access_token:
       "TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
@@ -10,7 +10,7 @@ const crearOrden = async (descripcion) => {
     item: [
       {
         title: "honorarios",
-        unit_price: "20",
+        unit_price: 20,
         currency_id: "COP",
         quantity: 1
       }

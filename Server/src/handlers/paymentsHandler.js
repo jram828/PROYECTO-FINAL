@@ -12,8 +12,8 @@ const getPaymentsHandler = async (req, res)=>{
 
 const crearOrdenHandler = async (req, res) => {
   try {
-    const { password, email } = req.query;
-    const response = await crearOrden(password, email);
+    // const { password, email } = req.query;
+    const response = await crearOrden();
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
