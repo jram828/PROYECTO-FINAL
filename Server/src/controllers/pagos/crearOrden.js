@@ -2,7 +2,7 @@ const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
 
 // const { mercadopago } = require("mercadopago");
 
-const crearOrden = async () => {
+const crearOrden = async (body) => {
   // SDK de Mercado Pago
 
   // Agrega credenciales
@@ -15,29 +15,28 @@ const crearOrden = async () => {
 const preference = new Preference(client);
   try {
 
-    const response = await preference
-  .create({
-    body: {
-      items: [
-        {
-          title: "Honorarios",
-          quantity: 1,
-          unit_price: 200,
+    const response = await preference.create({
+      body: {
+        items: [
+          {
+            title: body.description,
+            quantity: Number(body.quantity),
+            unit_price: Number(body.price),
+          },
+          // {
+          //   title: req.body.description,
+          //   unit_price: Number(req.body.price),
+          //   quantity: Number(req.body.quantity),
+          // },
+        ],
+        back_urls: {
+          success: "https://legaltech-6u3y.onrender.com/webhook",
+          failure: "https://legaltech-6u3y.onrender.com/webhook",
+          pending: "https://legaltech-6u3y.onrender.com/webhook",
         },
-        // {
-        //   title: req.body.description,
-        //   unit_price: Number(req.body.price),
-        //   quantity: Number(req.body.quantity),
-        // },
-      ],
-      // back_urls: {
-      //   success: "https://legaltech-6u3y.onrender.com/webhook",
-      //   failure: "https://legaltech-6u3y.onrender.com/webhook",
-      //   pending: "https://legaltech-6u3y.onrender.com/webhook",
-      // },
-      // auto_return: "approved",
-    },
-  })
+        auto_return: "approved",
+      },
+    });
     console.log('Response crear orden:',response)
    return response
   } catch (error) {
