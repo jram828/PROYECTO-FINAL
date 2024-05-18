@@ -22,7 +22,7 @@ import axios from "axios";
 
 // const { URL } = process.env;
 // const URL = import.meta.env.VITE_URL_BACK;
-axios.defaults.baseURL = "https://legaltech-6u3y.onrender.com";
+axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
 
 function App() {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);

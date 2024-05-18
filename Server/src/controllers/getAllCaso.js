@@ -1,5 +1,6 @@
 const { Caso } = require("../db_conn");
 
+
 const getAllCaso = async () => {
   const getAllCasoBd = await Caso.findAll({
     where: {
@@ -13,3 +14,4 @@ const getAllCaso = async () => {
 module.exports = {
   getAllCaso,
 };
+
