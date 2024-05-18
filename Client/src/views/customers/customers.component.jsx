@@ -17,8 +17,6 @@ function CustomersPage() {
         <Link to="/home">
           <button className='button'>Volver</button>
         </Link>
-       
-        <SearchBar></SearchBar>
         <FiltrosClientes></FiltrosClientes>
         
     </div>

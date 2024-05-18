@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterNameAbogado } from '../../redux/actions';
 
-const SearchBar = () => {
+const SearchBar = ({onFilter}) => {
 
 
   const [filtro, setFiltro] = useState('');
@@ -24,6 +24,7 @@ const SearchBar = () => {
     if (e.key === 'Enter') {
       if (filtro && inputValue) {
         const formattedInputValue = formatInputValue(inputValue);
+        onFilter(filtro, formattedInputValue);
         dispatch(filterNameAbogado(filtro, formattedInputValue));
       } else {
         console.log('Por favor seleccione un rango');

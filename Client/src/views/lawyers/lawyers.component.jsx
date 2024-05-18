@@ -17,8 +17,6 @@ function LawyersPage() {
         <Link to="/home">
           <button className='button'>Volver</button>
         </Link>
-        <SearchBar></SearchBar>
-        
        <FiltrosAbogados></FiltrosAbogados>
     </div>
   )
