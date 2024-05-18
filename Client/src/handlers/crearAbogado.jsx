@@ -19,7 +19,7 @@ export async function postAbogado(data) {
     } = data;
 console.log("data del post", data)
 
-  const URL = 'https://legaltech-6u3y.onrender.com/abogados';
+  const URL = '/abogados';
   try {
     await axios.post(URL, {
       correo: `${correo}`,

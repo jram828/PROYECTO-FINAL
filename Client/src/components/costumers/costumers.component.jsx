@@ -1,5 +1,5 @@
 import style from './costumers.module.css';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import { getClientes } from '../../handlers/todosClientes';
 import { useNavigate } from "react-router-dom";

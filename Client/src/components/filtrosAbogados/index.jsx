@@ -1,6 +1,5 @@
 import './filtrosAbogados.css';
-import { useState, useEffect } from 'react';
-//import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAbogados } from '../../redux/actions'
