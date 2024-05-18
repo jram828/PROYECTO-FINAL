@@ -64,11 +64,7 @@ const rootReducer = (state = initialState, action) => {
       ...state,
       clientes:action.payload
     }
-    case FILTER_LASTNAME_CLIENTE:
-    return {
-      ...state,
-      clientes:action.payload
-    }
+  
     case SET_SOURCE:
       return {
         ...state,

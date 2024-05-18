@@ -5,20 +5,30 @@ import { filterNameAbogado } from '../../redux/actions';
 const SearchBar = () => {
 
 
+  const [filtro, setFiltro] = useState('');
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-    console.log('value',event.target.value)
+  const handleFieldChange = (e) => {
+    setFiltro(e.target.value);
+  };
+  
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
+
   
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      const formattedInputValue = formatInputValue(inputValue);
-      dispatch(filterNameAbogado(formattedInputValue));
-    } 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      if (filtro && inputValue) {
+        const formattedInputValue = formatInputValue(inputValue);
+        dispatch(filterNameAbogado(filtro, formattedInputValue));
+      } else {
+        console.log('Por favor seleccione un rango');
+      }
+    }
   };
 
   const formatInputValue = (value) => {
@@ -26,18 +36,28 @@ const SearchBar = () => {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   };
 
+  console.log('filtro', filtro)
+  console.log('dato', inputValue)
+  
 
   return (
     <div className="barra_busqueda">
-      <label>Buscar por nombre: </label>
+      <select onChange={handleFieldChange} value={filtro}> 
+        <option value=''>Buscar por:</option>
+        <option value='nombre'>Nombre:</option>
+        <option value='apellido'>Apellido:</option>
+        <option value='ciudad'>Ciudad:</option>
+      </select>
       <input 
-        className='busqueda' 
+        className='busquedaNombre' 
         placeholder="Busqueda..." 
         type="text" 
         value={inputValue} 
-        onChange={handleInputChange}
         onKeyDown={handleKeyDown}
+        onChange={handleInputChange}
+      
       />
+    
       
     </div>
   );

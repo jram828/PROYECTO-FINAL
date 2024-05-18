@@ -97,8 +97,8 @@ export const getClientes = () => {
       };
   };      
 
-export const filterlastNameCliente = (apellido) => {
-  const endpoint = `${URL}clientes?nombre=${apellido}`;
+/*export const filterlastNameCliente = (filtro, inputValue) => {
+  const endpoint = ;
   console.log('URL',endpoint)
   return async (dispatch) => {
       try{ 
@@ -112,14 +112,15 @@ export const filterlastNameCliente = (apellido) => {
       }
       };
       
-    }
+    }*/
 
-    export const filterNameCliente = (name) => {
-      const endpoint = `${URL}clientes?nombre=${name}`;
+    export const filterNameCliente = (filtro, inputValue) => {
+      const endpoint = `${URL}clientes?${filtro}=${inputValue}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
           const {data} = await axios.get(endpoint);
+          
               return dispatch({
                    type: FILTER_NAME_CLIENTE,
                    payload: data,
@@ -131,8 +132,8 @@ export const filterlastNameCliente = (apellido) => {
           
         }
 
-    export const filterNameAbogado = (name) => {
-      const endpoint = `${URL}abogados?nombre=${name}`;
+    export const filterNameAbogado = (filtro, inputValue) => {
+      const endpoint = `${URL}abogados?${filtro}=${inputValue}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
