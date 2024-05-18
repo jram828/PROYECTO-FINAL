@@ -21,10 +21,9 @@ function Payments() {
 
     const [responsePreference, setResponsePreference] = useState({});
   
-  const handlePay = async (e) => {
+  const handlePay = async () => {
     try {
       // Realizar la llamada a la API para crear la orden de pago en MercadoPago
-    e.preventDefault();
     console.log("Datos crear usuario: ", userPreference);
       const paymentData = crearPago(userPreference);
 
