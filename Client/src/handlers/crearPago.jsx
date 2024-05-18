@@ -7,9 +7,9 @@ export async function crearPago(data) {
   const URL = "/pagos/crearpago";
   try {
    const response = await axios.post(URL, {
-      description: `${description}`,
-      quantity: `${quantity}`,
-      unit_price: `${unit_price}`,
+      description: description,
+      quantity: quantity,
+      unit_price: unit_price,
    });
     console.log('Response handler crear pago: ', response)
     return response.data;
