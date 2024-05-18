@@ -1,14 +1,14 @@
 const { getClienteById } = require("../controllers/cliente/getClienteById");
 const { getAllCliente } = require("../controllers/cliente/getAllClientes");
 const { getClienteByName } = require("../controllers/cliente/getClienteByName");
-const { createClienteBd } = require("../controllers/cliente/postClientesController");
+const {
+  createClienteBd,
+} = require("../controllers/cliente/postClientesController");
 const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
 const {
   actualizaCliente,
 } = require("../controllers/cliente/postActualizaClientes");
-const {
-  getClientByEmail,
-} = require("../controllers/cliente/getClientByEmail");
+const { getClientByEmail } = require("../controllers/cliente/getClientByEmail");
 
 const clientesHandler = async (req, res) => {
   //const { name } = req.query;
@@ -65,7 +65,7 @@ const postClientesHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
-    password
+    password,
   } = req.body;
 
   try {
@@ -80,7 +80,7 @@ const postClientesHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
-      password
+      password,
     );
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");
@@ -88,6 +88,18 @@ const postClientesHandler = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
   // res.status(200).send(`creando actividades`);
+};
+
+const getclientesPerfilHandler = async (req, res) => {
+  const { nombre, apellido } = req.query;
+
+  try {
+    const response = await getClientByPerfil(nombre, apellido);
+    // console.log("Response by perfil:", response);
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const postEliminaClientes = async (req, res) => {
@@ -144,4 +156,5 @@ module.exports = {
   postEliminaClientes,
   postActualizaClientes,
   getClientByEmailHandler,
+  getclientesPerfilHandler,
 };

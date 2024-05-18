@@ -1,16 +1,15 @@
 const { Caso } = require("../db_conn");
 
-const getAllCaso = async ()=>{
-    const getAllCasoBd = await Caso.findAll({
-        where: {
-          fechaFin: null,
-        },
-      });
+const getAllCaso = async () => {
+  const getAllCasoBd = await Caso.findAll({
+    where: {
+      fechaFin: null,
+    },
+  });
 
-    return getAllCasoBd;
+  return getAllCasoBd;
 };
 
-
 module.exports = {
-    getAllCaso,
-}
+  getAllCaso,
+};
