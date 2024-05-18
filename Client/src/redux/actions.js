@@ -11,7 +11,8 @@ export const FILTER_NAME_CLIENTE = "FILTER_NAME_CLIENTE";
 export const SET_SOURCE = "SET_SOURCE";
 export const FILTER_LASTNAME_CLIENTE = "FILTER_LASTNAME_CLIENTE";
 export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
-export const ORDER_CLIENTES = "ORDER_CLIENTES";
+export const ORDER_CLIENTES = "ORDER_CLIENTES"
+
 
 //const URL = 'http://localhost:3001/'
 const URL = 'https://legaltech-6u3y.onrender.com/'
@@ -136,7 +137,7 @@ export const getClientes = () => {
 
 
         export const orderAbogados = () => {
-          const endpoint = `${URL}abogados?pagina=1&porPagina=50`;
+          const endpoint = `${URL}abogados?field=apellido&order=asc`;
           
          return async (dispatch) => {
              const {data} = await axios.get(endpoint);
@@ -146,3 +147,17 @@ export const getClientes = () => {
                    });
                  };
              };        
+
+
+             export const orderClientes = () => {
+              const endpoint = `${URL}clientes?field=apellido&order=asc`;
+              
+             return async (dispatch) => {
+                 const {data} = await axios.get(endpoint);
+                     return dispatch({
+                          type: ORDER_CLIENTES,
+                          payload: data,
+                       });
+                     };
+                 };        
+            

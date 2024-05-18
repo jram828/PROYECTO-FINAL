@@ -36,8 +36,8 @@ function Card({item}) {
   return (
     <Link  to={`/home/detail/${cedula}`}>
     <div className='tarjetaAbogado' >
-      <h2>Nombre: {nombre}</h2>
       <h2>Apellido: {apellido}</h2>
+      <h2>Nombre: {nombre}</h2>
       <h2>Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
       </div>
       </Link>
