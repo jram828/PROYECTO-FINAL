@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createUser.css';
 import { crearUsuario } from '../../handlers/crearUsuario';
-
+// import process from 'dotenv'
 
 // eslint-disable-next-line react/prop-types
 function CreateUser () {
 
-  const URL_CLOUDINARY = import.meta.env.VITE_URL_CLOUDINARY;
-
+  // const URL_CLOUDINARY = import.meta.env.VITE_URL_CLOUDINARY;
+   const URL_CLOUDINARY ="https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
   const [ urlImage, setUrlImage] = useState ("")
   
     const [userDataCrear, setUserDataCrear] = useState({
