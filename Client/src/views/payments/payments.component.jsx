@@ -19,12 +19,17 @@ function Payments() {
     description: "Honorarios",
   });
 
+    const [responsePreference, setResponsePreference] = useState({});
+  
   const handlePay = async (e) => {
     try {
       // Realizar la llamada a la API para crear la orden de pago en MercadoPago
     e.preventDefault();
     console.log("Datos crear usuario: ", userPreference);
-    const paymentData=crearPago(userPreference);
+      const paymentData = crearPago(userPreference);
+
+      setResponsePreference(paymentData);
+      console.log("Respuesta creacion pago: ", responsePreference);
       // Redirigir a la página de pago de MercadoPago
       window.open(paymentData.init_point, "_blank");
     } catch (error) {
@@ -132,7 +137,7 @@ function Payments() {
 
         <Wallet
           onSubmit={handlePay}
-          initialization={{ preferenceId: "<PREFERENCE_ID>" }}
+          initialization={{ preferenceId: `${responsePreference.id}` }}
           customization={{ texts: { valueProp: "smart_option" } }}
         />
       </div>
