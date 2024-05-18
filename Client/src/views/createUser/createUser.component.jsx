@@ -17,11 +17,6 @@ function CreateUser () {
       password: "",
       imagen: "",
       rol: "",
-      // cedula: "",
-      // celular: "",
-      // direccion: "",
-      // nombre_ciudad: "",
-      // tipo_usuario:"1"
     });
   
     const handleChangeCrear = (e) => {
