@@ -11,7 +11,7 @@ export async function crearPago(data) {
       quantity: `${quantity}`,
       unit_price: `${unit_price}`,
    });
-    
+    console.log('Response handler crear pago: ', response)
     return response.data;
     // window.alert("Se ha registrado el usuario con éxito.");
   } catch (error) {
