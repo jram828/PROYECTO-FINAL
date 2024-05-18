@@ -1,5 +1,5 @@
 import style from './lawyers.module.css';
-import React, {useEffect,useState} from 'react';
+import {useEffect,useState} from 'react';
 
 import { getAbogados } from '../../handlers/todosAbogados';
 

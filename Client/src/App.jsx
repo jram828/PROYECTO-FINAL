@@ -18,13 +18,17 @@ import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
-//const { URL } = process.env;
-// axios.defaults.baseURL = "https://localhost:3001";
+import axios from "axios";
+
+// const { URL } = process.env;
+// const URL = import.meta.env.VITE_URL_BACK;
+axios.defaults.baseURL = "https://legaltech-6u3y.onrender.com";
 
 function App() {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  //const isAuthenticated = store((state) => state.isAuthenticated);
   
     // const location = useLocation();
-   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
 

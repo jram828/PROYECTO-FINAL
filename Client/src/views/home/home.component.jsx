@@ -1,8 +1,8 @@
 import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
-import picture from './homepic.jpg'
-import logo from './logo.png'
-import legaltech from './legaltech.png'
+import picture from "../../assets/homepic.jpg";
+import logo from '../../assets/logo.png'
+import legaltech from "../../assets/legaltech.png";
 
 function Home() {
   

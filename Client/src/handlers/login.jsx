@@ -1,8 +1,13 @@
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import { setAuth } from "../redux/actions";
-import { useDispatch } from "react-redux";
 
+//import { setAuth } from "../redux/actions";
+//import { useDispatch } from "react-redux";
+import useAuthStore from "../zustand/useAuthStore";
+
+// setAuthenticated = store ((state)=> state.setAuthenticated ) ;
+// setUser = store ((state)=> state.setUser ) ;
+// isAuthenticated = store ((state)=> state.isAuthenticated ) ;
 
 
 
@@ -16,13 +21,16 @@ export async function Loginfo() {
 }
 
 export async function Loginf(userData) {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { email } = userData;
   console.log("Datos login:", { email });
-  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+  // const URL = "/clientes";
   try {
-    const { data } = await axios(URL + `email?email=${email}`);
+    const { data } = await axios(`/clientes/email?email=${email}`);
     console.log("Login 2:", data);
     const { access } = data;
 

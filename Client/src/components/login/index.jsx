@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState} from "react";
 // import { validar } from "../../utils/validacion";
 import style from "./login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -8,14 +8,20 @@ import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
-// import { useDispatch } from "react-redux";
-// import { setAuth } from "../../redux/actions";
-
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
+
+
+// setAuthenticated = useAuthStore ((state)=> state.setAuthenticated );
+// setUser = useAuthStore ((state)=> state.setUser );
+// isAuthenticated = useAuthStore ((state)=> state.isAuthenticated );
 
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setUser = useAuthStore(state => state.setUser);
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -45,9 +51,9 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
   const { email, password } = userData;
   console.log("Datos login:", email, password);
-  const URL = "https://legaltech-6u3y.onrender.com/login";
+
   try {
-    const { data } = await axios(URL + `/?email=${email}&password=${password}`);
+    const { data } = await axios(`/login/?email=${email}&password=${password}`);
     console.log("Login 2:", data);
     const { access } = data;
     console.log('Access: ',access)
@@ -66,11 +72,11 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
    
     const user = jwtDecode(response.credential);
     // Loginf();
-    dispatch(setUserToken(user));
+    setUser(user);
   console.log("Datos login:", user.email);
-  const URL = "https://legaltech-6u3y.onrender.com/clientes";
+
     try {
-      const { data } = await axios(URL + `/?correo=${user.email}`);
+      const { data } = await axios(`/clientes/?correo=${user.email}`);
       
     console.log("Login 2:", data);
       // const { access } = data;

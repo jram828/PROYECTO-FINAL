@@ -1,7 +1,6 @@
 import style from './filtros.module.css';
 import Cards from '../cards/index';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function Filtros() {
 
