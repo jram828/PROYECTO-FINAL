@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderClientes } from "../../redux/actions";
 import './orderCliente'
@@ -8,16 +8,22 @@ function OrderClientes() {
   
   function handleOrder(event) {
     event.preventDefault();
-    dispatch(orderClientes());
+    dispatch(orderClientes(event.target.value));
   }
 
   return (
     <div>
       <div>
-        <button onClick={handleOrder}>Ordenar A-Z</button>
+        <select onChange={handleOrder}>
+          <option value=''>Ordenar:</option>
+          <option value='asc'>A-Z</option>
+          <option value='desc'>Z-A</option>
+        </select>
+
+        
+        {/*<button onClick={handleOrder}>Ordenar A-Z</button>*/}
       </div>
-      <div>
-      </div>
+      
     </div>
   );
 }

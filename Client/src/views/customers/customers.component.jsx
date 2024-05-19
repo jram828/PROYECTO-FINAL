@@ -10,7 +10,7 @@ function CustomersPage() {
 
   return (
     <div className={style.container}>
-        <p className={style.titulo}>clientes</p>
+        <p className={style.titulo}>Clientes</p>
         <Link to="/home/customers/crearcliente">
           <button className='button'>Crear cliente</button>
         </Link>

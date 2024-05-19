@@ -2,14 +2,13 @@ import axios from 'axios';
 
 export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 export const SET_USERTOKEN = "SET_USERTOKEN";
-export const FILTER_NAME_ABOGADO = "FILTER_NAME_ABOGADO";
+export const FILTER_ABOGADO = "FILTER_NAME_ABOGADO";
 export const GET_ABOGADOS = "GET_ABOGADOS";
 export const GET_CLIENTES = "GET_CLIENTES";
 export const GET_BY_ID_ABOGADO = "GET_BY_ID_ABOGADO";
 export const GET_BY_ID_CLIENTE = "GET_BY_ID_CLIENTE";
-export const FILTER_NAME_CLIENTE = "FILTER_NAME_CLIENTE";
+export const FILTER_CLIENTE = "FILTER_NAME_CLIENTE";
 export const SET_SOURCE = "SET_SOURCE";
-export const FILTER_LASTNAME_CLIENTE = "FILTER_LASTNAME_CLIENTE";
 export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
 export const ORDER_CLIENTES = "ORDER_CLIENTES";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
@@ -17,7 +16,8 @@ export const DELETE_CLIENTE = "DELETE_CLIENTES";
 
 
 //const URL = 'http://localhost:3001/'
-const URL = 'https://legaltech-6u3y.onrender.com/'
+//const URL = 'https://legaltech-6u3y.onrender.com/'
+const URL = 'https://legaltech-develop.onrender.com/'
 
 
 export const setAuth = (auth) => {
@@ -103,15 +103,15 @@ export const getClientes = () => {
   };      
 
 
-    export const filterNameCliente = (filtro, inputValue) => {
-      const endpoint = `${URL}clientes?${filtro}=${inputValue}`;
+    export const filterCliente = (filtro) => {
+      const endpoint = `${URL}clientes?${filtro}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
           const {data} = await axios.get(endpoint);
           
               return dispatch({
-                   type: FILTER_NAME_CLIENTE,
+                   type: FILTER_CLIENTE,
                    payload: data,
               });
           } catch (error) {
@@ -121,14 +121,14 @@ export const getClientes = () => {
           
         }
 
-    export const filterNameAbogado = (filtro, inputValue) => {
-      const endpoint = `${URL}abogados?${filtro}=${inputValue}`;
+    export const filterAbogado = (filtro) => {
+      const endpoint = `${URL}abogados?${filtro}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
           const {data} = await axios.get(endpoint);
               return dispatch({
-                   type: FILTER_NAME_ABOGADO,
+                   type: FILTER_ABOGADO,
                    payload: data,
               });
           } catch (error) {
@@ -138,8 +138,8 @@ export const getClientes = () => {
         }
 
 
-        export const orderAbogados = () => {
-          const endpoint = `${URL}abogados?field=apellido&order=asc`;
+        export const orderAbogados = (value) => {
+          const endpoint = `${URL}abogados?field=apellido&order=${value}`;
           
          return async (dispatch) => {
              const {data} = await axios.get(endpoint);
@@ -151,8 +151,8 @@ export const getClientes = () => {
              };        
 
 
-             export const orderClientes = () => {
-              const endpoint = `${URL}clientes?field=apellido&order=asc`;
+             export const orderClientes = (value) => {
+              const endpoint = `${URL}clientes?field=apellido&order=${value}`;
               
              return async (dispatch) => {
                  const {data} = await axios.get(endpoint);

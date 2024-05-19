@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link,  } from 'react-router-dom';
 import { postCaso } from "../../handlers/crearCaso";
 import { getAbogados } from "../../handlers/todosAbogados";
 import { getClientes } from "../../handlers/todosClientes";
 import style from './crearCaso.module.css';
+import { Link } from "react-router-dom";
+import { getTiposCasos } from "../../handlers/todosTiposdecasos";
 
 function CrearCaso() {
   const [userDataRegistro, setUserDataRegistro] = useState({
@@ -12,7 +13,7 @@ function CrearCaso() {
     fecha: "",
     fechaFin: "",
     descripcion: "",
-    TipoDeCasoId: "",
+    TipoDeCasoid: "",
   });
   console.log(userDataRegistro);
 
@@ -48,6 +49,22 @@ function CrearCaso() {
     obtenerClientes();
   }, []);
 
+  const [tipos, setTipos] = useState([]);
+
+  useEffect(() => {
+    const obtenerTipos = async () => {
+      try {
+        const listaTipos = await getTiposCasos();
+        setTipos(listaTipos);
+      } catch (error) {
+        console.error("Error al obtener los tipos de casos:", error);
+      }
+    };
+
+    obtenerTipos();
+  }, []);
+  
+
   const handleChangeRegistro = (e) => {
     const { name, value } = e.target;
     setUserDataRegistro((prevState) => ({
@@ -69,21 +86,29 @@ function CrearCaso() {
     }
   };
 
+  
   return (
-    <div className={style.container}>
+
+<div className={style.container}>
       <h1 className={style.titulo}>Crear caso</h1>
       <form onSubmit={submitHandlerRegistro} className={style.formulario}>
         <div className={style.inputrow}>
           
             <label className={style.label}>Tipo de caso:</label>
-            <input
-              className={style.input}
-              name="TipoDeCasoId"
-              id="TipoDeCasoId"
-              value={userDataRegistro.TipoDeCasoId}
-              onChange={handleChangeRegistro}
-            ></input>
-          
+             <select
+            name="TipoDeCasoid"
+            id="TipoDeCasoid"
+            className={style.select}
+            onChange={(event) => handleChangeRegistro(event)}
+          >
+             <option value="" className={style.option}>Tipos de casos</option>
+            {/*tipos?.map((tipo) => (
+              <option key={tipo.TipoDeCasoid} value={tipo.TipoDeCasoid} className={style.option}>
+                {tipo.descripcion} 
+              </option>
+            ))*/}
+          </select>
+    
           <label className={style.label}>Fecha:</label>
           <input
             className={style.input}
@@ -150,6 +175,7 @@ function CrearCaso() {
         </div>
       </form>
     </div>
+
   );
 }
 
