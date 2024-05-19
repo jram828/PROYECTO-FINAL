@@ -31,11 +31,12 @@ const preference = new Preference(client);
           },
         ],
         back_urls: {
-          success: "https://legaltech-6u3y.onrender.com/success",
-          failure: "https://legaltech-6u3y.onrender.com/failure",
-          pending: "https://legaltech-6u3y.onrender.com/pending",
+          success: "https://legaltech-develop.onrender.com/pagos/success",
+          failure: "https://legaltech-develop.onrender.com/pagos/failure",
+          pending: "https://legaltech-develop.onrender.com/pagos/pending",
         },
-        notification_url: "https://legaltech-6u3y.onrender.com/webhook",
+        notification_url:
+          "https://legaltech-develop.onrender.com/pagos/webhook",
         auto_return: "approved",
       },
     });
