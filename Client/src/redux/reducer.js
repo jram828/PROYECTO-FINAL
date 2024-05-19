@@ -4,8 +4,8 @@ import { SET_AUTHENTICATED,
   GET_CLIENTES, 
   GET_BY_ID_ABOGADO, 
   GET_BY_ID_CLIENTE, 
-  FILTER_NAME_ABOGADO, 
-  FILTER_NAME_CLIENTE,
+  FILTER_ABOGADO, 
+  FILTER_CLIENTE,
   SET_SOURCE,
   ORDER_ABOGADOS,
   ORDER_CLIENTES,
@@ -58,12 +58,12 @@ const rootReducer = (state = initialState, action) => {
                   ...state,
                   cliente:action.payload
               }     
-      case FILTER_NAME_ABOGADO:
+      case FILTER_ABOGADO:
     return {
       ...state,
       abogados:action.payload
     }
-    case FILTER_NAME_CLIENTE:
+    case FILTER_CLIENTE:
     return {
       ...state,
       clientes:action.payload

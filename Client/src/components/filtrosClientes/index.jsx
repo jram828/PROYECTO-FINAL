@@ -2,7 +2,7 @@ import './filtrosClientes.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../cards/index';
-import { getClientes, filterNameCliente } from '../../redux/actions';
+import { getClientes, filterCliente } from '../../redux/actions';
 import SearchBar from '../searchBarClientes';
 
 function FiltrosClientes() {
@@ -20,7 +20,7 @@ function FiltrosClientes() {
   };
 
   const handleFilter = (filtro, inputValue) => {
-    dispatch(filterNameCliente(filtro, inputValue));
+    dispatch(filterCliente(filtro, inputValue));
     setFilterApplied(true);
   };
 

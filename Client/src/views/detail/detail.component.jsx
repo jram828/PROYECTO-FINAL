@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbogado, deleteCliente } from '../../redux/actions';
+import { getAbogados, getClientes} from '../../redux/actions'
 
 
 function Detail() {
@@ -37,6 +38,7 @@ function Detail() {
           dispatch(deleteAbogado(cedula));
           console.log('cedula', cedula);
           navigate('/home/lawyers');
+          dispatch(getAbogados())
         }
       }else {
         const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
@@ -44,6 +46,7 @@ function Detail() {
         if (isConfirmed) {
           dispatch(deleteCliente(cedula));
           navigate('/home/customers');
+          dispatch(getClientes())
         }
       }
     }

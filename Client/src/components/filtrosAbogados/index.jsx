@@ -2,7 +2,7 @@ import './filtrosAbogados.css';
 import { useState, useEffect } from 'react';
 import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterNameAbogado, getAbogados } from '../../redux/actions';
+import { filterAbogado, getAbogados } from '../../redux/actions';
 import SearchBar from '../../components/searchBarAbogado/index';
 
 function FiltrosAbogados() {
@@ -21,11 +21,11 @@ function FiltrosAbogados() {
   const handleVerTodosClick = () => {
     dispatch(getAbogados());
     localStorage.removeItem('abogadoFilter');
-    setFilterApplied(false); // Reset filter applied state
+    setFilterApplied(false); 
   };
 
   const handleFilter = (filtro, inputValue) => {
-    dispatch(filterNameAbogado(filtro, inputValue));
+    dispatch(filterAbogado(filtro, inputValue));
     localStorage.setItem('abogadoFilter', JSON.stringify({ filtro, inputValue }));
     setFilterApplied(true);
   };
