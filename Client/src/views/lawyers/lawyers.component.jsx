@@ -2,7 +2,7 @@ import style from './lawyers.module.css';
 import React from 'react';
 import { Link,  } from 'react-router-dom';
 import FiltrosAbogados from '../../components/filtrosAbogados';
-import OrderAbogados from '../../components/orderAbogado.jsx/orderAbogado';
+import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
 
 
 function LawyersPage() {

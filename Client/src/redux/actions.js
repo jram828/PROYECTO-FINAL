@@ -11,7 +11,9 @@ export const FILTER_NAME_CLIENTE = "FILTER_NAME_CLIENTE";
 export const SET_SOURCE = "SET_SOURCE";
 export const FILTER_LASTNAME_CLIENTE = "FILTER_LASTNAME_CLIENTE";
 export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
-export const ORDER_CLIENTES = "ORDER_CLIENTES"
+export const ORDER_CLIENTES = "ORDER_CLIENTES";
+export const DELETE_ABOGADO = "DELETE_ABOGADO";
+export const DELETE_CLIENTE = "DELETE_CLIENTES";
 
 
 //const URL = 'http://localhost:3001/'
@@ -159,5 +161,33 @@ export const getClientes = () => {
                           payload: data,
                        });
                      };
-                 };        
-            
+                 };
+
+                 export const deleteAbogado = (cedulaAbogado) => {
+                  const endpoint = `${URL}abogados/delete`;
+                      
+                     return async (dispatch) => {
+                         const data = await axios.post(endpoint, {cedulaAbogado});
+                          console.log('url', endpoint);
+                          console.log('cedula', cedulaAbogado)
+                             return dispatch({
+                                  type: DELETE_ABOGADO,
+                                  payload: data,
+                               });
+                             };
+                         };
+                         
+        
+               export const deleteCliente = (cedulaCliente) => {
+                     const endpoint = `${URL}clientes/elimina`;
+                              
+                       return async (dispatch) => {
+                          const data = await axios.post(endpoint, {cedulaCliente} );
+                          console.log('url', endpoint);
+                          console.log('cedula', cedulaAbogado)
+                            return dispatch({
+                                  type: DELETE_CLIENTE,
+                                  payload: data,
+                                  });
+                            };
+                   };             

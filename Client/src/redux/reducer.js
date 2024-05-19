@@ -9,6 +9,8 @@ import { SET_AUTHENTICATED,
   SET_SOURCE,
   ORDER_ABOGADOS,
   ORDER_CLIENTES,
+  DELETE_ABOGADO,
+  DELETE_CLIENTE
    } from "./actions";
 
 
@@ -83,6 +85,16 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           clientes:action.payload
         }
+        case DELETE_ABOGADO:
+          return {
+            ...state,
+            abogados:action.payload
+          }
+        case DELETE_CLIENTE:
+          return {
+            ...state,
+            clientes:action.payload
+          }
         
     default:
       return state;
