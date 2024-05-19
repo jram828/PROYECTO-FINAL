@@ -3,7 +3,7 @@ import axios from 'axios';
 
   export async function getClientes() {
     try {
-      const response = await axios.get('/clientes');
+      const response = await axios.get('https://legaltech-develop.onrender.com/clientes');
       return response.data
      
     } catch (error) {

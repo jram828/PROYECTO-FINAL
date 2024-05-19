@@ -8,28 +8,21 @@ function FormCita() {
       <form className="formularioCita">
         <div className="input-row">
           <div>
-            <label className="label">Tipo de cita:</label>
+            <label className="label">Titulo:</label>
             <input className="input" />
           </div>
-          <div className="input-row">
-          <label className="label">Personas:</label>
-          <select className="select">
-            <option value="">Seleccionar...</option>
-          </select>
-         </div>
             <label className="label">Fecha:</label>
             <input className="input" />
           <br />
             <label className="label">Hora:</label>
             <input className="input" />
         </div>
-    
         <div className="input-row">
           <label className="label">Detalles:</label>
           <textarea className="input"></textarea>
         </div>
         <div className="botones">
-          <input type="submit" className="button" value="Guardar" />
+          <input type="submit" className="button" value="Crear" />
           <Link to='/home'>
           <button className="button">Volver</button>
           </Link>
