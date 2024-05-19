@@ -8,15 +8,20 @@ function OrderAbogado() {
   
   function handleOrder(event) {
     event.preventDefault();
-    dispatch(orderAbogados());
+    dispatch(orderAbogados(event.target.value));
   }
 
   return (
     <div>
       <div>
-        <button onClick={handleOrder}>Ordenar A-Z</button>
-      </div>
-      <div>
+      <select onChange={handleOrder}>
+          <option value=''>Ordenar:</option>
+          <option value='asc'>A-Z</option>
+          <option value='desc'>Z-A</option>
+        </select>
+        
+        {/*<button onClick={handleOrder}>Ordenar A-Z</button>*/}
+      
       </div>
     </div>
   );
