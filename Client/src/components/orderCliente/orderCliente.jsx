@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderClientes } from "../../redux/actions";
 import './orderCliente'
@@ -14,7 +14,7 @@ function OrderClientes() {
   return (
     <div>
       <div>
-        <button onClick={handleOrder}>Ordenar A-Z</button>
+        <button onClick={handleOrder} className="button">Ordenar A-Z</button>
       </div>
       <div>
       </div>

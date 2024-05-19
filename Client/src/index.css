@@ -58,7 +58,7 @@ h1 {
 }
 
 .button:hover {
-  background-color: darken(var(--color-four), 10%); 
+  background-color: darken(var(--color-three), 10%); 
 }
 
 button:focus,
