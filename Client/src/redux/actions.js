@@ -10,6 +10,11 @@ export const GET_BY_ID_CLIENTE = "GET_BY_ID_CLIENTE";
 export const FILTER_NAME_CLIENTE = "FILTER_NAME_CLIENTE";
 export const SET_SOURCE = "SET_SOURCE";
 export const FILTER_LASTNAME_CLIENTE = "FILTER_LASTNAME_CLIENTE";
+export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
+export const ORDER_CLIENTES = "ORDER_CLIENTES";
+export const DELETE_ABOGADO = "DELETE_ABOGADO";
+export const DELETE_CLIENTE = "DELETE_CLIENTES";
+
 
 //const URL = 'http://localhost:3001/'
 const URL = 'https://legaltech-6u3y.onrender.com/'
@@ -97,29 +102,14 @@ export const getClientes = () => {
       };
   };      
 
-export const filterlastNameCliente = (apellido) => {
-  const endpoint = `${URL}clientes?nombre=${apellido}`;
-  console.log('URL',endpoint)
-  return async (dispatch) => {
-      try{ 
-      const {data} = await axios.get(endpoint);
-          return dispatch({
-               type: FILTER_LASTNAME_CLIENTE,
-               payload: data,
-          });
-      } catch (error) {
-          throw error;
-      }
-      };
-      
-    }
 
-    export const filterNameCliente = (name) => {
-      const endpoint = `${URL}clientes?nombre=${name}`;
+    export const filterNameCliente = (filtro, inputValue) => {
+      const endpoint = `${URL}clientes?${filtro}=${inputValue}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
           const {data} = await axios.get(endpoint);
+          
               return dispatch({
                    type: FILTER_NAME_CLIENTE,
                    payload: data,
@@ -131,8 +121,8 @@ export const filterlastNameCliente = (apellido) => {
           
         }
 
-    export const filterNameAbogado = (name) => {
-      const endpoint = `${URL}abogados?nombre=${name}`;
+    export const filterNameAbogado = (filtro, inputValue) => {
+      const endpoint = `${URL}abogados?${filtro}=${inputValue}`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
@@ -146,3 +136,58 @@ export const filterlastNameCliente = (apellido) => {
           }
           };
         }
+
+
+        export const orderAbogados = () => {
+          const endpoint = `${URL}abogados?field=apellido&order=asc`;
+          
+         return async (dispatch) => {
+             const {data} = await axios.get(endpoint);
+                 return dispatch({
+                      type: ORDER_ABOGADOS,
+                      payload: data,
+                   });
+                 };
+             };        
+
+
+             export const orderClientes = () => {
+              const endpoint = `${URL}clientes?field=apellido&order=asc`;
+              
+             return async (dispatch) => {
+                 const {data} = await axios.get(endpoint);
+                     return dispatch({
+                          type: ORDER_CLIENTES,
+                          payload: data,
+                       });
+                     };
+                 };
+
+                 export const deleteAbogado = (cedulaAbogado) => {
+                  const endpoint = `${URL}abogados/delete`;
+                      
+                     return async (dispatch) => {
+                         const data = await axios.post(endpoint, {cedulaAbogado});
+                          console.log('url', endpoint);
+                          console.log('cedula', cedulaAbogado)
+                             return dispatch({
+                                  type: DELETE_ABOGADO,
+                                  payload: data,
+                               });
+                             };
+                         };
+                         
+        
+               export const deleteCliente = (cedulaCliente) => {
+                     const endpoint = `${URL}clientes/elimina`;
+                              
+                       return async (dispatch) => {
+                          const data = await axios.post(endpoint, {cedulaCliente} );
+                          console.log('url', endpoint);
+                          console.log('cedula', cedulaAbogado)
+                            return dispatch({
+                                  type: DELETE_CLIENTE,
+                                  payload: data,
+                                  });
+                            };
+                   };             

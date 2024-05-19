@@ -1,14 +1,17 @@
 import './detail.css';
 import { getByIdAbogado, getByIdCliente } from "../../redux/actions";
 import { useEffect } from "react";
-import { useParams, Link} from "react-router-dom";
+import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteAbogado, deleteCliente } from '../../redux/actions';
+
 
 function Detail() {
 
   const source = useSelector((state) => state.source)
   
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   if (source === 'abogado') {
     var datos = useSelector((state) => state.abogado);
@@ -25,8 +28,26 @@ function Detail() {
     console.log('datos', datos)
   }
 
-  
  
+    const handleDelete = () => {
+      if (source === 'abogado') {
+        const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
+    
+        if (isConfirmed) {
+          dispatch(deleteAbogado(cedula));
+          console.log('cedula', cedula);
+          navigate('/home/lawyers');
+        }
+      }else {
+        const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
+    
+        if (isConfirmed) {
+          dispatch(deleteCliente(cedula));
+          navigate('/home/customers');
+        }
+      }
+    }
+   
 
   return (
     <div className="detail-container">
@@ -87,7 +108,8 @@ function Detail() {
           <br />
           <br />
         </div>
-    <button className="button">Guardar cambios</button>
+ 
+    <button className='button' onClick={handleDelete}>Eliminar registro</button>
     {datos?.matricula? (
             <Link to="/home/lawyers">
             <button className="button">Volver</button>
@@ -95,8 +117,6 @@ function Detail() {
           ) : <Link to="/home/customers">
           <button className="button">Volver</button>
         </Link> }
-    
-    
   </div>
   )
 }

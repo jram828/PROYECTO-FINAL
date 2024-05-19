@@ -6,8 +6,12 @@ import { SET_AUTHENTICATED,
   GET_BY_ID_CLIENTE, 
   FILTER_NAME_ABOGADO, 
   FILTER_NAME_CLIENTE,
-  FILTER_LASTNAME_CLIENTE, 
-  SET_SOURCE } from "./actions";
+  SET_SOURCE,
+  ORDER_ABOGADOS,
+  ORDER_CLIENTES,
+  DELETE_ABOGADO,
+  DELETE_CLIENTE
+   } from "./actions";
 
 
 let initialState = {
@@ -64,16 +68,34 @@ const rootReducer = (state = initialState, action) => {
       ...state,
       clientes:action.payload
     }
-    case FILTER_LASTNAME_CLIENTE:
-    return {
-      ...state,
-      clientes:action.payload
-    }
+  
     case SET_SOURCE:
       return {
         ...state,
         source: action.payload,
       };
+      case ORDER_ABOGADOS:
+        return {
+          ...state,
+          abogados:action.payload
+        }
+        
+        case ORDER_CLIENTES:
+        return {
+          ...state,
+          clientes:action.payload
+        }
+        case DELETE_ABOGADO:
+          return {
+            ...state,
+            abogados:action.payload
+          }
+        case DELETE_CLIENTE:
+          return {
+            ...state,
+            clientes:action.payload
+          }
+        
     default:
       return state;
   }

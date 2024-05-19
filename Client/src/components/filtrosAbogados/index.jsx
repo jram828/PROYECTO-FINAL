@@ -1,48 +1,44 @@
 import './filtrosAbogados.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAbogados } from '../../redux/actions'
+import { filterNameAbogado, getAbogados } from '../../redux/actions';
+import SearchBar from '../../components/searchBarAbogado/index';
 
 function FiltrosAbogados() {
-
   const dispatch = useDispatch();
   const abogados = useSelector((state) => state.abogados);
-
-
+  const [filterApplied, setFilterApplied] = useState(false);
 
   useEffect(() => {
-    dispatch(getAbogados())
-  },[dispatch])
+    dispatch(getAbogados());
+    const storedFilter = JSON.parse(localStorage.getItem('abogadoFilter'));
+    if (storedFilter) {
+      setFilterApplied(true);
+    }
+  }, [dispatch]);
 
+  const handleVerTodosClick = () => {
+    dispatch(getAbogados());
+    localStorage.removeItem('abogadoFilter');
+    setFilterApplied(false); // Reset filter applied state
+  };
 
+  const handleFilter = (filtro, inputValue) => {
+    dispatch(filterNameAbogado(filtro, inputValue));
+    localStorage.setItem('abogadoFilter', JSON.stringify({ filtro, inputValue }));
+    setFilterApplied(true);
+  };
 
- 
-
- 
   return (
-    
+    <div>
+      <SearchBar onFilter={handleFilter} />
       <div>
-        {/*<label>Buscar</label>
-        <input></input>
-        <select>
-        <option name="">Filtrar por Pais</option>
-        <option></option>
-        </select>
-        <select>
-        <option name="">Filtrar por tipo de caso</option>
-        <option></option>
-        </select>
-        <br></br>
-        <br></br>
-          <button onClick={handleMostrarAbogados}>Ver Todos</button>*/}
-          <div>
-          <Cards items={abogados}></Cards>
-  </div>
+        <Cards items={abogados} />
+        {filterApplied && <button onClick={handleVerTodosClick}>Ver todos</button>}
       </div>
-  )
+    </div>
+  );
 }
 
-export default FiltrosAbogados
-
-
+export default FiltrosAbogados;
