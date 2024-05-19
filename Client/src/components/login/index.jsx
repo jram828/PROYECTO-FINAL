@@ -24,6 +24,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   // });
 
 
+ 
 
   const dispatch = useDispatch();
 
@@ -51,7 +52,16 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     if (access) {
       window.localStorage.setItem("loggedUser", JSON.stringify(userData));
         dispatch(setAuth(access));
-        navigate("/home");
+      navigate("/home");
+       const resend = new Resend("re_BWGCbHap_DanVdaZk3DZxfVfuDcAhnt2e");
+      resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: email,
+        subject: "Hello World",
+        html: "<p>Ha ingresado exitosamente a LEGALTECH. Bienvenido!</p>",
+      });
+
+
       } else {
         window.alert("Usuario o contraseña incorrectos");
       }
@@ -77,7 +87,6 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
       navigate("/home");
       
 
-      const resend = new Resend("re_BWGCbHap_DanVdaZk3DZxfVfuDcAhnt2e");
 
       resend.emails.send({
         from: "onboarding@resend.dev",
