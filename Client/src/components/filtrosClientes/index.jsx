@@ -29,7 +29,7 @@ function FiltrosClientes() {
       <SearchBar onFilter={handleFilter} />
       <div>
         <Cards items={clientes} />
-        {filterApplied && <button onClick={handleVerTodosClick}>Ver todos</button>}
+        {filterApplied && <button className='button' onClick={handleVerTodosClick}>Ver todos</button>}
       </div>
     </div>
   );
