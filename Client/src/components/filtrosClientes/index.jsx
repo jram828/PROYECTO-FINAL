@@ -1,29 +1,38 @@
 import './filtrosClientes.css';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../cards/index';
-import { useEffect } from 'react';
-import { getClientes } from '../../redux/actions';
+import { getClientes, filterNameCliente } from '../../redux/actions';
+import SearchBar from '../searchBarClientes';
 
 function FiltrosClientes() {
-
   const dispatch = useDispatch();
   const clientes = useSelector((state) => state.clientes);
-
-
+  const [filterApplied, setFilterApplied] = useState(false);
 
   useEffect(() => {
-    dispatch(getClientes())
-  },[dispatch])
+    dispatch(getClientes());
+  }, [dispatch]);
 
- 
+  const handleVerTodosClick = () => {
+    dispatch(getClientes());
+    setFilterApplied(false); // Reset filter applied state
+  };
+
+  const handleFilter = (filtro, inputValue) => {
+    dispatch(filterNameCliente(filtro, inputValue));
+    setFilterApplied(true);
+  };
+
   return (
-    
+    <div>
+      <SearchBar onFilter={handleFilter} />
       <div>
-        <div>
-          <Cards items={clientes}></Cards>
-  </div>
+        <Cards items={clientes} />
+        {filterApplied && <button onClick={handleVerTodosClick}>Ver todos</button>}
       </div>
-  )
+    </div>
+  );
 }
 
-export default FiltrosClientes
+export default FiltrosClientes;

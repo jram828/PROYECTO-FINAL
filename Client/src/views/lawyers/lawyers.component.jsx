@@ -2,7 +2,7 @@ import style from './lawyers.module.css';
 import React from 'react';
 import { Link,  } from 'react-router-dom';
 import FiltrosAbogados from '../../components/filtrosAbogados';
-import SearchBar from '../../components/searchBarAbogado';
+import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
 
 
 function LawyersPage() {
@@ -17,9 +17,10 @@ function LawyersPage() {
         <Link to="/home">
           <button className='button'>Volver</button>
         </Link>
-        <SearchBar></SearchBar>
-        
+        <OrderAbogados></OrderAbogados>
        <FiltrosAbogados></FiltrosAbogados>
+       
+
     </div>
   )
 }
