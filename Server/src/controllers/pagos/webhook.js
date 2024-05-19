@@ -1,11 +1,9 @@
 const { Pagos } = require("../../DB");
 
-const webhook = async (password, email) => {
+const webhook = async (body) => {
   const newPago = "";
-  return {
-    access: true,
-    pago: newPago,
-  };
+  console.log('Body webhook controller: ', body)
+  return body;
 };
 
 module.exports = {

@@ -10,7 +10,7 @@ import { crearPago } from '../../handlers/crearPago';
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576");
+  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", { locale: 'es-CO' });
 
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
@@ -25,12 +25,12 @@ function Payments() {
     try {
       // Realizar la llamada a la API para crear la orden de pago en MercadoPago
     console.log("Datos crear usuario: ", userPreference);
-      const paymentData = crearPago(userPreference);
+      const paymentData = await crearPago(userPreference);
+      console.log("Respuesta creacion pago: ", paymentData);
 
       setResponsePreference(paymentData);
-      console.log("Respuesta creacion pago: ", responsePreference);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.init_point, "_blank");
+      window.open(paymentData.init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores
@@ -96,19 +96,19 @@ function Payments() {
         <p>Realizar pago</p>
         <div className="contenedorcrearusuario">
           <h1 className="titulo">Crear Usuario</h1>
-            <div className="nombreapellido">
-              <label htmlFor="correo" className="labelcrearusuario">
-                Valor a pagar:
-              </label>
-              <input
-                name="unit_price"
-                type="number"
-                value={userPreference.unit_price}
-                onChange={handleChangePagos}
-                id="unit_price"
-                className="cajascrearusuario"
-              />
-              {/* <label htmlFor="contrasena" className="labelcrearusuario">
+          <div className="nombreapellido">
+            <label htmlFor="correo" className="labelcrearusuario">
+              Valor a pagar:
+            </label>
+            <input
+              name="unit_price"
+              type="number"
+              value={userPreference.unit_price}
+              onChange={handleChangePagos}
+              id="unit_price"
+              className="cajascrearusuario"
+            />
+            {/* <label htmlFor="contrasena" className="labelcrearusuario">
                 Contraseña:
               </label>
               <input
@@ -119,24 +119,31 @@ function Payments() {
                 value={userDataCrear.password}
                 onChange={handleChangeCrear}
               /> */}
-            </div>
-            <div className="botonescrearusuario">
-              <Link to="/home">
-                <input
-                  type="button"
-                  name="Volver"
-                  value="volver"
-                  className="button"
-                />
-              </Link>
-            </div>
-            <br />
+          </div>
+          <div className="botonescrearusuario">
+            <Link to="/home">
+              <input
+                type="button"
+                name="Volver"
+                value="volver"
+                className="button"
+              />
+            </Link>
+            <input
+              type="button"
+              name="pagar"
+              value="Pagar"
+              className="button"
+              onClick={handlePay}
+            />
+          </div>
+          <br />
         </div>
         <div id="wallet_container"></div>
 
         <Wallet
           onSubmit={handlePay}
-          initialization={{ preferenceId: `${responsePreference.id}` }}
+          initialization={{ preferenceId: responsePreference.id }}
           customization={{ texts: { valueProp: "smart_option" } }}
         />
       </div>

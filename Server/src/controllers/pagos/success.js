@@ -1,11 +1,9 @@
 const { Pagos } = require("../../DB");
 
-const success = async (password, email) => {
+const success = async (body) => {
   const newPago = "";
-  return {
-    access: true,
-    pago: newPago,
-  };
+  console.log("Body success controller: ", body);
+  return body;
 };
 
 module.exports = {

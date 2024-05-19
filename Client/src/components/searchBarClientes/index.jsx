@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { filterCliente } from '../../redux/actions';
+
 
 const SearchBar = ({ onFilter }) => {
   const [nombre, setNombre] = useState('');
@@ -40,6 +42,7 @@ const SearchBar = ({ onFilter }) => {
 
   return (
     <div className="barra_busqueda">
+
        <label>Nombre:</label>
        <br />
        <input
@@ -71,6 +74,7 @@ const SearchBar = ({ onFilter }) => {
        />
        <br />
        <button onClick={handleSearch}>Buscar</button>
+
     </div>
   );
 };
