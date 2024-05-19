@@ -1,12 +1,10 @@
 const { Pagos } = require("../../DB");
 
-const failure = async (password, email) => {
+const failure = async (body) => {
 
-  const newPago=""
-  return {
-    access: true,
-    pago: newPago,
-  };
+  const newPago = "";
+  console.log("Body pending controller: ", body);
+  return body;
 };
 
 module.exports = {
