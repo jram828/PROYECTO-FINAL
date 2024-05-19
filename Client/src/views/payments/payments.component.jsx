@@ -25,8 +25,8 @@ function Payments() {
     try {
       // Realizar la llamada a la API para crear la orden de pago en MercadoPago
     console.log("Datos crear usuario: ", userPreference);
-      const {data} = crearPago(userPreference);
-      console.log("Respuesta creacion pago: ", data);
+      const result = crearPago(userPreference);
+      console.log("Respuesta creacion pago: ", result);
 
       // setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
