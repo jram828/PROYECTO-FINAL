@@ -4,7 +4,8 @@
   --color-two: #0A2B3C;
   --color-three: #D8D0C5;
   --color-four: #D9832C;
-
+  --color-five: white;
+  
   /*fuente*/
   
 
@@ -58,7 +59,7 @@ h1 {
 }
 
 .button:hover {
-  background-color: darken(var(--color-three), 10%); 
+  background-color: darken(var(--color-five), 10%); 
 }
 
 button:focus,
