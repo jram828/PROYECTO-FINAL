@@ -37,6 +37,7 @@ const postAbogadosHandler = async (req, res) => {
     ciudad,
     pais,
     password,
+    administrador,
   } = req.body;
 
   try {
@@ -52,7 +53,8 @@ const postAbogadosHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
-      password
+      password,
+      administrador,
     );
     res.status(200).json(response);
   } catch (error) {
