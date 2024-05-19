@@ -17,11 +17,6 @@ const preference = new Preference(client);
 
     const response = await preference.create({
       body: {
-        payment_methods: {
-          excluded_payment_methods: [],
-          excluded_payment_types: [],
-          installments: 12,
-        },
         items: [
           {
             title: item.description,
