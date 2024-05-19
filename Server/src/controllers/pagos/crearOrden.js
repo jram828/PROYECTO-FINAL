@@ -17,6 +17,11 @@ const preference = new Preference(client);
 
     const response = await preference.create({
       body: {
+        payment_methods: {
+          excluded_payment_methods: [],
+          excluded_payment_types: [],
+          installments: 12,
+        },
         items: [
           {
             title: item.description,
@@ -24,18 +29,13 @@ const preference = new Preference(client);
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
           },
-          // {
-          //   title: req.body.description,
-          //   unit_price: Number(req.body.price),
-          //   quantity: Number(req.body.quantity),
-          // },
         ],
         back_urls: {
           success: "https://legaltech-6u3y.onrender.com/success",
           failure: "https://legaltech-6u3y.onrender.com/failure",
           pending: "https://legaltech-6u3y.onrender.com/pending",
         },
-        notification_url:"https://legaltech-6u3y.onrender.com/webhook",
+        notification_url: "https://legaltech-6u3y.onrender.com/webhook",
         auto_return: "approved",
       },
     });
