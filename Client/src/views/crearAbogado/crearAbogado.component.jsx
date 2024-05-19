@@ -41,7 +41,7 @@ function CrearAbogado() {
     if (e.target.checked) {
       setUserDataRegistro((prevState) => ({
         ...prevState,
-        admnistrador: true,
+        administrador: true,
       }));
     }
     
