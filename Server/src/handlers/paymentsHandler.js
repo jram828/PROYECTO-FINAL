@@ -27,7 +27,9 @@ const successHandler = async (req, res) => {
 const webhookHandler = async (req, res) => {
   try {
     // const { password, email } = req.query;
+    console.log("Webhook mercado pago: ", req.body);
     const response = await webhook(req.body);
+    
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
