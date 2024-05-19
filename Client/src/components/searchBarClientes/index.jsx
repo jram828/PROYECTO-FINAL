@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterNameCliente } from '../../redux/actions';
+import style from "./searchBarClientes.module.css";
 
 const SearchBar = ({onFilter}) => {
 
@@ -42,23 +43,24 @@ const SearchBar = ({onFilter}) => {
 
   return (
     <div className="barra_busqueda">
-      <select onChange={handleFieldChange} value={filtro}> 
-        <option value=''>Buscar por:</option>
-        <option value='nombre'>Nombre:</option>
-        <option value='apellido'>Apellido:</option>
-        <option value='ciudad'>Ciudad:</option>
+      <select
+        className={style.select}
+        onChange={handleFieldChange}
+        value={filtro}
+      >
+        <option value="">Buscar por:</option>
+        <option value="nombre">Nombre:</option>
+        <option value="apellido">Apellido:</option>
+        <option value="ciudad">Ciudad:</option>
       </select>
-      <input 
-        className='busquedaNombre' 
-        placeholder="Busqueda..." 
-        type="text" 
-        value={inputValue} 
+      <input
+        className={style.input}
+        placeholder="Busqueda..."
+        type="text"
+        value={inputValue}
         onKeyDown={handleKeyDown}
         onChange={handleInputChange}
-      
       />
-    
-      
     </div>
   );
 };
