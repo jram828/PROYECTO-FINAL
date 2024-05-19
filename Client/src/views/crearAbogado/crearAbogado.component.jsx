@@ -35,7 +35,18 @@ function CrearAbogado() {
         ...prevState,
         [name]: value
       }));
-    };
+  };
+  
+  const handleChangeAdministrador = (e) => {
+    if (e.target.checked) {
+      setUserDataRegistro((prevState) => ({
+        ...prevState,
+        admnistrador: true,
+      }));
+    }
+    
+   
+  };
     console.log(setUserDataRegistro)
   
     const submitHandlerRegistro = async (e) => {
@@ -234,7 +245,7 @@ function CrearAbogado() {
             name="administrador"
             id="administrador"
             value={userDataRegistro.administrador}
-            onChange={handleChangeRegistro}
+            onChange={handleChangeAdministrador}
           />
           <br />
           <br />
