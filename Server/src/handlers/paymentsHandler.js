@@ -3,6 +3,7 @@ const { failure } = require('../controllers/pagos/failure')
 const { getPayments } = require('../controllers/pagos/getPayments')
 const { pending } = require('../controllers/pagos/pending')
 const { success } = require('../controllers/pagos/success')
+const { webhook } = require('../controllers/pagos/webhook')
 
 const getPaymentsHandler = async (req, res)=>{
     try {
