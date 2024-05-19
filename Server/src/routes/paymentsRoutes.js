@@ -7,7 +7,7 @@ const paymentsRouter = Router();
 paymentsRouter.get("/", getPaymentsHandler);
 paymentsRouter.post("/crearorden", crearOrdenHandler);
 paymentsRouter.get("/success", successHandler);
-paymentsRouter.get("/webhook", webhookHandler);
+paymentsRouter.post("/webhook", webhookHandler);
 paymentsRouter.get("/failure", failureHandler);
 paymentsRouter.get("/pending", pendingHandler);
 
