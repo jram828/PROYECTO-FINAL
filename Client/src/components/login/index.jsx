@@ -7,7 +7,7 @@ import { useDispatch} from "react-redux";
 import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-
+import { Resend } from "resend";
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 
@@ -49,6 +49,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const { access } = data;
     console.log('Access: ',access)
     if (access) {
+      window.localStorage.setItem("loggedUser", JSON.stringify(userData));
         dispatch(setAuth(access));
         navigate("/home");
       } else {
@@ -65,15 +66,26 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     // Loginf();
     dispatch(setUserToken(user));
   console.log("Datos login:", user.email);
-
-    try {
-      const { data } = await axios(`/clientes/?correo=${user.email}`);
-      
+  try {
+    const { data } = await axios(`/clientes/?correo=${user.email}`);
+    
     console.log("Login 2:", data);
-      // const { access } = data;
-      if (user.email === data[0].correo) {
+    // const { access } = data;
+    if (user.email === data[0].correo) {
+        window.localStorage.setItem('loggedUser',JSON.stringify(user))
         dispatch(setAuth(true));
-        navigate("/home");
+      navigate("/home");
+      
+
+      const resend = new Resend("re_BWGCbHap_DanVdaZk3DZxfVfuDcAhnt2e");
+
+      resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: `${user.email}`,
+        subject: "Hello World",
+        html: "<p>Ha ingresado exitosamente a LEGALTECH. Bienvenido!</p>",
+      });
+
       } else {
         window.alert("Usuario o contraseña incorrectos");
       }
