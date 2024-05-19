@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const { getCitaHandler,postCreateCita } = require("../handlers/citaHandlers");
 
-const casosRouter = Router();
+const citasRouter = Router();
 
-casosRouter.post("/", postCreateCita);
+citasRouter.post("/", postCreateCita);
 
-casosRouter.get("/", getCitaHandler);
+citasRouter.get("/", getCitaHandler);
 
-module.exports = casosRouter; 
+module.exports = citasRouter; 
