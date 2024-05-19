@@ -33,7 +33,7 @@ const preference = new Preference(client);
         back_urls: {
           success:
             "https://proyecto-final-develop.vercel.app/home/payments/status",
-          failure: "https://proyecto-final-develop.vercel.app/home/payments",
+          failure: "https://proyecto-final-develop.vercel.app/home/payments/failure",
           pending:
             "https://proyecto-final-develop.vercel.app/home/payments/status",
         },
