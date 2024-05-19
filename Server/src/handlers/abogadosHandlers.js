@@ -37,7 +37,7 @@ const postAbogadosHandler = async (req, res) => {
     ciudad,
     pais,
     password,
-    administrador,
+    administrador
   } = req.body;
 
   try {
@@ -54,7 +54,7 @@ const postAbogadosHandler = async (req, res) => {
       ciudad,
       pais,
       password,
-      administrador,
+      administrador
     );
     res.status(200).json(response);
   } catch (error) {
