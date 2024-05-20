@@ -45,7 +45,7 @@ function Consultations() {
             <label htmlFor="mensaje" className={`label-text absolute left-3 top-3 text-left pointer-events-none transition-all transform origin-top-left duration-200 ease-in-out ${
             mensaje ? 'translate-y-[-1.5rem] scale-75' : ''
           }`}>
-              <span className="label-text">Mensaje/Consulta:</span>
+              
             </label>
             <textarea
               id="mensaje"
