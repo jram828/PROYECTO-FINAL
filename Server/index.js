@@ -6,7 +6,7 @@ const { conn } = require("./src/DB");
 const PORT = 3001;
 
 conn
-  .sync({ alter: false })
+  .sync({ alter: true })
   .then(() => {})
   .catch((error) => console.error(error));
 

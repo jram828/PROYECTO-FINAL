@@ -39,8 +39,8 @@ const webhookHandler = async (req, res) => {
 
 const failureHandler = async (req, res) => {
   try {
-    // const { password, email } = req.query;
-    const response = await failure(req.body);
+    const failureResponse = req.query;
+    const response = await failure(failureResponse);
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });

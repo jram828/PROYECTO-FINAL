@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
+import Status from './views/status';
 
 // const { URL } = process.env;
 // const URL = import.meta.env.VITE_URL_BACK;
@@ -39,23 +40,27 @@ function App() {
 
         <Route path="/password" element={<Password />} />
         <Route path="/crearusuario" element={<CreateUser />} />
-      
-        <Route path='/home' element={<Home/>}/>
-      <Route path='/home/lawyers' element={<LawyersPage/>}/>
-      <Route path='/home/customers' element={<CustomersPage/>}/>
-        <Route path='/home/detail' element={<Detail/>}/>
-        <Route path='/home/detail/:cedula' element={<Detail/>}/>
-        <Route path='/home/cases/:id' element={<Cases/>}/>
-        <Route path='/home/cases/crearcaso' element={<CrearCaso/>}/>
-        <Route path='/home/costumers/:id' element={<Detail/>}/>
-        <Route path='/home/lawyers/:id' element={<Detail/>}/>
-        <Route path='/home/documents/:id' element={<Documents/>}/>
-        <Route path='/home/diary' element={<Diary/>}/>
-        <Route path='/home/payments' element={<Payments/>}/>
-        <Route path='/home/consultation' element={<Consultations/>}/>
-        <Route path='/home/statistics' element={<Statistics/>}/>
-        <Route path='/home/lawyers/crearabogado' element={<CrearAbogado/>}/>
-        <Route path='/home/customers/crearcliente' element={<CreateCliente/>}/>
+
+        <Route path="/home" element={<Home />} />
+        <Route path="/home/lawyers" element={<LawyersPage />} />
+        <Route path="/home/customers" element={<CustomersPage />} />
+        <Route path="/home/detail" element={<Detail />} />
+        <Route path="/home/detail/:cedula" element={<Detail />} />
+        <Route path="/home/cases/:id" element={<Cases />} />
+        <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
+        <Route path="/home/costumers/:id" element={<Detail />} />
+        <Route path="/home/lawyers/:id" element={<Detail />} />
+        <Route path="/home/documents/:id" element={<Documents />} />
+        <Route path="/home/diary" element={<Diary />} />
+        <Route path="/home/payments" element={<Payments />} />
+        <Route path="/home/payments" element={<Status />} />
+        <Route path="/home/consultation" element={<Consultations />} />
+        <Route path="/home/statistics" element={<Statistics />} />
+        <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
+        <Route
+          path="/home/customers/crearcliente"
+          element={<CreateCliente />}
+        />
         {/*<Route path="/home" element={<Home />} />
         <Route
           path="/home/detail/:id"
