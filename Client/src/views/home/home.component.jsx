@@ -8,13 +8,13 @@ function Home() {
   
   return (
     <div>
-      <div className={style.container}>
+      {/* <div className={style.container}>
         <div className={style.logo}>
           <img src={logo} alt="logo" />
           <img src={legaltech} alt="legaltech" />
         </div>
         <br></br>
-      </div>
+      </div> */}
 
       <div className={style.container2}>
         <div className={style.imagen}>

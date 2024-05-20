@@ -94,10 +94,10 @@ function Payments() {
     <div>
       <div>
         <p>Realizar pago</p>
-        <div className="contenedorcrearusuario">
+        <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
           <h1 className="titulo">Crear Usuario</h1>
-          <div className="nombreapellido">
-            <label htmlFor="correo" className="labelcrearusuario">
+          <div className="input input-bordered flex items-center gap-2">
+            <label htmlFor="correo" className="">
               Valor a pagar:
             </label>
             <input
@@ -106,7 +106,7 @@ function Payments() {
               value={userPreference.unit_price}
               onChange={handleChangePagos}
               id="unit_price"
-              className="cajascrearusuario"
+              className="grow"
             />
             {/* <label htmlFor="contrasena" className="labelcrearusuario">
                 Contraseña:
@@ -125,15 +125,15 @@ function Payments() {
               <input
                 type="button"
                 name="Volver"
-                value="volver"
-                className="button"
+                value="Volver"
+                className="btn btn-accent btn-sm"
               />
             </Link>
             <input
               type="button"
-              name="pagar"
+              name="Pagar"
               value="Pagar"
-              className="button"
+              className="btn btn-accent btn-sm"
               onClick={handlePay}
             />
           </div>
