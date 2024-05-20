@@ -77,7 +77,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     dispatch(setUserToken(user));
   console.log("Datos login:", user.email);
   try {
-    const { data } = await axios(`/clientes/?correo=${user.email}`);
+    const { data } = await axios(`/clientes/?email=${user.email}`);
     
     console.log("Login 2:", data);
     // const { access } = data;
@@ -86,7 +86,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
         dispatch(setAuth(true));
       navigate("/home");
       
-
+      const resend = new Resend("re_BWGCbHap_DanVdaZk3DZxfVfuDcAhnt2e");
 
       resend.emails.send({
         from: "onboarding@resend.dev",
