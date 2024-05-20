@@ -41,10 +41,10 @@ const clientesDetailHandler = async (req, res) => {
 };
 
 const getClientByEmailHandler = async (req, res) => {
-  const { email } = req.query;
+  const { correo } = req.query;
 
   try {
-    const response = await getClientByEmail(email);
+    const response = await getClientByEmail(correo);
     console.log("Response by email:", response);
     res.status(200).json(response);
   } catch (error) {
