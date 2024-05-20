@@ -183,8 +183,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     </div>
     
   </form>
-
-      <div className={style.GoogleLogin}>
+      <div className="flex justify-center">
         <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage}/>
       </div>
     </div>
