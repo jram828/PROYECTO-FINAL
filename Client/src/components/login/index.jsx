@@ -77,7 +77,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     dispatch(setUserToken(user));
   console.log("Datos login:", user.email);
   try {
-    const { data } = await axios(`/clientes/email?correo=${user.email}`);
+    const { data } = await axios(`/clientes/?correo=${user.email}`);
     
     console.log("Login 2:", data);
     // const { access } = data;
@@ -90,7 +90,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
       resend.emails.send({
         from: "onboarding@resend.dev",
-        to: `${user.email}`,
+        to: user.email,
         subject: "Hello World",
         html: "<p>Ha ingresado exitosamente a LEGALTECH. Bienvenido!</p>",
       });
