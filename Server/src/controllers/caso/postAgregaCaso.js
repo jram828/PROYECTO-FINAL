@@ -1,4 +1,5 @@
 const { Caso, Cliente, Abogado, TipoDeCaso } = require("../../DB");
+const moment=require('moment')
 
 const createCaso = async (cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDeCasoId) => {
     
@@ -25,8 +26,8 @@ const createCaso = async (cedulaCliente,cedulaAbogado, fecha, descripcion,TipoDe
             }
             })
     if (!estaTipoDeCaso) return JSON.stringify({ mensaje: "Tipo de Caso no encontrado o Tipo de Caso eliminado" })
-    
-    const newCaso = await Caso.create({fecha: fecha, descripcion: descripcion,TipoDeCasoTipoDeCasoid: TipoDeCasoId,
+    const fechaUTC= moment(fecha).utc().toDate();
+    const newCaso = await Caso.create({fecha: fechaUTC, descripcion: descripcion,TipoDeCasoTipoDeCasoid: TipoDeCasoId,
         ClienteCedulaCliente: cedulaCliente,AbogadoCedulaAbogado: cedulaAbogado})
 
     //  newAbogado.addCliente(clientes);
