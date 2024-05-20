@@ -18,7 +18,7 @@ export async function postCliente(userDataCreate) {
   console.log("User data registro:", userDataCreate);
   
 
-  const URL = "/clientes";
+  const URL = "https://legaltech-develop.onrender.com/clientes";
   try {
     await axios.post(URL, {
       cedulaCliente: `${cedulaCliente}`,

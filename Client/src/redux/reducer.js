@@ -10,7 +10,10 @@ import { SET_AUTHENTICATED,
   ORDER_ABOGADOS,
   ORDER_CLIENTES,
   DELETE_ABOGADO,
-  DELETE_CLIENTE
+  DELETE_CLIENTE,
+  GET_TIPOSDECASOS,
+  GET_CASOS,
+  FILTER_CASOS
    } from "./actions";
 
 
@@ -22,6 +25,8 @@ let initialState = {
   clientes: [],
   abogado:{},
   cliente:{},
+  tiposDeCasos:[],
+  casos:[],
   source:'cliente',
 };
 
@@ -95,6 +100,21 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             clientes:action.payload
           }
+        case GET_TIPOSDECASOS:
+          return {
+            ...state,
+            tiposDeCasos:action.payload
+          }
+        case GET_CASOS:
+          return {
+            ...state,
+            casos:action.payload
+          }
+          case FILTER_CASOS:
+            return {
+              ...state,
+              casos:action.payload
+            }
         
     default:
       return state;

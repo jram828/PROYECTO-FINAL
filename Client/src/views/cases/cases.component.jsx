@@ -14,10 +14,13 @@ function Cases() {
       <Link to='/home/cases/crearcaso'>
           <button >Crear caso</button>
         </Link>
-        <FiltrosCasos></FiltrosCasos>
       <Link to='/home'>
           <button >Volver</button>
         </Link>
+    
+    
+      <FiltrosCasos></FiltrosCasos>
+    
     </div>
   )
 }

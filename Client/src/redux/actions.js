@@ -13,6 +13,9 @@ export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
 export const ORDER_CLIENTES = "ORDER_CLIENTES";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const DELETE_CLIENTE = "DELETE_CLIENTES";
+export const GET_TIPOSDECASOS = "GET_TIPOSDECASOS";
+export const GET_CASOS = "GET_CASOS";
+export const FILTER_CASOS = "FILTER_CASOS";
 
 
 
@@ -193,4 +196,45 @@ export const getClientes = () => {
                             };
                    }; 
        
-     
+      export const getTiposDeCasos = () => {
+            const endpoint = `${URL}tiposdecasos`;
+               return async (dispatch) => {
+                    const {data} = await axios.get(endpoint);
+                      return dispatch({
+                         type: GET_TIPOSDECASOS,
+                          payload: data,
+                      });
+                  };
+            };
+                 
+            
+            
+      export const getCasos = () => {
+          const endpoint = `${URL}casos`;
+              return async (dispatch) => {
+                  const {data} = await axios.get(endpoint);
+                    return dispatch({
+                        type: GET_CASOS,
+                        payload: data,
+                    });
+                };
+            };         
+
+
+            export const filterCasos = (filtro) => {
+              const endpoint = `${URL}casos?${filtro}`;
+              console.log('URL',endpoint)
+              return async (dispatch) => {
+                  try{ 
+                  const {data} = await axios.get(endpoint);
+                  
+                      return dispatch({
+                           type: FILTER_CASOS,
+                           payload: data,
+                      });
+                  } catch (error) {
+                      throw error;
+                  }
+                  };
+                  
+                }           
