@@ -24,6 +24,7 @@ function CrearAbogado() {
       codigoPostal: '',
       ciudad: '',
       pais: '',
+      administrador:'',
       
     });
     console.log(userDataRegistro)
@@ -34,7 +35,18 @@ function CrearAbogado() {
         ...prevState,
         [name]: value
       }));
-    };
+  };
+  
+  const handleChangeAdministrador = (e) => {
+    if (e.target.checked) {
+      setUserDataRegistro((prevState) => ({
+        ...prevState,
+        administrador: true,
+      }));
+    }
+    
+   
+  };
     console.log(setUserDataRegistro)
   
     const submitHandlerRegistro = async (e) => {
@@ -54,196 +66,211 @@ function CrearAbogado() {
     
 
   return (
-    
-      <div className={style.container}>
-        <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
-          {/* <div className="logo-aveza">
+    <div className={style.container}>
+      <form
+        className={style.datos}
+        method="post"
+        onSubmit={submitHandlerRegistro}
+      >
+        {/* <div className="logo-aveza">
             <img src={logo} alt="logo-aveza" />
           </div> */}
-          <h1 className={style.titulo}>Crear Abogado</h1>
-          <br />
-          <br />
-          <div className={style.container2}>
-            <label htmlFor="nombre" className={style.label}>
-              Nombre(s):
-            </label>
-            <input
-              type="text"
-              name="nombre"
-              id="name"
-              className={style.caja}
-              value={userDataRegistro.nombre}
-              onChange={handleChangeRegistro}
-            />
-            <label htmlFor="apellidos" className={style.label}>
-              Apellido(s):
-            </label>
-            <input
-              type="text"
-              className={style.caja}
-              name="apellido"
-              id="lastname"
-              value={userDataRegistro.apellido}
-              onChange={handleChangeRegistro}
-            />
-          </div>
-          <br />
-          <br />
-          <div className={style.container2}>
-            <label htmlFor="numerocedula" className={style.label}>
-              Numero de cédula:
-            </label>
-            <input
-              type="number"
-              className={style.caja}
-              name="cedulaAbogado"
-              id="cedula"
-              value={userDataRegistro.cedulaAbogado}
-              onChange={handleChangeRegistro}
-            />
-            <label htmlFor="matricula" className={style.label}>
-              Matricula:
-            </label>
-            <input
-              type="number"
-              className={style.caja}
-              name="matricula"
-              id="matricula"
-              value={userDataRegistro.matricula}
-              onChange={handleChangeRegistro}
-            />
-          </div>
-          <br />
-          <br />
-          <div className={style.container2}>
-            <label htmlFor="correo" className={style.label}>
-              Email:
-            </label>
-            <input
-              type="email"
-              name="correo"
-              id="email"
-              className={style.caja}
-              value={userDataRegistro.correo}
-              onChange={handleChangeRegistro}
-            />
-            <label htmlFor="password" className={style.label}>
-              Contraseña:
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="email"
-              className={style.caja}
-              value={userDataRegistro.password}
-              onChange={handleChangeRegistro}
-            />
-            {/* </div>
+        <h1 className={style.titulo}>Crear Abogado</h1>
+        <br />
+        <br />
+        <div className={style.container2}>
+          <label htmlFor="nombre" className={style.label}>
+            Nombre(s):
+          </label>
+          <input
+            type="text"
+            name="nombre"
+            id="name"
+            className={style.caja}
+            value={userDataRegistro.nombre}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="apellidos" className={style.label}>
+            Apellido(s):
+          </label>
+          <input
+            type="text"
+            className={style.caja}
+            name="apellido"
+            id="lastname"
+            value={userDataRegistro.apellido}
+            onChange={handleChangeRegistro}
+          />
+        </div>
+        <br />
+        <br />
+        <div className={style.container2}>
+          <label htmlFor="numerocedula" className={style.label}>
+            Numero de cédula:
+          </label>
+          <input
+            type="number"
+            className={style.caja}
+            name="cedulaAbogado"
+            id="cedula"
+            value={userDataRegistro.cedulaAbogado}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="matricula" className={style.label}>
+            Matricula:
+          </label>
+          <input
+            type="number"
+            className={style.caja}
+            name="matricula"
+            id="matricula"
+            value={userDataRegistro.matricula}
+            onChange={handleChangeRegistro}
+          />
+        </div>
+        <br />
+        <br />
+        <div className={style.container2}>
+          <label htmlFor="correo" className={style.label}>
+            Email:
+          </label>
+          <input
+            type="email"
+            name="correo"
+            id="email"
+            className={style.caja}
+            value={userDataRegistro.correo}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="password" className={style.label}>
+            Contraseña:
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="email"
+            className={style.caja}
+            value={userDataRegistro.password}
+            onChange={handleChangeRegistro}
+          />
+          {/* </div>
           <br />
           <br />
           <div className="nombreapellidos"> */}
-            <label htmlFor="telefono" className={style.label}>
-              {" "}
-              Teléfono:
-            </label>
-            <input
-              type="number"
-              name="telefono"
-              id="telefono"
-              className={style.caja}
-              value={userDataRegistro.telefono}
-              onChange={handleChangeRegistro}
-            />
-  
-            <label htmlFor="calle" className={style.label}>
-              Calle:
-            </label>
-            <input
-              type="text"
-              name="calle"
-              id="street"
-              className={style.caja}
-              value={userDataRegistro.calle}
-              onChange={handleChangeRegistro}
-            />
-          </div>
-  
+          <label htmlFor="telefono" className={style.label}>
+            {" "}
+            Teléfono:
+          </label>
+          <input
+            type="number"
+            name="telefono"
+            id="telefono"
+            className={style.caja}
+            value={userDataRegistro.telefono}
+            onChange={handleChangeRegistro}
+          />
+
+          <label htmlFor="calle" className={style.label}>
+            Calle:
+          </label>
+          <input
+            type="text"
+            name="calle"
+            id="street"
+            className={style.caja}
+            value={userDataRegistro.calle}
+            onChange={handleChangeRegistro}
+          />
+        </div>
+
+        <br />
+        <br />
+
+        <div className={style.container2}>
+          <label htmlFor="numero" className={style.label}>
+            Numero:
+          </label>
+          <input
+            type="text"
+            className={style.caja}
+            name="numero"
+            id="numero"
+            value={userDataRegistro.numero}
+            onChange={handleChangeRegistro}
+          />
+
+          <label htmlFor="codigopostal" className={style.label}>
+            Código postal:
+          </label>
+          <input
+            type="number"
+            className={style.caja}
+            name="codigoPostal"
+            id="codigopostal"
+            value={userDataRegistro.codigoPostal}
+            onChange={handleChangeRegistro}
+          />
+        </div>
+        <br />
+        <br />
+        <div className={style.container2}>
+          <label htmlFor="ciudad" className={style.label}>
+            Ciudad:
+          </label>
+          <input
+            type="text"
+            name="ciudad"
+            id="city"
+            className={style.caja}
+            value={userDataRegistro.ciudad}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="ciudad" className={style.label}>
+            Pais:
+          </label>
+          <input
+            type="text"
+            name="pais"
+            id="country"
+            className={style.caja}
+            value={userDataRegistro.pais}
+            onChange={handleChangeRegistro}
+          />
+          <label htmlFor="apellidos" className={style.label}>
+            Administrador?
+          </label>
+          <input
+            type="checkbox"
+            className={style.caja}
+            name="administrador"
+            id="administrador"
+            value={userDataRegistro.administrador}
+            onChange={handleChangeAdministrador}
+          />
           <br />
           <br />
-  
-          <div className={style.container2}>
-            <label htmlFor="numero" className={style.label}>
-              Numero:
-            </label>
-            <input
-              type="text"
-              className={style.caja}
-              name="numero"
-              id="numero"
-              value={userDataRegistro.numero}
-              onChange={handleChangeRegistro}
-            />
-  
-            <label htmlFor="codigopostal" className={style.label}>
-              Código postal:
-            </label>
-            <input
-              type="number"
-              className={style.caja}
-              name="codigoPostal"
-              id="codigopostal"
-              value={userDataRegistro.codigoPostal}
-              onChange={handleChangeRegistro}
-            />
-          </div>
-          <br />
-          <br />
-          <div className={style.container2}>
-            <label htmlFor="ciudad" className={style.label}>
-              Ciudad:
-            </label>
-            <input
-              type="text"
-              name="ciudad"
-              id="city"
-              className={style.caja}
-              value={userDataRegistro.ciudad}
-              onChange={handleChangeRegistro}
-            />
-            <label htmlFor="ciudad" className={style.label}>
-              Pais:
-            </label>
-            <input
-              type="text"
-              name="pais"
-              id="country"
-              className={style.caja}
-              value={userDataRegistro.pais}
-              onChange={handleChangeRegistro}
-            />
-            <br />
-            <br />
-          </div>
-  
-          <br />
-          <div className={style.documentoagenerar}>
-            
-            <input
-              className="button"
-              type="submit"
-              value="Guardar"
-              disabled={
-                !userDataRegistro.correo ||
-                !userDataRegistro.cedulaAbogado ||
-                !userDataRegistro.nombre ||
-                !userDataRegistro.apellido
-              }
-            />
-            <Link to='/home/lawyers'><button className='button'>Volver</button></Link>
-          </div>
-        </form>
-      </div>
-    );
+        </div>
+
+        <br />
+        <div className={style.documentoagenerar}>
+          <input
+            className="button"
+            type="submit"
+            value="Guardar"
+            disabled={
+              !userDataRegistro.correo ||
+              !userDataRegistro.cedulaAbogado ||
+              !userDataRegistro.nombre ||
+              !userDataRegistro.apellido
+            }
+          />
+          <Link to="/home/lawyers">
+            <button className="button">Volver</button>
+          </Link>
+        </div>
+      </form>
+    </div>
+  );
   };
 
 export default CrearAbogado

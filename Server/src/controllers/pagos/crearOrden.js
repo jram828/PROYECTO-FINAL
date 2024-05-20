@@ -31,9 +31,11 @@ const preference = new Preference(client);
           },
         ],
         back_urls: {
-          success: "https://legaltech-develop.onrender.com/pagos/success",
-          failure: "https://legaltech-develop.onrender.com/pagos/failure",
-          pending: "https://legaltech-develop.onrender.com/pagos/pending",
+          success:
+            "https://proyecto-final-develop.vercel.app/home/payments/status",
+          failure: "https://proyecto-final-develop.vercel.app/home/payments/failure",
+          pending:
+            "https://proyecto-final-develop.vercel.app/home/payments/status",
         },
         notification_url:
           "https://legaltech-develop.onrender.com/pagos/webhook",

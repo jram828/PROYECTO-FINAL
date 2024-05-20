@@ -41,10 +41,10 @@ const clientesDetailHandler = async (req, res) => {
 };
 
 const getClientByEmailHandler = async (req, res) => {
-  const { email } = req.query;
+  const { correo } = req.query;
 
   try {
-    const response = await getClientByEmail(email);
+    const response = await getClientByEmail(correo);
     console.log("Response by email:", response);
     res.status(200).json(response);
   } catch (error) {
@@ -54,6 +54,8 @@ const getClientByEmailHandler = async (req, res) => {
 };
 
 const postClientesHandler = async (req, res) => {
+
+  console.log('Body post cliente:',req.body)
   const {
     cedulaCliente,
     nombre,
@@ -82,6 +84,7 @@ const postClientesHandler = async (req, res) => {
       pais,
       password
     );
+    console.log('Response crear cliente', response)
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");
   } catch (error) {
