@@ -77,7 +77,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     dispatch(setUserToken(user));
   console.log("Datos login:", user.email);
   try {
-    const { data } = await axios(`/clientes/?email=${user.email}`);
+    const { data } = await axios(`/clientes/email?correo=${user.email}`);
     
     console.log("Login 2:", data);
     // const { access } = data;
