@@ -10,14 +10,14 @@ function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
 
 
 const getAllCita = async (filters)=>{
-
+  console.log(filters.query)
   const consulta= (!filters.query.todos || filters.query.todos==='false') ?
        {
         where: {
-            [Sequelize.Op.or]: [
-                {fechaCita: {[Sequelize.Op.gt]: Sequelize.literal('CURRENT_DATE')}}
-          ]
-          },
+          fechaCita: {
+            [Sequelize.Op.gt]: new Date()
+          }
+        },
         attributes: ['idCita', 'titulo', 'descripcion', 'fechaCita'],
         include: [
           {
@@ -69,7 +69,7 @@ const getAllCita = async (filters)=>{
     
 
     const getAllCitaBd = await Cita.findAll(consulta)
-    console.log()
+    
     //Obtiene los campos a devolver     
     let datos=getAllCitaBd.map(elemento=>({idCita:elemento.idCita,
         titulo: elemento.titulo, 
@@ -85,11 +85,11 @@ const getAllCita = async (filters)=>{
         tipoCaso:elemento.Caso.TipoDeCaso.descripcion
   
       }))
-
+      
       //Filtra de acuerdo a los parametros recibidos    
     Object.entries(filters.query).forEach(([field, value]) => {
         
-        if (field !== 'ordenarPor' && field !== 'pagina' && field !== 'porPagina') datos=datos.filter(elemento => elemento[field] === value)
+        if (field !== 'ordenarPor' && field !== 'pagina' && field !== 'porPagina' && field !== 'todos') datos=datos.filter(elemento => elemento[field] === value)
         })
     
    //Ordena de acuerdo al parametro de ordenacion recibido
@@ -148,8 +148,9 @@ let elementos=3
 let offset=1
 if (filters.query.porPagina) elementos = filters.query.porPagina;
 if (filters.query.pagina) offset = (filters.query.pagina - 1) * parseInt(elementos)
-
-//console.log('offset....',offset,'  elementos........',elementos)
+  //console.log(arregloOrdenado)
+//console.log(datos)
+console.log('offset....',offset,'  elementos........',elementos)
 const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);  
 const paginaActual=paginarArreglo(arregloOrdenado,offset-1,elementos)
 
