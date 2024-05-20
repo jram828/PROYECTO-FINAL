@@ -93,9 +93,9 @@ function Payments() {
   return (
     <div>
       <div>
-        <p>Realizar pago</p>
+        {/* <p>Realizar pago</p> */}
         <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-          <h1 className="titulo">Crear Usuario</h1>
+          <h1 className="titulo">Realizar un pago</h1>
           <div className="input input-bordered flex items-center gap-2">
             <label htmlFor="correo" className="">
               Valor a pagar:

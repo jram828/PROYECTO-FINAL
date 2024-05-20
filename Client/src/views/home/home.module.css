@@ -36,8 +36,9 @@
 
 .imagen img {
   max-width: 100%;
-  max-height: calc(100vh - 175px);
+  max-height: calc(100vh - 235px);
   object-fit: contain;
+  border-radius: 10px;
   
 }
 
@@ -60,71 +61,3 @@
   width: 250px; 
 }
 
-.btn {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--color-four); 
-  padding: 5px 15px; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 20px; 
-  font-variant: small-caps;
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  height: 40px;
-  
-}
-
-.btn:hover {
-  background-color: darken(var(--color-four), 10%); 
-}
-
-btn:focus,
-btn:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.btn2 {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--color-one); 
-  padding: 5px 15px; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 20px; 
-  font-variant: small-caps;
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  height: 40px;
-  
-}
-
-.btn2:hover {
-  background-color: darken(var(--color-four), 10%); 
-}
-
-btn2:focus,
-btn2:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.btn3 {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--color-two); 
-  padding: 5px 15px; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 20px; 
-  font-variant: small-caps;
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  height: 40px;
-  
-}
-
-.btn3:hover {
-  background-color: darken(var(--color-four), 10%); 
-}
-
-btn3:focus,
-btn3:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}

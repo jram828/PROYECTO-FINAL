@@ -20,42 +20,58 @@ function Home() {
         <div className={style.imagen}>
           <img src={picture} alt="homeLawyers" />
         </div>
-        <div className={style.container3}>
-          <br />
-          <br />
-          <Link to="/home/customers">
-            <button className={style.btn2}>Clientes</button>
+        <ul className="menu bg-accent text-white w-80 rounded-box menu-lg">
+         <li>
+          <Link to="/home/customers" className='hover:text-primary'>
+            <button>Clientes</button>
           </Link>
-          <Link to="/home/lawyers">
-            <button className={style.btn2}>Abogados</button>
+        </li>
+         <li>
+          <Link to="/home/lawyers" className='hover:text-primary'>
+              <button >Abogados</button>
           </Link>
-
-          <Link to="/home/detail">
-            <button className={style.btn}>Datos Personales</button>
+         </li>
+         <li>
+          <Link to="/home/detail" className='hover:text-primary'>
+            <button >Datos Personales</button>
           </Link>
-          <Link to="/home/cases">
-            <button className={style.btn}>Casos</button>
+         </li>
+         <li>
+          <Link to="/home/cases" className='hover:text-primary'>
+            <button >Casos</button>
           </Link>
-          <Link to="/home/documents">
-            <button className={style.btn}>Documentos</button>
+         </li>
+         <li>
+          <Link to="/home/documents" className='hover:text-primary'>
+            <button >Documentos</button>
           </Link>
-          <Link to="/home/diary">
-            <button className={style.btn}>Agenda</button>
+         </li>
+         <li>
+          <Link to="/home/diary" className='hover:text-primary'>
+            <button >Agenda</button>
           </Link>
-          <Link to="/home/payments">
-            <button className={style.btn}>Pagos</button>
+         </li>
+         <li>
+          <Link to="/home/payments" className='hover:text-primary'>
+            <button >Pagos</button>
           </Link>
-          <Link to="/home/consultation">
-            <button className={style.btn}>Consultas</button>
+         </li>
+         <li>
+          <Link to="/home/consultation" className='hover:text-primary'>
+            <button >Consultas</button>
           </Link>
-          <Link to="/home/statistics">
-            <button className={style.btn}>Estadisticas</button>
+         </li>
+         <li>
+          <Link to="/home/statistics" className='hover:text-primary'>
+            <button >Estadisticas</button>
           </Link>
-
-          <Link to="/">
-            <button className={style.btn3}>Salir</button>
+         </li>
+         <li>
+          <Link to="/" className='hover:text-primary'>
+            <button >Salir</button>
           </Link>
-        </div>
+         </li>
+        </ul>
       </div>
     </div>
   );
