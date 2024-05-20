@@ -13,6 +13,7 @@ import Password from './views/password/password.component';
 import CrearAbogado from './views/crearAbogado/crearAbogado.component'
 import CreateCliente from './components/createclient/index'
 import CrearCaso from './views/CrearCaso/crearCaso';
+import DetailCases from './views/detailCases/detailCases'
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -46,11 +47,12 @@ function App() {
         <Route path="/home/customers" element={<CustomersPage />} />
         <Route path="/home/detail" element={<Detail />} />
         <Route path="/home/detail/:cedula" element={<Detail />} />
-        <Route path="/home/cases/:id" element={<Cases />} />
+        <Route path="/home/cases" element={<Cases />} />
+        <Route path="/home/cases/:id" element={<DetailCases/>} />
         <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
         <Route path="/home/costumers/:id" element={<Detail />} />
         <Route path="/home/lawyers/:id" element={<Detail />} />
-        <Route path="/home/documents/:id" element={<Documents />} />
+        <Route path="/home/documents" element={<Documents />} />
         <Route path="/home/diary" element={<Diary />} />
         <Route path="/home/payments" element={<Payments />} />
         <Route path="/home/payments" element={<Status />} />
