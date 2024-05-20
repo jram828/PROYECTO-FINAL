@@ -55,7 +55,8 @@ const { Caso,
         DocumentoLegal, 
         TipoNotificacion, 
         DocumentoLegalTipoNotificacion,
-        Usuario 
+        Usuario,
+        Cita 
       } = sequelize.models;
 
 TipoDeCaso.belongsToMany(DocumentoTemplate, { through: 'TipoDeCasoDocumentoTemplate' })
@@ -77,6 +78,9 @@ TipoDeCaso.hasMany(Caso)
 Caso.belongsTo(TipoDeCaso)
 
 Caso.hasOne(Cotizacion)
+
+Caso.hasMany(Cita, {foreignKey: 'idCaso'})
+Cita.belongsTo(Caso, {foreignKey: 'idCaso'})
 
 Cotizacion.belongsTo(Caso)
 Cotizacion.hasOne(Contrato)
