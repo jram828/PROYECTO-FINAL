@@ -15,6 +15,7 @@ export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const DELETE_CLIENTE = "DELETE_CLIENTES";
 
 
+
 //const URL = 'http://localhost:3001/'
 //const URL = 'https://legaltech-6u3y.onrender.com/'
 const URL = 'https://legaltech-develop.onrender.com/'
@@ -190,4 +191,6 @@ export const getClientes = () => {
                                   payload: data,
                                   });
                             };
-                   };             
+                   }; 
+       
+     
