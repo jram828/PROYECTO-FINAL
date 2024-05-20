@@ -7,7 +7,7 @@ import { useDispatch} from "react-redux";
 import { setAuth, setUserToken } from "../../redux/actions";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { sendEmail } from "../nodemailer";
+import SendEmail from "../nodemailer";
 
 
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
@@ -82,7 +82,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
         dispatch(setAuth(true));
       navigate("/home");
 
-       sendEmail(user.email)
+       SendEmail(user.email)
       } else {
         window.alert("Usuario o contraseña incorrectos");
       }
