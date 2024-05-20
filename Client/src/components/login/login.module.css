@@ -45,23 +45,27 @@
  }
 
  .select {
-   width: 92%;
-   padding: 10px;
-   margin-bottom: 10px;
-   border: 1px solid white; 
-   border-radius: 5px;
-   background-color: transparent; 
-   color: white; 
+   
+  justify-content: flex-start;
    font-family: "Outfit", sans-serif; 
    outline: none; 
  }
 
- .select option {
-   background-color: var(--color-two); /* Color de fondo */
-   color: white; /* Color del texto */
-   font-family: "Outfit", sans-serif; /* Estilo de fuente */
+ .custom-select {
+  color: var(--tw-text-opacity, 1) color-white;
+  background-color: var(--tw-bg-opacity, 1) bg-primary;
 }
- 
+
+.custom-select option {
+  color: var(--tw-text-opacity, 1) color-white;
+  background-color: var(--tw-bg-opacity, 1) bg-primary;
+}
+
+.customOption {
+  color: white;
+  background-color: #1f2937; 
+}
+
 .button {
   width: 180px;
   height: auto;
