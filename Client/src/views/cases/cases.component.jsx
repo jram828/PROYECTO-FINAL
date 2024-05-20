@@ -7,22 +7,18 @@ import OrderCasos from '../../components/orderCasos/orderCasos';
 function Cases() {
   return (
     <div>
-      <div>
         <p>Casos</p>
-        
-       
-      </div>
-      <Link to='/home/cases/crearcaso'>
+      
+        <Link to='/home/cases/crearcaso'>
           <button >Crear caso</button>
         </Link>
-      <Link to='/home'>
+        <Link to='/home'>
           <button >Volver</button>
         </Link>
+        <OrderCasos></OrderCasos> 
+        <FiltrosCasos></FiltrosCasos>
+      </div>
     
-<OrderCasos></OrderCasos>    
-      <FiltrosCasos></FiltrosCasos>
-    
-    </div>
   )
 }
 
