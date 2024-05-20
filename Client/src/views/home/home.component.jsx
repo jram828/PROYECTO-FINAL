@@ -33,10 +33,10 @@ function Home() {
           <Link to="/home/detail">
             <button className={style.btn}>Datos Personales</button>
           </Link>
-          <Link to="/home/cases/:id">
+          <Link to="/home/cases">
             <button className={style.btn}>Casos</button>
           </Link>
-          <Link to="/home/documents/:id">
+          <Link to="/home/documents">
             <button className={style.btn}>Documentos</button>
           </Link>
           <Link to="/home/diary">
