@@ -16,6 +16,7 @@ export const DELETE_CLIENTE = "DELETE_CLIENTES";
 export const GET_TIPOSDECASOS = "GET_TIPOSDECASOS";
 export const GET_CASOS = "GET_CASOS";
 export const FILTER_CASOS = "FILTER_CASOS";
+export const ORDER_CASOS = "ORDER_CASOS";
 
 
 
@@ -238,3 +239,16 @@ export const getClientes = () => {
                   };
                   
                 }           
+
+      export const orderCasos = (value) => {
+          const endpoint = `${URL}casos?field=apellidoAbogado&order=${value}`;
+                  
+          return async (dispatch) => {
+              const {data} = await axios.get(endpoint);
+                  return dispatch({
+                      type: ORDER_CASOS,
+                        payload: data,
+                      });
+                    };
+                };        
+                    

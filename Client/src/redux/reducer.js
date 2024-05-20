@@ -13,7 +13,8 @@ import { SET_AUTHENTICATED,
   DELETE_CLIENTE,
   GET_TIPOSDECASOS,
   GET_CASOS,
-  FILTER_CASOS
+  FILTER_CASOS,
+  ORDER_CASOS,
    } from "./actions";
 
 
@@ -115,6 +116,11 @@ const rootReducer = (state = initialState, action) => {
               ...state,
               casos:action.payload
             }
+          case ORDER_CASOS:
+            return {
+              ...state,
+              casos:action.payload
+            }  
         
     default:
       return state;
