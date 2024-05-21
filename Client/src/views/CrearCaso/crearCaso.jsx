@@ -200,7 +200,7 @@ function CrearCaso() {
       >
         Guardar
       </button>
-      <Link to="/home/cases/:id">
+      <Link to="/home/cases">
         <button className="btn btn-sm btn-accent text-white">Volver</button>
       </Link>
     </div>
