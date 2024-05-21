@@ -10,20 +10,19 @@ function CustomersPage() {
 
   return (
     <div className={style.container}>
-        <p className={style.titulo}>Clientes</p>
+        {/* <p className={style.titulo}>Clientes</p> */}
+        {/* <div>
         <Link to="/home/customers/crearcliente">
-          <button className='button'>Crear cliente</button>
+          <button className='btn btn-accent btn-sm'>Crear cliente</button>
         </Link>
         <Link to="/home">
-          <button className='button'>Volver</button>
+          <button className='btn btn-accent btn-sm'>Volver</button>
         </Link>
-        <OrderClientes></OrderClientes>
+        </div> */}
+        
+        {/* <OrderClientes></OrderClientes> */}
         <FiltrosClientes></FiltrosClientes>
     </div>
-      
-     
-   
-    
     
   )
 }
