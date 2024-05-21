@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { setSource } from '../../redux/actions';
 
 
-
 function Card({item}) {
 
   const { cedulaAbogado,

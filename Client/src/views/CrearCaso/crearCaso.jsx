@@ -13,7 +13,7 @@ function CrearCaso() {
     fecha: "",
     fechaFin: "",
     descripcion: "",
-    TipoDeCasoid: "",
+    TipoDeCasoId: "",
   });
   console.log(userDataRegistro);
 
@@ -49,13 +49,17 @@ function CrearCaso() {
     obtenerClientes();
   }, []);
 
-  const [tipos, setTipos] = useState([]);
+  const [tipos, setTipos] = useState({ allTipoDeCaso: [] });
 
   useEffect(() => {
     const obtenerTipos = async () => {
       try {
         const listaTipos = await getTiposCasos();
-        setTipos(listaTipos);
+        if (listaTipos && Array.isArray(listaTipos.allTipoDeCaso)) {
+          setTipos(listaTipos);
+        } else {
+          console.error("Error: La respuesta no es un objeto esperado", listaTipos);
+        }
       } catch (error) {
         console.error("Error al obtener los tipos de casos:", error);
       }
@@ -63,6 +67,7 @@ function CrearCaso() {
 
     obtenerTipos();
   }, []);
+
   
 
   const handleChangeRegistro = (e) => {
@@ -96,17 +101,17 @@ function CrearCaso() {
           
             <label className={style.label}>Tipo de caso:</label>
              <select
-            name="TipoDeCasoid"
-            id="TipoDeCasoid"
+            name="TipoDeCasoId"
+            id="TipoDeCasoId"
             className={style.select}
             onChange={(event) => handleChangeRegistro(event)}
           >
              <option value="" className={style.option}>Tipos de casos</option>
-            {/*tipos?.map((tipo) => (
-              <option key={tipo.TipoDeCasoid} value={tipo.TipoDeCasoid} className={style.option}>
+            {tipos.allTipoDeCaso.map((tipo) => (
+              <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoid} className={style.option}>
                 {tipo.descripcion} 
               </option>
-            ))*/}
+            ))}
           </select>
     
           <label className={style.label}>Fecha:</label>
@@ -138,9 +143,9 @@ function CrearCaso() {
             <option value="" className={style.option}>Abogados</option>
             {abogados.map((abogado) => (
               <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
-                {abogado.nombre} {abogado.apellido} {abogado.cedulaAbogado}
+                {abogado.nombre} {abogado.apellido} 
               </option>
-            ))}
+             ))}
           </select>
           <label className={style.label}>Cliente:</label>
           <select

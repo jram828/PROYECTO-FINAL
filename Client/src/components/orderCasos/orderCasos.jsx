@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { orderAbogados } from "../../redux/actions";
-import './orderAbogado'
+import { orderCasos } from "../../redux/actions";
+import './orderCasos.css'
 
-function OrderAbogado() {
+function OrderCasos() {
   const dispatch = useDispatch();
   
   function handleOrder(event) {
     event.preventDefault();
-    dispatch(orderAbogados(event.target.value));
+    dispatch(orderCasos(event.target.value));
   }
 
   return (
@@ -19,11 +19,10 @@ function OrderAbogado() {
           <option value='asc'>A-Z</option>
           <option value='desc'>Z-A</option>
         </select>
-        
       
       </div>
     </div>
   );
 }
 
-export default OrderAbogado;
+export default OrderCasos;
