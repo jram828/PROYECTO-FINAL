@@ -41,39 +41,46 @@ const SearchBar = ({ onFilter }) => {
   };
 
   return (
-    <div className="barra_busqueda">
+    <div className="flex flex-col gap-4 mb-4">
 
-       <label>Tipo de caso:</label>
-       <br />
-       <input
-         placeholder="Busqueda..." 
-         type="text" 
-         value={tipoCaso} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setTipoCaso)}
-       />
-       <br />
-       <label>Apellido abogado:</label>
-       <br />
-       <input
-         placeholder="Busqueda..." 
-         type="text" 
-         value={apellidoAbogado} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setApellidoAbogado)}
-       />
-       <br />
-       <label>Apellido Cliente:</label>
-       <br />
-       <input 
-         placeholder="Busqueda..." 
-         type="text" 
-         value={apellidoCliente} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setApellidoCliente)}
-       />
-       <br />
-       <button onClick={handleSearch}>Buscar</button>
+      <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Tipo de caso:</label>
+        <br />
+        <input
+          placeholder="Busqueda..." 
+          type="text" 
+          value={tipoCaso} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setTipoCaso)}
+        />
+      </div>
+       
+      <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Apellido abogado:</label>
+        <br />
+        <input
+          placeholder="Busqueda..." 
+          type="text" 
+          value={apellidoAbogado} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setApellidoAbogado)}
+        />
+      </div>
+       
+       <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Apellido Cliente:</label>
+        <br />
+        <input 
+          placeholder="Busqueda..." 
+          type="text" 
+          value={apellidoCliente} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setApellidoCliente)}
+        />
+       </div>
+       
+       
+       <button onClick={handleSearch} className='btn btn-md hover:bg-primary hover:text-white w-full'>Buscar</button>
 
     </div>
   );
