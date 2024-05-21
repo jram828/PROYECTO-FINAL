@@ -93,94 +93,121 @@ function CrearCaso() {
 
   
   return (
-
-<div className={style.container}>
-      <h1 className={style.titulo}>Crear caso</h1>
-      <form onSubmit={submitHandlerRegistro} className={style.formulario}>
-        <div className={style.inputrow}>
-          
-            <label className={style.label}>Tipo de caso:</label>
-             <select
+<div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
+  <h1 className={style.titulo}>Crear caso</h1>
+  <form onSubmit={submitHandlerRegistro} className={style.formulario}>
+    <br />
+    <div className="space-y-4">
+      <div className="w-full px-4">
+        <label className="w-full">
+          <select
             name="TipoDeCasoId"
             id="TipoDeCasoId"
-            className={style.select}
+            className="input select-bordered text-lg pl-2 w-full"
             onChange={(event) => handleChangeRegistro(event)}
           >
-             <option value="" className={style.option}>Tipos de casos</option>
+            <option value="" className={style.customOption}>Tipo de caso</option>
             {tipos.allTipoDeCaso.map((tipo) => (
-              <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoid} className={style.option}>
-                {tipo.descripcion} 
+              <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoid} className={style.customOption}>
+                {tipo.descripcion}
               </option>
             ))}
           </select>
-    
-          <label className={style.label}>Fecha:</label>
+        </label>
+      </div>
+
+      <div className="w-full px-4">
+        <label className="input input-bordered flex items-center w-full">Fecha:
           <input
-            className={style.input}
+            className="grow w-full"
             name="fecha"
             id="fecha"
+            type="date"
             value={userDataRegistro.fecha}
             onChange={handleChangeRegistro}
           />
-          
-          <label className={style.label}>Fecha Final:</label>
+        </label>
+      </div>
+
+      <div className="w-full px-4">
+        <label className="input input-bordered flex items-center w-full">Final:
           <input
-            className={style.input}
+            className="grow w-full"
             name="fechaFin"
             id="fechaFin"
+            type="date"
             value={userDataRegistro.fechaFin}
             onChange={handleChangeRegistro}
           />
-        </div>
-        <div className={style.inputrow}>
-          <label className={style.label}>Abogado:</label>
+        </label>
+      </div>
+
+      <div className="w-full px-4">
+        <label className="w-full">
           <select
             name="cedulaAbogado"
             id="cedulaAbogado"
-            className={style.select}
+            className="input select-bordered text-lg pl-2 w-full"
             onChange={(event) => handleChangeRegistro(event)}
           >
-            <option value="" className={style.option}>Abogados</option>
+            <option value="" className={style.customOption}>Abogados</option>
             {abogados.map((abogado) => (
-              <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
-                {abogado.nombre} {abogado.apellido} 
+              <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.customOption}>
+                {abogado.nombre} {abogado.apellido}
               </option>
-             ))}
+            ))}
           </select>
-          <label className={style.label}>Cliente:</label>
+        </label>
+      </div>
+
+      <div className="w-full px-4">
+        <label className="w-full">
           <select
             name="cedulaCliente"
             id="cedulaCliente"
             onChange={handleChangeRegistro}
-            className={style.select}
+            className="input select-bordered text-lg pl-2 w-full"
           >
-            <option value="" className={style.option}>Clientes</option>
+            <option value="" className={style.customOption}>Clientes</option>
             {clientes.map((cliente) => (
-              <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.option}>
+              <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.customOption}>
                 {cliente.nombre} {cliente.apellido}
               </option>
             ))}
           </select>
-        </div>
-        <div className={style.inputrow}>
-          <label className={style.label}>Descripcion:</label>
+        </label>
+      </div>
+
+      <div className="w-full px-4">
+        <label className="w-full">
           <textarea
-            className={style.input}
+            className="textarea textarea-bordered h-24 w-full"
             name="descripcion"
             id="descripcion"
             value={userDataRegistro.descripcion}
             onChange={handleChangeRegistro}
+            placeholder="Descripción"
           ></textarea>
-        </div>
-        <div className="botones">
-          <input type="submit" className="button" value="Guardar" />
-          <Link to="/home/cases/:id">
-          <button className='button'>Volver</button>
-          </Link>
-        </div>
-      </form>
+        </label>
+      </div>
     </div>
 
+    <div className="flex justify-center gap-2 mt-4">
+      <button
+        type="submit"
+        className="btn btn-sm btn-accent text-white"
+        value="Guardar"
+      >
+        Guardar
+      </button>
+      <Link to="/home/cases/:id">
+        <button className="btn btn-sm btn-accent text-white">Volver</button>
+      </Link>
+    </div>
+  </form>
+</div>
+
+  
   );
 }
 

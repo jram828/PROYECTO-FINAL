@@ -1,15 +1,18 @@
 .container {
-    background-color: var(--color-two);
-    opacity: 0.9;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 50px;
-    width: 100%;
-    margin: 0 auto;
-    color: white;
-    font-family: "Outfit", sans-serif;
-  }
+  background-color: white;
   
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+
+  font-family: "Outfit", sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+
   .titulo {
     font-size: 24px;
     margin-bottom: 20px;

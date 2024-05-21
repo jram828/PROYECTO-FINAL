@@ -66,7 +66,7 @@ function CrearAbogado() {
     
 
   return (
-    <div className={style.container}>
+    <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
       <form
         className={style.datos}
         method="post"
@@ -78,183 +78,206 @@ function CrearAbogado() {
         <h1 className={style.titulo}>Crear Abogado</h1>
         <br />
         <br />
-        <div className={style.container2}>
-          <label htmlFor="nombre" className={style.label}>
-            Nombre(s):
-          </label>
-          <input
-            type="text"
-            name="nombre"
-            id="name"
-            className={style.caja}
-            value={userDataRegistro.nombre}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="apellidos" className={style.label}>
-            Apellido(s):
-          </label>
-          <input
-            type="text"
-            className={style.caja}
-            name="apellido"
-            id="lastname"
-            value={userDataRegistro.apellido}
-            onChange={handleChangeRegistro}
-          />
-        </div>
-        <br />
-        <br />
-        <div className={style.container2}>
-          <label htmlFor="numerocedula" className={style.label}>
-            Numero de cédula:
-          </label>
-          <input
-            type="number"
-            className={style.caja}
-            name="cedulaAbogado"
-            id="cedula"
-            value={userDataRegistro.cedulaAbogado}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="matricula" className={style.label}>
-            Matricula:
-          </label>
-          <input
-            type="number"
-            className={style.caja}
-            name="matricula"
-            id="matricula"
-            value={userDataRegistro.matricula}
-            onChange={handleChangeRegistro}
-          />
-        </div>
-        <br />
-        <br />
-        <div className={style.container2}>
-          <label htmlFor="correo" className={style.label}>
-            Email:
-          </label>
-          <input
-            type="email"
-            name="correo"
-            id="email"
-            className={style.caja}
-            value={userDataRegistro.correo}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="password" className={style.label}>
-            Contraseña:
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="email"
-            className={style.caja}
-            value={userDataRegistro.password}
-            onChange={handleChangeRegistro}
-          />
-          {/* </div>
+
+        <div className="space-y-3">
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="nombre" className="input input-bordered flex items-center max-w-xs">
+                Nombre(s):
+              <input
+                type="text"
+                name="nombre"
+                id="name"
+                className="grow"
+                value={userDataRegistro.nombre}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+            <div className="mx-4">
+              <label htmlFor="apellidos" className="input input-bordered flex items-center max-w-xs">
+                Apellido(s):
+              <input
+                type="text"
+                className="grow"
+                name="apellido"
+                id="lastname"
+                value={userDataRegistro.apellido}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
+      
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="numerocedula" className="input input-bordered flex items-center max-w-xs">
+              Cédula n°:
+              <input
+                type="number"
+                className="grow"
+                name="cedulaAbogado"
+                id="cedula"
+                value={userDataRegistro.cedulaAbogado}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+            <div className="mx-4">
+              <label htmlFor="matricula" className="input input-bordered flex items-center max-w-xs">
+              Matricula:
+              <input
+                type="number"
+                className="grow"
+                name="matricula"
+                id="matricula"
+                value={userDataRegistro.matricula}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
+          
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="correo" className="input input-bordered flex items-center max-w-xs">
+                Email:
+              <input
+                type="email"
+                name="correo"
+                id="email"
+                className="grow"
+                value={userDataRegistro.correo}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+            <div className="mx-4">
+              <label htmlFor="password" className="input input-bordered flex items-center max-w-xs">
+                Contraseña:
+              <input
+                type="password"
+                name="password"
+                id="email"
+                className="grow"
+                value={userDataRegistro.password}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
+
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="telefono" className="input input-bordered flex items-center max-w-xs">
+                {" "}
+                Teléfono:
+              <input
+                type="number"
+                name="telefono"
+                id="telefono"
+                className="grow"
+                value={userDataRegistro.telefono}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+
+            <div className="mx-4">
+              <label htmlFor="calle" className="input input-bordered flex items-center max-w-xs">
+                Calle:
+              <input
+                type="text"
+                name="calle"
+                id="street"
+                className="grow"
+                value={userDataRegistro.calle}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
+
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="numero" className="input input-bordered flex items-center max-w-xs">
+                Numero:
+              <input
+                type="text"
+                className="grow"
+                name="numero"
+                id="numero"
+                value={userDataRegistro.numero}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+            <div className="mx-4">
+              <label htmlFor="codigopostal" className="input input-bordered flex items-center max-w-xs">
+                CP:
+              <input
+                type="number"
+                className="grow"
+                name="codigoPostal"
+                id="codigopostal"
+                value={userDataRegistro.codigoPostal}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
+          
+          <div className="flex justify-around">
+            <div className="mx-4">
+              <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
+                Ciudad:
+              <input
+                type="text"
+                name="ciudad"
+                id="city"
+                className="grow"
+                value={userDataRegistro.ciudad}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+            <div className="mx-4">
+              <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
+                Pais:
+              <input
+                type="text"
+                name="pais"
+                id="country"
+                className="grow"
+                value={userDataRegistro.pais}
+                onChange={handleChangeRegistro}
+              />
+              </label>
+            </div>
+          </div>
           <br />
-          <br />
-          <div className="nombreapellidos"> */}
-          <label htmlFor="telefono" className={style.label}>
-            {" "}
-            Teléfono:
-          </label>
-          <input
-            type="number"
-            name="telefono"
-            id="telefono"
-            className={style.caja}
-            value={userDataRegistro.telefono}
-            onChange={handleChangeRegistro}
-          />
-
-          <label htmlFor="calle" className={style.label}>
-            Calle:
-          </label>
-          <input
-            type="text"
-            name="calle"
-            id="street"
-            className={style.caja}
-            value={userDataRegistro.calle}
-            onChange={handleChangeRegistro}
-          />
-        </div>
-
-        <br />
-        <br />
-
-        <div className={style.container2}>
-          <label htmlFor="numero" className={style.label}>
-            Numero:
-          </label>
-          <input
-            type="text"
-            className={style.caja}
-            name="numero"
-            id="numero"
-            value={userDataRegistro.numero}
-            onChange={handleChangeRegistro}
-          />
-
-          <label htmlFor="codigopostal" className={style.label}>
-            Código postal:
-          </label>
-          <input
-            type="number"
-            className={style.caja}
-            name="codigoPostal"
-            id="codigopostal"
-            value={userDataRegistro.codigoPostal}
-            onChange={handleChangeRegistro}
-          />
-        </div>
-        <br />
-        <br />
-        <div className={style.container2}>
-          <label htmlFor="ciudad" className={style.label}>
-            Ciudad:
-          </label>
-          <input
-            type="text"
-            name="ciudad"
-            id="city"
-            className={style.caja}
-            value={userDataRegistro.ciudad}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="ciudad" className={style.label}>
-            Pais:
-          </label>
-          <input
-            type="text"
-            name="pais"
-            id="country"
-            className={style.caja}
-            value={userDataRegistro.pais}
-            onChange={handleChangeRegistro}
-          />
-          <label htmlFor="apellidos" className={style.label}>
+          <div >
+          <label htmlFor="apellidos" className="cursor-pointer label">
             Administrador?
-          </label>
-          <input
-            type="checkbox"
-            className={style.caja}
-            name="administrador"
-            id="administrador"
-            value={userDataRegistro.administrador}
-            onChange={handleChangeAdministrador}
-          />
-          <br />
-          <br />
+            <br />
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent"
+              name="administrador"
+              id="administrador"
+              value={userDataRegistro.administrador}
+              onChange={handleChangeAdministrador}
+            />
+            </label>
+          </div>
+          
         </div>
+        
 
         <br />
-        <div className={style.documentoagenerar}>
-          <input
-            className="button"
+        <div className="flex justify-center gap-2">
+          <button
+            className="btn btn-sm btn-accent text-white"
             type="submit"
             value="Guardar"
             disabled={
@@ -263,9 +286,11 @@ function CrearAbogado() {
               !userDataRegistro.nombre ||
               !userDataRegistro.apellido
             }
-          />
+          >
+            Guardar
+          </button>
           <Link to="/home/lawyers">
-            <button className="button">Volver</button>
+            <button className="btn btn-sm btn-accent text-white">Volver</button>
           </Link>
         </div>
       </form>
