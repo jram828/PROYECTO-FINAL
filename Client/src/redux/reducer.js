@@ -16,6 +16,7 @@ import { SET_AUTHENTICATED,
   FILTER_CASOS,
   ORDER_CASOS,
   POST_CITA,
+  GET_CITAS,
    } from "./actions";
 
 
@@ -127,7 +128,12 @@ const rootReducer = (state = initialState, action) => {
             return {
               ...state,
               citas:action.payload
-            }   
+            }
+          case GET_CITAS:
+            return {
+              ...state,
+              citas:action.payload
+            }    
         
     default:
       return state;

@@ -15,9 +15,9 @@ function OrderCasos() {
     <div>
       <div>
       <select onChange={handleOrder}>
-          <option value=''>Ordenar:</option>
-          <option value='asc'>A-Z</option>
-          <option value='desc'>Z-A</option>
+          <option value=''>Ordenar por:</option>
+          <option value='apellidoAbogado'>Abogado</option>
+          <option value='apellidoCliente'>Cliente</option>
         </select>
       
       </div>
