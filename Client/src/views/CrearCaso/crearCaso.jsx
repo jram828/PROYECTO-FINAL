@@ -145,7 +145,7 @@ function CrearCaso() {
               <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
                 {abogado.nombre} {abogado.apellido} 
               </option>
-            ))}
+             ))}
           </select>
           <label className={style.label}>Cliente:</label>
           <select

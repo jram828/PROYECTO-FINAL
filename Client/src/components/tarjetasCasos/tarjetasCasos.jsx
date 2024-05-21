@@ -1,6 +1,7 @@
 import './tarjetasCasos.css';
 import TarjetaCaso from '../tarjetaCaso/tarjetaCaso';
 
+
 function TrajetasCasos({ casos }) {
 
   if (!casos || !casos.datosPagina) {
