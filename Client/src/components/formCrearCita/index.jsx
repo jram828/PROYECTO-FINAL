@@ -15,6 +15,7 @@ function FormCita() {
     idCaso:"",
   });
 
+
   const handleChangeRegistro = (e) => {
     setDataRegistro({
       ...dataRegistro,

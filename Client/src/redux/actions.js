@@ -20,6 +20,8 @@ export const ORDER_CASOS = "ORDER_CASOS";
 export const GET_CASO_BY_ID = "GET_CASO_BY_ID";
 export const DELETE_CASO = "DELETE_CASO;";
 export const POST_CITA = "POST_CITA";
+export const GET_CITAS = "GET_CITAS";
+
 
 
 
@@ -214,7 +216,7 @@ export const getClientes = () => {
             
             
       export const getCasos = () => {
-          const endpoint = `${URL}casos`;
+          const endpoint = `${URL}casos?porPagina=20`;
               return async (dispatch) => {
                   const {data} = await axios.get(endpoint);
                     return dispatch({
@@ -244,7 +246,7 @@ export const getClientes = () => {
                 }           
 
       export const orderCasos = (value) => {
-          const endpoint = `${URL}casos?field=apellidoAbogado&order=${value}`;
+          const endpoint = `${URL}casos?ordenarPor=${value}&porPagina=20`;
                   
           return async (dispatch) => {
               const {data} = await axios.get(endpoint);
@@ -298,3 +300,14 @@ export const getClientes = () => {
                   });         
                 };
              };  
+      
+    export const getCitas = () => {
+        const endpoint = `${URL}citas`;
+          return async (dispatch) => {
+              const {data} = await axios.get(endpoint);
+                  return dispatch({
+                      type: GET_CITAS,
+                      payload: data,
+                });
+            };
+        };        
