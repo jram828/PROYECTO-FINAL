@@ -37,6 +37,7 @@ const postUsuariosHandler = async (req, res) => {
     if (response) {
       
       console.log("Datos Twilio:", { ACCOUNTSID, AUTHTOKEN, NUMBER });
+      res.status(200).json(response);
 
       const client = new twilio(ACCOUNTSID, AUTHTOKEN,NUMBER)
       const numero = "+573127461628";
@@ -50,7 +51,6 @@ const postUsuariosHandler = async (req, res) => {
         .then((message) => console.log(message.sid))
         .done();
       
-      res.status(200).json(response);
     }
     
     else { res.status(200).send("El usuario ya existe"); }
