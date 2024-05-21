@@ -7,6 +7,7 @@ import legaltech from "../../assets/legaltech.png";
 function Home() {
   
   const user = localStorage.getItem("loggedUser");
+  console.log('User local storage: ',user)
   return (
     <div>
       {/* <div className={style.container}>
