@@ -15,6 +15,7 @@ import { SET_AUTHENTICATED,
   GET_CASOS,
   FILTER_CASOS,
   ORDER_CASOS,
+  POST_CITA,
    } from "./actions";
 
 
@@ -28,6 +29,7 @@ let initialState = {
   cliente:{},
   tiposDeCasos:[],
   casos:[],
+  cita:[],
   source:'cliente',
 };
 
@@ -120,7 +122,12 @@ const rootReducer = (state = initialState, action) => {
             return {
               ...state,
               casos:action.payload
-            }  
+            }
+          case POST_CITA:
+            return {
+              ...state,
+              citas:action.payload
+            }   
         
     default:
       return state;
