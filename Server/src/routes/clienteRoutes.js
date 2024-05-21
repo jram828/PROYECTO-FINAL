@@ -7,6 +7,8 @@ const clientesRouter = Router();
 
 clientesRouter.get("/", clientesHandler);
 
+clientesRouter.get("/email", getClientByEmailHandler);
+
 clientesRouter.get("/:cedulaCliente", clientesDetailHandler);
 
 clientesRouter.post("/", postClientesHandler);
@@ -15,7 +17,6 @@ clientesRouter.post("/elimina", postEliminaClientes);
 
 clientesRouter.post("/actualiza", postActualizaClientes);
 
-clientesRouter.get("/email", getClientByEmailHandler);
 
 //clientesRoutes.get("/cedulaCliente", getClientByIDHandler);
 
