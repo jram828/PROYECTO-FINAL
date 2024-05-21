@@ -45,7 +45,7 @@ h1 {
   line-height: 1.1;
 }
 
-.button {
+/* .button {
   font-family: "Outfit", sans-serif;
   background-color: var(--color-four); 
   padding: 5px 15px; 
@@ -86,7 +86,7 @@ button:focus-visible {
 button2:focus,
 button2:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

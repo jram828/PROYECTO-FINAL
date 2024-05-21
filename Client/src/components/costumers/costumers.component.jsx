@@ -5,6 +5,7 @@ import { getClientes } from '../../handlers/todosClientes';
 import { useNavigate } from "react-router-dom";
 import { getClienteById } from "../../handlers/detailCliente";
 
+
 function Costumers() {
 
   const [clientes, setClientes] = useState([]);

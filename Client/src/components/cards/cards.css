@@ -1,8 +1,8 @@
 .contenedorAbogados {
-    padding-top: 5%;
-    margin: 3rem;
+   
+    
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 4rem;
     
 

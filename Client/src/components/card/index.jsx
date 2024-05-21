@@ -1,4 +1,5 @@
 import './card.css'
+import picture from "../../assets/profile-orange.png"
 import { Link  } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -34,10 +35,16 @@ function Card({item}) {
 
   return (
     <Link  to={`/home/detail/${cedula}`}>
-    <div className='tarjetaAbogado' >
-      <h2>Apellido: {apellido}</h2>
-      <h2>Nombre: {nombre}</h2>
-      <h2>Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
+    <div className="card w-40 bg-primary shadow-xl text-white" >
+      <div className="avatar">
+        <div className="rounded">
+        <img src={picture} alt="Profile Picture" className="rounded-xl " />
+        </div>
+      </div>
+  
+      <h2 className="card-title hover:text-secondary">Apellido: {apellido}</h2>
+      <h2 className="card-title hover:text-secondary">Nombre: {nombre}</h2>
+      <h2 className="card-title hover:text-secondary">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
       </div>
       </Link>
   )
