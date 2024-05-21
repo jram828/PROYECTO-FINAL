@@ -34,7 +34,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {user.usuario.rol === "Administrador" ? (
+            {user.rol === "Administrador" ? (
               <Link
                 to="/home/lawyers"
                 className="text-white hover:text-white hover:bg-accent"
@@ -68,7 +68,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {user.usuario.rol === "Administrador" ? (
+            {user.rol === "Administrador" ? (
               <Link
                 to="/home/diary"
                 className="text-white hover:text-white hover:bg-accent"
@@ -94,7 +94,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {user.usuario.rol === "Administrador" ? (
+            {user.rol === "Administrador" ? (
               <Link
                 to="/home/statistics"
                 className="text-white hover:text-white hover:bg-accent"
