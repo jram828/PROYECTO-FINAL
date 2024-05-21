@@ -4,6 +4,9 @@ import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterAbogado, getAbogados } from '../../redux/actions';
 import SearchBar from '../../components/searchBarAbogado/index';
+import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
+import { Link  } from 'react-router-dom';
+
 
 function FiltrosAbogados() {
   const dispatch = useDispatch();
@@ -31,8 +34,17 @@ function FiltrosAbogados() {
   };
 
   return (
-    <div>
-      <SearchBar onFilter={handleFilter} />
+    <div className='container grid grid-cols-2 gap-4'>
+      <div className="flex flex-col justify-start gap-4 p-4 rounded-lg bg-primary">
+        <Link to="/home/lawyers/crearabogado">
+          <button className='btn btn-md hover:bg-primary hover:text-white w-full'>Crear abogado</button>
+        </Link>
+        <OrderAbogados />
+        <SearchBar onFilter={handleFilter} />
+        <Link to="/home">
+          <button className='btn btn-md hover:bg-primary hover:text-white w-full'>Volver</button>
+        </Link>
+      </div>
       <div>
         <Cards items={abogados} />
         {filterApplied && <button onClick={handleVerTodosClick}>Ver todos</button>}

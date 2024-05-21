@@ -37,7 +37,7 @@ function FiltrosClientes() {
      </div>
       <div className="">
         <Cards items={clientes} />
-        {filterApplied && <button className='button' onClick={handleVerTodosClick}>Ver todos</button>}
+        {filterApplied && <button className='btn' onClick={handleVerTodosClick}>Ver todos</button>}
       </div>
     </div>
   );

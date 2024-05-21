@@ -35,7 +35,7 @@ function Card({item}) {
 
   return (
     <Link  to={`/home/detail/${cedula}`}>
-    <div className="card w-40 bg-primary shadow-xl text-white" >
+    <div className="card max-w-md bg-primary shadow-xl text-white" >
       <div className="avatar">
         <div className="rounded">
         <img src={picture} alt="Profile Picture" className="rounded-xl " />
