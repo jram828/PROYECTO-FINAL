@@ -8,7 +8,12 @@ const user = JSON.parse(localStorage.getItem("loggedUser"));
 
 function Home() {
   console.log("Rol usuario: ", user.rol);
-  console.log('User local storage: ',user)
+  console.log('User local storage: ', user)
+  
+  const handleSalir = () => {
+    window.localStorage.setItem("loggedUser", JSON.stringify({}));
+    
+  }
   return (
     <div>
       {/* <div className={style.container}>
@@ -109,7 +114,7 @@ function Home() {
               to="/"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button>Salir</button>
+              <button onClick={handleSalir}>Salir</button>
             </Link>
           </li>
         </ul>
