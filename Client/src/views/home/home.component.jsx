@@ -18,56 +18,56 @@ function Home() {
 
       <div className={style.container2}>
         <div className={style.imagen}>
-          <img src={picture} alt="homeLawyers" />
+          <img src={picture} alt="homeLawyers" className="h-auto"/>
         </div>
-        <ul className="menu bg-primary text-white w-80 rounded-box menu-md">
+        <ul className={`menu bg-primary w-full text-white rounded-box menu-lg ${style['menu-container']}`}>
          <li>
-          <Link to="/home/customers" className='hover:text-white hover:bg-accent'>
-            <button>Clientes</button>
+          <Link to="/home/customers" className='text-white hover:text-white hover:bg-accent'>
+            <button >Clientes</button>
           </Link>
         </li>
          <li>
-          <Link to="/home/lawyers" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/lawyers" className='text-white hover:text-white hover:bg-accent'>
               <button >Abogados</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/detail" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/detail" className='text-white hover:text-white hover:bg-accent'>
             <button >Datos Personales</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/cases" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/cases" className='text-white hover:text-white hover:bg-accent'>
             <button >Casos</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/documents" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/documents" className='text-white hover:text-white hover:bg-accent'>
             <button >Documentos</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/diary" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/diary" className='text-white hover:text-white hover:bg-accent'>
             <button >Agenda</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/payments" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/payments" className='text-white hover:text-white hover:bg-accent'>
             <button >Pagos</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/consultation" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/consultation" className='text-white hover:text-white hover:bg-accent'>
             <button >Consultas</button>
           </Link>
          </li>
          <li>
-          <Link to="/home/statistics" className='hover:text-white hover:bg-accent'>
+          <Link to="/home/statistics" className='text-white hover:text-white hover:bg-accent'>
             <button >Estadisticas</button>
           </Link>
          </li>
          <li>
-          <Link to="/" className='hover:text-white hover:bg-accent'>
+          <Link to="/" className='text-white hover:text-white hover:bg-accent'>
             <button >Salir</button>
           </Link>
          </li>
