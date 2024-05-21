@@ -55,7 +55,7 @@ function App() {
         <Route path="/home/documents" element={<Documents />} />
         <Route path="/home/diary" element={<Diary />} />
         <Route path="/home/payments" element={<Payments />} />
-        <Route path="/home/payments" element={<Status />} />
+        <Route path="/home/payments/status" element={<Status />} />
         <Route path="/home/consultation" element={<Consultations />} />
         <Route path="/home/statistics" element={<Statistics />} />
         <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />

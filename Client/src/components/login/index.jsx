@@ -52,7 +52,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const { access } = data;
     console.log('Access: ',access)
     if (access) {
-      window.localStorage.setItem("loggedUser", JSON.stringify(userData));
+      window.localStorage.setItem("loggedUser", JSON.stringify(data.usuario));
         dispatch(setAuth(access));
       navigate("/home");
 
@@ -78,7 +78,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     console.log("Login 2:", data);
     // const { access } = data;
     if (user.email === data[0].correo) {
-        window.localStorage.setItem('loggedUser',JSON.stringify(user))
+        window.localStorage.setItem('loggedUser',JSON.stringify(data[0]))
         dispatch(setAuth(true));
       navigate("/home");
 
