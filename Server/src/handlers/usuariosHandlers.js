@@ -1,7 +1,8 @@
 const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
 const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
-// const { accountSid, authToken, number } = process.env;
-// const twilio = require("twilio");
+require("dotenv").config();
+const { accountSid, authToken, number } = process.env;
+const twilio = require("twilio");
 
 const allUsuarios = async (req, res)=>{
     //const { name } = req.query;
@@ -35,14 +36,14 @@ const postUsuariosHandler = async (req, res) => {
     );
     if (response) {
       res.status(200).json(response);
-      // console.log("Datos Twilio:", { accountSid, authToken, number });
+      console.log("Datos Twilio:", { accountSid, authToken, number });
 
-      // const client = new twilio(accountSid, authToken,number);
-      // client.messages.create({
-      //   body: "Se ha creado un nuevo usuario en Legaltech!",
-      //   from: number,
-      //   to: "+573204746006",
-      // });
+      const client = new twilio(accountSid, authToken,number);
+      client.messages.create({
+        body: "Se ha creado un nuevo usuario en Legaltech!",
+        from: number,
+        to: "+573204746006",
+      });
     }
     
     else { res.status(200).send("El usuario ya existe"); }
