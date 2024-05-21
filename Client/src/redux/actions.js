@@ -18,7 +18,8 @@ export const GET_CASOS = "GET_CASOS";
 export const FILTER_CASOS = "FILTER_CASOS";
 export const ORDER_CASOS = "ORDER_CASOS";
 export const GET_CASO_BY_ID = "GET_CASO_BY_ID";
-export const DELETE_CASO = "DELETE_CASO;"
+export const DELETE_CASO = "DELETE_CASO;";
+export const POST_CITA = "POST_CITA";
 
 
 
@@ -284,3 +285,16 @@ export const getClientes = () => {
                              });
                        };
               };     
+
+
+      export const postCita = (payload) => {
+        const endpoint = `${URL}citas`; 
+
+          return async (dispatch) => {
+              const data = await axios.post(endpoint,payload);
+                  return dispatch({
+                    type: POST_CITA,
+                    payload: data
+                  });         
+                };
+             };  
