@@ -302,7 +302,7 @@ export const getClientes = () => {
              };  
       
     export const getCitas = () => {
-        const endpoint = `${URL}citas`;
+        const endpoint = `${URL}citas?porPagina=20`;
           return async (dispatch) => {
               const {data} = await axios.get(endpoint);
                   return dispatch({
