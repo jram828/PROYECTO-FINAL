@@ -6,7 +6,7 @@ import legaltech from "../../assets/legaltech.png";
 
 function Home() {
   
-  let userRol = localStorage.getItem("loggedUser");
+  const user = localStorage.getItem("loggedUser");
   return (
     <div>
       {/* <div className={style.container}>
@@ -19,19 +19,21 @@ function Home() {
 
       <div className={style.container2}>
         <div className={style.imagen}>
-          <img src={picture} alt="homeLawyers" className="h-auto"/>
+          <img src={picture} alt="homeLawyers" className="h-auto" />
         </div>
-        <ul className={`menu bg-primary w-full text-white rounded-box menu-lg ${style['menu-container']}`}>
+        <ul
+          className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
+        >
           <li>
             <Link
               to="/home/customers"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button >Clientes</button>
+              <button>Clientes</button>
             </Link>
           </li>
           <li>
-            {userRol === "Administrador" ? (
+            {user.usuario.rol === "Administrador" ? (
               <Link
                 to="/home/lawyers"
                 className="text-white hover:text-white hover:bg-accent"
@@ -49,7 +51,10 @@ function Home() {
             </Link>
           </li>
           <li>
-            <Link to="/home/cases" className="text-white hover:text-white hover:bg-accent">
+            <Link
+              to="/home/cases"
+              className="text-white hover:text-white hover:bg-accent"
+            >
               <button>Casos</button>
             </Link>
           </li>
@@ -62,7 +67,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {userRol === "Administrador" ? (
+            {user.usuario.rol === "Administrador" ? (
               <Link
                 to="/home/diary"
                 className="text-white hover:text-white hover:bg-accent"
@@ -88,7 +93,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {userRol === "Administrador" ? (
+            {user.usuario.rol === "Administrador" ? (
               <Link
                 to="/home/statistics"
                 className="text-white hover:text-white hover:bg-accent"
@@ -98,7 +103,10 @@ function Home() {
             ) : undefined}
           </li>
           <li>
-            <Link to="/" className="text-white hover:text-white hover:bg-accent">
+            <Link
+              to="/"
+              className="text-white hover:text-white hover:bg-accent"
+            >
               <button>Salir</button>
             </Link>
           </li>
