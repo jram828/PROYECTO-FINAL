@@ -38,12 +38,16 @@ const postUsuariosHandler = async (req, res) => {
       res.status(200).json(response);
       console.log("Datos Twilio:", { ACCOUNTSID, AUTHTOKEN, NUMBER });
 
-      const client = new twilio(ACCOUNTSID, AUTHTOKEN,NUMBER);
-      client.messages.create({
-        body: "Se ha creado un nuevo usuario en Legaltech!",
-        from: number,
-        to: "+573204746006",
-      });
+      const client = new twilio(ACCOUNTSID, AUTHTOKEN,NUMBER)
+
+      client.messages
+        .create({
+          body: "Se ha creado un nuevo usuario en Legaltech!",
+          from: "+12097210938",
+          to: "+573127461628",
+        })
+        .then((message) => console.log(message.sid))
+        .done();
     }
     
     else { res.status(200).send("El usuario ya existe"); }
