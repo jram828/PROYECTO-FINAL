@@ -75,7 +75,6 @@ const SearchBar = ({ onFilter }) => {
           onChange={(e) => handleInputChange(e, setCiudad)}
         />
        </div>
-       
        <br />
        <button onClick={handleSearch} className='btn btn-md hover:bg-primary'>Buscar</button>
     </div>
