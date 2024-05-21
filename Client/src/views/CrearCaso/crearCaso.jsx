@@ -93,7 +93,6 @@ function CrearCaso() {
 
   
   return (
-
 <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
   <h1 className={style.titulo}>Crear caso</h1>
   <form onSubmit={submitHandlerRegistro} className={style.formulario}>
