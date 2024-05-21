@@ -4,12 +4,12 @@ import picture from "../../assets/homepic.jpg";
 import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
 
-const user = JSON.parse(localStorage.getItem("loggedUser"));
 
 function Home() {
   console.log("Rol usuario: ", user.rol);
   console.log('User local storage: ', user)
   
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const handleSalir = () => {
     window.localStorage.setItem("loggedUser", JSON.stringify({}));
     
