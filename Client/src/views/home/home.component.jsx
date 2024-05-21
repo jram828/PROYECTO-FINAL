@@ -7,7 +7,7 @@ import legaltech from "../../assets/legaltech.png";
 const user = JSON.parse(localStorage.getItem("loggedUser"));
 
 function Home() {
-  
+  console.log("Rol usuario: ", user.rol);
   console.log('User local storage: ',user)
   return (
     <div>

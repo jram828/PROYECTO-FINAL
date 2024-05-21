@@ -49,7 +49,7 @@ const postUsuariosHandler = async (req, res) => {
     else { res.status(200).send("El usuario ya existe"); }
 
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    // res.status(400).json({ error: error.message });
   }
   // res.status(200).send(`creando actividades`);
 };
