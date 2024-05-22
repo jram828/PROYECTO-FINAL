@@ -53,9 +53,9 @@ function Detail() {
    
 
   return (
-    <div className="detail-container">
+    <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
         <div>
-          <p>Detail</p>
+          <h1>Detail</h1>
         </div>
         <div key={cedula}></div>
         <div className="detail-form">
@@ -112,14 +112,17 @@ function Detail() {
           <br />
         </div>
  
-    <button className='button' onClick={handleDelete}>Eliminar registro</button>
+    <div className="flex justify-center gap-2">
+    <button className="btn btn-sm btn-accent text-white" onClick={handleDelete}>Eliminar registro</button>
     {datos?.matricula? (
             <Link to="/home/lawyers">
-            <button className="button">Volver</button>
+            <button className="btn btn-sm btn-accent text-white">Volver</button>
           </Link>
           ) : <Link to="/home/customers">
-          <button className="button">Volver</button>
+          <button className="btn btn-sm btn-accent text-white">Volver</button>
         </Link> }
+    </div>
+    
   </div>
   )
 }

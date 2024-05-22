@@ -28,9 +28,9 @@ function TarjetaCaso({caso}) {
           </div>
         </div>
 
-        <h2 className="card-title hover:text-secondary text-base">Tipo de caso: {tipoCaso}</h2>
-        <h2 className="card-title hover:text-secondary text-base">Abogado: {apellidoAbogado} {nombreabogado} </h2>
-        <h2 className="card-title hover:text-secondary text-base">Cliente: {apellidoCliente} {nombreCliente} </h2> 
+        <h2 className="card-title hover:text-secondary text-base m-2">Tipo de caso: {tipoCaso}</h2>
+        <h2 className="card-title hover:text-secondary text-base m-2">Abogado: {apellidoAbogado} {nombreabogado} </h2>
+        <h2 className="card-title hover:text-secondary text-base m-2">Cliente: {apellidoCliente} {nombreCliente} </h2> 
       </div>
     </Link>
   )

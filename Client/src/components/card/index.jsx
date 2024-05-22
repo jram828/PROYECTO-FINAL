@@ -42,9 +42,9 @@ function Card({item}) {
         </div>
       </div>
   
-      <h2 className="card-title hover:text-secondary">Apellido: {apellido}</h2>
-      <h2 className="card-title hover:text-secondary">Nombre: {nombre}</h2>
-      <h2 className="card-title hover:text-secondary">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
+      <h2 className="card-title hover:text-secondary m-2">Apellido: {apellido}</h2>
+      <h2 className="card-title hover:text-secondary m-2">Nombre: {nombre}</h2>
+      <h2 className="card-title hover:text-secondary m-2">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
       </div>
       </Link>
   )
