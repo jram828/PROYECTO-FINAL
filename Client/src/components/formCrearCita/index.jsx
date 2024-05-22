@@ -89,6 +89,7 @@ console.log('registro', dataRegistro)
             id="fechaCita"
             value={dataRegistro.fechaCita}
   onChange={handleChangeRegistro} />*/}
+    </div>
           <br />
           <div className="input input-bordered flex items-center gap-2">
             <label className="label">Hora:</label>
@@ -141,6 +142,7 @@ console.log('registro', dataRegistro)
         </div>
       </form>
     </div>
+    
   );
 }
 
