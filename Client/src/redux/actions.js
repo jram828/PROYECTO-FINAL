@@ -21,6 +21,7 @@ export const GET_CASO_BY_ID = "GET_CASO_BY_ID";
 export const DELETE_CASO = "DELETE_CASO;";
 export const POST_CITA = "POST_CITA";
 export const GET_CITAS = "GET_CITAS";
+export const POST_CONSULTA = "POST_CONSULTA";
 
 
 
@@ -302,7 +303,7 @@ export const getClientes = () => {
              };  
       
     export const getCitas = () => {
-        const endpoint = `${URL}citas`;
+        const endpoint = `${URL}citas?porPagina=20`;
           return async (dispatch) => {
               const {data} = await axios.get(endpoint);
                   return dispatch({
@@ -310,4 +311,17 @@ export const getClientes = () => {
                       payload: data,
                 });
             };
-        };        
+        }; 
+        
+        export const postConsulta = (payload) => {
+          const endpoint = `${URL}consultas`; 
+  
+            return async (dispatch) => {
+                const data = await axios.post(endpoint,payload);
+                    return dispatch({
+                      type: POST_CONSULTA,
+                      payload: data
+                    });         
+                  };
+               };  
+             

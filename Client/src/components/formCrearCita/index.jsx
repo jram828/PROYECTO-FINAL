@@ -1,12 +1,17 @@
 import "./formCrearCita.css";
-import { Link  } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import { getCasos } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { postCitaHandlers } from "../../handlers/crearCita";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
+
 
 
 function FormCita() {
+
+
   const [dataRegistro, setDataRegistro] = useState({
     titulo:"",
     descripcion:"", 
@@ -17,12 +22,12 @@ function FormCita() {
 
 
   const handleChangeRegistro = (e) => {
-    setDataRegistro({
-      ...dataRegistro,
-      [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
-    });
+    const { name, value } = e.target ? e.target : { name: 'fechaCita', value: e };
+    setDataRegistro(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-
 const dispatch = useDispatch();
 const casos = useSelector(state => state.casos)
 
@@ -34,12 +39,15 @@ useEffect(() => {
 }, [dispatch]);
 
 
+
 const submitHandlerRegistro = async (e) => {
   e.preventDefault();
   try {
     await postCitaHandlers(dataRegistro);
-
     window.alert("Cita creado con éxito");
+    window.location.reload();
+    
+
   } catch (error) {
     console.error("Error al crear la cita:", error.message);
     window.alert("No se pudo crear la cita");
@@ -52,6 +60,7 @@ if (!casos || !casos.datosPagina) {
   return null;
 }
 
+console.log('registro', dataRegistro)
 
   return (
     <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
@@ -69,13 +78,17 @@ if (!casos || !casos.datosPagina) {
           <br />
           <div className="input input-bordered flex items-center gap-2">
             <label className="label">Fecha:</label>
-              <input type="date"
-              className="grow w-full"
-              name="fechaCita"
-              id="fechaCita"
-              value={dataRegistro.fechaCita}
-              onChange={handleChangeRegistro} />
-          </div> 
+            <DatePicker
+            selected={dataRegistro.fechaCita}
+            name="fechaCita"
+            id="fechaCita"
+            onChange={(date) => handleChangeRegistro({ target: { name: 'fechaCita', value: date } })}
+            />
+            {/*<input type="text"
+            name="fechaCita"
+            id="fechaCita"
+            value={dataRegistro.fechaCita}
+  onChange={handleChangeRegistro} />*/}
           <br />
           <div className="input input-bordered flex items-center gap-2">
             <label className="label">Hora:</label>
