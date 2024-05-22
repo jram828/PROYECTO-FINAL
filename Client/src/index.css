@@ -108,7 +108,5 @@ button2:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: var(--color-four);
-  }
+  
 }
