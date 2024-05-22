@@ -1,5 +1,6 @@
 import './tarjetaCaso.css'
 import { Link } from 'react-router-dom';
+import picture from "../../assets/case-file.png"
 
 
 function TarjetaCaso({caso}) {
@@ -20,12 +21,18 @@ function TarjetaCaso({caso}) {
 
   return (
     <Link  to={`/home/cases/${id}`}>
-    <div className='tarjetaAbogado' >
-      <h2>Tipo de caso: {tipoCaso}</h2>
-      <h2>Abogado: {apellidoAbogado} {nombreabogado} </h2>
-      <h2>Cliente: {apellidoCliente} {nombreCliente} </h2> 
+      <div className="card max-w-md bg-primary shadow-xl text-white" >
+        <div className="avatar">
+          <div className="rounded">
+          <img src={picture} alt="Profile Picture" className="rounded-xl " />
+          </div>
+        </div>
+
+        <h2 className="card-title hover:text-secondary text-base">Tipo de caso: {tipoCaso}</h2>
+        <h2 className="card-title hover:text-secondary text-base">Abogado: {apellidoAbogado} {nombreabogado} </h2>
+        <h2 className="card-title hover:text-secondary text-base">Cliente: {apellidoCliente} {nombreCliente} </h2> 
       </div>
-      </Link>
+    </Link>
   )
 }
 
