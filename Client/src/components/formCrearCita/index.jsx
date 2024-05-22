@@ -11,7 +11,6 @@ import "react-datepicker/dist/react-datepicker.css"
 
 function FormCita() {
 
-
   const [dataRegistro, setDataRegistro] = useState({
     titulo:"",
     descripcion:"", 
