@@ -91,14 +91,14 @@ function Home() {
               <button>Pagos</button>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to="/home/consultation"
               className="text-white hover:text-white hover:bg-accent"
             >
               <button>Consultas</button>
             </Link>
-          </li>
+          </li> */}
           <li>
             {user.rol === "Administrador" ? (
               <Link
