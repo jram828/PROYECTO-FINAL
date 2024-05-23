@@ -34,19 +34,20 @@ function Card({item}) {
       console.log('cedula', cedula);
 
   return (
-    <Link  to={`/home/detail/${cedula}`}>
-    <div className="card max-w-md bg-primary shadow-xl text-white" >
-      <div className="avatar">
-        <div className="rounded">
-        <img src={picture} alt="Profile Picture" className="rounded-xl " />
-        </div>
+    
+    <div className="w-64 mx-auto bg-primary text-white shadow-lg rounded-lg overflow-hidden h-64">
+      <div className="avatar flex justify-center m-4">
+        <img src={picture} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
       </div>
-  
-      <h2 className="card-title hover:text-secondary m-2">Apellido: {apellido}</h2>
-      <h2 className="card-title hover:text-secondary m-2">Nombre: {nombre}</h2>
-      <h2 className="card-title hover:text-secondary m-2">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2> 
-      </div>
+      <div className="p-4">
+      <Link  to={`/home/detail/${cedula}`} className='hover:text-white'>
+        <h2 className="text-xl font-semibold truncate">Apellido: {apellido}</h2>
+        <h2 className="text-xl font-semibold truncate">Nombre: {nombre}</h2>
       </Link>
+        <h2 className="text-xl font-semibold truncate">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2>
+      </div>
+    </div>
+     
   )
 }
 
