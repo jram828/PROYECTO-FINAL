@@ -1,6 +1,6 @@
 const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
-
-// const { mercadopago } = require("mercadopago");
+require("dotenv").config();
+const { ACCESSTOKEN} = process.env;
 
 const crearOrden = async (item) => {
   // SDK de Mercado Pago
@@ -8,7 +8,7 @@ const crearOrden = async (item) => {
   // Agrega credenciales
   const client = new MercadoPagoConfig({
     accessToken:
-      "TEST-7845349164975835-051714-6919a564464a369582bcbc8ff6f8cc4f-1817941600",
+      ACCESSTOKEN,
   });
 
   console.log('Body crear orden: ',item)
