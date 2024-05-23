@@ -25,7 +25,6 @@ function TarjetaCaso({caso}) {
         <div className="avatar flex justify-center m-4">
           
           <img src={picture} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
-          
         </div>
 
         <h2 className="text-xl font-semibold truncate">Tipo de caso: {tipoCaso}</h2>
