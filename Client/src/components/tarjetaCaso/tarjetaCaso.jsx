@@ -21,16 +21,16 @@ function TarjetaCaso({caso}) {
 
   return (
     <Link  to={`/home/cases/${id}`}>
-      <div className="card max-w-md bg-primary shadow-xl text-white" >
-        <div className="avatar">
-          <div className="rounded">
-          <img src={picture} alt="Profile Picture" className="rounded-xl " />
-          </div>
+      <div className="w-64 mx-auto bg-primary text-white shadow-lg rounded-lg overflow-hidden h-64">
+        <div className="avatar flex justify-center m-4">
+          
+          <img src={picture} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
+          
         </div>
 
-        <h2 className="card-title hover:text-secondary text-base m-2">Tipo de caso: {tipoCaso}</h2>
-        <h2 className="card-title hover:text-secondary text-base m-2">Abogado: {apellidoAbogado} {nombreabogado} </h2>
-        <h2 className="card-title hover:text-secondary text-base m-2">Cliente: {apellidoCliente} {nombreCliente} </h2> 
+        <h2 className="text-xl font-semibold truncate">Tipo de caso: {tipoCaso}</h2>
+        <h2 className="text-xl font-semibold truncate">Abogado: {apellidoAbogado} {nombreabogado} </h2>
+        <h2 className="text-xl font-semibold truncate">Cliente: {apellidoCliente} {nombreCliente} </h2> 
       </div>
     </Link>
   )
