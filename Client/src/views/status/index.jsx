@@ -3,7 +3,7 @@ import "./status.module.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+// const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 function Status () {
   
@@ -51,53 +51,55 @@ function Status () {
     }
   }
 
-    useEffect(() => {
       const datosPago = obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datosPago);
-    }, [queries.payment_id]);
+
 
 
   
 return (
-    <div className="status-container">
-      <div>
-        <p>Estado de la transacción:</p>
-      </div>
-      <div className="status-form">
-        <div className="status-input-group">
-          <label className="status-label">ID de pago:</label>
-          <input value={queries.payment_id} className="status-input"></input>
-          <label className="status-label">Estado:</label>
-          <input value={queries.status} className="status-input"></input>
-        </div>
-        <br />
-        <br />
-        <div className="status-input-group">
-          <label className="status-label">Numero de referencia:</label>
-          <input
-            value={queries.external_reference}
-            className="status-input"
-          ></input>
-          <label className="status-label">Tipo de pago:</label>
-          <input value={queries.payment_type} className="status-input"></input>
-        </div>
-        <br />
-        <br />
-        <div className="status-input-group">
-          <label className="status-label">Número de orden :</label>
-          <input
-            value={queries.merchant_order_id}
-            className="status-input"
-          ></input>
-          <label className="status-label">Preferencia:</label>
-          <input value={queries.preference_id} className="status-input"></input>
-        </div>
-      </div>
-      <Link to="/home/payments">
-        <button className="button">Reintentar pago</button>
-      </Link>
+  <div className="status-container">
+    <div>
+      <p>Estado de la transacción:</p>
     </div>
-  );
+    <div className="status-form">
+      <div className="status-input-group">
+        <label className="status-label">ID de pago:</label>
+        <input value={datosPago.id} className="status-input"></input>
+        <label className="status-label">Estado:</label>
+        <input value={datosPago.status} className="status-input"></input>
+      </div>
+      <br />
+      <br />
+      <div className="status-input-group">
+        <label className="status-label">Valor:</label>
+        <input
+          value={datosPago.transaction_amount}
+          className="status-input"
+        ></input>
+        <label className="status-label">Tipo de pago:</label>
+        <input
+          value={datosPago.payment_type_id}
+          className="status-input"
+        ></input>
+      </div>
+      <br />
+      <br />
+      <div className="status-input-group">
+        <label className="status-label">Número de orden :</label>
+        <input value={datosPago.order.id} className="status-input"></input>
+        <label className="status-label">Fecha:</label>
+        <input value={queries.date_approved} className="status-input"></input>
+      </div>
+    </div>
+    <Link to="/home/payments">
+      <button className="button">Reintentar pago</button>
+    </Link>
+    <Link to="/home">
+      <button className="button">Volver</button>
+    </Link>
+  </div>
+);
 }
 
 export default Status;
