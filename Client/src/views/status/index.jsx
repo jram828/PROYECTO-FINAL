@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
-async function Status () {
+function Status () {
   
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
@@ -31,24 +31,26 @@ async function Status () {
     
   console.log("objeto queries: ", queries);
   console.log("Payment id: ", queries.payment_id);
-
-  console.log(
-    "url status:",
-    `https://api.mercadopago.com/v1/payments/${queries.payment_id}`
-  );
   
-          // console.log("access token: ", ACCESSTOKEN);
-          const paymentInfo = await axios.get(
-            `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
-            {
-              headers: {
-                'Authorization':
-                  "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
-              },
-            }
-          );
+  const obtenerPago = async(id) => {
+     console.log("Payment id: ", id);
+    const paymentInfo = await axios.get(
+      `https://api.mercadopago.com/v1/payments/1323408839`,
+      {
+        headers: {
+          'Authorization':
+            "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
+        },
+      }
+    );
+   
+    return paymentInfo
+  }
+  
+  const datosPago=obtenerPago()
 
-          console.log("Informacion del pago: ", paymentInfo);
+
+      console.log("Informacion del pago: ", datosPago);
 
   
 return (
