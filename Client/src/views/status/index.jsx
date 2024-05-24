@@ -5,19 +5,25 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 function Status() {
   console.log("Search params: ", useSearchParams());
   const [params] = useSearchParams();
-
+  console.log('params: ', params)
+  
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
+  console.log('Search: ', search)
+
   const replaceFirst = search.replace("?", "")
   const splitString = replaceFirst.split("&")
+  console.log('array queries: ', splitString)
   
   splitString.forEach((query) => {
-    const [key,value]=query.split('=')
+    const [key, value] = query.split('=')
     setQueries({
       ...queries,
-      [key]:value,
+      [key]: value,
     })
-  })
+  });
+
+  console.log('objeto queries: ',queries)
   // {
   //   "collection_id": "null",
   //   "collection_status": "null",
@@ -31,7 +37,7 @@ function Status() {
   //   "processing_mode": "aggregator",
   //   "merchant_account_id": "null"
   // }
-  
+
   // const payment_id = params.get('payment_id')
   // const status = params.get("status");
   // const payment_type = params.get("payment_type");
