@@ -1,6 +1,7 @@
-const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
+const { MercadoPagoConfig, Preference } = require("mercadopago");
 require("dotenv").config();
-const { ACCESSTOKEN} = process.env;
+const { ACCESSTOKEN } = process.env;
+
 
 const crearOrden = async (item) => {
   // SDK de Mercado Pago

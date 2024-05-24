@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import "./status.module.css";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import {} from "mercado"
 
-function Status() {
+
+const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+
+async function Status () {
   
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
@@ -26,28 +31,20 @@ function Status() {
 
       console.log("objeto queries: ", queries);
     }, []);
-  // {
-  //   "collection_id": "null",
-  //   "collection_status": "null",
-  //   "payment_id": "null",
-  //   "status": "null",
-  //   "external_reference": "null",
-  //   "payment_type": "null",
-  //   "merchant_order_id": "null",
-  //   "preference_id": "1817941600-7b056a33-c4ef-4977-ad4c-ec52d1645415",
-  //   "site_id": "MCO",
-  //   "processing_mode": "aggregator",
-  //   "merchant_account_id": "null"
-  // }
 
-  // const payment_id = params.get('payment_id')
-  // const status = params.get("status");
-  // const payment_type = params.get("payment_type");
-  // const external_reference = params.get("external_reference");
-  // const merchant_order_id = params.get("merchant_order_id");
-  // const preference_id = params.get("preference_id");
+  
+  const paymentInfo = await axios.get(
+    `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${ACCESSTOKEN}`,
+      },
+    }
+  );
 
-  return (
+  console.log('Informacion del pago: ', paymentInfo)
+  
+return (
     <div className="status-container">
       <div>
         <p>Estado de la transacción:</p>
@@ -56,14 +53,17 @@ function Status() {
         <div className="status-input-group">
           <label className="status-label">ID de pago:</label>
           <input value={queries.payment_id} className="status-input"></input>
-            <label className="status-label">Estado:</label>
-            <input value={queries.status} className="status-input"></input>
+          <label className="status-label">Estado:</label>
+          <input value={queries.status} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
           <label className="status-label">Numero de referencia:</label>
-          <input value={queries.external_reference} className="status-input"></input>
+          <input
+            value={queries.external_reference}
+            className="status-input"
+          ></input>
           <label className="status-label">Tipo de pago:</label>
           <input value={queries.payment_type} className="status-input"></input>
         </div>
@@ -71,7 +71,10 @@ function Status() {
         <br />
         <div className="status-input-group">
           <label className="status-label">Número de orden :</label>
-          <input value={queries.merchant_order_id} className="status-input"></input>
+          <input
+            value={queries.merchant_order_id}
+            className="status-input"
+          ></input>
           <label className="status-label">Preferencia:</label>
           <input value={queries.preference_id} className="status-input"></input>
         </div>

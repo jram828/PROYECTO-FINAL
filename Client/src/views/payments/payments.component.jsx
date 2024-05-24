@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 
 
-
+import { } from "@mercadopago/sdk-react";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
