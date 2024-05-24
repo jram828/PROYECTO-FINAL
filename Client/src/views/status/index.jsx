@@ -8,6 +8,7 @@ const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 function Status () {
   
   const [queries, setQueries] = useState({});
+  const [datosPago, setDatosPago] = useState({});
   const { search } = useLocation();
 
 
@@ -53,8 +54,9 @@ function Status () {
 
   if (queries.payment_id) {
     useEffect( () => {
-      const datosPago = obtenerPago(queries.payment_id);
-      console.log("Informacion del pago: ", datosPago);
+      const datos = obtenerPago(queries.payment_id);
+      console.log("Informacion del pago: ", datos);
+      setDatosPago(datos);
     }, [queries.payment_id]);
   }
 
