@@ -11,7 +11,6 @@ import "react-datepicker/dist/react-datepicker.css"
 
 function FormCita() {
 
-
   const [dataRegistro, setDataRegistro] = useState({
     titulo:"",
     descripcion:"", 
@@ -63,11 +62,11 @@ if (!casos || !casos.datosPagina) {
 console.log('registro', dataRegistro)
 
   return (
-    <div className="containerCita">
+    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
       <h1 className="tituloCita">Crear Cita</h1>
       <form onSubmit={submitHandlerRegistro} className="formularioCita">
         <div className="input-row">
-          <div>
+          <div className="input input-bordered flex items-center gap-2">
             <label className="label">Titulo:</label>
             <input type="text"
             name="titulo"
@@ -75,6 +74,8 @@ console.log('registro', dataRegistro)
             value={dataRegistro.titulo}
             onChange={handleChangeRegistro} />
           </div>
+          <br />
+          <div className="input input-bordered flex items-center gap-2">
             <label className="label">Fecha:</label>
             <DatePicker
             selected={dataRegistro.fechaCita}
@@ -87,48 +88,60 @@ console.log('registro', dataRegistro)
             id="fechaCita"
             value={dataRegistro.fechaCita}
   onChange={handleChangeRegistro} />*/}
+    </div>
           <br />
+          <div className="input input-bordered flex items-center gap-2">
             <label className="label">Hora:</label>
-            <input className="input"
-            type="text"
-            name="horaCita"
-            id="horaCita"
-            value={dataRegistro.horaCita}
-            onChange={handleChangeRegistro} />
-        </div>
-        <label className="label">Caso:</label>
-        <select
-            name="idCaso"
-            id="idCaso"
-            onChange={(event) => handleChangeRegistro(event)}
-            >
-            <option value="" >Seleccionar...</option>
-            {casos.datosPagina.map(caso => (
-              <option key={caso.id} value={caso.id} >
-                {caso.id} 
-              </option>
-             ))}
-          </select>
+              <input className="grow"
+              type="time"
+              name="horaCita"
+              id="horaCita"
+              value={dataRegistro.horaCita}
+              onChange={handleChangeRegistro} />
+          </div>
             
+        <br />
+        <div className="w-full px-4">
+          <label className="w-full">
+          <select
+              name="idCaso"
+              id="idCaso"
+              onChange={(event) => handleChangeRegistro(event)}
+              className="input input-bordered text-lg pl-2 w-full"
+              >
+              <option value="" className="customOption">Seleccionar caso</option>
+              {casos.datosPagina.map(caso => (
+                <option key={caso.id} value={caso.id} className="customOption">
+                  {caso.id} 
+                </option>
+              ))}
+          </select>
+          </label>
+        </div>
+      
         <br></br>
-        <div className="input-row">
-          <label className="label">Detalles:</label>
-          <textarea className="input"
+        <div className="w-full px-4">
+          <label className="w-full">
+          <textarea className="textarea textarea-bordered h-24 w-full"
           type="text"
           name="descripcion"
           id="descripcion"
+          placeholder="Detalles"
           value={dataRegistro.descripcion}
           onChange={handleChangeRegistro}
           ></textarea>
+          </label>
         </div>
-        <div className="botones">
-          <input type="submit" className="button" value="Crear" />
+        </div>
+        <div className="flex justify-center gap-2">
+          <input type="submit" className="btn btn-sm btn-accent text-white" value="Crear" />
           <Link to='/home'>
-          <button className="button">Volver</button>
+          <button className="btn btn-sm btn-accent text-white">Volver</button>
           </Link>
         </div>
       </form>
     </div>
+    
   );
 }
 

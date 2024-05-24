@@ -1,7 +1,7 @@
 import {useState} from "react";
 // import { validar } from "../../utils/validacion";
 import style from "./login.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { useDispatch} from "react-redux";
 import { setAuth, setUserToken } from "../../redux/actions";
@@ -99,92 +99,106 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
 
   return (
     <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-  <form onSubmit={submitHandler}>
-    <div className="flex justify-center mb-6">
-      {/* <img
+      <form onSubmit={submitHandler}>
+        <div className="flex justify-center mb-6">
+          {/* <img
         src={logo}
         alt="Logo Legaltech"
         style={{ height: "90px", width: "100%" }}
       /> */}
-    </div>
+        </div>
 
-    <div className="input input-bordered flex items-center gap-2 mb-4">
-      <label htmlFor="usuario" className={style.label}>
-        Usuario:
-      </label>
-      <input
-        type="text"
-        name="email"
-        id="username"
-        placeholder="Ingrese su Usuario"
-        value={userData.email}
-        onChange={handleChange}
-        className="grow"
-      />
-    </div>
+        <div className="input input-bordered flex items-center gap-2 mb-4">
+          <label htmlFor="usuario" className={style.label}>
+            Usuario:
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="username"
+            placeholder="Ingrese su Usuario"
+            value={userData.email}
+            onChange={handleChange}
+            className="grow"
+          />
+        </div>
 
-    <div className="input input-bordered flex items-center gap-2 mb-4">
-      <label className={style.label} htmlFor="password">
-        Contraseña:
-      </label>
-      <input
-        name="password"
-        type="password"
-        placeholder="Ingrese su contraseña"
-        value={userData.password}
-        onChange={handleChange}
-        className="grow"
-      />
-    </div>
+        <div className="input input-bordered flex items-center gap-2 mb-4">
+          <label className={style.label} htmlFor="password">
+            Contraseña:
+          </label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Ingrese su contraseña"
+            value={userData.password}
+            onChange={handleChange}
+            className="grow"
+          />
+        </div>
 
-    <div >
-      {/* <label htmlFor="tipodeusuario" className="">
+        <div>
+          {/* <label htmlFor="tipodeusuario" className="">
         Tipo de usuario:
       </label> */}
-      <select name="tipodeusuario" id="idusuario" className="input select-bordered flex items-center text-lg pl-2 custom-select">
-        <option value="" className={style.customOption}>Tipo de usuario:</option>
-        <option value="1" className={style.customOption}>Administrador</option>
-        <option value="2" className={style.customOption}>Abogado</option>
-        <option value="3" className={style.customOption}>Cliente</option>
-      </select>
-    </div>
-      <br />
-    <div className="flex flex-col space-y-4">
-    <div className="flex justify-center space-x-4">
-      <input
-        type="button"
-        name="cancelar"
-        value="Cancelar"
-        className="btn btn-accent w-40"
-      />
-      <input
-        type="submit"
-        value="Ingresar"
-        className="btn btn-accent w-40"
-      />
-    </div>
+          <select
+            name="tipodeusuario"
+            id="idusuario"
+            className="input select-bordered flex items-center text-lg pl-2 custom-select"
+          >
+            <option value="" className={style.customOption}>
+              Tipo de usuario:
+            </option>
+            <option value="1" className={style.customOption}>
+              Administrador
+            </option>
+            <option value="2" className={style.customOption}>
+              Abogado
+            </option>
+            <option value="3" className={style.customOption}>
+              Cliente
+            </option>
+          </select>
+        </div>
+        <br />
+        <div className="flex flex-col space-y-4">
+          <div className="flex justify-center space-x-4">
+            {/* <input
+              type="button"
+              name="consulta"
+              value="Consulta"
+              className="btn btn-accent w-40"
+            /> */}
+            <Link to="/home/consultation" className="btn btn-accent w-40">
+              <button>Consultas</button>
+            </Link>
+            <input
+              type="submit"
+              value="Ingresar"
+              className="btn btn-accent w-40"
+            />
+          </div>
 
-    <div className="flex justify-center space-x-4">
-      <input
-        type="button"
-        name="crearusuario"
-        value="Crear Usuario"
-        className="btn btn-accent w-40"
-        onClick={clickHandlerCrear}
-      />
-      <input
-        type="button"
-        name="password"
-        value="¿Olvidó su contraseña?"
-        className="btn btn-accent w-40"
-        onClick={clickHandlerRecordatorio}
-      />
-    </div>
-    </div>
-    
-  </form>
+          <div className="flex justify-center space-x-4">
+            <input
+              type="button"
+              name="crearusuario"
+              value="Crear Usuario"
+              className="btn btn-accent w-40"
+              onClick={clickHandlerCrear}
+            />
+            <input
+              type="button"
+              name="password"
+              value="¿Olvidó su contraseña?"
+              className="btn btn-accent w-40"
+              onClick={clickHandlerRecordatorio}
+            />
+          </div>
+        </div>
+      </form>
       <div className="flex justify-center">
-        <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage}/>
+        <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage} />
       </div>
     </div>
   );

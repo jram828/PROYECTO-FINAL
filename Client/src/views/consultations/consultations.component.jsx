@@ -117,7 +117,7 @@ function Consultations() {
         </div>
         <div className="detail-buttons">
           <button type="submit" className="btn btn-accent btn-sm">Enviar Consulta</button>
-          <Link to="/home">
+          <Link to="/">
             <button className="btn btn-accent btn-sm" type="button">Volver</button>
           </Link>
         </div>
