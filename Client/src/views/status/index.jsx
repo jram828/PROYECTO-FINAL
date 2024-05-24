@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
-async function Status () {
+function Status () {
   
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
@@ -26,12 +26,12 @@ async function Status () {
       });
 
       setQueries(formattedQueries);
-
+      
+      console.log("objeto queries: ", queries);
     }, []);
     
-    console.log("objeto queries: ", queries);
   
-  const paymentInfo = await axios.get(
+  const paymentInfo = axios.get(
     `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
     {
       headers: {
