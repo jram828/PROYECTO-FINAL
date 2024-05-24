@@ -19,7 +19,7 @@ function Status() {
 
   splitString.forEach((query) => {
     const [key, value] = query.split('=')
-    Object.defineProperty.assign(formattedQueries,{[key]:value})
+    Object.assign(formattedQueries,{[key]:value})
   });
 
   setQueries(formattedQueries);
