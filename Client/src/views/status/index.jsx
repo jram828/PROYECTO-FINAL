@@ -27,24 +27,23 @@ function Status () {
 
       setQueries(formattedQueries);
       
-      console.log("objeto queries: ", queries);
-
-        console.log("Payment id: ", queries.payment_id);
-        console.log("access token: ", ACCESSTOKEN);
-        const paymentInfo = axios.get(
-          `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
-          {
-            headers: {
-              Authorization:
-                "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
-            },
-          }
-        );
-
-      console.log("Informacion del pago: ", paymentInfo);
-      
     }, []);
     
+  console.log("objeto queries: ", queries);
+  console.log("Payment id: ", queries.payment_id);
+  
+          // console.log("access token: ", ACCESSTOKEN);
+          const paymentInfo = axios.get(
+            `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
+            {
+              headers: {
+                Authorization:
+                  "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
+              },
+            }
+          );
+
+          console.log("Informacion del pago: ", paymentInfo);
 
   
 return (
