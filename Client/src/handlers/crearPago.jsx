@@ -1,12 +1,12 @@
 import axios from "axios";
-import {v4 as uuidv4} from "uuidv4"
+import {uuid} from "uuidv4"
 
 export async function crearPago(data) {
   const { description, quantity, unit_price,cedulaCliente } = data;
   console.log("data del post pago:", data);
 
   const URL = "/pagos/crearorden";
-  const idempotencyKey = uuidv4()
+  const idempotencyKey = uuid();
   console.log("Idempotency key: ", idempotencyKey);
   try {
    const response = await axios.post(URL, {
