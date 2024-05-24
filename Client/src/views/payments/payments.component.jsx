@@ -10,7 +10,9 @@ import { crearPago } from '../../handlers/crearPago';
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", { locale: 'es-CO' });
+  initMercadoPago("TEST-4bbe35e3-96b8-466f-b532-83a1a1c88b32", {
+    locale: "es-CO",
+  });
 
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
