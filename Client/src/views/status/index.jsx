@@ -25,7 +25,7 @@ function Status() {
       setQueries(formattedQueries);
 
       console.log("objeto queries: ", queries);
-    }, [search,queries]);
+    }, []);
   // {
   //   "collection_id": "null",
   //   "collection_status": "null",
