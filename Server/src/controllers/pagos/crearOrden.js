@@ -28,11 +28,12 @@ const preference = new Preference(client);
             description: item.description,
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
+            id:item.id
           },
         ],
         back_urls: {
           success:
-            "https://proyecto-final-develop.vercel.app/#/home",
+            "https://proyecto-final-develop.vercel.app/#/status",
           failure: "https://proyecto-final-develop.vercel.app/#/home",
           pending:
             "https://proyecto-final-develop.vercel.app/#/home",
