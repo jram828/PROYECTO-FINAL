@@ -34,7 +34,7 @@ function Status () {
   
   const obtenerPago = async(id) => {
      console.log("Payment id: ", id);
-    const paymentInfo = await axios.get(
+    const { data } = await axios.get(
       `https://api.mercadopago.com/v1/payments/1323408839`,
       {
         headers: {
@@ -44,10 +44,10 @@ function Status () {
       }
     );
    
-    return paymentInfo
+    return data
   }
   
-  const datosPago=obtenerPago()
+  const datosPago = obtenerPago(queries.payment_id);
 
 
       console.log("Informacion del pago: ", datosPago);
