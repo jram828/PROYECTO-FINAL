@@ -1,7 +1,7 @@
 import "./index.css"; 
 import './styles.css';
 import App from "./App";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { createRoot } from "react-dom/client";
@@ -16,9 +16,9 @@ root.render(
   <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
 
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
    </GoogleOAuthProvider>
 );

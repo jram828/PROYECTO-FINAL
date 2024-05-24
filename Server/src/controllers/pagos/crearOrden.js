@@ -32,13 +32,13 @@ const preference = new Preference(client);
         ],
         back_urls: {
           success:
-            "https://proyecto-final-develop.vercel.app/#/home",
-          failure: "https://proyecto-final-develop.vercel.app/#/home",
+            "https://proyecto-final-develop.vercel.app/home",
+          failure: "https://proyecto-final-develop.vercel.app/home",
           pending:
-            "https://proyecto-final-develop.vercel.app/#/home",
+            "https://proyecto-final-develop.vercel.app/home",
         },
         notification_url:
-          "https://legaltech-develop.onrender.com/#/pagos/webhook",
+          "https://legaltech-develop.onrender.com/pagos/webhook",
         auto_return: "approved",
       },
     });
