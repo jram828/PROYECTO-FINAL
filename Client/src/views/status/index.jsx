@@ -50,10 +50,10 @@ function Status () {
       window.alert("No se obtuvieron los datos del pago");
     }
   }
-
+    useEffect(() => {
       const datosPago = obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datosPago);
-
+    }, [queries.payment_id]);
 
 
   
