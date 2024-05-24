@@ -66,31 +66,31 @@ return (
       <div className="status-form">
         <div className="status-input-group">
           <label className="status-label">ID de pago:</label>
-          <input value={datosPago.id} className="status-input"></input>
+          <input value={results.id} className="status-input"></input>
           <label className="status-label">Estado:</label>
-          <input value={datosPago.status} className="status-input"></input>
+          <input value={results.status} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
           <label className="status-label">Valor:</label>
           <input
-            value={datosPago.transaction_amount}
+            value={results.transaction_amount}
             className="status-input"
           ></input>
           <label className="status-label">Método de pago:</label>
-          <input value={datosPago.payment_type_id} className="status-input"></input>
+          <input value={results.payment_type_id} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
           <label className="status-label">Fecha:</label>
           <input
-            value={datosPago.date_approved}
+            value={results.date_approved}
             className="status-input"
           ></input>
           <label className="status-label">Descripción::</label>
-          <input value={datosPago.description} className="status-input"></input>
+          <input value={results.description} className="status-input"></input>
         </div>
       </div>
       <Link to="/home/payments">
