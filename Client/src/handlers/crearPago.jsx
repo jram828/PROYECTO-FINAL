@@ -1,5 +1,5 @@
 import axios from "axios";
-import {uuid} from "uuidv4"
+import {v4 as uuid} from "uuid"
 
 export async function crearPago(data) {
   const { description, quantity, unit_price,cedulaCliente } = data;

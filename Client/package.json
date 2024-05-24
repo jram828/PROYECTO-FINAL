@@ -27,6 +27,7 @@
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "twilio": "^5.0.4",
+    "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
