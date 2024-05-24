@@ -52,10 +52,10 @@ function Status () {
   }
 
   
-  const datosPago = obtenerPago(queries.payment_id);
+  const {results} = obtenerPago(queries.payment_id);
 
 
-      console.log("Informacion del pago: ", datosPago);
+      console.log("Informacion del pago: ", results);
 
   
 return (
