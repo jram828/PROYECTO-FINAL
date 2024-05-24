@@ -47,7 +47,7 @@ function Status() {
 
   return (
     <div className="status-container">
-      {/* <div>
+      <div>
         <p>Estado de la transacción:</p>
       </div>
       <div className="status-form">
@@ -73,7 +73,7 @@ function Status() {
           <label className="status-label">Preferencia:</label>
           <input value={queries.preference_id} className="status-input"></input>
         </div>
-      </div> */}
+      </div>
       <Link to="/home/payments">
         <button className="button">Reintentar pago</button>
       </Link>
