@@ -15,13 +15,14 @@ function Status() {
   const splitString = replaceFirst.split("&")
   console.log('array queries: ', splitString)
   
+  const formattedQueries = {};
+  
   splitString.forEach((query) => {
     const [key, value] = query.split('=')
-    setQueries({
-      ...queries,
-      [key]: value,
-    })
+    Object.assign('formattedQueries',{[key]:value})
   });
+
+  setQueries(formattedQueries);
 
   console.log('objeto queries: ',queries)
   // {
@@ -55,7 +56,7 @@ function Status() {
           <label className="status-label">ID de pago:</label>
           <input value={queries.payment_id} className="status-input"></input>
             <label className="status-label">Estado:</label>
-            <input value={status} className="status-input"></input>
+            <input value={queries.status} className="status-input"></input>
         </div>
         <br />
         <br />
