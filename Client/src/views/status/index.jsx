@@ -17,8 +17,13 @@ function Status() {
   //   "processing_mode": "aggregator",
   //   "merchant_account_id": "null"
   // }
-  
-  var { payment_id, status, external_reference, payment_type, merchant_order_id, preference_id } = useSearchParams();
+  const payment_id = params.get('payment_id')
+  const status = params.get("status");
+  const payment_type = params.get("payment_type");
+  const external_reference = params.get("external_reference");
+  const merchant_order_id = params.get("merchant_order_id");
+  const preference_id = params.get("preference_id");
+
   return (
     <div className="status-container">
       <div>
