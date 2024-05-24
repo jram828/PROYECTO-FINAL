@@ -66,31 +66,31 @@ return (
       <div className="status-form">
         <div className="status-input-group">
           <label className="status-label">ID de pago:</label>
-          <input value={queries.payment_id} className="status-input"></input>
+          <input value={datosPago.id} className="status-input"></input>
           <label className="status-label">Estado:</label>
-          <input value={queries.status} className="status-input"></input>
+          <input value={datosPago.status} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
-          <label className="status-label">Numero de referencia:</label>
+          <label className="status-label">Valor:</label>
           <input
-            value={queries.external_reference}
+            value={datosPago.transaction_amount}
             className="status-input"
           ></input>
-          <label className="status-label">Tipo de pago:</label>
-          <input value={queries.payment_type} className="status-input"></input>
+          <label className="status-label">Método de pago:</label>
+          <input value={datosPago.payment_type_id} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
-          <label className="status-label">Número de orden :</label>
+          <label className="status-label">Fecha:</label>
           <input
-            value={queries.merchant_order_id}
+            value={datosPago.date_approved}
             className="status-input"
           ></input>
-          <label className="status-label">Preferencia:</label>
-          <input value={queries.preference_id} className="status-input"></input>
+          <label className="status-label">Descripción::</label>
+          <input value={datosPago.description} className="status-input"></input>
         </div>
       </div>
       <Link to="/home/payments">
