@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
-async function Status () {
+function Status () {
   
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
@@ -51,11 +51,15 @@ async function Status () {
     }
   }
 
-  
-  const datosPago = await obtenerPago(queries.payment_id);
-
-
+  if (queries.payment_id) {
+    useEffect( () => {
+      const datosPago = obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datosPago);
+    }, [queries.payment_id]);
+  }
+
+
+
 
   
 return (
