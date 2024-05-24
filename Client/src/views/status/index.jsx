@@ -30,7 +30,7 @@ function Status () {
       console.log("objeto queries: ", queries);
     }, []);
     
-  
+  console.log('Payment id: ', queries.payment_id)
   const paymentInfo = axios.get(
     `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
     {
