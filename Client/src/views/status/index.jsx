@@ -1,9 +1,23 @@
+import { useState } from "react";
 import "./status.module.css";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 function Status() {
   console.log("Search params: ", useSearchParams());
   const [params] = useSearchParams();
+
+  const [queries, setQueries] = useState({});
+  const { search } = useLocation();
+  const replaceFirst = search.replace("?", "")
+  const splitString = replaceFirst.split("&")
+  
+  splitString.forEach((query) => {
+    const [key,value]=query.split('=')
+    setQueries({
+      ...queries,
+      [key]:value,
+    })
+  })
   // {
   //   "collection_id": "null",
   //   "collection_status": "null",
@@ -17,12 +31,13 @@ function Status() {
   //   "processing_mode": "aggregator",
   //   "merchant_account_id": "null"
   // }
-  const payment_id = params.get('payment_id')
-  const status = params.get("status");
-  const payment_type = params.get("payment_type");
-  const external_reference = params.get("external_reference");
-  const merchant_order_id = params.get("merchant_order_id");
-  const preference_id = params.get("preference_id");
+  
+  // const payment_id = params.get('payment_id')
+  // const status = params.get("status");
+  // const payment_type = params.get("payment_type");
+  // const external_reference = params.get("external_reference");
+  // const merchant_order_id = params.get("merchant_order_id");
+  // const preference_id = params.get("preference_id");
 
   return (
     <div className="status-container">
@@ -32,7 +47,7 @@ function Status() {
       <div className="status-form">
         <div className="status-input-group">
           <label className="status-label">ID de pago:</label>
-          <input value={payment_id} className="status-input"></input>
+          <input value={queries.payment_id} className="status-input"></input>
             <label className="status-label">Estado:</label>
             <input value={status} className="status-input"></input>
         </div>
@@ -40,17 +55,17 @@ function Status() {
         <br />
         <div className="status-input-group">
           <label className="status-label">Numero de referencia:</label>
-          <input value={external_reference} className="status-input"></input>
+          <input value={queries.external_reference} className="status-input"></input>
           <label className="status-label">Tipo de pago:</label>
-          <input value={payment_type} className="status-input"></input>
+          <input value={queries.payment_type} className="status-input"></input>
         </div>
         <br />
         <br />
         <div className="status-input-group">
           <label className="status-label">Número de orden :</label>
-          <input value={merchant_order_id} className="status-input"></input>
+          <input value={queries.merchant_order_id} className="status-input"></input>
           <label className="status-label">Preferencia:</label>
-          <input value={preference_id} className="status-input"></input>
+          <input value={queries.preference_id} className="status-input"></input>
         </div>
       </div>
       <Link to="/home/payments">
