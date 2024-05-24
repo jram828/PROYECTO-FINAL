@@ -1,8 +1,9 @@
 import "./status.module.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Status() {
-
+  console.log("Search params: ", useSearchParams());
+  const [params] = useSearchParams();
   // {
   //   "collection_id": "null",
   //   "collection_status": "null",
@@ -17,7 +18,7 @@ function Status() {
   //   "merchant_account_id": "null"
   // }
   
-  var { payment_id, status, external_reference, payment_type, merchant_order_id, preference_id } = useParams();
+  var { payment_id, status, external_reference, payment_type, merchant_order_id, preference_id } = useSearchParams();
   return (
     <div className="status-container">
       <div>
