@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./status.module.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import {} from "mercado"
-
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -29,9 +27,9 @@ async function Status () {
 
       setQueries(formattedQueries);
 
-      console.log("objeto queries: ", queries);
     }, []);
-
+    
+    console.log("objeto queries: ", queries);
   
   const paymentInfo = await axios.get(
     `https://api.mercadopago.com/v1/payments/${queries.payment_id}`,
