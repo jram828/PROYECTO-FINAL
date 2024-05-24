@@ -16,10 +16,10 @@ function Status() {
   console.log('array queries: ', splitString)
   
   const formattedQueries = {};
-  
+
   splitString.forEach((query) => {
     const [key, value] = query.split('=')
-    Object.assign('formattedQueries',{[key]:value})
+    Object.defineProperty.assign(formattedQueries,{[key]:value})
   });
 
   setQueries(formattedQueries);
