@@ -17,7 +17,7 @@ function Payments() {
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedula: "",
+    cedulaCliente: "123456",
     description: "Honorarios",
   });
 
