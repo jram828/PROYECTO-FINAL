@@ -1,30 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./status.module.css";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 function Status() {
-  console.log("Search params: ", useSearchParams());
-  const [params] = useSearchParams();
-  console.log('params: ', params)
   
   const [queries, setQueries] = useState({});
   const { search } = useLocation();
+
+
   console.log('Search: ', search)
 
-  const replaceFirst = search.replace("?", "")
-  const splitString = replaceFirst.split("&")
-  console.log('array queries: ', splitString)
-  
-  const formattedQueries = {};
+    useEffect(() => {
+      const replaceFirst = search.replace("?", "");
+      const splitString = replaceFirst.split("&");
+      console.log("array queries: ", splitString);
 
-  splitString.forEach((query) => {
-    const [key, value] = query.split('=')
-    Object.assign(formattedQueries,{[key]:value})
-  });
+      const formattedQueries = {};
 
-  setQueries(formattedQueries);
+      splitString.forEach((query) => {
+        const [key, value] = query.split("=");
+        Object.assign(formattedQueries, { [key]: value });
+      });
 
-  console.log('objeto queries: ',queries)
+      setQueries(formattedQueries);
+
+      console.log("objeto queries: ", queries);
+    }, [search,queries]);
   // {
   //   "collection_id": "null",
   //   "collection_status": "null",
