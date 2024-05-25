@@ -44,7 +44,7 @@ function App() {
 
   const options = {
     // passing the client secret obtained from the server
-    clientSecret: `${VITE_SECRET_KEY}`,
+    clientSecret: `{{${VITE_SECRET_KEY}}}`,
   };
 
 
