@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const { getPaymentsHandler, successHandler, failureHandler, pendingHandler, webhookHandler } = require("../handlers/paymentsHandler");
+const { getPaymentsHandler, failureHandler, pendingHandler, webhookHandler, statusHandler } = require("../handlers/paymentsHandler");
 const { crearOrdenHandler } = require("../handlers/paymentsHandler");
 
 const paymentsRouter = Router();
 
 paymentsRouter.get("/", getPaymentsHandler);
 paymentsRouter.post("/crearorden", crearOrdenHandler);
-paymentsRouter.get("/success", successHandler);
+paymentsRouter.get("/status", statusHandler);
 paymentsRouter.post("/webhook", webhookHandler);
 paymentsRouter.get("/failure", failureHandler);
 paymentsRouter.get("/pending", pendingHandler);

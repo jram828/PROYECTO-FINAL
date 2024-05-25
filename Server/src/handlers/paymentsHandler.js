@@ -2,7 +2,7 @@ const { crearOrden } = require('../controllers/pagos/crearOrden')
 const { failure } = require('../controllers/pagos/failure')
 const { getPayments } = require('../controllers/pagos/getPayments')
 const { pending } = require('../controllers/pagos/pending')
-const { success } = require('../controllers/pagos/success')
+const { success, obtenerPago } = require('../controllers/pagos/status')
 const { webhook } = require('../controllers/pagos/webhook')
 
 const getPaymentsHandler = async (req, res)=>{
@@ -15,10 +15,10 @@ const getPaymentsHandler = async (req, res)=>{
     }
 }
 
-const successHandler = async (req, res) => {
+const statusHandler = async (req, res) => {
   try {
-    // const { password, email } = req.query;
-    const response = await success(req.body);
+    const { id } = req.body;
+    const response = await obtenerPago(id);
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -75,4 +75,5 @@ module.exports = {
   failureHandler,
   successHandler,
   webhookHandler,
+  statusHandler,
 };

@@ -21,49 +21,68 @@ import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
+import {Elements} from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 // const { URL } = process.env;
 // const URL = import.meta.env.VITE_URL_BACK;
+const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2SaxkMSzQeUiBIBYUJetxGEXuNihUg6y0kFibN3kGJai5Fec5jKWo00YKuqtYox');
 
 function App() {
   
     // const location = useLocation();
-   const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
     //Funcion para verificar datos de ingreso
+
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: `${SECRETKEY}`,
+  };
+
+
+    
+     
+   
+
 
   
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Landing />} />
+      <Elements stripe={stripePromise} options={options}>
+        <Routes>
+          <Route path="/" element={<Landing />} />
 
-        <Route path="/password" element={<Password />} />
-        <Route path="/crearusuario" element={<CreateUser />} />
+          <Route path="/password" element={<Password />} />
+          <Route path="/crearusuario" element={<CreateUser />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/home/lawyers" element={<LawyersPage />} />
-        <Route path="/home/customers" element={<CustomersPage />} />
-        <Route path="/home/detail" element={<Detail />} />
-        <Route path="/home/detail/:cedula" element={<Detail />} />
-        <Route path="/home/cases" element={<Cases />} />
-        <Route path="/home/cases/:id" element={<DetailCases/>} />
-        <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
-        <Route path="/home/costumers/:id" element={<Detail />} />
-        <Route path="/home/lawyers/:id" element={<Detail />} />
-        <Route path="/home/documents" element={<Documents />} />
-        <Route path="/home/diary" element={<Diary />} />
-        <Route path="/home/payments" element={<Payments />} />
-        <Route path="/home/payments/status" element={<Status />} />
-        <Route path="/home/consultation" element={<Consultations />} />
-        <Route path="/home/statistics" element={<Statistics />} />
-        <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
-        <Route
-          path="/home/customers/crearcliente"
-          element={<CreateCliente />}
-        />
-        {/*<Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/lawyers" element={<LawyersPage />} />
+          <Route path="/home/customers" element={<CustomersPage />} />
+          <Route path="/home/detail" element={<Detail />} />
+          <Route path="/home/detail/:cedula" element={<Detail />} />
+          <Route path="/home/cases" element={<Cases />} />
+          <Route path="/home/cases/:id" element={<DetailCases />} />
+          <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
+          <Route path="/home/costumers/:id" element={<Detail />} />
+          <Route path="/home/lawyers/:id" element={<Detail />} />
+          <Route path="/home/documents" element={<Documents />} />
+          <Route path="/home/diary" element={<Diary />} />
+          <Route path="/home/payments" element={<Payments />} />
+          <Route path="/home/payments/status" element={<Status />} />
+          <Route path="/home/consultation" element={<Consultations />} />
+          <Route path="/home/statistics" element={<Statistics />} />
+          <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
+          <Route
+            path="/home/customers/crearcliente"
+            element={<CreateCliente />}
+          />
+          {/*<Route path="/home" element={<Home />} />
         <Route
           path="/home/detail/:id"
           element={<Detail />}
@@ -113,7 +132,8 @@ function App() {
           path="/home/crearcaso"
           element={isAuthenticated ? <CrearCaso /> : <Landing />}
   />*/}
-      </Routes>
+        </Routes>
+      </Elements>
     </div>
   );
 }

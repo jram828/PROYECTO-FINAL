@@ -27,6 +27,7 @@
     "pg-hstore": "^2.3.4",
     "resend": "^3.2.0",
     "sequelize": "^6.31.1",
+    "stripe": "^15.8.0",
     "twilio": "^5.0.4"
   }
 }

@@ -52,6 +52,23 @@ function Status () {
     }
   }
 
+
+    const handlePay = async (id) => {
+      try {
+        // Realizar la llamada a la API para crear la orden de pago en MercadoPago
+        console.log("Datos crear usuario: ", userPreference);
+        const paymentData = await crearPago(userPreference);
+        console.log("Respuesta creacion pago: ", paymentData);
+
+        setResponsePreference(paymentData);
+        // Redirigir a la página de pago de MercadoPago
+        window.open(paymentData.init_point, "_self");
+      } catch (error) {
+        console.error(error);
+        // Manejo de errores
+      }
+    };
+
   if (queries.payment_id) {
     useEffect( () => {
       const datos = obtenerPago(queries.payment_id);

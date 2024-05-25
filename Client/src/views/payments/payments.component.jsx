@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
-
+import {PaymentElement} from '@stripe/react-stripe-js';
 
 import { } from "@mercadopago/sdk-react";
 
@@ -92,6 +92,20 @@ function Payments() {
   //    Aquí puedes ocultar loadings en tu sitio, por ejemplo.
   //  */
   //   };
+
+
+
+
+
+
+    // <form>
+    //   <PaymentElement />
+    //   <button>Submit</button>
+    // </form>
+
+
+
+  
   return (
     <div>
       <div>
@@ -131,6 +145,7 @@ function Payments() {
                 className="btn btn-accent btn-sm"
               />
             </Link>
+            <PaymentElement />
             <input
               type="button"
               name="Pagar"
