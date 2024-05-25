@@ -48,7 +48,7 @@ const postUsuariosHandler = async (req, res) => {
         })
         .then((message) => console.log(message.sid))
         .done();
-      
+      console.log("Datos google: ", GOOGLE_KEY);
        const transporter = nodemailer.createTransport({
          host: "smtp.gmail.com",
          port: 465,
@@ -69,10 +69,7 @@ const postUsuariosHandler = async (req, res) => {
            subject: `Hola!`,
            text: "Has sido registrado en Legaltech!",
          });
-         console.log("Datos nodemailer: ", {
-           correo: correo,
-           clave: GOOGLE_KEY,
-         });
+         console.log("Datos nodemailer: ", correo);
          console.log("Message sent: %s", info.messageId);
        }
        sendEmail();
