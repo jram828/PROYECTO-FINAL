@@ -24,7 +24,7 @@ import Status from './views/status';
 import {Elements} from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const { VITE_SECRET_KEY } = process.env;
+const VITE_SECRET_KEY  = process.env.VITE_SECRET_KEY;
 // const URL = import.meta.env.VITE_URL_BACK;
 const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
