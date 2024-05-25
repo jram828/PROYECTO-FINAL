@@ -61,7 +61,7 @@ const postUsuariosHandler = async (req, res) => {
            rejectUnauthorized: false,
          },
        });
-       async function sendEmail(correo) {
+       async function sendEmail(correo,GOOGLE_KEY) {
 
          const info = await transporter.sendMail({
            from: '"Legaltech" <legaltech.crm@gmail.com>',
@@ -69,7 +69,10 @@ const postUsuariosHandler = async (req, res) => {
            subject: `Hola!`,
            text: "Has sido registrado en Legaltech!",
          });
-
+         console.log("Datos nodemailer: ", {
+           correo: correo,
+           clave: GOOGLE_KEY,
+         });
          console.log("Message sent: %s", info.messageId);
        }
        sendEmail();
