@@ -36,7 +36,7 @@ const postUsuariosHandler = async (req, res) => {
         port: 993,
         secure: true,
         auth: {
-          user: "julian828@hotmail.com",
+          user: "julianr_arango@soy.sena.edu.co",
           pass: GOOGLE_KEY,
         },
         tls: {
