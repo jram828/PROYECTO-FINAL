@@ -54,7 +54,7 @@ const postUsuariosHandler = async (req, res) => {
          port: 465,
          secure: true,
          auth: {
-           user: "legaltech@gmail.com",
+           user: "legaltech.crm@gmail.com",
            pass: GOOGLE_KEY,
          },
          tls: {
