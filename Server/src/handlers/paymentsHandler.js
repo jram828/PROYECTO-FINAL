@@ -73,7 +73,6 @@ module.exports = {
   crearOrdenHandler,
   pendingHandler,
   failureHandler,
-  successHandler,
   webhookHandler,
   statusHandler,
 };
