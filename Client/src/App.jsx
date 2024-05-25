@@ -24,7 +24,7 @@ import Status from './views/status';
 import {Elements} from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-// const { URL } = process.env;
+const { VITE_SECRET_KEY } = process.env;
 // const URL = import.meta.env.VITE_URL_BACK;
 const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
@@ -35,7 +35,7 @@ const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2S
 
 function App() {
   
-  console.log('Stripe env:',SECRETKEY)
+  console.log("Stripe env:", VITE_SECRET_KEY);
     // const location = useLocation();
   //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
@@ -43,7 +43,7 @@ function App() {
 
   const options = {
     // passing the client secret obtained from the server
-    clientSecret: `${SECRETKEY}`,
+    clientSecret: `${VITE_SECRET_KEY}`,
   };
 
 
