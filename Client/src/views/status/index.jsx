@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./status.module.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { verificarPago } from "../../handlers/verificarPago";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -36,38 +37,18 @@ function Status () {
   const obtenerPago = async (id) => {
     console.log("Payment id: ", id);
     try {
-      const { data } = await axios.get(
-        `https://api.mercadopago.com/v1/payments/${id}`,
-        {
-          headers: {
-            'Authorization':
-              "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
-          },
-        }
-      );
-      console.log("Data obtener pago: ", data);
-      return data
+    
+    const paymentData = await verificarPago(id);
+      console.log("Respuesta verificacion pago: ", paymentData);
+      setDatosPago(paymentData);
+      return paymentData
     } catch (error) {
       window.alert("No se obtuvieron los datos del pago");
     }
   }
 
 
-    const handlePay = async (id) => {
-      try {
-        // Realizar la llamada a la API para crear la orden de pago en MercadoPago
-        console.log("Datos crear usuario: ", userPreference);
-        const paymentData = await crearPago(userPreference);
-        console.log("Respuesta creacion pago: ", paymentData);
 
-        setResponsePreference(paymentData);
-        // Redirigir a la página de pago de MercadoPago
-        window.open(paymentData.init_point, "_self");
-      } catch (error) {
-        console.error(error);
-        // Manejo de errores
-      }
-    };
 
   if (queries.payment_id) {
     useEffect( () => {

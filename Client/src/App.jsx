@@ -16,23 +16,23 @@ import CrearCaso from './views/CrearCaso/crearCaso';
 import DetailCases from './views/detailCases/detailCases'
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
-import {Elements} from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 
 const VITE_SECRET_KEY =
   'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
 // const URL = import.meta.env.VITE_URL_BACK;
-const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
+// const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2SaxkMSzQeUiBIBYUJetxGEXuNihUg6y0kFibN3kGJai5Fec5jKWo00YKuqtYox');
+// const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2SaxkMSzQeUiBIBYUJetxGEXuNihUg6y0kFibN3kGJai5Fec5jKWo00YKuqtYox');
 
 function App() {
   
@@ -42,10 +42,10 @@ function App() {
 
     //Funcion para verificar datos de ingreso
 
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret: `${VITE_SECRET_KEY}`,
-  };
+  // const options = {
+  //   // passing the client secret obtained from the server
+  //   clientSecret: `${VITE_SECRET_KEY}`,
+  // };
 
 
     
@@ -56,7 +56,7 @@ function App() {
   
   return (
     <div className="App">
-      <Elements stripe={stripePromise} options={options}>
+      {/* <Elements stripe={stripePromise} options={options}> */}
         <Routes>
           <Route path="/" element={<Landing />} />
 
@@ -135,7 +135,7 @@ function App() {
           element={isAuthenticated ? <CrearCaso /> : <Landing />}
   />*/}
         </Routes>
-      </Elements>
+      {/* </Elements> */}
     </div>
   );
 }
