@@ -8,37 +8,52 @@ const fs = require("fs");
 const { GOOGLE_KEY } = process.env;
 require("dotenv").config();
 
-const allUsuarios = async (req, res)=>{
+const allUsuarios = async (req, res) => {
+  console.log(req.query);
 
-    console.log(req.query)
-      
-    try {
-        
-            const response = await getAllUsuario()
-            res.status(200).json(response)
-        } catch (error) {
-            res.status(400).json({error: error.message})
-    }
-    
+  try {
+    const response = await getAllUsuario();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const postUsuariosHandler = async (req, res) => {
   const { correo, password, imagen, rol } = req.body;
 
   try {
-    const response = await crearUsuario(
-      correo,
-      password,
-      imagen,
-      rol
-    );
+    const response = await crearUsuario(correo, password, imagen, rol);
     if (response) {
-      
       console.log("Datos Twilio:", { ACCOUNTSID, AUTHTOKEN, NUMBER });
       res.status(200).json(response);
 
-      const client = new twilio(ACCOUNTSID, AUTHTOKEN,NUMBER)
+      const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
       const numero = "+573127461628";
+      console.log("Datos google: ", GOOGLE_KEY);
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "legaltech.crm@gmail.com",
+          pass: GOOGLE_KEY,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
+      async function sendEmail(correo, GOOGLE_KEY) {
+        const info = await transporter.sendMail({
+          from: '"Legaltech" <legaltech.crm@gmail.com>',
+          to: correo,
+          subject: `Hola!`,
+          text: "Has sido registrado en Legaltech!",
+        });
+        console.log("Datos nodemailer: ", correo);
+        console.log("Message sent: %s", info.messageId);
+      }
+      sendEmail();
 
       client.messages
         .create({
@@ -48,36 +63,9 @@ const postUsuariosHandler = async (req, res) => {
         })
         .then((message) => console.log(message.sid))
         .done();
-      console.log("Datos google: ", GOOGLE_KEY);
-       const transporter = nodemailer.createTransport({
-         host: "smtp.gmail.com",
-         port: 465,
-         secure: true,
-         auth: {
-           user: "legaltech.crm@gmail.com",
-           pass: GOOGLE_KEY,
-         },
-         tls: {
-           rejectUnauthorized: false,
-         },
-       });
-       async function sendEmail(correo,GOOGLE_KEY) {
-
-         const info = await transporter.sendMail({
-           from: '"Legaltech" <legaltech.crm@gmail.com>',
-           to: correo,
-           subject: `Hola!`,
-           text: "Has sido registrado en Legaltech!",
-         });
-         console.log("Datos nodemailer: ", correo);
-         console.log("Message sent: %s", info.messageId);
-       }
-       sendEmail();
-      
+    } else {
+      res.status(200).send("El usuario ya existe");
     }
-    
-    else { res.status(200).send("El usuario ya existe"); }
-
   } catch (error) {
     // res.status(400).json({ error: error.message });
   }
@@ -85,6 +73,6 @@ const postUsuariosHandler = async (req, res) => {
 };
 
 module.exports = {
- postUsuariosHandler,
- allUsuarios
+  postUsuariosHandler,
+  allUsuarios,
 };
