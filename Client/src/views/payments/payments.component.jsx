@@ -10,7 +10,7 @@ import { } from "@mercadopago/sdk-react";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-4bbe35e3-96b8-466f-b532-83a1a1c88b32", {
+  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", {
     locale: "es-CO",
   });
 
