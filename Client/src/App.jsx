@@ -35,6 +35,7 @@ const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2S
 
 function App() {
   
+  console.log('Stripe env:',SECRETKEY)
     // const location = useLocation();
   //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
