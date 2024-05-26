@@ -11,25 +11,25 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 // });
 
 /* **** Esto va cuando se hace el despliegue en RENDER */
-// console.log("Dbdeploy: ", DB_DEPLOY);
-// const sequelize = new Sequelize(DB_DEPLOY, {
-//   logging: false, // set to console.log to see the raw SQL queries
-//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//     },
-//   },
-// });
+console.log("Dbdeploy: ", DB_DEPLOY);
+const sequelize = new Sequelize(DB_DEPLOY, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  dialectOptions: {
+    ssl: {
+      require: true,
+    },
+  },
+});
 
 /*  ******   Esto va cuando lo quiero ejecutar localmente */
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
-  {
-    logging: false,
-    native: false,
-  },
-);
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
+//   {
+//     logging: false,
+//     native: false,
+//   },
+// );
 
 const basename = path.basename(__filename);
 const modelDefiners = [];
