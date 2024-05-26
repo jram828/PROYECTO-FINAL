@@ -1,0 +1,46 @@
+.container {
+    background-color: white;
+    
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+
+    font-family: "Outfit", sans-serif;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .titulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .container2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-family: "Outfit", sans-serif;
+    outline: none;
+    margin-right: 10px;
+  }
+  
+  .select option {
+    background-color: var(--color-two);
+    color: white;
+    font-family: "Outfit", sans-serif;
+  }
+  
+  

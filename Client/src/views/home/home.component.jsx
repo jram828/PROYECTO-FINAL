@@ -1,61 +1,130 @@
-import './home.module.css';
+import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
+import picture from "../../assets/homepic.jpg";
+// import logo from '../../assets/logo.png'
+// import legaltech from "../../assets/legaltech.png";
+
 
 function Home() {
   
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
+  console.log("Rol usuario: ", user.rol);
+  console.log('User local storage: ', user)
+  const handleSalir = () => {
+    window.localStorage.setItem("loggedUser", JSON.stringify({}));
+    
+  }
   return (
     <div>
-      <select >
-      <option value="">Clientes</option>
-      <option value="1">Cliente 1</option>
-      <option value="2">Cliente 2</option>
-      <option value="3">Cliente 3</option>
-      
-    </select>
-    <select >
-      <option value="">Abogados</option>
-      <option value="1">Abogado 1</option>
-      <option value="2">Abogado 2</option>
-      <option value="3">Abogado 3</option>
-      
-    </select>
-    <br></br>
-       <Link to="/home/crearcliente">
-          <button>Crear cliente</button>
-        </Link>
-        <Link to="/home/crearabogado">
-          <button>Craer abogado</button>
-        </Link>
-    
-    <br></br>
-      <Link to="/home/detail">
-        <button>Datos Personales</button>
-      </Link>
-      <Link to="/home/cases/:id">
-        <button>Casos</button>
-      </Link>
-      <Link to="/home/documents/:id">
-        <button>Documentos</button>
-      </Link>
-      <Link to="/home/diary">
-        <button>Agenda</button>
-      </Link>
-      <br></br>
-      <Link to="/home/payments">
-        <button>Pagos</button>
-      </Link>
-      <Link to="/home/consultation">
-        <button>Consultas</button>
-      </Link>
-      <Link to="/home/statistics">
-        <button>Estadisticas</button>
-      </Link>
-      <br/>
-      <br/>
-      <Link to="/">
-        <button>Salir</button>
-      </Link>
+      {/* <div className={style.container}>
+        <div className={style.logo}>
+          <img src={logo} alt="logo" />
+          <img src={legaltech} alt="legaltech" />
+        </div>
+        <br></br>
+      </div> */}
 
+      <div className={style.container2}>
+        <div className={style.imagen}>
+          <img src={picture} alt="homeLawyers" className="h-auto" />
+        </div>
+        <ul
+          className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
+        >
+          <li>
+            {user.administrador===true || user.cedulaAbogado ? (
+              <Link
+                to="/home/customers"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Clientes</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            {user.administrador===true ? (
+              <Link
+                to="/home/lawyers"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Abogados</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/home/detail"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Datos Personales</button>
+            </Link>
+          </li>
+          <li>
+            {user.administrador===true || user.cedulaAbogado ? (
+              <Link
+                to="/home/cases"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Casos</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/home/documents"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Documentos</button>
+            </Link>
+          </li>
+          <li>
+            {/* {user.rol === "Administrador" ? ( */}
+            <Link
+              to="/home/diary"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Agenda</button>
+            </Link>
+            {/* ) : undefined} */}
+          </li>
+          <li>
+            {user.administrador===true || user.cedulaCliente ? (
+              <Link
+                to="/home/payments"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Pagos</button>
+              </Link>
+            ) : undefined}
+          </li>
+          {/* <li>
+            <Link
+              to="/home/consultation"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Consultas</button>
+            </Link>
+          </li> */}
+          <li>
+            {user.administrador ===true? (
+              <Link
+                to="/home/statistics"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Estadisticas</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button onClick={handleSalir}>Salir</button>
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
 const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
+<<<<<<< HEAD
 
 const allUsuarios = async (req, res)=>{
     //const { name } = req.query;
@@ -19,12 +20,41 @@ const allUsuarios = async (req, res)=>{
             res.status(400).json({error: error.message})
     }
     
+=======
+require("dotenv").config();
+const {
+  ACCOUNTSID,
+  AUTHTOKEN,
+  NUMBER,
+  OAUTH_CLIENTID,
+  OAUTH_CLIENT_SECRET,
+  OAUTH_REFRESH_TOKEN,
+  OAUTH_REDIRECT_URI,
+} = process.env;
+const twilio = require("twilio");
+const nodemailer = require("nodemailer");
+const {google} = require("googleapis");
+const fs = require("fs");
+// const { MAIL_USERNAME } = process.env;
+require("dotenv").config();
+
+const allUsuarios = async (req, res) => {
+  console.log(req.query);
+
+  try {
+    const response = await getAllUsuario();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
 };
 
 const postUsuariosHandler = async (req, res) => {
   const { correo, password, imagen, rol } = req.body;
 
   try {
+<<<<<<< HEAD
     const response = await crearUsuario(
       correo,
       password,
@@ -35,11 +65,107 @@ const postUsuariosHandler = async (req, res) => {
     else res.status(200).send("El usuario ya existe");
   } catch (error) {
     res.status(400).json({ error: error.message });
+=======
+    const response = await crearUsuario(correo, password, imagen, rol);
+    if (response) {
+      console.log("Datos Twilio:", { ACCOUNTSID, AUTHTOKEN, NUMBER });
+      res.status(200).json(response);
+
+      const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
+      const numero = "+573127461628";
+      // console.log("Datos google: ", GOOGLE_KEY);
+      // const transporter = nodemailer.createTransport({
+      //   host: "smtp-mail.outlook.com",
+      //   port: 587,
+      //   secure: true,
+      //   auth: {
+      //     user: "julian828@hotmail.com",
+      //     pass: GOOGLE_KEY,
+      //   },
+      //   tls: {
+      //     rejectUnauthorized: false,
+      //   },
+      // });
+      // const transporter = nodemailer.createTransport({
+      //   host: "smtp.ethereal.email",
+      //   port: 587,
+      //   auth: {
+      //     user: "vida40@ethereal.email",
+      //     pass: "6HT7t4MKUJ7yM3w9R7",
+      //   },
+      // });
+
+        // async function sendEmail(correo, GOOGLE_KEY) {
+        //   const info = await transporter.sendMail({
+        //     from: '"Legaltech" <legaltech.crm@gmail.com>',
+        //     to: correo,
+        //     subject: `Hola!`,
+        //     text: "Has sido registrado en Legaltech!",
+        //   });
+        //   console.log("Datos nodemailer: ", correo);
+        //   console.log("Message sent: %s", info.messageId);
+        // }
+      //  await sendEmail();
+      const oAuth2Client = new google.auth.OAuth2(
+        OAUTH_CLIENTID,
+        OAUTH_CLIENT_SECRET,
+        OAUTH_REDIRECT_URI
+      );
+
+      oAuth2Client.setCredentials({ refresh_token: OAUTH_REFRESH_TOKEN });
+
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          type: "OAuth2",
+          user: process.env.MAIL_USERNAME,
+          pass: process.env.MAIL_PASSWORD,
+          clientId: process.env.OAUTH_CLIENTID,
+          clientSecret: process.env.OAUTH_CLIENT_SECRET,
+          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+        },
+      });
+
+      let mailOptions = {
+        from: '"Legaltech" <legaltech.crm@gmail.com>',
+        to: correo,
+        subject: "Registro en Legaltech",
+        text: "Bienvenido! Has sido registrado en Legaltech. Ahora puedes utilizar todos nuestros servicios",
+      };
+
+      transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log("Error " + err);
+        } else {
+          console.log("Email sent successfully");
+        }
+      });
+
+      client.messages
+        .create({
+          body: "Se ha creado un nuevo usuario en Legaltech!",
+          from: "+12097210938",
+          to: numero,
+        })
+        .then((message) => console.log(message.sid))
+        .done();
+    } else {
+      res.status(200).send("El usuario ya existe");
+    }
+  } catch (error) {
+    // res.status(400).json({ error: error.message });
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
   }
   // res.status(200).send(`creando actividades`);
 };
 
 module.exports = {
+<<<<<<< HEAD
  postUsuariosHandler,
  allUsuarios
 };
+=======
+  postUsuariosHandler,
+  allUsuarios,
+};
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c

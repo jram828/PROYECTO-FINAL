@@ -1,21 +1,24 @@
-import './cases.module.css';
-import React from 'react';
-import Filtros from '../../components/filtros';
-import Order from '../../components/order';
-import { Link } from 'react-router-dom';
+import './cases.css';
+import React from 'react'
+// import { Link } from 'react-router-dom';
+import FiltrosCasos from '../../components/filtrosCasos/filtrosCasos';
+// import OrderCasos from '../../components/orderCasos/orderCasos';
 
 function Cases() {
   return (
     <div>
-      <div>
-        <p>Casos</p>
-        <Order></Order>
-       <Filtros></Filtros>
-      </div>
-      <Link to='/home'>
+        {/* <p>Casos</p> */}
+      
+        {/* <Link to='/home/cases/crearcaso'>
+          <button >Crear caso</button>
+        </Link>
+        <Link to='/home'>
           <button >Volver</button>
-          </Link>
-    </div>
+        </Link>
+        <OrderCasos></OrderCasos>  */}
+        <FiltrosCasos></FiltrosCasos>
+      </div>
+    
   )
 }
 

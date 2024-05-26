@@ -1,4 +1,4 @@
-import './statistics.module.css';
+import './statistics.css';
 
 function Statistics() {
   return (
@@ -12,3 +12,4 @@ function Statistics() {
 }
 
 export default Statistics
+

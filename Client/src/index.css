@@ -4,7 +4,8 @@
   --color-two: #0A2B3C;
   --color-three: #D8D0C5;
   --color-four: #D9832C;
-
+  --color-five: white;
+  
   /*fuente*/
   
 
@@ -14,12 +15,24 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: var(--color-three);
+  /* background-color: var(--color-three); */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    appearance: none; 
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    margin: 0;
+  }
 }
 
 a {
@@ -28,7 +41,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: white;
 }
 
 body {
@@ -44,15 +57,17 @@ h1 {
   line-height: 1.1;
 }
 
-.button {
+/* .button {
   font-family: "Outfit", sans-serif;
   background-color: var(--color-four); 
   padding: 5px 15px; 
   border: none; 
   border-radius: 5px; 
-  font-size: 14px; 
+  font-size: 16px; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  width: 180px;
+  margin: 10px;
 }
 
 .button:hover {
@@ -64,15 +79,34 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.button2 {
+  font-family: "Outfit", sans-serif;
+  background-color: var(--color-two); 
+  padding: 5px 15px; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  width: 180px;
+}
+
+.button2:hover {
+  background-color: darken(var(--color-two), 10%); 
+}
+
+button2:focus,
+button2:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: var(--color-three);
+    background-color: white;
   }
-  a:hover {
+  /* a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: var(--color-four);
-  }
+  } */
+  
 }

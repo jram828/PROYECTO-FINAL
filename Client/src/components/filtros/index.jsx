@@ -1,4 +1,4 @@
-import './filtros.css';
+import style from './filtros.module.css';
 import Cards from '../cards/index';
 import { useState } from 'react';
 
@@ -76,67 +76,70 @@ function Filtros() {
   console.log(event)*/
 
   return (
-    <div>
-      <div>
-      <select>
-<option name="">Casos por cliente</option>
-{casos
-    .filter((caso, index, self) => self.findIndex(c => c.cedula_cliente === caso.cedula_cliente) === index)
-    .map((caso) => (
-      <option key={caso.id} value={caso.cedula_cliente}>
-        {caso.cedula_cliente}
-        </option>
-    ))}
-</select>
-<select>
-<option name="">Casos por cotización</option>
-{casos
-    .filter((caso, index, self) => self.findIndex(c => c.cotización === caso.cotización) === index)
-    .map((caso) => (
-      <option key={caso.id} value={caso.cotización}>
-        {caso.cotización}
-        </option>
-    ))}
-    </select>
-<select>
-<option name="">Casos por abogado</option>
-{casos
-    .filter((caso, index, self) => self.findIndex(c => c.cedula_abogado === caso.cedula_abogado) === index)
-    .map((caso) => (
-      <option key={caso.id} value={caso.cedula_abogado}>
-        {caso.cedula_abogado}
-        </option>
-    ))}
-</select>
-<br></br>
-<select>
-<option name="">Casos por estado</option>
-{casos
-    .filter((caso, index, self) => self.findIndex(c => c.estado === caso.estado) === index)
-    .map((caso) => (
-      <option key={caso.id} value={caso.estado}>
-        {caso.estado}
-        </option>
-    ))}
-</select>
-<select>
-<option name="">Casos por tipo</option>
-{casos
-    .filter((caso, index, self) => self.findIndex(c => c.tipo === caso.tipo) === index)
-    .map((caso) => (
-      <option key={caso.id} value={caso.tipo}>
-        {caso.tipo}
-        </option>
-    ))}
-</select>
-<br></br>
-<button onClick={handleMostrarCasos}>Todos los casos</button>
+    <div className={style.container}>
+      <div className={style.container2}>
+      <select className={style.select}>
+      <option name="" className={style.option}>Casos por cliente</option>
+        {casos
+            .filter((caso, index, self) => self.findIndex(c => c.cedula_cliente === caso.cedula_cliente) === index)
+            .map((caso) => (
+              <option key={caso.id} value={caso.cedula_cliente} className={style.option}>
+                {caso.cedula_cliente}
+                </option>
+            ))}
+      </select>
+      <select className={style.select}>
+      <option name="" className={style.option}>Casos por cotización</option>
+          {casos
+              .filter((caso, index, self) => self.findIndex(c => c.cotización === caso.cotización) === index)
+              .map((caso) => (
+                <option key={caso.id} value={caso.cotización} className={style.option}>
+                  {caso.cotización}
+                  </option>
+              ))}
+       </select>
+       <select className={style.select}>
+      <option name="" className={style.option}>Casos por abogado</option>
+        {casos
+            .filter((caso, index, self) => self.findIndex(c => c.cedula_abogado === caso.cedula_abogado) === index)
+            .map((caso) => (
+              <option key={caso.id} value={caso.cedula_abogado} className={style.option}>
+                {caso.cedula_abogado}
+                </option>
+            ))}
+      </select>
+      <br></br>
+      <select className={style.select}>
+      <option name="" className={style.option}>Casos por estado</option>
+      {casos
+          .filter((caso, index, self) => self.findIndex(c => c.estado === caso.estado) === index)
+          .map((caso) => (
+            <option key={caso.id} value={caso.estado} className={style.option}>
+              {caso.estado}
+              </option>
+          ))}
+      </select>
+      <select className={style.select}>
+      <option name="" className={style.option}>Casos por tipo</option>
+      {casos
+          .filter((caso, index, self) => self.findIndex(c => c.tipo === caso.tipo) === index)
+          .map((caso) => (
+            <option key={caso.id} value={caso.tipo} className={style.option}>
+              {caso.tipo}
+              </option>
+          ))}
+      </select>
+      <br></br>
+      <button onClick={handleMostrarCasos} className='button'>Todos los casos</button>
       </div>
       {mostrarCasos && <Cards casos={handleMostrarCasos} />}
+      
     </div>
+    
   )
 }
 
 export default Filtros
+
 
 

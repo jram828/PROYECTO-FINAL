@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
 
 // const { mercadopago } = require("mercadopago");
+=======
+const { MercadoPagoConfig, Preference } = require("mercadopago");
+require("dotenv").config();
+const { ACCESSTOKEN } = process.env;
+
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
 
 const crearOrden = async (item) => {
   // SDK de Mercado Pago
@@ -8,7 +15,11 @@ const crearOrden = async (item) => {
   // Agrega credenciales
   const client = new MercadoPagoConfig({
     accessToken:
+<<<<<<< HEAD
       "TEST-7845349164975835-051714-6919a564464a369582bcbc8ff6f8cc4f-1817941600",
+=======
+      ACCESSTOKEN,
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
   });
 
   console.log('Body crear orden: ',item)
@@ -28,14 +39,25 @@ const preference = new Preference(client);
             description: item.description,
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
+<<<<<<< HEAD
+=======
+            id:item.id
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
           },
         ],
         back_urls: {
           success:
+<<<<<<< HEAD
             "https://proyecto-final-develop.vercel.app/home/payments/status",
           failure: "https://proyecto-final-develop.vercel.app/home/payments/failure",
           pending:
             "https://proyecto-final-develop.vercel.app/home/payments/status",
+=======
+            "https://proyecto-final-develop.vercel.app/#/home/payments/status",
+          failure: "https://proyecto-final-develop.vercel.app/#/home",
+          pending:
+            "https://proyecto-final-develop.vercel.app/#/home",
+>>>>>>> 51d92237903119989773bfccf662e0381c69085c
         },
         notification_url:
           "https://legaltech-develop.onrender.com/pagos/webhook",

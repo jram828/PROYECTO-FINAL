@@ -1,23 +1,19 @@
-import './diary.module.css';
+import './diary.css';
 import Calendario from '../../components/calendar';
 import FormCita from '../../components/formCrearCita/index';
-import { Link  } from 'react-router-dom';
+
 
 function Diary() {
   
-  
-  
   return (
-    <div>
-      <div>
-        <p>Agenda</p>
+    <div className='containerDiary'>
+      
+      <div className='calendario'> 
+        <p className='agenda'>Agenda</p>
         <Calendario></Calendario>
+      </div>
+      <div className='formCita'>
         <FormCita></FormCita>
-        <div>
-        <Link to='/home'>
-        <button>Volver</button>
-        </Link>
-        </div>
       </div>
     </div>
   )
