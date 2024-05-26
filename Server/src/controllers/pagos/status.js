@@ -28,15 +28,6 @@ const obtenerPago = async (idPago) => {
       transaction_amount,
     } = data;
 
-    // console.log("Data obtener pago: ", data);
-    // console.log("Data obtener pago2: ", {
-    //   date_approved,
-    //   description,
-    //   id,
-    //   payment_type_id,
-    //   status,
-    //   transaction_amount,
-    // });
     const newPago = createPagosClientes(
       idCaso,
       description,
@@ -53,6 +44,7 @@ const obtenerPago = async (idPago) => {
     // window.alert("No se obtuvieron los datos del pago");
   }
 };
+
 
 module.exports = {
   obtenerPago,

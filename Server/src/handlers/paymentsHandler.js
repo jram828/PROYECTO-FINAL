@@ -19,7 +19,9 @@ const statusHandler = async (req, res) => {
   try {
     const { id } = req.body;
     const response = await obtenerPago(id);
+
     // console.log(response);
+
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -73,7 +75,6 @@ module.exports = {
   getPaymentsHandler,
   crearOrdenHandler,
   pendingHandler,
-  failureHandler,
   statusHandler,
   webhookHandler,
 };

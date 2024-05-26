@@ -13,6 +13,17 @@ export const ORDER_ABOGADOS = "ORDER_ABOGADOS";
 export const ORDER_CLIENTES = "ORDER_CLIENTES";
 export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const DELETE_CLIENTE = "DELETE_CLIENTES";
+export const GET_TIPOSDECASOS = "GET_TIPOSDECASOS";
+export const GET_CASOS = "GET_CASOS";
+export const FILTER_CASOS = "FILTER_CASOS";
+export const ORDER_CASOS = "ORDER_CASOS";
+export const GET_CASO_BY_ID = "GET_CASO_BY_ID";
+export const DELETE_CASO = "DELETE_CASO;";
+export const POST_CITA = "POST_CITA";
+export const GET_CITAS = "GET_CITAS";
+export const POST_CONSULTA = "POST_CONSULTA";
+
+
 
 
 //const URL = 'http://localhost:3001/'
@@ -190,4 +201,127 @@ export const getClientes = () => {
                                   payload: data,
                                   });
                             };
-                   };             
+                   }; 
+       
+      export const getTiposDeCasos = () => {
+            const endpoint = `${URL}tiposdecasos`;
+               return async (dispatch) => {
+                    const {data} = await axios.get(endpoint);
+                      return dispatch({
+                         type: GET_TIPOSDECASOS,
+                          payload: data,
+                      });
+                  };
+            };
+                 
+            
+            
+      export const getCasos = () => {
+          const endpoint = `${URL}casos?porPagina=20`;
+              return async (dispatch) => {
+                  const {data} = await axios.get(endpoint);
+                    return dispatch({
+                        type: GET_CASOS,
+                        payload: data,
+                    });
+                };
+            };         
+
+
+            export const filterCasos = (filtro) => {
+              const endpoint = `${URL}casos?${filtro}`;
+              console.log('URL',endpoint)
+              return async (dispatch) => {
+                  try{ 
+                  const {data} = await axios.get(endpoint);
+                  
+                      return dispatch({
+                           type: FILTER_CASOS,
+                           payload: data,
+                      });
+                  } catch (error) {
+                      throw error;
+                  }
+                  };
+                  
+                }           
+
+      export const orderCasos = (value) => {
+          const endpoint = `${URL}casos?ordenarPor=${value}&porPagina=20`;
+                  
+          return async (dispatch) => {
+              const {data} = await axios.get(endpoint);
+                  return dispatch({
+                      type: ORDER_CASOS,
+                        payload: data,
+                      });
+                    };
+                };        
+                    
+
+                export const getCasoById = (id) => {
+                  const endpoint = `${URL}casos/:${id}`;
+                  console.log('URL', endpoint)
+                  return async (dispatch) => {
+                      try{ 
+                          const {data} = await axios.get(endpoint);
+                          return dispatch({
+                                  type: GET_CASO_BY_ID,
+                                   payload: data,
+                          });
+                      } catch (error) {
+                          throw error;
+                      }
+                  };
+              };               
+
+              export const deleteCaso = (id) => {
+                const endpoint = `${URL}casos/elimina`;
+                         
+                  return async (dispatch) => {
+                     const data = await axios.post(endpoint, {id} );
+                     console.log('url', endpoint, 'id', id);
+        
+                       return dispatch({
+                             type: DELETE_CASO,
+                             payload: data,
+                             });
+                       };
+              };     
+
+
+      export const postCita = (payload) => {
+        const endpoint = `${URL}citas`; 
+
+          return async (dispatch) => {
+              const data = await axios.post(endpoint,payload);
+                  return dispatch({
+                    type: POST_CITA,
+                    payload: data
+                  });         
+                };
+             };  
+      
+    export const getCitas = () => {
+        const endpoint = `${URL}citas?porPagina=20`;
+          return async (dispatch) => {
+              const {data} = await axios.get(endpoint);
+                  return dispatch({
+                      type: GET_CITAS,
+                      payload: data,
+                });
+            };
+        }; 
+        
+        export const postConsulta = (payload) => {
+          const endpoint = `${URL}consultas`; 
+  
+            return async (dispatch) => {
+                const data = await axios.post(endpoint,payload);
+                    return dispatch({
+                      type: POST_CONSULTA,
+                      payload: data
+                    });         
+                  };
+               };  
+             

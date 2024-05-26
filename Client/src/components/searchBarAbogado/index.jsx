@@ -39,38 +39,44 @@ const SearchBar = ({ onFilter }) => {
   };
 
   return (
-    <div className="barra_busqueda">
-       <label>Nombre:</label>
+    <div className="flex flex-col gap-4 mb-4">
+      <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Nombre:</label>
+        <br />
+        <input
+          placeholder="Busqueda..." 
+          type="text" 
+          value={nombre} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setNombre)}
+        />
+      </div>
+
+       <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Apellido:</label>
+        <br />
+        <input
+          placeholder="Busqueda..." 
+          type="text" 
+          value={apellido} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setApellido)}
+        />
+       </div>
+       
+       <div className="input input-bordered flex items-center gap-2 mb-4">
+        <label>Ciudad:</label>
+        <br />
+        <input 
+          placeholder="Busqueda..." 
+          type="text" 
+          value={ciudad} 
+          onKeyDown={handleKeyDown}
+          onChange={(e) => handleInputChange(e, setCiudad)}
+        />
+       </div>
        <br />
-       <input
-         placeholder="Busqueda..." 
-         type="text" 
-         value={nombre} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setNombre)}
-       />
-       <br />
-       <label>Apellido:</label>
-       <br />
-       <input
-         placeholder="Busqueda..." 
-         type="text" 
-         value={apellido} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setApellido)}
-       />
-       <br />
-       <label>Ciudad:</label>
-       <br />
-       <input 
-         placeholder="Busqueda..." 
-         type="text" 
-         value={ciudad} 
-         onKeyDown={handleKeyDown}
-         onChange={(e) => handleInputChange(e, setCiudad)}
-       />
-       <br />
-       <button onClick={handleSearch}>Buscar</button>
+       <button onClick={handleSearch} className='btn btn-md hover:bg-primary'>Buscar</button>
     </div>
   );
 };

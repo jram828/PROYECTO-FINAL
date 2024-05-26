@@ -4,58 +4,120 @@ import picture from "../../assets/homepic.jpg";
 import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
 
+
 function Home() {
   
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
+  console.log("Rol usuario: ", user.rol);
+  console.log('User local storage: ', user)
+  const handleSalir = () => {
+    window.localStorage.setItem("loggedUser", JSON.stringify({}));
+    
+  }
   return (
     <div>
-      <div className={style.container}>
+      {/* <div className={style.container}>
         <div className={style.logo}>
           <img src={logo} alt="logo" />
           <img src={legaltech} alt="legaltech" />
         </div>
         <br></br>
-      </div>
+      </div> */}
 
       <div className={style.container2}>
         <div className={style.imagen}>
-          <img src={picture} alt="homeLawyers" />
+          <img src={picture} alt="homeLawyers" className="h-auto" />
         </div>
-        <div className={style.container3}>
-          <br />
-          <br />
-          <Link to="/home/customers">
-            <button className={style.btn2}>Clientes</button>
-          </Link>
-          <Link to="/home/lawyers">
-            <button className={style.btn2}>Abogados</button>
-          </Link>
-
-          <Link to="/home/detail">
-            <button className={style.btn}>Datos Personales</button>
-          </Link>
-          <Link to="/home/cases/:id">
-            <button className={style.btn}>Casos</button>
-          </Link>
-          <Link to="/home/documents/:id">
-            <button className={style.btn}>Documentos</button>
-          </Link>
-          <Link to="/home/diary">
-            <button className={style.btn}>Agenda</button>
-          </Link>
-          <Link to="/home/payments">
-            <button className={style.btn}>Pagos</button>
-          </Link>
-          <Link to="/home/consultation">
-            <button className={style.btn}>Consultas</button>
-          </Link>
-          <Link to="/home/statistics">
-            <button className={style.btn}>Estadisticas</button>
-          </Link>
-
-          <Link to="/">
-            <button className={style.btn3}>Salir</button>
-          </Link>
-        </div>
+        <ul
+          className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
+        >
+          <li>
+            <Link
+              to="/home/customers"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Clientes</button>
+            </Link>
+          </li>
+          <li>
+            {user.rol === "Administrador" ? (
+              <Link
+                to="/home/lawyers"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Abogados</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/home/detail"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Datos Personales</button>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/home/cases"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Casos</button>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/home/documents"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Documentos</button>
+            </Link>
+          </li>
+          <li>
+            {user.rol === "Administrador" ? (
+              <Link
+                to="/home/diary"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Agenda</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/home/payments"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Pagos</button>
+            </Link>
+          </li>
+          {/* <li>
+            <Link
+              to="/home/consultation"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button>Consultas</button>
+            </Link>
+          </li> */}
+          <li>
+            {user.rol === "Administrador" ? (
+              <Link
+                to="/home/statistics"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Estadisticas</button>
+              </Link>
+            ) : undefined}
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="text-white hover:text-white hover:bg-accent"
+            >
+              <button onClick={handleSalir}>Salir</button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
