@@ -63,44 +63,90 @@ function Status () {
 
   
 return (
-    <div className="status-container">
+  <div className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6">
+  <div className="mb-4">
+    <p className="text-xl font-semibold">Estado de la transacción</p>
+  </div>
+
+  <div className="space-y-6">
+
+    <div className="grid grid-cols-1 gap-4">
       <div>
-        <p>Estado de la transacción:</p>
+        <label className="input input-bordered flex items-center max-w-xs">ID de pago:
+        <input
+          value={datosPago.id}
+          className="grow"
+          readOnly
+        />
+        </label>
       </div>
-      <div className="status-form">
-        <div className="status-input-group">
-          <label className="status-label">ID de pago:</label>
-          <input value={datosPago.id} className="status-input"></input>
-          <label className="status-label">Estado:</label>
-          <input value={datosPago.status} className="status-input"></input>
-        </div>
-        <br />
-        <br />
-        <div className="status-input-group">
-          <label className="status-label">Valor:</label>
-          <input
-            value={datosPago.transaction_amount}
-            className="status-input"
-          ></input>
-          <label className="status-label">Método de pago:</label>
-          <input value={datosPago.payment_type_id} className="status-input"></input>
-        </div>
-        <br />
-        <br />
-        <div className="status-input-group">
-          <label className="status-label">Fecha:</label>
-          <input
-            value={datosPago.date_approved}
-            className="status-input"
-          ></input>
-          <label className="status-label">Descripción::</label>
-          <input value={datosPago.description} className="status-input"></input>
-        </div>
+
+      <div>
+        <label className="input input-bordered flex items-center max-w-xs">Estado:
+        <input
+          value={datosPago.status}
+          className="grow"
+          readOnly
+        />
+        </label>
       </div>
-      <Link to="/home/payments">
-        <button className="button">Reintentar pago</button>
-      </Link>
     </div>
+
+    <div className="grid grid-cols-1 gap-4">
+      <div>
+        <label className="input input-bordered flex items-center max-w-xs">Valor:
+        <input
+          value={datosPago.transaction_amount}
+          className="grow"
+          readOnly
+        />
+        </label>
+      </div>
+      <div>
+        <label  className="input input-bordered flex items-center max-w-xs whitespace-nowrap"> Método de pago:
+        <input
+          value={datosPago.payment_type_id}
+          className="grow"
+          readOnly
+        />
+        </label>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 gap-4">
+
+      <div className="">
+        <label className="input input-bordered flex items-center max-w-xs">Fecha:
+        <input
+        type="date"
+          value={datosPago.date_approved}
+          className="grow"
+          readOnly
+        />
+        </label>
+      </div>
+
+      <div >
+        <label className="">
+        <input
+          value={datosPago.description}
+          type="text"
+          className="textarea textarea-bordered h-24 !w-full"
+          placeholder="Descripcion..."
+          readOnly
+        />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div className="mt-6 flex justify-center">
+    <Link to="/home/payments">
+      <button className="btn btn-accent text-white">Reintentar pago</button>
+    </Link>
+  </div>
+</div>
+
   );
 }
 
