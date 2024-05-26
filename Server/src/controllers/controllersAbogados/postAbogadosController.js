@@ -1,4 +1,4 @@
-const { Abogado } = require("../db_conn");
+const { Abogado } = require("../../DB");
 
 const createAbogadoBd = async (
   cedulaAbogado,
@@ -11,7 +11,9 @@ const createAbogadoBd = async (
   numero,
   codigoPostal,
   ciudad,
-  pais
+  pais,
+  password,
+  administrador
 ) => {
   // console.log('imagen',imagen)
 
@@ -27,6 +29,8 @@ const createAbogadoBd = async (
     codigoPostal,
     ciudad,
     pais,
+    password,
+    administrador
   });
 
   //  newAbogado.addCliente(clientes);

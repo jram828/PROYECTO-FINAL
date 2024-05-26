@@ -1,4 +1,6 @@
-const { Cliente } = require("../db_conn");
+
+const { Cliente } = require('../../DB');
+const { sendEmailCliente } = require('../../utils/emailNotifier');
 
 const createClienteBd = async (
   cedulaCliente,
@@ -10,7 +12,8 @@ const createClienteBd = async (
   numero,
   codigoPostal,
   ciudad,
-  pais
+  pais,
+  password
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -23,7 +26,9 @@ const createClienteBd = async (
     codigoPostal,
     ciudad,
     pais,
+    password
   });
+  if(newCliente) sendEmailCliente(newCliente)
   console.log(newCliente);
   return {
     ...newCliente.toJSON(),

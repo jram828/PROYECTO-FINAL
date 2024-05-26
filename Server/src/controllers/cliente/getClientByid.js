@@ -1,4 +1,4 @@
-const { Cliente } = require("../db_conn");
+const { Cliente } = require("../../DB");
 
 const getClientById = async (cedulaCliente) => {
   const cliente = await Cliente.findOne({
