@@ -85,11 +85,7 @@ const postClientesHandler = async (req, res) => {
       password
     );
     console.log('Response crear cliente', response)
-<<<<<<< HEAD
-    if (response) res.status(200).json(response)
-=======
     if (response) res.status(200).json(response);
->>>>>>> 51d92237903119989773bfccf662e0381c69085c
     else res.status(200).send("La cedula ya existe");
   } catch (error) {
     res.status(400).json({ error: error.message });
