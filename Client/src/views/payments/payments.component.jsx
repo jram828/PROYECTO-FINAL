@@ -10,7 +10,7 @@ import { } from "@mercadopago/sdk-react";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", {
+  initMercadoPago("TEST-47bcf8af-9fee-4169-9a1b-61804619024f", {
     locale: "es-CO",
   });
 
@@ -109,7 +109,6 @@ function Payments() {
   return (
     <div>
       <div>
-        {/* <p>Realizar pago</p> */}
         <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
           <h1 className="titulo">Realizar un pago</h1>
           <div className="input input-bordered flex items-center gap-2">
