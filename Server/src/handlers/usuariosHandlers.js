@@ -5,7 +5,7 @@ const { ACCOUNTSID, AUTHTOKEN, NUMBER } = process.env;
 const twilio = require("twilio");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
-const { GOOGLE_KEY } = process.env;
+// const { MAIL_USERNAME } = process.env;
 require("dotenv").config();
 
 const allUsuarios = async (req, res) => {
@@ -43,26 +43,53 @@ const postUsuariosHandler = async (req, res) => {
       //     rejectUnauthorized: false,
       //   },
       // });
-      const transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
+      // const transporter = nodemailer.createTransport({
+      //   host: "smtp.ethereal.email",
+      //   port: 587,
+      //   auth: {
+      //     user: "vida40@ethereal.email",
+      //     pass: "6HT7t4MKUJ7yM3w9R7",
+      //   },
+      // });
+
+      //   async function sendEmail(correo, GOOGLE_KEY) {
+      //     const info = await transporter.sendMail({
+      //       from: '"Legaltech" <legaltech.crm@gmail.com>',
+      //       to: correo,
+      //       subject: `Hola!`,
+      //       text: "Has sido registrado en Legaltech!",
+      //     });
+      //     console.log("Datos nodemailer: ", correo);
+      //     console.log("Message sent: %s", info.messageId);
+      //   }
+      //  await sendEmail();
+
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
         auth: {
-          user: "vida40@ethereal.email",
-          pass: "6HT7t4MKUJ7yM3w9R7",
+          type: "OAuth2",
+          user: process.env.MAIL_USERNAME,
+          pass: process.env.MAIL_PASSWORD,
+          clientId: process.env.OAUTH_CLIENTID,
+          clientSecret: process.env.OAUTH_CLIENT_SECRET,
+          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
         },
       });
-      
-      async function sendEmail(correo, GOOGLE_KEY) {
-        const info = await transporter.sendMail({
-          from: '"Legaltech" <legaltech.crm@gmail.com>',
-          to: correo,
-          subject: `Hola!`,
-          text: "Has sido registrado en Legaltech!",
-        });
-        console.log("Datos nodemailer: ", correo);
-        console.log("Message sent: %s", info.messageId);
-      }
-      sendEmail();
+
+      let mailOptions = {
+        from: '"Legaltech" <legaltech.crm@gmail.com>',
+        to: correo,
+        subject: "Registro en Legaltech",
+        text: "Bienvenido! Has sido registrado en Legaltech. Ahora puedes utilizar todos nuestros servicios",
+      };
+
+      transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log("Error " + err);
+        } else {
+          console.log("Email sent successfully");
+        }
+      });
 
       client.messages
         .create({
