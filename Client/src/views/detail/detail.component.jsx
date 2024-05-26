@@ -10,16 +10,16 @@ import { getAbogados, getClientes} from '../../redux/actions'
 
 function Detail() {
 
-  const datos = JSON.parse(localStorage.getItem("loggedUser"));
+  //const datos = JSON.parse(localStorage.getItem("loggedUser"));
 
-  //const source = useSelector((state) => state.source)
+  const source = useSelector((state) => state.source)
 
-  const cedula = datos.cedulaAbogado ? datos.cedulaAbogado : datos.cedulaCliente
+  //const cedula = datos.cedulaAbogado ? datos.cedulaAbogado : datos.cedulaCliente
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  /*if (source === 'abogado') {
+  if (source === 'abogado') {
     var datos = useSelector((state) => state.abogado);
     var { cedula } = useParams();
     useEffect(() => {
@@ -32,7 +32,7 @@ function Detail() {
       dispatch(getByIdCliente(cedula))
    }, [dispatch, cedula])
     console.log('datos', datos)
-  }*/
+  }
 
  
     const handleDelete = () => {

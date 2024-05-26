@@ -133,7 +133,7 @@ export const getClientes = () => {
         }
 
     export const filterAbogado = (filtro) => {
-      const endpoint = `${URL}abogados?${filtro}`;
+      const endpoint = `${URL}abogados?${filtro}?pagina=1&porPagina=50`;
       console.log('URL',endpoint)
       return async (dispatch) => {
           try{ 
@@ -150,7 +150,7 @@ export const getClientes = () => {
 
 
         export const orderAbogados = (value) => {
-          const endpoint = `${URL}abogados?field=apellido&order=${value}`;
+          const endpoint = `${URL}abogados?field=apellido&order=${value}?pagina=1&porPagina=50`;
           
          return async (dispatch) => {
              const {data} = await axios.get(endpoint);
@@ -163,7 +163,7 @@ export const getClientes = () => {
 
 
              export const orderClientes = (value) => {
-              const endpoint = `${URL}clientes?field=apellido&order=${value}`;
+              const endpoint = `${URL}clientes?field=apellido&order=${value}?pagina=1&porPagina=50`;
               
              return async (dispatch) => {
                  const {data} = await axios.get(endpoint);

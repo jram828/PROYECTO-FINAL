@@ -5,9 +5,10 @@ import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
 
 
+
+
 function Home() {
 
-  const dispatch = useDispatch()
   
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   console.log("Rol usuario: ", user.rol);
@@ -17,13 +18,7 @@ function Home() {
     
   }
 
-  const handlerSubmitD = () => {
-    useEffect(() => {
-      dispatch(setSource('abogado'));
-    }, [dispatch]); 
-  }
 
-  
 
   return (
     <div>
@@ -67,7 +62,7 @@ function Home() {
               to="/home/detail"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button onClick={handlerSubmitD}>Datos Personales</button>
+              <button >Datos Personales</button>
             </Link>
           </li>
           <li>
