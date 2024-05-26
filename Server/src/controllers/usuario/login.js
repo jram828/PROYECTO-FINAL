@@ -7,14 +7,14 @@ const getLogin = async (password, email) => {
       password: password,
     },
   });
-  if (!login) {
-    login = await Abogado.findOne({
-      where: {
-        correo: email,
-        password: password,
-      },
-    });
-  }
+//   if (!login) {
+//     login = await Abogado.findOne({
+//       where: {
+//         correo: email,
+//         password: password,
+//       },
+//     });
+//   }
   if (!login) {
     const login = await Usuario.findOne({
       where: {
