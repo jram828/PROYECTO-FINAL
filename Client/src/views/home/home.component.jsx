@@ -3,6 +3,8 @@ import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
 import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
+import { useDispatch } from 'react-redux';
+import { setSource } from '../../redux/actions';
 
 
 function Home() {
@@ -17,7 +19,7 @@ function Home() {
     
   }
 
-  const handlerSubmitD = () => {
+  const andlerSubmitD = () => {
     useEffect(() => {
       dispatch(setSource('abogado'));
     }, [dispatch]); 
