@@ -32,7 +32,7 @@ function Payments() {
 
       setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.init_point, "_self");
+      window.open(paymentData.sandbox_init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores
