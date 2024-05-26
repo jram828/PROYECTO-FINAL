@@ -27,6 +27,7 @@ const createClienteBd = async (
     pais,
     password
   });
+  if(newCliente) sendEmailCliente(newCliente)
   console.log(newCliente);
   return {
     ...newCliente.toJSON(),
