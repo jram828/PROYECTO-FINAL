@@ -30,19 +30,28 @@ const postUsuariosHandler = async (req, res) => {
 
       const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
       const numero = "+573127461628";
-      console.log("Datos google: ", GOOGLE_KEY);
+      // console.log("Datos google: ", GOOGLE_KEY);
+      // const transporter = nodemailer.createTransport({
+      //   host: "smtp-mail.outlook.com",
+      //   port: 587,
+      //   secure: true,
+      //   auth: {
+      //     user: "julian828@hotmail.com",
+      //     pass: GOOGLE_KEY,
+      //   },
+      //   tls: {
+      //     rejectUnauthorized: false,
+      //   },
+      // });
       const transporter = nodemailer.createTransport({
-        host: "smtp-mail.outlook.com",
+        host: "smtp.ethereal.email",
         port: 587,
-        secure: true,
         auth: {
-          user: "julian828@hotmail.com",
-          pass: GOOGLE_KEY,
-        },
-        tls: {
-          rejectUnauthorized: false,
+          user: "vida40@ethereal.email",
+          pass: "6HT7t4MKUJ7yM3w9R7",
         },
       });
+      
       async function sendEmail(correo, GOOGLE_KEY) {
         const info = await transporter.sendMail({
           from: '"Legaltech" <legaltech.crm@gmail.com>',
