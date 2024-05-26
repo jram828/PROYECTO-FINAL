@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
 import { useDispatch } from 'react-redux';
 import { setSource } from '../../redux/actions';
+import { useEffect } from 'react';
 
 
 function Home() {
@@ -19,12 +20,11 @@ function Home() {
     
   }
 
-  const andlerSubmitD = () => {
-    useEffect(() => {
-      dispatch(setSource('abogado'));
-    }, [dispatch]); 
-  }
+  const handlerSubmitD = () => {
+   
+      dispatch(setSource("abogado"));
 
+  }
   
 
   return (
