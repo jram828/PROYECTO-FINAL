@@ -32,7 +32,7 @@ function Home() {
           className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
         >
           <li>
-            {user.administrador || user.cedulaAbogado ? (
+            {user.administrador===true || user.cedulaAbogado ? (
               <Link
                 to="/home/customers"
                 className="text-white hover:text-white hover:bg-accent"
@@ -42,7 +42,7 @@ function Home() {
             ) : undefined}
           </li>
           <li>
-            {user.administrador ? (
+            {user.administrador===true ? (
               <Link
                 to="/home/lawyers"
                 className="text-white hover:text-white hover:bg-accent"
@@ -60,7 +60,7 @@ function Home() {
             </Link>
           </li>
           <li>
-            {user.administrador || user.cedulaAbogado ? (
+            {user.administrador===true || user.cedulaAbogado ? (
               <Link
                 to="/home/cases"
                 className="text-white hover:text-white hover:bg-accent"
@@ -88,7 +88,7 @@ function Home() {
             {/* ) : undefined} */}
           </li>
           <li>
-            {user.administrador || user.cedulaCliente ? (
+            {user.administrador===true || user.cedulaCliente ? (
               <Link
                 to="/home/payments"
                 className="text-white hover:text-white hover:bg-accent"
@@ -106,7 +106,7 @@ function Home() {
             </Link>
           </li> */}
           <li>
-            {user.administrador ? (
+            {user.administrador ===true? (
               <Link
                 to="/home/statistics"
                 className="text-white hover:text-white hover:bg-accent"
