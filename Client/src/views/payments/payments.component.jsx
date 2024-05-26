@@ -4,18 +4,20 @@ import { Link } from "react-router-dom";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
+// import {PaymentElement} from '@stripe/react-stripe-js';
 
-
-
+import { } from "@mercadopago/sdk-react";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", { locale: 'es-CO' });
+  initMercadoPago("TEST-47bcf8af-9fee-4169-9a1b-61804619024f", {
+    locale: "es-CO",
+  });
 
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedula: "",
+    cedulaCliente: "123456",
     description: "Honorarios",
   });
 
@@ -30,7 +32,7 @@ function Payments() {
 
       setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.init_point, "_self");
+      window.open(paymentData.sandbox_init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores
@@ -90,10 +92,23 @@ function Payments() {
   //    Aquí puedes ocultar loadings en tu sitio, por ejemplo.
   //  */
   //   };
+
+
+
+
+
+
+    // <form>
+    //   <PaymentElement />
+    //   <button>Submit</button>
+    // </form>
+
+
+
+  
   return (
     <div>
       <div>
-        {/* <p>Realizar pago</p> */}
         <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
           <h1 className="titulo">Realizar un pago</h1>
           <div className="input input-bordered flex items-center gap-2">
@@ -129,6 +144,7 @@ function Payments() {
                 className="btn btn-accent btn-sm"
               />
             </Link>
+            {/* <PaymentElement /> */}
             <input
               type="button"
               name="Pagar"

@@ -118,7 +118,6 @@ console.log('registro', dataRegistro)
           </select>
           </label>
         </div>
-      
         <br></br>
         <div className="w-full px-4">
           <label className="w-full">
