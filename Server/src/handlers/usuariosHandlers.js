@@ -33,7 +33,7 @@ const postUsuariosHandler = async (req, res) => {
       console.log("Datos google: ", GOOGLE_KEY);
       const transporter = nodemailer.createTransport({
         host: "smtp-mail.outlook.com",
-        port: 993,
+        port: 587,
         secure: true,
         auth: {
           user: "julian828@hotmail.com",
