@@ -1,7 +1,7 @@
 const { Cliente, Abogado, Usuario } = require('../../DB')
 
 const getLogin = async (password, email)=>{
-    const login = await Usuario.findOne({
+    const login = await Cliente.findOne({
         where:{
             correo: email,
             password: password

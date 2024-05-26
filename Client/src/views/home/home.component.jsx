@@ -3,9 +3,12 @@ import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
 import logo from '../../assets/logo.png'
 import legaltech from "../../assets/legaltech.png";
+import { useDispatch } from 'react-redux';
 
 
 function Home() {
+
+  const dispatch = useDispatch()
   
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   console.log("Rol usuario: ", user.rol);
@@ -14,6 +17,15 @@ function Home() {
     window.localStorage.setItem("loggedUser", JSON.stringify({}));
     
   }
+
+  const handlerSubmitD = () => {
+    useEffect(() => {
+      dispatch(setSource('abogado'));
+    }, [dispatch]); 
+  }
+
+  
+
   return (
     <div>
       {/* <div className={style.container}>
@@ -54,7 +66,7 @@ function Home() {
               to="/home/detail"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button>Datos Personales</button>
+              <button onClick={handlerSubmitD}>Datos Personales</button>
             </Link>
           </li>
           <li>
