@@ -32,11 +32,11 @@ const postUsuariosHandler = async (req, res) => {
       const numero = "+573127461628";
       console.log("Datos google: ", GOOGLE_KEY);
       const transporter = nodemailer.createTransport({
-        host: "outlook.office365.com",
+        host: "smtp-mail.outlook.com",
         port: 993,
         secure: true,
         auth: {
-          user: "julianr_arango@soy.sena.edu.co",
+          user: "julian828@hotmail.com",
           pass: GOOGLE_KEY,
         },
         tls: {
