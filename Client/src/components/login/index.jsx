@@ -43,11 +43,11 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const submitHandler = async(e) => {
     e.preventDefault();
 
-  const { email, password } = userData;
-  console.log("Datos login:", email, password);
+  const { email, password, rol } = userData;
+  console.log("Datos login:", email, password,rol);
 
   try {
-    const { data } = await axios(`/login/?email=${email}&password=${password}`);
+    const { data } = await axios(`/login/?email=${email}&password=${password}&rol=&${rol}`);
     console.log("Login 2:", data);
     const { access } = data;
     console.log('Access: ',access)
@@ -71,11 +71,12 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     const user = jwtDecode(response.credential);
     // Loginf();
     dispatch(setUserToken(user));
+     const {rol } = userData;
   console.log("Datos login:", user.email);
   try {
-    const { data } = await axios(`/clientes/?correo=${user.email}`);
+    const { data } = await axios(`/login/google/?email=${user.email}&rol=&${rol}`);
     
-    console.log("Login 2:", data);
+    console.log("Login 3:", data);
     // const { access } = data;
     if (user.email === data[0].correo) {
         window.localStorage.setItem('loggedUser',JSON.stringify(data[0]))
@@ -138,27 +139,27 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
         </div>
 
         <div>
-          {/* <label htmlFor="tipodeusuario" className="">
-        Tipo de usuario:
-      </label> */}
-          {/* <select
-            name="tipodeusuario"
+          <label htmlFor="tipodeusuario" className="">
+            Tipo de usuario:
+          </label>
+          <select
+            name="rol"
             id="idusuario"
             className="input select-bordered flex items-center text-lg pl-2 custom-select"
           >
             <option value="" className={style.customOption}>
               Tipo de usuario:
             </option>
-            <option value="1" className={style.customOption}>
+            <option value="Administrador" className={style.customOption}>
               Administrador
             </option>
-            <option value="2" className={style.customOption}>
+            <option value="Abogado" className={style.customOption}>
               Abogado
             </option>
-            <option value="3" className={style.customOption}>
+            <option value="Cliente" className={style.customOption}>
               Cliente
             </option>
-          </select> */}
+          </select>{" "}
         </div>
         <br />
         <div className="flex flex-col space-y-4">
