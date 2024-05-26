@@ -18,6 +18,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
+    rol:""
   });
 
   // const [errores, setErrores] = useState({
@@ -72,21 +73,21 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
     // Loginf();
     dispatch(setUserToken(user));
      const {rol } = userData;
-  console.log("Datos login:", user.email);
+  console.log("Datos login:", user.email,rol);
   try {
     const { data } = await axios(`/login/google/?email=${user.email}&rol=&${rol}`);
     
     console.log("Login 3:", data);
     // const { access } = data;
-    if (user.email === data[0].correo) {
-        window.localStorage.setItem('loggedUser',JSON.stringify(data[0]))
+    // if (user.email === data[0].correo) {
+        window.localStorage.setItem('loggedUser',JSON.stringify(data.usuario))
         dispatch(setAuth(true));
       navigate("/home");
 
 
-      } else {
-        window.alert("Usuario o contraseña incorrectos");
-      }
+      // } else {
+      //   window.alert("Usuario o contraseña incorrectos");
+      // }
      
   } catch (error) {
     window.alert("Usuario o contraseña incorrectos");
