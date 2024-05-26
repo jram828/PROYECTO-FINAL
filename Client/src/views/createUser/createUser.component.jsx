@@ -131,7 +131,6 @@ function CreateUser () {
             disabled={!userDataCrear.correo || !userDataCrear.password}
           >Guardar</button>
 
-
           <Link to="/" className="">
             <input
               type="button"
