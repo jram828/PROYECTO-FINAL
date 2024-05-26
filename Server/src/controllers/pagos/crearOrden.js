@@ -1,6 +1,7 @@
-const { MercadoPagoConfig, Payment, Preference } = require("mercadopago");
+const { MercadoPagoConfig, Preference } = require("mercadopago");
 require("dotenv").config();
-const { ACCESSTOKEN} = process.env;
+const { ACCESSTOKEN } = process.env;
+
 
 const crearOrden = async (item) => {
   // SDK de Mercado Pago
@@ -28,17 +29,18 @@ const preference = new Preference(client);
             description: item.description,
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
+            id:item.id
           },
         ],
         back_urls: {
           success:
-            "https://proyecto-final-develop.vercel.app/#/home",
+            "https://proyecto-final-develop.vercel.app/#/home/payments/status",
           failure: "https://proyecto-final-develop.vercel.app/#/home",
           pending:
             "https://proyecto-final-develop.vercel.app/#/home",
         },
         notification_url:
-          "https://legaltech-develop.onrender.com/#/pagos/webhook",
+          "https://legaltech-develop.onrender.com/pagos/webhook",
         auto_return: "approved",
       },
     });

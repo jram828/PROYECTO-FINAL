@@ -141,7 +141,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
           {/* <label htmlFor="tipodeusuario" className="">
         Tipo de usuario:
       </label> */}
-          <select
+          {/* <select
             name="tipodeusuario"
             id="idusuario"
             className="input select-bordered flex items-center text-lg pl-2 custom-select"
@@ -158,7 +158,7 @@ const Login = ({ clickHandlerRecordatorio, clickHandlerCrear}) => {
             <option value="3" className={style.customOption}>
               Cliente
             </option>
-          </select>
+          </select> */}
         </div>
         <br />
         <div className="flex flex-col space-y-4">
