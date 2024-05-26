@@ -69,7 +69,7 @@ function Home() {
               to="/home/detail"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button onClick={handlerSubmitD}>Datos Personales</button>
+              <button>Datos Personales</button>
             </Link>
           </li>
           <li>
