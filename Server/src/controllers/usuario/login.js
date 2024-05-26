@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-const { Cliente, Abogado, Usuario } = require('../../DB')
-
-const getLogin = async (password, email)=>{
-    const login = await Usuario.findOne({
-        where:{
-            correo: email,
-            password: password
-        }
-    })
-    if(!login){
-        const login = await Abogado.findOne({
-            where:{
-                correo: email,
-                password: password
-            }
-        })
-        if(!login) throw new Error('Password o email inválido')
-        return{
-            access: true,
-            usuario: login
-        }
-    }
-    return {
-        access: true,
-        usuario: login
-    }
-}
-
-module.exports = {
-    getLogin
-}
-=======
 const { Cliente, Abogado, Usuario } = require("../../DB");
 
 const getLogin = async (password, email, rol) => {
@@ -76,4 +43,3 @@ const getLogin = async (password, email, rol) => {
 module.exports = {
   getLogin,
 };
->>>>>>> 51d92237903119989773bfccf662e0381c69085c

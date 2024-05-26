@@ -1,26 +1,5 @@
 const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
 const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
-<<<<<<< HEAD
-
-const allUsuarios = async (req, res)=>{
-    //const { name } = req.query;
-    console.log(req.query)
-    //const { pagina=1, porPagina=10 }=req.query
-    //const offset=(parseInt(pagina) - 1) * parseInt(porPagina)
-      
-    try {
-        
-            const response = await getAllUsuario()
-            res.status(200).json(response)
-        /*}  else {
-            const countyByName = await getClienteByName(name)
-            res.status(200).json(countyByName);
-        } ;*/
-        } catch (error) {
-            res.status(400).json({error: error.message})
-    }
-    
-=======
 require("dotenv").config();
 const {
   ACCOUNTSID,
@@ -47,25 +26,12 @@ const allUsuarios = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
->>>>>>> 51d92237903119989773bfccf662e0381c69085c
 };
 
 const postUsuariosHandler = async (req, res) => {
   const { correo, password, imagen, rol } = req.body;
 
   try {
-<<<<<<< HEAD
-    const response = await crearUsuario(
-      correo,
-      password,
-      imagen,
-      rol
-    );
-    if (response) res.status(200).json(response);
-    else res.status(200).send("El usuario ya existe");
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-=======
     const response = await crearUsuario(correo, password, imagen, rol);
     if (response) {
       console.log("Datos Twilio:", { ACCOUNTSID, AUTHTOKEN, NUMBER });
@@ -154,18 +120,11 @@ const postUsuariosHandler = async (req, res) => {
     }
   } catch (error) {
     // res.status(400).json({ error: error.message });
->>>>>>> 51d92237903119989773bfccf662e0381c69085c
   }
   // res.status(200).send(`creando actividades`);
 };
 
 module.exports = {
-<<<<<<< HEAD
- postUsuariosHandler,
- allUsuarios
-};
-=======
   postUsuariosHandler,
   allUsuarios,
 };
->>>>>>> 51d92237903119989773bfccf662e0381c69085c
