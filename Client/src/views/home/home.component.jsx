@@ -1,8 +1,8 @@
 import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
-import logo from '../../assets/logo.png'
-import legaltech from "../../assets/legaltech.png";
+// import logo from '../../assets/logo.png'
+// import legaltech from "../../assets/legaltech.png";
 
 
 function Home() {
@@ -32,15 +32,17 @@ function Home() {
           className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
         >
           <li>
-            <Link
-              to="/home/customers"
-              className="text-white hover:text-white hover:bg-accent"
-            >
-              <button>Clientes</button>
-            </Link>
+            {user.administrador===true || user.cedulaAbogado ? (
+              <Link
+                to="/home/customers"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Clientes</button>
+              </Link>
+            ) : undefined}
           </li>
           <li>
-            {user.rol === "Administrador" ? (
+            {user.administrador===true ? (
               <Link
                 to="/home/lawyers"
                 className="text-white hover:text-white hover:bg-accent"
@@ -58,12 +60,14 @@ function Home() {
             </Link>
           </li>
           <li>
-            <Link
-              to="/home/cases"
-              className="text-white hover:text-white hover:bg-accent"
-            >
-              <button>Casos</button>
-            </Link>
+            {user.administrador===true || user.cedulaAbogado ? (
+              <Link
+                to="/home/cases"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Casos</button>
+              </Link>
+            ) : undefined}
           </li>
           <li>
             <Link
@@ -74,22 +78,24 @@ function Home() {
             </Link>
           </li>
           <li>
-            {user.rol === "Administrador" ? (
-              <Link
-                to="/home/diary"
-                className="text-white hover:text-white hover:bg-accent"
-              >
-                <button>Agenda</button>
-              </Link>
-            ) : undefined}
-          </li>
-          <li>
+            {/* {user.rol === "Administrador" ? ( */}
             <Link
-              to="/home/payments"
+              to="/home/diary"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button>Pagos</button>
+              <button>Agenda</button>
             </Link>
+            {/* ) : undefined} */}
+          </li>
+          <li>
+            {user.administrador===true || user.cedulaCliente ? (
+              <Link
+                to="/home/payments"
+                className="text-white hover:text-white hover:bg-accent"
+              >
+                <button>Pagos</button>
+              </Link>
+            ) : undefined}
           </li>
           {/* <li>
             <Link
@@ -100,7 +106,7 @@ function Home() {
             </Link>
           </li> */}
           <li>
-            {user.rol === "Administrador" ? (
+            {user.administrador ===true? (
               <Link
                 to="/home/statistics"
                 className="text-white hover:text-white hover:bg-accent"
