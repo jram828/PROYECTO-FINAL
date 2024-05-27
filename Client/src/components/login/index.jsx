@@ -194,12 +194,6 @@ const dispatch = useDispatch();
         <br />
         <div className="flex flex-col space-y-4">
           <div className="flex justify-center space-x-4">
-            {/* <input
-              type="button"
-              name="consulta"
-              value="Consulta"
-              className="btn btn-accent w-40"
-            /> */}
             <Link to="/home/consultation" className="btn btn-accent w-40">
               <button>Consultas</button>
             </Link>
@@ -238,7 +232,6 @@ const dispatch = useDispatch();
         >
           Sign in with GitHub
         </button>
-        {/* falta colocar que cuado te registres de mande a la home */}
       </div>
     </div>
   );

@@ -99,15 +99,15 @@ export const getByIdAbogado = (cedulaAbogado) => {
   const endpoint = `${URL}abogados/cedulaabogado?cedulaAbogado=${cedulaAbogado}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_BY_ID_ABOGADO,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 
@@ -115,15 +115,15 @@ export const getByIdCliente = (cedulaCliente) => {
   const endpoint = `${URL}clientes/cedulacliente?cedulaCliente=${cedulaCliente}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_BY_ID_CLIENTE,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 
@@ -131,16 +131,16 @@ export const filterCliente = (filtro) => {
   const endpoint = `${URL}clientes?${filtro}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
 
       return dispatch({
         type: FILTER_CLIENTE,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 
@@ -148,15 +148,15 @@ export const filterAbogado = (filtro) => {
   const endpoint = `${URL}abogados?${filtro}?pagina=1&porPagina=50`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: FILTER_ABOGADO,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 
@@ -238,16 +238,16 @@ export const filterCasos = (filtro) => {
   const endpoint = `${URL}casos?${filtro}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
 
       return dispatch({
         type: FILTER_CASOS,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 
@@ -267,15 +267,15 @@ export const getCasoById = (id) => {
   const endpoint = `${URL}casos/:${id}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
-    try {
+    // try {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_CASO_BY_ID,
         payload: data,
       });
-    } catch (error) {
-      throw error;
-    }
+    // } catch (error) {
+    //   throw error;
+    // }
   };
 };
 

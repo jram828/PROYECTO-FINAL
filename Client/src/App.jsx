@@ -21,6 +21,8 @@ import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
+import Contrato from './views/contrato';
+import Poder from './views/poder';
 // import {Elements} from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 
@@ -57,84 +59,42 @@ function App() {
   return (
     <div className="App">
       {/* <Elements stripe={stripePromise} options={options}> */}
-        <Routes>
-          <Route path="/" element={<Landing />} />
+      <Routes>
+        <Route path="/" element={<Landing />} />
 
-          <Route path="/password" element={<Password />} />
-          <Route path="/crearusuario" element={<CreateUser />} />
+        <Route path="/password" element={<Password />} />
+        <Route path="/crearusuario" element={<CreateUser />} />
 
-          <Route path="/home" element={<Home />} />
-          <Route path="/home/lawyers" element={<LawyersPage />} />
-          <Route path="/home/customers" element={<CustomersPage />} />
-          <Route path="/home/detail" element={<Detail />} />
-          <Route path="/home/detail/:cedula" element={<Detail />} />
-          <Route path="/home/cases" element={<Cases />} />
-          <Route path="/home/cases/:id" element={<DetailCases />} />
-          <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
-          <Route path="/home/costumers/:id" element={<Detail />} />
-          <Route path="/home/lawyers/:id" element={<Detail />} />
-          <Route path="/home/documents" element={<Documents />} />
-          <Route path="/home/diary" element={<Diary />} />
-          <Route path="/home/payments" element={<Payments />} />
-          <Route path="/home/payments/status" element={<Status />} />
-          <Route path="/home/consultation" element={<Consultations />} />
-          <Route path="/home/statistics" element={<Statistics />} />
-          <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
-          <Route
-            path="/home/customers/crearcliente"
-            element={<CreateCliente />}
-          />
-          {/*<Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/home/lawyers" element={<LawyersPage />} />
+        <Route path="/home/customers" element={<CustomersPage />} />
+        <Route path="/home/detail" element={<Detail />} />
+        <Route path="/home/detail/:cedula" element={<Detail />} />
+        <Route path="/home/cases" element={<Cases />} />
+        <Route path="/home/cases/:id" element={<DetailCases />} />
+        <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
+        <Route path="/home/costumers/:id" element={<Detail />} />
+        <Route path="/home/lawyers/:id" element={<Detail />} />
+        <Route path="/home/documents" element={<Documents />} />
+        <Route path="/home/diary" element={<Diary />} />
+        <Route path="/home/payments" element={<Payments />} />
+        <Route path="/home/payments/status" element={<Status />} />
+        <Route path="/home/consultation" element={<Consultations />} />
+        <Route path="/home/statistics" element={<Statistics />} />
+        <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
+        <Route path="/home/documentos" element={<Documents />} />
+        <Route path="/home/documentos/contrato" element={<Contrato />} />
+        <Route path="/home/documentos/poder" element={<Poder />} />
         <Route
-          path="/home/detail/:id"
-          element={<Detail />}
-        />
-        <Route
-          path="/home/cases/:id"
-          element={<Cases />}
-        />
-        <Route
-          path="/home/costumers/:id"
-          element={<Costumers />}
-        />
-        <Route
-          path="/home/lawyers/:id"
-          element={<Lawyers />}
-        />
-        <Route
-          path="/home/documents/:id"
-          element={<Documents />}
-        />
-        <Route
-          path="/home/diary"
-          element={<Diary />}
-        />
-        <Route
-          path="/home/payments"
-          element={<Payments />}
-        />
-        <Route
-          path="/home/consultations"
-          element={<Consultations />}
-        />
-        <Route
-          path="/home/statistics"
-          element={<Statistics />}
-        />
-        <Route
-          path="/home/crearabogado"
-          element={<CrearAbogado />}
-        />
-
-        <Route
-          path="/home/crearcliente"
+          path="/home/customers/crearcliente"
           element={<CreateCliente />}
         />
+        {/*
         <Route
           path="/home/crearcaso"
           element={isAuthenticated ? <CrearCaso /> : <Landing />}
   />*/}
-        </Routes>
+      </Routes>
       {/* </Elements> */}
     </div>
   );
