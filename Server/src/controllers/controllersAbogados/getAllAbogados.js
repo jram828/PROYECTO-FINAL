@@ -1,7 +1,7 @@
+const { Sequelize } = require("sequelize");
 const { Abogado } = require("../../DB");
 
 const getAllAbogados = async (filters) => {
-  console.log(filters);
   //filters = acá me traigo req.query
   const pagina = [];
   const newFilters = {};
@@ -23,6 +23,7 @@ const getAllAbogados = async (filters) => {
   delete filters.order;
   delete filters.field;
 
+  console.log("linea 26 getAllAB", Object.entries(filters));
   Object.entries(filters).forEach(([field, value]) => {
     // destructuro filters
 
@@ -49,13 +50,17 @@ const getAllAbogados = async (filters) => {
     where: {
       activo: true,
       ...newFilters, // agrego los campos cuyos valores existan
+      // nombre: {
+      //   [Sequelize.Op.like]: `${newFilters.nombre}%`,
+      // },
+      // apellido: {
+      //   [Sequelize.Op.like]: `${newFilters.apellido}%`,
+      // },
     },
     order,
     offset: offset || 0,
-  
 
-    limit: limit2 || 3, 
-
+    limit: limit2 || 5,
   });
 
   return getAllAbogadosBd;
