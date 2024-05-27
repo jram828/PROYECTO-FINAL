@@ -1,15 +1,17 @@
 import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
-import logo from '../../assets/logo.png'
-import legaltech from "../../assets/legaltech.png";
+// import logo from '../../assets/logo.png'
+// import legaltech from "../../assets/legaltech.png";
+// import { useDispatch } from 'react-redux';
+// import { setSource } from '../../redux/actions';
+// import { useEffect } from 'react';
 
 
 
 
 function Home() {
-
-  
+ 
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   console.log("Rol usuario: ", user.rol);
   console.log('User local storage: ', user)
@@ -17,7 +19,6 @@ function Home() {
     window.localStorage.setItem("loggedUser", JSON.stringify({}));
     
   }
-
 
 
   return (
@@ -62,7 +63,7 @@ function Home() {
               to="/home/detail"
               className="text-white hover:text-white hover:bg-accent"
             >
-              <button >Datos Personales</button>
+              <button>Datos Personales</button>
             </Link>
           </li>
           <li>
