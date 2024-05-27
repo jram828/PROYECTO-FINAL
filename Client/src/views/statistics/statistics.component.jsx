@@ -1,13 +1,16 @@
 import './statistics.css';
+import Layout from '../../components/layout/layout';
 
 function Statistics() {
   return (
-    <div>
+    <Layout>
       <div>
-        <p>Statistics</p>
-          
+        <div>
+          <p>Statistics</p>
+            
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 
