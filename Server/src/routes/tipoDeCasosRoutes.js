@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const { postTipoDeCasoHandler, getTipoDeCasoHandler } = require("../handlers/tipoDeCasosHandlers");
+const {
+  postTipoDeCasoHandler,
+  getTipoDeCasoHandler,
+} = require("../handlers/tipoDeCasosHandlers");
+const { getTipoDeCasoByIdHandler } = require("../handlers/casosHandlers");
 
 const consultaRouter = Router();
 
@@ -9,4 +13,4 @@ consultaRouter.post("/", postTipoDeCasoHandler);
 
 //consultaRouter.post("/delete", deleteConsultaHandler);
 
-module.exports = consultaRouter; 
+module.exports = consultaRouter;
