@@ -1,9 +1,10 @@
+import logo from "../../assets/logo.png"
 
 const Layout = ({ children }) => {
     return (
       <div className="min-h-screen flex flex-col bg-white">
         <div className="navbar bg-primary">
-          <img src="src/assets/logo.png" alt="Logo" className="h-16 mr-3" />
+          <img src={logo} alt="Logo" className="h-16 mr-3" />
           <span className="text-white text-xl font-bold">LegalTech</span>
         </div>
   
