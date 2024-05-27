@@ -7,9 +7,14 @@ import { deleteAbogado, deleteCliente } from '../../redux/actions';
 import { getAbogados, getClientes} from '../../redux/actions'
 import Layout from '../../components/layout/layout';
 
+
 function Detail() {
 
+  //const datos = JSON.parse(localStorage.getItem("loggedUser"));
+
   const source = useSelector((state) => state.source)
+
+  //const cedula = datos.cedulaAbogado ? datos.cedulaAbogado : datos.cedulaCliente
   
   const dispatch = useDispatch();
   const navigate = useNavigate()

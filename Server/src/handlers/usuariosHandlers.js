@@ -1,9 +1,19 @@
 const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
 const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
 require("dotenv").config();
-const { ACCOUNTSID, AUTHTOKEN, NUMBER } = process.env;
+const {
+  ACCOUNTSID,
+  AUTHTOKEN,
+  NUMBER,
+  OAUTH_CLIENTID,
+  OAUTH_CLIENT_SECRET,
+  OAUTH_REFRESH_TOKEN,
+  OAUTH_REDIRECT_URI,
+  OAUTH_ACCESS_TOKEN,
+} = process.env;
 const twilio = require("twilio");
 const nodemailer = require("nodemailer");
+const {google} = require("googleapis");
 const fs = require("fs");
 // const { MAIL_USERNAME } = process.env;
 require("dotenv").config();
@@ -52,27 +62,35 @@ const postUsuariosHandler = async (req, res) => {
       //   },
       // });
 
-      //   async function sendEmail(correo, GOOGLE_KEY) {
-      //     const info = await transporter.sendMail({
-      //       from: '"Legaltech" <legaltech.crm@gmail.com>',
-      //       to: correo,
-      //       subject: `Hola!`,
-      //       text: "Has sido registrado en Legaltech!",
-      //     });
-      //     console.log("Datos nodemailer: ", correo);
-      //     console.log("Message sent: %s", info.messageId);
-      //   }
+        // async function sendEmail(correo, GOOGLE_KEY) {
+        //   const info = await transporter.sendMail({
+        //     from: '"Legaltech" <legaltech.crm@gmail.com>',
+        //     to: correo,
+        //     subject: `Hola!`,
+        //     text: "Has sido registrado en Legaltech!",
+        //   });
+        //   console.log("Datos nodemailer: ", correo);
+        //   console.log("Message sent: %s", info.messageId);
+        // }
       //  await sendEmail();
+      const oAuth2Client = new google.auth.OAuth2(
+        OAUTH_CLIENTID,
+        OAUTH_CLIENT_SECRET,
+        OAUTH_REDIRECT_URI
+      );
+
+      oAuth2Client.setCredentials({ refresh_token: OAUTH_REFRESH_TOKEN });
 
       let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: process.env.MAIL_USERNAME,
-          pass: process.env.MAIL_PASSWORD,
-          clientId: process.env.OAUTH_CLIENTID,
-          clientSecret: process.env.OAUTH_CLIENT_SECRET,
-          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+          user: "legaltech.crm@gmail.com",
+          // pass: process.env.MAIL_PASSWORD,
+          clientId: OAUTH_CLIENTID,
+          clientSecret: OAUTH_CLIENT_SECRET,
+          refreshToken: OAUTH_REFRESH_TOKEN,
+          accessToken: OAUTH_ACCESS_TOKEN,
         },
       });
 

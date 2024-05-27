@@ -78,6 +78,7 @@ module.exports = (sequelize) => {
     administrador: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+      
     },
   });
 };
