@@ -3,12 +3,13 @@ import React from 'react';
 // import { Link,  } from 'react-router-dom';
 import FiltrosAbogados from '../../components/filtrosAbogados';
 // import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
-
+import Layout from '../../components/layout/layout';
 
 function LawyersPage() {
 
 
   return (
+  <Layout>
     <div className={style.container}>
         {/* <p className={style.titulo}>Abogados</p> */}
         {/* <Link to="/home/lawyers/crearabogado">
@@ -22,6 +23,7 @@ function LawyersPage() {
        
 
     </div>
+  </Layout>
   )
 }
 

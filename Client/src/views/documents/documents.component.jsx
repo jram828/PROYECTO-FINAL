@@ -1,13 +1,16 @@
 import './documents.css';
+import Layout from '../../components/layout/layout';
 
 function Documents() {
   return (
-    <div>
+    <Layout>
       <div>
-        <p>Documents</p>
-          
+        <div>
+          <p>Documents</p>
+            
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

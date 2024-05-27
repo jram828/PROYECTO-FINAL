@@ -2,7 +2,7 @@ import './landing.css';
 import Login from '../../components/login/index';
 import { Loginf} from "../../handlers/login";
 import { useNavigate } from 'react-router-dom';
-
+import Layout from '../../components/layout/layout';
 
 
 function Landing() {
@@ -21,6 +21,7 @@ const ClickHandlerCrear = (e) => {
 
 };
   return (
+    <Layout>
     <div className='hero min-h-screen bg-white'>
     <div className="hero-content flex flex-col lg:flex-row-reverse items-center lg:items-start justify-center lg:justify-start h-50">
       <div className="text-center lg:text-left">
@@ -38,7 +39,9 @@ const ClickHandlerCrear = (e) => {
         />
       </div>
     </div>
+    
   </div>
+  </Layout>
   )
 }
 
