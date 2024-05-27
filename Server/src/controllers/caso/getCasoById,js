@@ -5,6 +5,7 @@ const getCasoId = async (id) => {
   if (!caso) throw Error("Caso no Registrado o no existe");
   return caso;
 };
+// intento subir
 
 module.exports = {
   getCasoId,
