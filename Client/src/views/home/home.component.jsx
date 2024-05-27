@@ -1,16 +1,14 @@
 import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
-import logo from '../../assets/logo.png'
-import legaltech from "../../assets/legaltech.png";
-import { useDispatch } from 'react-redux';
-import { setSource } from '../../redux/actions';
-import { useEffect } from 'react';
+// import logo from '../../assets/logo.png'
+// import legaltech from "../../assets/legaltech.png";
+// import { useDispatch } from 'react-redux';
+// import { setSource } from '../../redux/actions';
+// import { useEffect } from 'react';
 
 
 function Home() {
-
-  const dispatch = useDispatch()
   
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   console.log("Rol usuario: ", user.rol);
@@ -20,12 +18,6 @@ function Home() {
     
   }
 
-  const handlerSubmitD = () => {
-   
-      dispatch(setSource("abogado"));
-
-  }
-  
 
   return (
     <div>
