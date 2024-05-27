@@ -16,6 +16,10 @@ function Card({item}) {
 
      const dispatch = useDispatch()
 
+  /*const handlerDetalle = () => {
+    window.localStorage.setItem("source", "detailCliente")
+    window.localStorage.setItem("currentDetail", JSON.stringify(item))
+  }*/
 
   if (cedulaAbogado) { useEffect(() => {
     dispatch(setSource('abogado'));

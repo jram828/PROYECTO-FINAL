@@ -8,8 +8,10 @@ import picture from "../../assets/homepic.jpg";
 // import { useEffect } from 'react';
 
 
+
+
 function Home() {
-  
+ 
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   console.log("Rol usuario: ", user.rol);
   console.log('User local storage: ', user)
