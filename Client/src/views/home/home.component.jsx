@@ -19,14 +19,7 @@ function Home() {
   return (
     <Layout>
       <div>
-        {/* <div className={style.container}>
-          <div className={style.logo}>
-            <img src={logo} alt="logo" />
-            <img src={legaltech} alt="legaltech" />
-          </div>
-          <br></br>
-        </div> */}
-
+        
         <div className={style.container2}>
           <div className={style.imagen}>
             <img src={picture} alt="homeLawyers" className="h-auto" />
