@@ -112,7 +112,7 @@ console.log('registro', dataRegistro)
               <option value="" className="customOption">Seleccionar caso</option>
               {casos.datosPagina.map(caso => (
                 <option key={caso.id} value={caso.id} className="customOption">
-                  {caso.id} 
+                  {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`} 
                 </option>
               ))}
           </select>
