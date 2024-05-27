@@ -21,18 +21,18 @@ function Home() {
     <Layout>
       <div>
         
-        <div className={`flex flex-col lg:flex-row justify-center items-center ${style.container2}`}>
+        <div className="flex flex-col lg:flex-row justify-center items-center h-screen">
 
-          <div className="hidden lg:block p-4 lg:w-3/4" style={{ height: "85vh" }}>
+          <div className="hidden lg:flex lg:justify-center lg:items-center lg:w-2/3" style={{ height: "75vh" }}>
             
               <img src={picture} alt="homeLawyers" className="h-auto lg:max-h-full rounded-md"/>
             
           </div>
 
-          <div className="lg:flex lg:justify-between lg:items-center p-4 lg:w-1/4">
+          <div lassName="flex lg:w-1/3">
             <ul
-              style={{ height: "80vh", width: "30vh" }}
-              className="menu bg-primary text-white rounded-md menu-lg w-full h-auto lg:max-h-full"
+              style={{ height: "75vh", width: "30vh" }}
+              className="menu bg-primary text-white rounded-md menu-lg w-full h-full flex flex-col justify-around"
             >
               <li>
                 {user.administrador===true || user.cedulaAbogado ? (
