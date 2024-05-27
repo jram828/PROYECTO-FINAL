@@ -28,24 +28,24 @@ function Home() {
      className={`menu bg-primary w-full text-white rounded-box menu-lg ${style["menu-container"]}`}
    >
      <li>
-     {/*  {user.administrador===true || user.cedulaAbogado ? ( */}
+      {user.administrador===true || user.cedulaAbogado ? ( 
        <Link
            to="/home/customers"
            className="text-white hover:text-white hover:bg-accent"
          >
            <button>Clientes</button>
          </Link>
-      {/*} ) : undefined}*/}
+       ) : undefined}
    </li>
      <li>
-     {/*  {user.administrador===true ? ( */}
+    {user.administrador===true ? ( 
          <Link
            to="/home/lawyers"
            className="text-white hover:text-white hover:bg-accent"
          >
            <button>Abogados</button>
          </Link>
-      {/*} ) : undefined} */}
+     ) : undefined} 
      </li>
      <li>
        <Link
@@ -56,14 +56,14 @@ function Home() {
        </Link>
      </li>
      <li>
-      {/* {user.administrador===true || user.cedulaAbogado ? ( */}
+     {user.administrador===true || user.cedulaAbogado ? ( 
        <Link
            to="/home/cases"
            className="text-white hover:text-white hover:bg-accent"
          >
            <button>Casos</button>
          </Link>
-     {/*  ) : undefined} */}
+    ) : undefined} 
    </li>
      <li>
        <Link
@@ -84,14 +84,14 @@ function Home() {
        {/* ) : undefined} */}
      </li>
      <li>
-   {/*    {user.administrador===true || user.cedulaCliente ? ( */}
+    {user.administrador===true || user.cedulaCliente ? ( 
        <Link
            to="/home/payments"
            className="text-white hover:text-white hover:bg-accent"
          >
            <button>Pagos</button>
          </Link>
-    {/*   ) : undefined} */}
+     ) : undefined} 
    </li>
      {/* <li>
        <Link
@@ -102,14 +102,14 @@ function Home() {
        </Link>
      </li> */}
      <li>
-   {/*    {user.administrador ===true? ( */}
+     {user.administrador ===true? ( 
          <Link
            to="/home/statistics"
            className="text-white hover:text-white hover:bg-accent"
          >
            <button>Estadisticas</button>
          </Link>
-   {/*    ) : undefined}  */}
+   ) : undefined} 
      </li>
      <li>
        <Link
