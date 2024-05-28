@@ -23,7 +23,6 @@ function Home() {
         <div className="hidden lg:flex lg:justify-center lg:items-center lg:w-2/3" style={{ height: "75vh" }}>
           <img src={picture} alt="homeLawyers" className="h-auto lg:max-h-full rounded-md" />
         </div>
-
         <div className="flex lg:w-1/3">
           <ul className="menu bg-primary text-white rounded-md menu-lg w-full h-full flex flex-col justify-around" style={{ height: "75vh" }}>
             <li>
