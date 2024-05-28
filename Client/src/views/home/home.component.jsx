@@ -16,7 +16,6 @@ function Home() {
     
   }
 
-
   return (
     <Layout>
       <div>
