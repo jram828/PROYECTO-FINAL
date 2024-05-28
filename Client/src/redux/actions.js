@@ -282,7 +282,7 @@ export const orderCasos = (value) => {
 };
 
 export const getCasoById = (id) => {
-  const endpoint = `${URL}casos/:${id}`;
+  const endpoint = `${URL}casos/${id}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {

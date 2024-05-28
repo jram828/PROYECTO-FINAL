@@ -14,6 +14,7 @@ import CrearAbogado from './views/crearAbogado/crearAbogado.component'
 import CreateCliente from './components/createclient/index'
 import CrearCaso from './views/CrearCaso/crearCaso';
 import DetailCases from './views/detailCases/detailCases'
+import Data from './views/datosPersonales/datosPersonales.component';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
 // import { useSelector } from 'react-redux';
@@ -68,7 +69,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/home/lawyers" element={<LawyersPage />} />
         <Route path="/home/customers" element={<CustomersPage />} />
-        <Route path="/home/detail" element={<Detail />} />
+        <Route path="/home/datos" element={<Data />} />
         <Route path="/home/detail/:cedula" element={<Detail />} />
         <Route path="/home/cases" element={<Cases />} />
         <Route path="/home/cases/:id" element={<DetailCases />} />
