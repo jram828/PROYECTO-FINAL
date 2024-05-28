@@ -1,5 +1,5 @@
 import './detail.css';
-import { getByIdAbogado, getByIdCliente, setAbogado } from "../../redux/actions";
+import { getByIdAbogado, getByIdCliente, setAbogado, setCliente } from "../../redux/actions";
 import { useEffect } from "react";
 import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,14 +24,14 @@ function Detail() {
     var { cedula } = useParams();
     useEffect(() => {
       dispatch(getByIdAbogado(cedula));
-      return setAbogado({});
+      // return setAbogado({});
     }, [dispatch, cedula]);
   } else {
     var datos = useSelector((state) => state.cliente);
     var { cedula } = useParams()
     useEffect(() =>{
       dispatch(getByIdCliente(cedula))
-      return setCliente({});
+      // return setCliente({});
    }, [dispatch, cedula])
     console.log('datos', datos)
   }
