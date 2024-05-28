@@ -209,7 +209,7 @@ function Detail() {
               </label>
             </div>
           </div>
-          <div className="mx-auto max-w-xs">
+          <div className="mx-4 max-w-xs">
             <label htmlFor="pais" className="input input-bordered flex items-center max-w-xs">
               País:
               <input
