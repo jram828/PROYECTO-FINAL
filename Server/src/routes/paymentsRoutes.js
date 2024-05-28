@@ -9,8 +9,6 @@ const {
 
 const { crearOrdenHandler } = require("../handlers/paymentsHandler");
 
-
-
 const paymentsRouter = Router();
 
 paymentsRouter.get("/", getPaymentsHandler);
