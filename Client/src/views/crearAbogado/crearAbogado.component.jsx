@@ -67,235 +67,228 @@ function CrearAbogado() {
 
   return (
     <Layout>
-      <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
-        <form
-          className={style.datos}
-          method="post"
-          onSubmit={submitHandlerRegistro}
-        >
-          {/* <div className="logo-aveza">
-              <img src={logo} alt="logo-aveza" />
-            </div> */}
-          <h1 className={style.titulo}>Crear Abogado</h1>
-          <br />
-          <br />
-
-          <div className="space-y-3">
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="nombre" className="input input-bordered flex items-center max-w-xs">
-                  Nombre(s):
-                <input
-                  type="text"
-                  name="nombre"
-                  id="name"
-                  className="grow"
-                  value={userDataRegistro.nombre}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
+       <div className="flex items-center justify-center min-h-screen p-6">
+    <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
+      <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
+        <h1 className={style.titulo}>Crear Abogado</h1>
+        <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="nombre" className="input input-bordered flex items-center max-w-xs">
+                    Nombre(s):
+                  <input
+                    type="text"
+                    name="nombre"
+                    id="name"
+                    className="grow"
+                    value={userDataRegistro.nombre}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+                <div className="mx-4">
+                  <label htmlFor="apellidos" className="input input-bordered flex items-center max-w-xs">
+                    Apellido(s):
+                  <input
+                    type="text"
+                    className="grow"
+                    name="apellido"
+                    id="lastname"
+                    value={userDataRegistro.apellido}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
               </div>
-              <div className="mx-4">
-                <label htmlFor="apellidos" className="input input-bordered flex items-center max-w-xs">
-                  Apellido(s):
-                <input
-                  type="text"
-                  className="grow"
-                  name="apellido"
-                  id="lastname"
-                  value={userDataRegistro.apellido}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-        
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="numerocedula" className="input input-bordered flex items-center max-w-xs">
-                Cédula n°:
-                <input
-                  type="number"
-                  className="grow"
-                  name="cedulaAbogado"
-                  id="cedula"
-                  value={userDataRegistro.cedulaAbogado}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-              <div className="mx-4">
-                <label htmlFor="matricula" className="input input-bordered flex items-center max-w-xs">
-                Matricula:
-                <input
-                  type="number"
-                  className="grow"
-                  name="matricula"
-                  id="matricula"
-                  value={userDataRegistro.matricula}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-            
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="correo" className="input input-bordered flex items-center max-w-xs">
-                  Email:
-                <input
-                  type="email"
-                  name="correo"
-                  id="email"
-                  className="grow"
-                  value={userDataRegistro.correo}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-              <div className="mx-4">
-                <label htmlFor="password" className="input input-bordered flex items-center max-w-xs">
-                  Contraseña:
-                <input
-                  type="password"
-                  name="password"
-                  id="email"
-                  className="grow"
-                  value={userDataRegistro.password}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="telefono" className="input input-bordered flex items-center max-w-xs">
-                  {" "}
-                  Teléfono:
-                <input
-                  type="number"
-                  name="telefono"
-                  id="telefono"
-                  className="grow"
-                  value={userDataRegistro.telefono}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-
-              <div className="mx-4">
-                <label htmlFor="calle" className="input input-bordered flex items-center max-w-xs">
-                  Calle:
-                <input
-                  type="text"
-                  name="calle"
-                  id="street"
-                  className="grow"
-                  value={userDataRegistro.calle}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="numero" className="input input-bordered flex items-center max-w-xs">
-                  Numero:
-                <input
-                  type="text"
-                  className="grow"
-                  name="numero"
-                  id="numero"
-                  value={userDataRegistro.numero}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-              <div className="mx-4">
-                <label htmlFor="codigopostal" className="input input-bordered flex items-center max-w-xs">
-                  CP:
-                <input
-                  type="number"
-                  className="grow"
-                  name="codigoPostal"
-                  id="codigopostal"
-                  value={userDataRegistro.codigoPostal}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-            
-            <div className="flex justify-around">
-              <div className="mx-4">
-                <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
-                  Ciudad:
-                <input
-                  type="text"
-                  name="ciudad"
-                  id="city"
-                  className="grow"
-                  value={userDataRegistro.ciudad}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-              <div className="mx-4">
-                <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
-                  Pais:
-                <input
-                  type="text"
-                  name="pais"
-                  id="country"
-                  className="grow"
-                  value={userDataRegistro.pais}
-                  onChange={handleChangeRegistro}
-                />
-                </label>
-              </div>
-            </div>
-            <br />
-            <div >
-            <label htmlFor="apellidos" className="cursor-pointer label">
-              Administrador?
-              <br />
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent"
-                name="administrador"
-                id="administrador"
-                value={userDataRegistro.administrador}
-                onChange={handleChangeAdministrador}
-              />
-              </label>
-            </div>
-            
-          </div>
           
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="numerocedula" className="input input-bordered flex items-center max-w-xs">
+                  Cédula n°:
+                  <input
+                    type="number"
+                    className="grow"
+                    name="cedulaAbogado"
+                    id="cedula"
+                    value={userDataRegistro.cedulaAbogado}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+                <div className="mx-4">
+                  <label htmlFor="matricula" className="input input-bordered flex items-center max-w-xs">
+                  Matricula:
+                  <input
+                    type="number"
+                    className="grow"
+                    name="matricula"
+                    id="matricula"
+                    value={userDataRegistro.matricula}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="correo" className="input input-bordered flex items-center max-w-xs">
+                    Email:
+                  <input
+                    type="email"
+                    name="correo"
+                    id="email"
+                    className="grow"
+                    value={userDataRegistro.correo}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+                <div className="mx-4">
+                  <label htmlFor="password" className="input input-bordered flex items-center max-w-xs">
+                    Contraseña:
+                  <input
+                    type="password"
+                    name="password"
+                    id="email"
+                    className="grow"
+                    value={userDataRegistro.password}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+              </div>
 
-          <br />
-          <div className="flex justify-center gap-2">
-            <button
-              className="btn btn-sm btn-accent text-white"
-              type="submit"
-              value="Guardar"
-              disabled={
-                !userDataRegistro.correo ||
-                !userDataRegistro.cedulaAbogado ||
-                !userDataRegistro.nombre ||
-                !userDataRegistro.apellido
-              }
-            >
-              Guardar
-            </button>
-            <Link to="/home/lawyers">
-              <button className="btn btn-sm btn-accent text-white">Volver</button>
-            </Link>
-          </div>
-        </form>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="telefono" className="input input-bordered flex items-center max-w-xs">
+                    {" "}
+                    Teléfono:
+                  <input
+                    type="number"
+                    name="telefono"
+                    id="telefono"
+                    className="grow"
+                    value={userDataRegistro.telefono}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+
+                <div className="mx-4">
+                  <label htmlFor="calle" className="input input-bordered flex items-center max-w-xs">
+                    Calle:
+                  <input
+                    type="text"
+                    name="calle"
+                    id="street"
+                    className="grow"
+                    value={userDataRegistro.calle}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="numero" className="input input-bordered flex items-center max-w-xs">
+                    Numero:
+                  <input
+                    type="text"
+                    className="grow"
+                    name="numero"
+                    id="numero"
+                    value={userDataRegistro.numero}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+                <div className="mx-4">
+                  <label htmlFor="codigopostal" className="input input-bordered flex items-center max-w-xs">
+                    CP:
+                  <input
+                    type="number"
+                    className="grow"
+                    name="codigoPostal"
+                    id="codigopostal"
+                    value={userDataRegistro.codigoPostal}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mx-4">
+                  <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
+                    Ciudad:
+                  <input
+                    type="text"
+                    name="ciudad"
+                    id="city"
+                    className="grow"
+                    value={userDataRegistro.ciudad}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+                <div className="mx-4">
+                  <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
+                    Pais:
+                  <input
+                    type="text"
+                    name="pais"
+                    id="country"
+                    className="grow"
+                    value={userDataRegistro.pais}
+                    onChange={handleChangeRegistro}
+                  />
+                  </label>
+                </div>
+              </div>
+              <br />
+              <div >
+              <label htmlFor="apellidos" className="cursor-pointer label">
+                Administrador?
+                <br />
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-accent"
+                  name="administrador"
+                  id="administrador"
+                  value={userDataRegistro.administrador}
+                  onChange={handleChangeAdministrador}
+                />
+                </label>
+              </div>
+              
+            </div>
+            
+
+            <br />
+            <div className="flex justify-center gap-2">
+              <button
+                className="btn btn-sm btn-accent text-white"
+                type="submit"
+                value="Guardar"
+                disabled={
+                  !userDataRegistro.correo ||
+                  !userDataRegistro.cedulaAbogado ||
+                  !userDataRegistro.nombre ||
+                  !userDataRegistro.apellido
+                }
+              >
+                Guardar
+              </button>
+              <Link to="/home/lawyers">
+                <button className="btn btn-sm btn-accent text-white">Volver</button>
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
+      
     </Layout>
   );
   };
