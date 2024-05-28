@@ -33,6 +33,8 @@ export const SET_FILTERED_ACTIONS = "SET_FILTERED_ACTIONS";
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const SET_METRICS = "SET_METRICS";
 export const SET_ERROR = "SET_ERROR";
+export const SET_ABOGADO = "SET_ABOGADO";
+export const SET_CLIENTE = "SET_CLIENTE";
 export const UPDATE_ACTION = "UPDATE_ACTION";
 export const GET_CATEGORIES_EXPENSE = "GET_CATEGORIES_EXPENSE";
 export const GET_CATEGORIES_INCOME = "GET_CATEGORIES_INCOME";
@@ -68,6 +70,22 @@ export const setSource = (source) => {
   console.log("Verificar source:", source);
   return {
     type: SET_SOURCE,
+    payload: source,
+  };
+};
+
+export const setAbogado = (source) => {
+  console.log("Limpiar estado detail:", source);
+  return {
+    type: SET_ABOGADO,
+    payload: source,
+  };
+};
+
+export const setCliente = (source) => {
+  console.log("Limpiar estado detail:", source);
+  return {
+    type: SET_CLIENTE,
     payload: source,
   };
 };
