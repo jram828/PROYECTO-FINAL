@@ -28,6 +28,7 @@ function FiltrosClientes() {
   };
 
   return (
+    
     <div className="container">
       <div className="md:flex md:flex-row md:space-x-4">
           <div className="md:w-1/3">
