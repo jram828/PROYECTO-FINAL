@@ -23,6 +23,8 @@ import {
   LOGIN_FAILED,
   LOG_FAILED,
   CLEAN_USER,
+  SET_ABOGADO,
+  SET_CLIENTE,
 } from "./actions";
 
 let initialState = {
@@ -90,6 +92,16 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         source: action.payload,
+      };
+    case SET_ABOGADO:
+      return {
+        ...state,
+        abogado: action.payload,
+      };
+    case SET_CLIENTE:
+      return {
+        ...state,
+        cliente: action.payload,
       };
     case ORDER_ABOGADOS:
       return {
@@ -165,7 +177,7 @@ const rootReducer = (state = initialState, action) => {
       };
     case CLEAN_USER:
       return initialState;
-    
+
     default:
       return state;
   }
