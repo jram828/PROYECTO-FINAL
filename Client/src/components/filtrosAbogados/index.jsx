@@ -34,7 +34,7 @@ function FiltrosAbogados() {
   };
 
   return (
-    <div className='container grid grid-cols-2 gap-4'>
+    <div className="container grid grid-cols-2 gap-4">
       <div className="flex flex-col justify-start gap-4 p-4 rounded-lg bg-primary">
         <Link to="/home/lawyers/crearabogado">
           <button className='btn btn-md hover:bg-primary hover:text-white w-full'>Crear abogado</button>

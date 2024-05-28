@@ -11,14 +11,7 @@ function LawyersPage() {
   return (
   <Layout>
     <div className={style.container}>
-        {/* <p className={style.titulo}>Abogados</p> */}
-        {/* <Link to="/home/lawyers/crearabogado">
-          <button className='button'>Crear abogado</button>
-        </Link> */}
-        {/* <Link to="/home">
-          <button className='button'>Volver</button>
-        </Link> */}
-        {/* <OrderAbogados></OrderAbogados> */}
+        
        <FiltrosAbogados></FiltrosAbogados>
        
 
