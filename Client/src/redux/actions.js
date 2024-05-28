@@ -281,8 +281,8 @@ export const orderCasos = (value) => {
   };
 };
 
-export const getCasoById = (id) => {
-  const endpoint = `${URL}casos/${id}`;
+export const getCasoById = (idCaso) => {
+  const endpoint = `${URL}casos/${idCaso}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {
@@ -297,12 +297,12 @@ export const getCasoById = (id) => {
   };
 };
 
-export const deleteCaso = (id) => {
-  const endpoint = `${URL}casos/elimina`;
+export const deleteCaso = (idCaso, fechaFin) => {
+  const endpoint = `${URL}casos/findecaso`;
 
   return async (dispatch) => {
-    const data = await axios.post(endpoint, { id });
-    console.log("url", endpoint, "id", id);
+    const data = await axios.post(endpoint, { idCaso, fechaFin });
+    console.log("url", endpoint, "id", idCaso, "fechaFin", fechaFin);
 
     return dispatch({
       type: DELETE_CASO,

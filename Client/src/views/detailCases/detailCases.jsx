@@ -15,17 +15,22 @@ function DetailCasos() {
     dispatch(getCasoById(id));
   }, [dispatch, id]);
    
+  
+
   const handleDelete = () => {
     const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
     
     if (isConfirmed) {
-      dispatch(deleteCaso(id));
+      const fechaFin = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+      dispatch(deleteCaso(id, fechaFin));
       navigate('/home/cases');
       dispatch(getCasos());
+      console.log("id", id, "fechaFin", fechaFin)
+ 
     }
   };
 
- 
+
 
 
   return (
@@ -56,7 +61,7 @@ function DetailCasos() {
               )}
               <br></br>
               <br></br>
-    <button className='button' onClick={handleDelete}>Eliminar caso</button>
+    <button className='button' onClick={handleDelete}>Finalizar caso</button>
               <Link to='/home/cases'>
               <button>Volver</button>
               </Link>
