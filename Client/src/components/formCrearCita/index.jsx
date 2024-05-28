@@ -100,37 +100,37 @@ console.log('registro', dataRegistro)
               onChange={handleChangeRegistro} />
           </div>
             
-          <br />
-          <div className="flex items-center gap-2">
-            <label className="">
-            <select
-                name="idCaso"
-                id="idCaso"
-                onChange={(event) => handleChangeRegistro(event)}
-                className="input input-bordered text-lg pl-2"
-                >
-                <option value="" className="customOption">Seleccionar caso</option>
-                {casos.datosPagina.map(caso => (
-                  <option key={caso.id} value={caso.id} className="customOption">
-                    {caso.id} 
-                  </option>
-                ))}
-            </select>
-            </label>
-          </div>
-          <br></br>
-          <div className="flex items-center gap-2">
-            <label className="">
-            <textarea className="textarea textarea-bordered h-24 w-full"
-            type="text"
-            name="descripcion"
-            id="descripcion"
-            placeholder="Detalles"
-            value={dataRegistro.descripcion}
-            onChange={handleChangeRegistro}
-            ></textarea>
-            </label>
-          </div>
+        <br />
+        <div className="w-full px-4">
+          <label className="w-full">
+          <select
+              name="idCaso"
+              id="idCaso"
+              onChange={(event) => handleChangeRegistro(event)}
+              className="input input-bordered text-lg pl-2 w-full"
+              >
+              <option value="" className="customOption">Seleccionar caso</option>
+              {casos.datosPagina.map(caso => (
+                <option key={caso.id} value={caso.id} className="customOption">
+                  {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`} 
+                </option>
+              ))}
+          </select>
+          </label>
+        </div>
+        <br></br>
+        <div className="w-full px-4">
+          <label className="w-full">
+          <textarea className="textarea textarea-bordered h-24 w-full"
+          type="text"
+          name="descripcion"
+          id="descripcion"
+          placeholder="Detalles"
+          value={dataRegistro.descripcion}
+          onChange={handleChangeRegistro}
+          ></textarea>
+          </label>
+        </div>
         </div>
         <div className="flex justify-center gap-2">
           <input type="submit" className="btn btn-sm btn-accent text-white" value="Crear" />
