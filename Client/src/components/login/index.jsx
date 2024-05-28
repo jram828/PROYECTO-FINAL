@@ -174,7 +174,8 @@ const dispatch = useDispatch();
           </label>
           <select
             name="rol"
-            id="idusuario"
+            id="rol"
+            onChange={handleChange}
             className="input select-bordered flex items-center text-lg pl-2 custom-select"
           >
             <option value="" className={style.customOption}>
