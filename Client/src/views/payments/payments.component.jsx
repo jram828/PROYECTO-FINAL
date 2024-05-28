@@ -5,7 +5,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 // import {PaymentElement} from '@stripe/react-stripe-js';
-
+import Layout from '../../components/layout/layout';
 import { } from "@mercadopago/sdk-react";
 
 function Payments() {
@@ -107,63 +107,65 @@ function Payments() {
 
   
   return (
-    <div>
+    <Layout>
       <div>
-        <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-          <h1 className="titulo">Realizar un pago</h1>
-          <div className="input input-bordered flex items-center gap-2">
-            <label htmlFor="correo" className="">
-              Valor a pagar:
-            </label>
-            <input
-              name="unit_price"
-              type="number"
-              value={userPreference.unit_price}
-              onChange={handleChangePagos}
-              id="unit_price"
-              className="grow"
-            />
-            {/* <label htmlFor="contrasena" className="labelcrearusuario">
-                Contraseña:
+        <div>
+          <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
+            <h1 className="titulo">Realizar un pago</h1>
+            <div className="input input-bordered flex items-center gap-2">
+              <label htmlFor="correo" className="">
+                Valor a pagar:
               </label>
               <input
-                type="password"
-                name="password"
-                id="password"
-                className="cajascrearusuario"
-                value={userDataCrear.password}
-                onChange={handleChangeCrear}
-              /> */}
-          </div>
-          <div className="botonescrearusuario">
-            <Link to="/home">
+                name="unit_price"
+                type="number"
+                value={userPreference.unit_price}
+                onChange={handleChangePagos}
+                id="unit_price"
+                className="grow"
+              />
+              {/* <label htmlFor="contrasena" className="labelcrearusuario">
+                  Contraseña:
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="cajascrearusuario"
+                  value={userDataCrear.password}
+                  onChange={handleChangeCrear}
+                /> */}
+            </div>
+            <div className="botonescrearusuario">
+              <Link to="/home">
+                <input
+                  type="button"
+                  name="Volver"
+                  value="Volver"
+                  className="btn btn-accent btn-sm"
+                />
+              </Link>
+              {/* <PaymentElement /> */}
               <input
                 type="button"
-                name="Volver"
-                value="Volver"
+                name="Pagar"
+                value="Pagar"
                 className="btn btn-accent btn-sm"
+                onClick={handlePay}
               />
-            </Link>
-            {/* <PaymentElement /> */}
-            <input
-              type="button"
-              name="Pagar"
-              value="Pagar"
-              className="btn btn-accent btn-sm"
-              onClick={handlePay}
-            />
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
-        <div id="wallet_container"></div>
+          <div id="wallet_container"></div>
 
-        <Wallet
-          onSubmit={handlePay}
-          initialization={{ preferenceId: responsePreference.id }}
-          customization={{ texts: { valueProp: "smart_option" } }}
-        />
+          <Wallet
+            onSubmit={handlePay}
+            initialization={{ preferenceId: responsePreference.id }}
+            customization={{ texts: { valueProp: "smart_option" } }}
+          />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 

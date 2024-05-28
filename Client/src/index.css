@@ -6,6 +6,7 @@
   --color-four: #D9832C;
   --color-five: white;
   
+
   /*fuente*/
   
 
@@ -37,19 +38,20 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
 }
 a:hover {
   color: white;
 }
 
+
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* min-width: 320px;
+  min-height: 100vh; */
 }
 
 h1 {
@@ -57,48 +59,6 @@ h1 {
   line-height: 1.1;
 }
 
-/* .button {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--color-four); 
-  padding: 5px 15px; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 16px; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  width: 180px;
-  margin: 10px;
-}
-
-.button:hover {
-  background-color: darken(var(--color-four), 10%); 
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.button2 {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--color-two); 
-  padding: 5px 15px; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 16px; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-  width: 180px;
-}
-
-.button2:hover {
-  background-color: darken(var(--color-two), 10%); 
-}
-
-button2:focus,
-button2:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
 
 @media (prefers-color-scheme: light) {
   :root {

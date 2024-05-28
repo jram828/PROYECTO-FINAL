@@ -1,24 +1,49 @@
 .containerDiary {
-    display: flex;
-    align-items: center;
-  }
-  
-  .agenda {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  .calendario {
-    flex: 1;
-    background-color: var(--color-four);
-    border-radius: 10px;
-    margin: 20px;
-    margin-bottom: 100px;
-    font-family: "Outfit", sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 10px;
+}
 
-  .formCita {
-    flex: 1;
-    margin: 20px;
-    margin-top: 100px;
+@media (min-width: 1024px) { 
+  .containerDiary {
+    flex-direction: row; 
   }
+}
+
+.agenda {
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.calendario {
+  flex: 1;
+  background-color: var(--color-four);
+  border-radius: 5px;
+  margin: 10px;
+  font-family: "Outfit", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  height: auto; 
+  max-width: 85vh;
+}
+
+.formCita {
+  flex: 1;
+  margin: 10px;
+  margin-top: 30px;
+  display: flex;
+  
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  height: auto; 
+}

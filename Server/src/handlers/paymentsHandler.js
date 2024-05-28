@@ -1,3 +1,4 @@
+
 const { crearOrden } = require("../controllers/pagos/crearOrden");
 const { failure } = require("../controllers/pagos/failure");
 const { getPayments } = require("../controllers/pagos/getPayments");
@@ -21,6 +22,7 @@ const statusHandler = async (req, res) => {
     const response = await obtenerPago(id);
 
     // console.log(response);
+
 
     res.status(200).json(response);
   } catch (error) {
@@ -62,8 +64,9 @@ const pendingHandler = async (req, res) => {
 const crearOrdenHandler = async (req, res) => {
   try {
     // const { password, email } = req.query;
-    const response = await crearOrden(req.body);
-    console.log("response hander:", response);
+
+      const response = await crearOrden(req.body);
+      console.log('response hander:',response)
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -74,6 +77,9 @@ module.exports = {
   getPaymentsHandler,
   crearOrdenHandler,
   pendingHandler,
+  failureHandler,
   statusHandler,
   webhookHandler,
 };
+
+

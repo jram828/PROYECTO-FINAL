@@ -5,21 +5,21 @@ import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbogado, deleteCliente } from '../../redux/actions';
 import { getAbogados, getClientes} from '../../redux/actions'
-
+import Layout from '../../components/layout/layout';
 
 
 function Detail() {
 
-  const datos = JSON.parse(localStorage.getItem("loggedUser"));
+  //const datos = JSON.parse(localStorage.getItem("loggedUser"));
 
-  //const source = useSelector((state) => state.source)
+  const source = useSelector((state) => state.source)
 
-  const cedula = datos.cedulaAbogado ? datos.cedulaAbogado : datos.cedulaCliente
+  //const cedula = datos.cedulaAbogado ? datos.cedulaAbogado : datos.cedulaCliente
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  /*if (source === 'abogado') {
+  if (source === 'abogado') {
     var datos = useSelector((state) => state.abogado);
     var { cedula } = useParams();
     useEffect(() => {
@@ -32,7 +32,7 @@ function Detail() {
       dispatch(getByIdCliente(cedula))
    }, [dispatch, cedula])
     console.log('datos', datos)
-  }*/
+  }
 
  
     const handleDelete = () => {
@@ -58,77 +58,79 @@ function Detail() {
    
 
   return (
-    <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
-        <div>
-          <h1>Detail</h1>
-        </div>
-        <div key={cedula}></div>
-        <div className="detail-form">
-          <div className="detail-input-group">
-            <label className="detail-label">Cedula:</label>
-            <input value={cedula} className="detail-input"></input>
-            {datos?.matricula? (
-            <label className="detail-label">Matricula:</label>
-          ) : undefined }
-            {datos?.matricula? (
-       <input value={datos.matricula} className="detail-input"></input>
-                ) : undefined }
+    <Layout>
+      <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
+          <div>
+            <h1>Detail</h1>
           </div>
-          <br />
-          <br />
-          <div className="detail-input-group">
-            <label className="detail-label">Nombre(s):</label>
-            <input value={datos?.nombre} className="detail-input"></input>
-            <label className="detail-label">Apellido(s):</label>
-            <input value={datos?.apellido} className="detail-input"></input>
+          <div key={cedula}></div>
+          <div className="detail-form">
+            <div className="detail-input-group">
+              <label className="detail-label">Cedula:</label>
+              <input value={cedula} className="detail-input"></input>
+              {datos?.matricula? (
+              <label className="detail-label">Matricula:</label>
+            ) : undefined }
+              {datos?.matricula? (
+        <input value={datos.matricula} className="detail-input"></input>
+                  ) : undefined }
+            </div>
+            <br />
+            <br />
+            <div className="detail-input-group">
+              <label className="detail-label">Nombre(s):</label>
+              <input value={datos?.nombre} className="detail-input"></input>
+              <label className="detail-label">Apellido(s):</label>
+              <input value={datos?.apellido} className="detail-input"></input>
+            </div>
+            <br />
+            <br />
+            <div className="detail-input-group">
+              <label className="detail-label">Correo:</label>
+              <input value={datos?.correo} className="detail-input"></input>
+              <label className="detail-label">Telefono:</label>
+              <input value={datos?.telefono} className="detail-input"></input>
+            </div>
+            <br />
+            <br />
+            <div className="detail-input-group">
+              <label className="detail-label">Calle:</label>
+              <input value={datos?.calle} className="detail-input"></input>
+              <label className="detail-label">Número:</label>
+              <input value={datos?.numero} className="detail-input"></input>
+              
+            </div>
+            <br />
+            <br />
+            <div className="detail-input-group">
+              <label className="detail-label">Código Postal:</label>
+              <input value={datos?.codigoPostal} className="detail-input"></input>
+              <label className="detail-label">Ciudad:</label>
+              <input value={datos?.ciudad} className="detail-input"></input>
+            </div>
+            <br />
+            <br />
+            <div className="last-input-group">
+              <label className="detail-label">Pais:</label>
+              <input value={datos?.pais} className="detail-input"></input>
+            </div>
+            <br />
+            <br />
           </div>
-          <br />
-          <br />
-          <div className="detail-input-group">
-            <label className="detail-label">Correo:</label>
-            <input value={datos?.correo} className="detail-input"></input>
-            <label className="detail-label">Telefono:</label>
-            <input value={datos?.telefono} className="detail-input"></input>
-          </div>
-          <br />
-          <br />
-          <div className="detail-input-group">
-            <label className="detail-label">Calle:</label>
-            <input value={datos?.calle} className="detail-input"></input>
-            <label className="detail-label">Número:</label>
-            <input value={datos?.numero} className="detail-input"></input>
-            
-          </div>
-          <br />
-          <br />
-          <div className="detail-input-group">
-            <label className="detail-label">Código Postal:</label>
-            <input value={datos?.codigoPostal} className="detail-input"></input>
-            <label className="detail-label">Ciudad:</label>
-            <input value={datos?.ciudad} className="detail-input"></input>
-          </div>
-          <br />
-          <br />
-          <div className="last-input-group">
-            <label className="detail-label">Pais:</label>
-            <input value={datos?.pais} className="detail-input"></input>
-          </div>
-          <br />
-          <br />
-        </div>
- 
-    <div className="flex justify-center gap-2">
-    <button className="btn btn-sm btn-accent text-white" onClick={handleDelete}>Eliminar registro</button>
-    {datos?.matricula? (
-            <Link to="/home/lawyers">
+  
+      <div className="flex justify-center gap-2">
+      <button className="btn btn-sm btn-accent text-white" onClick={handleDelete}>Eliminar registro</button>
+      {datos?.matricula? (
+              <Link to="/home/lawyers">
+              <button className="btn btn-sm btn-accent text-white">Volver</button>
+            </Link>
+            ) : <Link to="/home/customers">
             <button className="btn btn-sm btn-accent text-white">Volver</button>
-          </Link>
-          ) : <Link to="/home/customers">
-          <button className="btn btn-sm btn-accent text-white">Volver</button>
-        </Link> }
-    </div>
-    
-  </div>
+          </Link> }
+      </div>
+      
+      </div>
+    </Layout>
   )
 }
 export default Detail

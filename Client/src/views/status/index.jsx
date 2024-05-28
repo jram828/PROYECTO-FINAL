@@ -3,6 +3,7 @@ import "./status.module.css";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { verificarPago } from "../../handlers/verificarPago";
+import Layout from "../../components/layout/layout";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -63,6 +64,7 @@ function Status () {
 
   
 return (
+<Layout>
   <div className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6">
   <div className="mb-4">
     <p className="text-xl font-semibold">Estado de la transacción</p>
@@ -145,8 +147,8 @@ return (
       <button className="btn btn-accent text-white">Reintentar pago</button>
     </Link>
   </div>
-</div>
-
+  </div>
+</Layout>
   );
 }
 
