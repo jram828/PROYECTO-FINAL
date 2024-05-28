@@ -1,8 +1,9 @@
 import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
+import logo from '../../assets/logo.png'
+import legaltech from "../../assets/legaltech.png";
 import Layout from '../../components/layout/layout';
-
 
 
 function Home() {
@@ -14,7 +15,6 @@ function Home() {
     window.localStorage.setItem("loggedUser", JSON.stringify({}));
     
   }
-
 
   return (
    <Layout>
@@ -123,6 +123,7 @@ function Home() {
  </div>
 </div>
 </Layout>
+
   );
 }
 

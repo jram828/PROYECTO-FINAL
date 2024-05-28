@@ -1,5 +1,6 @@
 
 const { Cliente } = require('../../DB')
+const { sendEmailCliente} = require("../../utils/emailNotifier");
 
 const createClienteBd = async (
   cedulaCliente,

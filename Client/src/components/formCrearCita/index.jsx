@@ -62,9 +62,9 @@ if (!casos || !casos.datosPagina) {
 console.log('registro', dataRegistro)
 
   return (
-    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-      <h1 className="tituloCita">Crear Cita</h1>
-      <form onSubmit={submitHandlerRegistro} className="formularioCita">
+    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md mx-auto">
+      <h1 className="tituloCita text-center">Crear Cita</h1>
+      <form onSubmit={submitHandlerRegistro} className="formularioCita flex flex-col items-center">
         <div className="input-row">
           <div className="input input-bordered flex items-center gap-2">
             <label className="label">Titulo:</label>
@@ -87,8 +87,8 @@ console.log('registro', dataRegistro)
             name="fechaCita"
             id="fechaCita"
             value={dataRegistro.fechaCita}
-  onChange={handleChangeRegistro} />*/}
-    </div>
+            onChange={handleChangeRegistro} />*/}
+          </div>
           <br />
           <div className="input input-bordered flex items-center gap-2">
             <label className="label">Hora:</label>
