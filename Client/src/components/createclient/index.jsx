@@ -38,7 +38,6 @@ const CreateCliente = () => {
               <h1 className={style.titulo}>Crear Cliente</h1>
               <br />
               <br />
-
               <div className="space-y-3">
                 <div className="flex flex-wrap justify-around">
                   <div className="w-full sm:w-auto mx-4 mb-4">
