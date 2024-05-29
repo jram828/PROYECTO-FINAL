@@ -3,7 +3,7 @@ const { PagosCliente } = require("../../DB");
 const getAllPagosClientes = async () => {
   const getAllCasoBd = await PagosCliente.findAll({});
 
-  return getAllPagosClientes;
+  return getAllCasoBd;
 };
 
 module.exports = {

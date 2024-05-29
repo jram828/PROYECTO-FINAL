@@ -10,16 +10,16 @@ const createPagosClientes = async (
   status,
   transaction_amount,
 ) => {
-  console.log(
-    idCaso,
-    description,
-    date_approved,
-    id,
-    orderId,
-    payment_type_id,
-    status,
-    transaction_amount,
-  );
+  // console.log(
+  //   idCaso,
+  //   description,
+  //   date_approved,
+  //   id,
+  //   orderId,
+  //   payment_type_id,
+  //   status,
+  //   transaction_amount,
+  // );
   const newPagoCliente = await PagosCliente.create({
     idCaso,
     descripcion: description,

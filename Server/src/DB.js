@@ -5,11 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
-//   logging: false,
-//   native: false,
-// });
-
 /* **** Esto va cuando se hace el despliegue en RENDER */
 // console.log("Dbdeploy: ", DB_DEPLOY);
 // const sequelize = new Sequelize(DB_DEPLOY, {
@@ -60,6 +55,7 @@ const {
   Cliente,
   Contrato,
   TipoDeCaso,
+  PagosCliente,
   DocumentoTemplate,
   DocumentoLegal,
   TipoNotificacion,
@@ -92,6 +88,9 @@ Caso.belongsTo(Abogado);
 
 TipoDeCaso.hasMany(Caso);
 Caso.belongsTo(TipoDeCaso);
+
+Caso.hasMany(PagosCliente);
+PagosCliente.belongsTo(Caso);
 
 Caso.hasOne(Cotizacion);
 
