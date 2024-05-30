@@ -1,5 +1,5 @@
-const { Consulta } = require('../DB')
-
+ import {models} from '../DB.js'
+ const { Consulta } = models;
 const getAllConsulta = async ()=>{
     const getAllConsultaBd = await Consulta.findAll({
         where: {
@@ -11,6 +11,6 @@ const getAllConsulta = async ()=>{
 };
 
 
-module.exports = {
+export {
     getAllConsulta,
 }

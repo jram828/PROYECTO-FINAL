@@ -1,5 +1,5 @@
-const { Caso } = require("../../DB");
-
+ import { models } from "../../DB.js";
+ const { Caso } = models
 const getCasoId = async (id) => {
   const caso = await Caso.findByPk(id);
   if (!caso) throw Error("Caso no Registrado o no existe");
@@ -7,6 +7,6 @@ const getCasoId = async (id) => {
 };
 // intento subir
 
-module.exports = {
+export  {
   getCasoId,
 };

@@ -1,5 +1,5 @@
-const { Cliente, Abogado, Usuario } = require('../../DB')
-
+ import {models} from '../../DB.js'
+ const { Cliente, Abogado, Usuario } = models
 const getLoginGoogle = async (email,rol) => {
     
     if (rol === "Administrador") {
@@ -38,6 +38,6 @@ const getLoginGoogle = async (email,rol) => {
     }
 }
 
-module.exports = {
+export {
     getLoginGoogle
 }

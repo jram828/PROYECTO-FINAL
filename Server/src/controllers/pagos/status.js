@@ -1,7 +1,7 @@
-const axios = require("axios");
-const {
+import axios from "axios";
+import {
   createPagosClientes,
-} = require("../pagosClientesControllers/postPagosClientes");
+} from "../pagosClientesControllers/postPagosClientes.js";
 
 const obtenerPago = async (idPago) => {
   // console.log("Payment id: ", idPago);
@@ -46,6 +46,6 @@ const obtenerPago = async (idPago) => {
 };
 
 
-module.exports = {
+export {
   obtenerPago,
 };

@@ -1,7 +1,8 @@
-const server = require("./src/server");
+import { server,options, https } from "./src/server.js";
 
-const { conn } = require("./src/DB");
+import { models } from  "./src/DB.js";
 
+const { conn } = models;
 
 const PORT = 3001;
 
@@ -10,6 +11,10 @@ conn
   .then(() => {})
   .catch((error) => console.error(error));
 
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+// server.listen(PORT, () => {
+//   console.log(`Server listening on port ${PORT}`);
+// });
+
+https.createServer(options, server).listen(PORT,() => {
+  console.log('Server listening on port ' + PORT);
 });

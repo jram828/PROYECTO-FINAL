@@ -1,7 +1,7 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 const { EMAIL_PASSWORD,EMAIL } = process.env
-const fs = require('fs')
-const path = require('path');
+import fs from 'fs'
+import path from 'path';
 
 
 const transporter = nodemailer.createTransport({
@@ -64,7 +64,7 @@ const sendEmailCita = (cliente, abogado, newCita)=>{
     })
 }
 
-module.exports = {
+export {
     sendEmailCliente,
     sendEmailCita
 }

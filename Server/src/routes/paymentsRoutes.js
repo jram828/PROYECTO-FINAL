@@ -1,21 +1,21 @@
-const { Router } = require("express");
-const {
+import { Router } from "express";
+import {
   getPaymentsHandler,
   failureHandler,
   pendingHandler,
   webhookHandler,
   statusHandler,
-} = require("../handlers/paymentsHandler");
+} from "../handlers/paymentsHandler.js";
 
-const { crearOrdenHandler } = require("../handlers/paymentsHandler");
+import { crearOrdenHandler } from "../handlers/paymentsHandler.js";
 
 const paymentsRouter = Router();
-
+console.log('Estoyen routes de MP')
 paymentsRouter.get("/", getPaymentsHandler);
-paymentsRouter.post("/crearorden", crearOrdenHandler);
 paymentsRouter.get("/staus", statusHandler);
 paymentsRouter.post("/webhook", webhookHandler);
 paymentsRouter.get("/failure", failureHandler);
 paymentsRouter.get("/pending", pendingHandler);
+paymentsRouter.post("/crearorden", crearOrdenHandler);
 
-module.exports = paymentsRouter;
+export default  paymentsRouter;

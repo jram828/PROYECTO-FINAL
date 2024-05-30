@@ -1,7 +1,8 @@
 
-const { Cliente } = require('../../DB')
-const { sendEmailCliente} = require("../../utils/emailNotifier");
+import {models} from '../../DB.js'
+import { sendEmailCliente} from "../../utils/emailNotifier.js";
 
+const { Cliente } = models;
 const createClienteBd = async (
   cedulaCliente,
   nombre,
@@ -35,6 +36,6 @@ const createClienteBd = async (
   };
 };
 
-module.exports = {
+export {
   createClienteBd,
 };

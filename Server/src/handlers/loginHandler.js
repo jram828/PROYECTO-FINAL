@@ -1,5 +1,5 @@
-const { getLogin } = require('../controllers/usuario/login')
-const { getLoginGoogle } = require('../controllers/usuario/loginGoogle')
+import { getLogin } from '../controllers/usuario/login.js'
+import { getLoginGoogle } from '../controllers/usuario/loginGoogle.js'
 
 const loginHandler = async (req, res)=>{
     try {
@@ -21,7 +21,7 @@ const loginHandlerGoogle = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   loginHandler,
   loginHandlerGoogle,
 };

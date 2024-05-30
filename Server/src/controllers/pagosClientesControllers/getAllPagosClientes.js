@@ -1,11 +1,11 @@
-const { PagosCliente } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { PagosCliente } = models
 const getAllPagosClientes = async () => {
   const getAllCasoBd = await PagosCliente.findAll({});
 
   return getAllPagosClientes;
 };
 
-module.exports = {
+export {
   getAllPagosClientes,
 };

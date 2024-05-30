@@ -1,6 +1,7 @@
-const { Router } = require("express");
+import { Router } from "express";
 
-const { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes, getClientByEmailHandler } = require("../handlers/clientesHandlers");
+import { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes, 
+    getClientByEmailHandler } from "../handlers/clientesHandlers.js";
 
 const clientesRouter = Router();
 
@@ -23,5 +24,5 @@ clientesRouter.post("/actualiza", postActualizaClientes);
 
 
 
-module.exports = clientesRouter;
+export default clientesRouter;
 
