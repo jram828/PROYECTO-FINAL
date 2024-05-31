@@ -23,7 +23,7 @@ const statusHandler = async (req, res) => {
     console.log("Id status handler: ", id);
     const response = await obtenerPago(id);
 
-    console.log("Respuesta obtener pago handler:", response);
+    // console.log("Respuesta obtener pago handler:", response);
 
     res.status(200).json(response);
   } catch (error) {

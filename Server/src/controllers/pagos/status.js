@@ -15,29 +15,37 @@ const obtenerPago = async (idPago) => {
         },
       }
     );
-      console.log('Respuesta obtener pago: ',data)
-    // const idCaso = data.additional_info.items[0].id;
-    // const orderId = data.order.id;
+      // console.log('Respuesta obtener pago: ',data)
+    const idCaso = data.additional_info.items[0].id;
+    const orderId = data.order.id;
 
-    // const {
-    //   description,
-    //   date_approved,
-    //   id,
-    //   payment_type_id,
-    //   status,
-    //   transaction_amount,
-    // } = data;
+    const {
+      description,
+      date_approved,
+      id,
+      payment_type_id,
+      status,
+      transaction_amount,
+    } = data;
 
-    // const newPago = createPagosClientes(
-    //   idCaso,
-    //   description,
-    //   date_approved,
-    //   id,
-    //   orderId,
-    //   payment_type_id,
-    //   status,
-    //   transaction_amount,
-    // );
+ console.log("Data crear pago:", {
+   description,
+   idCaso,
+   orderId,
+   date_approved,
+   payment_type_id,
+   status,
+   transaction_amount,
+ });
+    const newPago = createPagosClientes(
+      idCaso,
+      description,
+      date_approved,
+      orderId,
+      payment_type_id,
+      status,
+      transaction_amount,
+    );
     return data;
   } catch (error) {
     console.log(error);
