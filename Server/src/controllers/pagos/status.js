@@ -33,11 +33,12 @@ const obtenerPago = async (idPago) => {
       idCaso,
       descripcion,
       fechaDeAprobacion,
+      pagoId,
       orderId,
       tipoDePago,
       estado,
-      importeDeLaTransaccion,
-      pagoId
+      importeDeLaTransaccion
+      
     );
     return data;
   } catch (error) {
