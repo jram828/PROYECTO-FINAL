@@ -27,8 +27,8 @@ import Poder from './views/poder';
 // import {Elements} from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 
-const VITE_SECRET_KEY =
-  'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
+// const VITE_SECRET_KEY =
+//   'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
 // const URL = import.meta.env.VITE_URL_BACK;
 // const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
@@ -39,7 +39,7 @@ axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
 
 function App() {
   
-  console.log("Stripe env:", VITE_SECRET_KEY);
+  // console.log("Stripe env:", VITE_SECRET_KEY);
     // const location = useLocation();
   //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
