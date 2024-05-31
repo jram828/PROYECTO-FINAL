@@ -17,7 +17,7 @@ function Payments() {
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedulaCliente: "123456",
+    idCaso: "1",
     description: "Honorarios",
   });
 
@@ -32,7 +32,7 @@ function Payments() {
 
       setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.redirectUrl, "_self");
+      window.open(paymentData.init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores
