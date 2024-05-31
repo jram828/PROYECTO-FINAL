@@ -14,7 +14,7 @@ function Status () {
   const { search } = useLocation();
 
 
-  console.log('Search: ', search)
+  // console.log('Search: ', search)
 
     useEffect(() => {
       const replaceFirst = search.replace("?", "");
@@ -32,33 +32,34 @@ function Status () {
       
     }, []);
     
-  console.log("objeto queries: ", queries);
+  // console.log("objeto queries: ", queries);
   console.log("Payment id: ", queries.payment_id);
   
-  const obtenerPago = async (id) => {
-    console.log("Payment id: ", id);
-    try {
-    
-    const paymentData = await verificarPago(id);
-      console.log("Respuesta verificacion pago: ", paymentData);
-      setDatosPago(paymentData);
-      return paymentData
-    } catch (error) {
-      window.alert("No se obtuvieron los datos del pago");
-    }
-  }
+  
 
 
 
 
-  if (queries.payment_id) {
-    useEffect( () => {
+
+  // if (queries.payment_id) {
+    useEffect(() => {
       const datos = obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datos);
       setDatosPago(datos);
     }, [queries.payment_id]);
-  }
+  // }
 
+    const obtenerPago = async (id) => {
+      console.log("Payment id obtener pago: ", id);
+      try {
+        const paymentData = await verificarPago(id);
+        console.log("Respuesta verificacion pago: ", paymentData);
+        setDatosPago(paymentData);
+        return paymentData;
+      } catch (error) {
+        window.alert("No se obtuvieron los datos del pago");
+      }
+    };
 
 
 

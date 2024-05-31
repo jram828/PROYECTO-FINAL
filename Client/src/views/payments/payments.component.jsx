@@ -6,18 +6,18 @@ import { useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 // import {PaymentElement} from '@stripe/react-stripe-js';
 import Layout from '../../components/layout/layout';
-import { } from "@mercadopago/sdk-react";
+// import { } from "@mercadopago/sdk-react";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-47bcf8af-9fee-4169-9a1b-61804619024f", {
+  initMercadoPago("APP_USR-b26ba8db-fbe9-410e-af81-4a8481738a84", {
     locale: "es-CO",
   });
 
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedulaCliente: "123456",
+    idCaso: "1",
     description: "Honorarios",
   });
 
@@ -32,7 +32,7 @@ function Payments() {
 
       setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.sandbox_init_point, "_self");
+      window.open(paymentData.init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores

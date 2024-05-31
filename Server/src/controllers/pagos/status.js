@@ -1,44 +1,44 @@
-const axios = require("axios");
-const {
+import axios from "axios";
+import {
   createPagosClientes,
-} = require("../pagosClientesControllers/postPagosClientes");
+} from "../pagosClientesControllers/postPagosClientes.js";
 
 const obtenerPago = async (idPago) => {
-  // console.log("Payment id: ", idPago);
+  console.log("Payment id: ", idPago);
   try {
     const { data } = await axios.get(
       `https://api.mercadopago.com/v1/payments/${idPago}`,
       {
         headers: {
           Authorization:
-            "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
+            "Bearer APP_USR-7845349164975835-051714-ec5b987de7ec8e0f4239e0b93dc2fa4d-1817941600",
         },
-      },
+      }
     );
-
+      // console.log('Respuesta obtener pago: ',data)
     const idCaso = data.additional_info.items[0].id;
     const orderId = data.order.id;
+    const importeDeLaTransaccion = data.transaction_amount;
+    const estado = data.status;
+    const descripcion = data.description;
+    const fechaDeAprobacion = data.date_approved;
+    const tipoDePago = data.payment_type_id;
+    const pagoId = data.id;
+    
 
-    const {
-      description,
-      date_approved,
-      id,
-      payment_type_id,
-      status,
-      transaction_amount,
-    } = data;
 
+ console.log("Data crear pago:",)
     const newPago = createPagosClientes(
       idCaso,
-      description,
-      date_approved,
-      id,
+      descripcion,
+      fechaDeAprobacion,
       orderId,
-      payment_type_id,
-      status,
-      transaction_amount,
+      tipoDePago,
+      estado,
+      importeDeLaTransaccion,
+      pagoId
     );
-    return newPago;
+    return data;
   } catch (error) {
     console.log(error);
     // window.alert("No se obtuvieron los datos del pago");
@@ -46,6 +46,6 @@ const obtenerPago = async (idPago) => {
 };
 
 
-module.exports = {
+export {
   obtenerPago,
 };

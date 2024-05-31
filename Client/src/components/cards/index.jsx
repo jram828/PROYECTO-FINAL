@@ -7,15 +7,15 @@ function Cards({ items, config }) {
   }
 
   return (
-    <div className='contenedorAbogados'>
-      {items.map(item => (
-        <Card 
-          item={item} 
-          key={item.id} 
-          config={config} 
-        />
-      ))}
-    </div>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8">
+  {items.map(item => (
+    <Card 
+      item={item} 
+      key={item.id} 
+      config={config} 
+    />
+  ))}
+</div>
   );
 }
 

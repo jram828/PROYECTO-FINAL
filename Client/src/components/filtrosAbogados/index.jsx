@@ -34,20 +34,22 @@ function FiltrosAbogados() {
   };
 
   return (
-    <div className="container grid grid-cols-2 gap-4">
-      <div className="flex flex-col justify-start gap-4 p-4 rounded-lg bg-primary">
-        <Link to="/home/lawyers/crearabogado">
-          <button className='btn btn-md hover:bg-primary hover:text-white w-full'>Crear abogado</button>
-        </Link>
-        <OrderAbogados />
-        <SearchBar onFilter={handleFilter} />
-        <Link to="/home">
-          <button className='btn btn-md hover:bg-primary hover:text-white w-full'>Volver</button>
-        </Link>
-      </div>
-      <div>
-        <Cards items={abogados} />
-        {filterApplied && <button onClick={handleVerTodosClick}>Ver todos</button>}
+    <div className="container">
+      <div className="md:flex md:flex-row md:space-x-4">
+        <div className="md:w-1/3">
+          <div className="flex flex-col justify-start gap-4 p-4 rounded-md max-h-screen bg-primary">
+            <Link to="/home/lawyers/crearabogado" className="btn btn-md hover:bg-primary hover:text-white w-full">Crear abogado</Link>
+            <OrderAbogados />
+            <SearchBar onFilter={handleFilter} />
+            <Link to="/home" className="btn btn-md hover:bg-primary hover:text-white w-full">Volver</Link>
+          </div>
+        </div>
+        <div className="md:w-2/3 p-2">
+          <div className="flex flex-col gap-4">
+            <Cards items={abogados} />
+            {filterApplied && <button onClick={handleVerTodosClick} className="btn">Ver todos</button>}
+          </div>
+        </div>
       </div>
     </div>
   );

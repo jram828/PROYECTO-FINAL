@@ -1,4 +1,6 @@
-const { Abogado } = require("../../DB");
+import { models } from "../../DB.js";
+
+const Abogado = models.Abogado
 
 const createAbogadoBd = async (
   cedulaAbogado,
@@ -40,4 +42,4 @@ const createAbogadoBd = async (
   // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
 
-module.exports = { createAbogadoBd };
+export  { createAbogadoBd };

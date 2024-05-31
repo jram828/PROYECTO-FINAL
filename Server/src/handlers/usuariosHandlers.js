@@ -1,6 +1,7 @@
-const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
-const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
-require("dotenv").config();
+import { getAllUsuario } from "../controllers/usuario/getAllUsuario.js";
+import { crearUsuario } from "../controllers/usuario/insertaUsuario.js";
+import dotenv from 'dotenv'
+dotenv.config();
 const {
   ACCOUNTSID,
   AUTHTOKEN,
@@ -11,12 +12,12 @@ const {
   OAUTH_REDIRECT_URI,
   OAUTH_ACCESS_TOKEN,
 } = process.env;
-const twilio = require("twilio");
-const nodemailer = require("nodemailer");
-const {google} = require("googleapis");
-const fs = require("fs");
+import twilio from "twilio";
+import nodemailer from "nodemailer";
+import {google} from "googleapis";
+import fs from "fs";
 // const { MAIL_USERNAME } = process.env;
-require("dotenv").config();
+//require("dotenv").config();
 
 const allUsuarios = async (req, res) => {
   console.log(req.query);
@@ -126,7 +127,7 @@ const postUsuariosHandler = async (req, res) => {
   // res.status(200).send(`creando actividades`);
 };
 
-module.exports = {
+export {
   postUsuariosHandler,
   allUsuarios,
 };

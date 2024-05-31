@@ -1,4 +1,4 @@
-.contenedorAbogados {
+/* .contenedorAbogados {
    
     
     display: grid;
@@ -7,3 +7,9 @@
     
 
 }
+
+@media (max-width: 768px) {
+    .contenedorAbogados {
+      grid-template-columns: 1fr;
+    }
+  } */

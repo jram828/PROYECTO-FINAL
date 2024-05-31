@@ -1,5 +1,6 @@
-const { Cliente } = require("../../DB");
-
+ import { models } from "../../DB.js";
+ 
+ const { Cliente }=models
 const eliminaCliente = async (cedulaCliente) => {
     // console.log('imagen',imagen)
 
@@ -22,4 +23,4 @@ if (updateCount > 0) {
 };
 
 
-module.exports = {eliminaCliente};
+export {eliminaCliente};

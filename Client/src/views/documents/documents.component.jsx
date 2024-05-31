@@ -1,4 +1,5 @@
 import './documents.css';
+import Layout from '../../components/layout/layout'
 
 import { useNavigate } from "react-router-dom";
 
@@ -19,47 +20,53 @@ const Documents = () => {
   };
 
   return (
-    <div>
-      <h1 className="titulo">Generar Documentos Legales</h1>
-      <br />
+    <Layout>
+      <div className="p-6 bg-primary shadow-md rounded-lg max-w-md mx-auto mt-4 text-white">
+      <h1 className="text-2xl font-bold mb-6">Generar Documentos Legales</h1>
       <form>
-        <br />
-        <div className="documentoagenerar">
-          <br />
-          <label htmlFor="tipodocumento" className="labelgenerardocumento">
+        <div className="mb-6">
+          <label htmlFor="tipodocumento" className="block text-lg font-medium mb-2">
             Documentos a generar:
           </label>
           <select
-            className="cajagenerardocumento"
+            className="block w-full mt-1 bg-primary text-white border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             name="tipodocumento"
             id="documentolegal"
             onChange={handleChange}
           >
-            <option value="">Elija una opcion</option>
-            <option value="1">Poder</option>
-            <option value="2">Contrato</option>
+            <option className="bg-primary text-white" value="">Elija una opción</option>
+            <option className="bg-primary text-white" value="1">Poder</option>
+            <option className="bg-primary text-white" value="2">Contrato</option>
           </select>
         </div>
-        <br />
-        <br />
-        <div className="documentoagenerar">
-          <label className="labelgenerardocumento"> Enviar a:</label>
-          <div>
-            <label htmlFor="email">Email</label>
+
+        <div className="mb-6">
+          <label className="block text-lg font-medium mb-2">Enviar a:</label>
+          <div className="flex items-center mb-4">
             <input
-              className="inputbox"
+              className="mr-2 leading-tight"
               type="checkbox"
               id="email"
-              defaultChecked="true"
+              defaultChecked={true}
             />
+            <label htmlFor="email" className="text-sm text-white">
+              Email
+            </label>
           </div>
-          <div>
-            <label htmlFor="sms">SMS </label>
-            <input className="inputbox" type="checkbox" id="sms" />
+          <div className="flex items-center">
+            <input
+              className="mr-2 leading-tight"
+              type="checkbox"
+              id="sms"
+            />
+            <label htmlFor="sms" className="text-sm text-white">
+              SMS
+            </label>
           </div>
         </div>
       </form>
-    </div>
+      </div>
+    </Layout>
   );
 };
 export default Documents;

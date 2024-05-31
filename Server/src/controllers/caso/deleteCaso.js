@@ -1,5 +1,6 @@
-const { Caso } = require("../../DB");
+import { models } from "../../DB.js";
 
+const Caso=models.Caso
 const deleteCaso = async (idCaso,fechaFin) => {
   await Caso.update(
     {
@@ -14,6 +15,6 @@ const deleteCaso = async (idCaso,fechaFin) => {
   return JSON.stringify({ mensaje: "Se agrego fecha de fin al caso" })
 };
 
-module.exports = {
+export {
   deleteCaso,
 };

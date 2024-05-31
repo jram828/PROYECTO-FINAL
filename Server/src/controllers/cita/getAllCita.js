@@ -1,5 +1,7 @@
-const { Sequelize } = require("sequelize");
-const { Cita, Caso, Cliente, Abogado, TipoDeCaso } = require("../../DB");
+import { Sequelize } from "sequelize";
+import { models } from "../../DB.js";
+
+const { Cita, Caso, Cliente, Abogado, TipoDeCaso } = models
 
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
   const indiceInicial = paginaActual * tamañoPagina;
@@ -160,6 +162,6 @@ const getAllCita = async (filters) => {
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };
 
-module.exports = {
+export  {
   getAllCita,
 };

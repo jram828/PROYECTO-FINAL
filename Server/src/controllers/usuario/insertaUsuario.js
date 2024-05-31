@@ -1,6 +1,6 @@
 
-const { Usuario } = require('../../DB')
-
+ import {models} from '../../DB.js'
+ const { Usuario } = models;
 const crearUsuario = async (correo, password, imagen,rol) => {
   const newUsuario = await Usuario.create({
     correo,
@@ -14,6 +14,6 @@ const crearUsuario = async (correo, password, imagen,rol) => {
   };
 };
 
-module.exports = {
+export {
   crearUsuario,
 };

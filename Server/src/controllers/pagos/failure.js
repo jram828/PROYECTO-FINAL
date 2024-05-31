@@ -1,5 +1,5 @@
-const { Pagos } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { Pagos } = models
 const failure = async (body) => {
 
   const newPago = "";
@@ -7,6 +7,6 @@ const failure = async (body) => {
   return body;
 };
 
-module.exports = {
+export{
   failure,
 };

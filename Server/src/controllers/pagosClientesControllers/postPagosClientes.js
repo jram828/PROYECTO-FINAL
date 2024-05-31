@@ -1,5 +1,5 @@
-const { PagosCliente } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { PagosCliente } = models
 const createPagosClientes = async (
   idCaso,
   description,
@@ -10,16 +10,6 @@ const createPagosClientes = async (
   status,
   transaction_amount,
 ) => {
-  console.log(
-    idCaso,
-    description,
-    date_approved,
-    id,
-    orderId,
-    payment_type_id,
-    status,
-    transaction_amount,
-  );
   const newPagoCliente = await PagosCliente.create({
     idCaso,
     descripcion: description,
@@ -34,4 +24,4 @@ const createPagosClientes = async (
   return newPagoCliente;
 };
 
-module.exports = { createPagosClientes };
+export { createPagosClientes };
