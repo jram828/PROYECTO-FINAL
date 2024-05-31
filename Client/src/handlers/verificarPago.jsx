@@ -4,12 +4,12 @@ export async function verificarPago(id) {
   // const { id } = data;
   console.log("Id verificar pago:", id);
 
-  const URL = "/pagos/status";
+  const URL = `/pagos/status/${id}`;
 
   try {
-   const response = await axios.get(URL, {
-      id: id
-   });
+   const response = await axios.get(URL)//, {
+   //   id: id
+   //});
     console.log('Response handler verificar pago: ', response)
     return response.data;
     // window.alert("Se ha registrado el usuario con éxito.");

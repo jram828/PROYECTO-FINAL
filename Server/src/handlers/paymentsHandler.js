@@ -1,10 +1,9 @@
-
 import { crearOrden } from "../controllers/pagos/crearOrden.js";
 import { failure } from "../controllers/pagos/failure.js";
-import { getPayments } from"../controllers/pagos/getPayments.js";
-import { pending } from"../controllers/pagos/pending.js";
-import { obtenerPago } from"../controllers/pagos/status.js";
-import { webhook } from"../controllers/pagos/webhook.js";
+import { getPayments } from "../controllers/pagos/getPayments.js";
+import { pending } from "../controllers/pagos/pending.js";
+import { obtenerPago } from "../controllers/pagos/status.js";
+import { webhook } from "../controllers/pagos/webhook.js";
 
 const getPaymentsHandler = async (req, res) => {
   try {
@@ -18,13 +17,12 @@ const getPaymentsHandler = async (req, res) => {
 
 const statusHandler = async (req, res) => {
   try {
-
-    const { id } = req.body;
-    console.log('Id status handler: ',id)
+    const { id } = req.query;
+    // const { id } = req.body;
+    console.log("Id status handler: ", id);
     const response = await obtenerPago(id);
 
-    console.log('Respuesta obtener pago handler:',response);
-
+    console.log("Respuesta obtener pago handler:", response);
 
     res.status(200).json(response);
   } catch (error) {
@@ -66,10 +64,10 @@ const pendingHandler = async (req, res) => {
 const crearOrdenHandler = async (req, res) => {
   try {
     // const { password, email } = req.query;
-      console.log('Estoy en el handler')
-      
-      const response = await crearOrden(req.body);
-      // console.log('response hander:',response)
+    console.log("Estoy en el handler");
+
+    const response = await crearOrden(req.body);
+    // console.log('response hander:',response)
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -84,5 +82,3 @@ export {
   statusHandler,
   webhookHandler,
 };
-
-
