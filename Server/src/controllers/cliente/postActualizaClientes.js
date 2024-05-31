@@ -1,5 +1,6 @@
-const { Cliente } = require("../../DB");
+ import {models} from "../../DB.js";
 
+ const { Cliente } = models;
 const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,calle,numero,codigoPostal,ciudad,pais,password) => {
     // console.log('imagen',imagen)
 
@@ -31,5 +32,5 @@ if (updateCount > 0) {
 };
 
 
-module.exports = {actualizaCliente};
+export {actualizaCliente};
 

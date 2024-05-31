@@ -1,5 +1,5 @@
-const { getAllCita } = require('../controllers/cita/getAllCita')
-const { createCita } = require('../controllers/cita/postAgregaCita')
+import { getAllCita } from '../controllers/cita/getAllCita.js'
+import { createCita } from '../controllers/cita/postAgregaCita.js'
 
 
 const getCitaHandler = async (req, res)=>{
@@ -23,7 +23,7 @@ const postCreateCita = async (req, res) =>{
 
 
 
-module.exports = {
+export  {
     getCitaHandler,
     postCreateCita,
 }

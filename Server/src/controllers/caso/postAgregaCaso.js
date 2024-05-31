@@ -1,5 +1,7 @@
-const { Caso, Cliente, Abogado, TipoDeCaso } = require("../../DB");
-const moment = require("moment");
+import { models } from "../../DB.js";
+import moment from 'moment'
+
+const { Caso, Cliente, Abogado, TipoDeCaso } = models
 
 const createCaso = async (
   cedulaCliente,
@@ -59,3 +61,5 @@ const createCaso = async (
 };
 
 module.exports = { createCaso };
+
+export {createCaso};

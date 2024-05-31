@@ -1,6 +1,6 @@
-const { getAllTipoDeCaso } = require('../controllers/tipodeCaso/getAllTipoDeCaso.js')
-const { createTipoDeCaso } = require('../controllers/tipodeCaso/createTipoDeCaso.js')
-const { deleteTipoDeCaso } = require('../controllers/tipodeCaso/deleteTipoDeCaso.js')
+import { getAllTipoDeCaso } from '../controllers/tipodeCaso/getAllTipoDeCaso.js'
+import { createTipoDeCaso } from '../controllers/tipodeCaso/createTipoDeCaso.js'
+import { deleteTipoDeCaso } from '../controllers/tipodeCaso/deleteTipoDeCaso.js'
 
 const getTipoDeCasoHandler = async (req, res)=>{
     try {
@@ -32,4 +32,4 @@ const deleteTipoDeCasoHandler = async (req, res) =>{
 }
 
 
-module.exports={postTipoDeCasoHandler,getTipoDeCasoHandler,deleteTipoDeCasoHandler}
+export {postTipoDeCasoHandler,getTipoDeCasoHandler,deleteTipoDeCasoHandler}

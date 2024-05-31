@@ -1,5 +1,5 @@
-const { TipoDeCaso } = require('../../DB');
-
+ import {models} from '../../DB.js';
+ const { TipoDeCaso } = models
 const getAllTipoDeCaso = async(offset,porPagina)=>{
         
         const totalRegistros=TipoDeCaso.count({
@@ -24,6 +24,6 @@ const getAllTipoDeCaso = async(offset,porPagina)=>{
    
  }
 
-module.exports = {
+export {
     getAllTipoDeCaso
 }

@@ -1,5 +1,5 @@
-const { Cliente, Abogado, Usuario } = require("../../DB");
-
+ import { models } from "../../DB.js";
+ const { Cliente, Abogado, Usuario } = models
 const getLogin = async (password, email, rol) => {
   if (rol === "Administrador") {
     const login = await Abogado.findOne({
@@ -40,6 +40,6 @@ const getLogin = async (password, email, rol) => {
   }
 };
 
-module.exports = {
+export {
   getLogin,
 };

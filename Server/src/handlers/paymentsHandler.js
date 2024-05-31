@@ -1,10 +1,10 @@
 
-const { crearOrden } = require("../controllers/pagos/crearOrden");
-const { failure } = require("../controllers/pagos/failure");
-const { getPayments } = require("../controllers/pagos/getPayments");
-const { pending } = require("../controllers/pagos/pending");
-const { obtenerPago } = require("../controllers/pagos/status");
-const { webhook } = require("../controllers/pagos/webhook");
+import { crearOrden } from "../controllers/pagos/crearOrden.js";
+import { failure } from "../controllers/pagos/failure.js";
+import { getPayments } from"../controllers/pagos/getPayments.js";
+import { pending } from"../controllers/pagos/pending.js";
+import { obtenerPago } from"../controllers/pagos/status.js";
+import { webhook } from"../controllers/pagos/webhook.js";
 
 const getPaymentsHandler = async (req, res) => {
   try {
@@ -64,7 +64,8 @@ const pendingHandler = async (req, res) => {
 const crearOrdenHandler = async (req, res) => {
   try {
     // const { password, email } = req.query;
-
+      console.log('Estoy en el handler')
+      
       const response = await crearOrden(req.body);
       console.log('response hander:',response)
     res.status(200).json(response);
@@ -73,7 +74,7 @@ const crearOrdenHandler = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getPaymentsHandler,
   crearOrdenHandler,
   pendingHandler,

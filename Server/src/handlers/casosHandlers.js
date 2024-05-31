@@ -1,7 +1,7 @@
-const { createCaso } = require("../controllers/caso/postAgregaCaso");
-const { getAllCaso } = require("../controllers/caso/getAllCaso");
-const { deleteCaso } = require("../controllers/caso/deleteCaso");
-const { getCasoId } = require("../controllers/caso/getCasoById,js");
+import { createCaso } from "../controllers/caso/postAgregaCaso.js";
+import { getAllCaso } from "../controllers/caso/getAllCaso.js";
+import { deleteCaso } from "../controllers/caso/deleteCaso.js";
+import { getCasoId } from "../controllers/caso/getCasoById.js";
 
 const createCasosHandler = async (req, res) => {
   const {
@@ -75,7 +75,7 @@ const deleteCasoHandler = async (req, res) => {
   }
 };
 
-module.exports = {
+export  {
   createCasosHandler,
   getCasoHandler,
   deleteCasoHandler,

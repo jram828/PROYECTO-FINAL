@@ -1,5 +1,5 @@
-const { PagosCliente } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { PagosCliente } = models
 const createPagosClientes = async (
   idCaso,
   description,
@@ -24,35 +24,4 @@ const createPagosClientes = async (
   return newPagoCliente;
 };
 
-module.exports = { createPagosClientes };
-
-//TODO *****De acá para abajo es para pruebas manuales*******
-//TODO *****Se debe descomentar de aca hacia abajo y comentar todo de aca hacia arriba*******
-
-// const { PagosCliente } = require("../../DB");
-
-// const createPagosClientes = async (
-//   idCaso,
-//   descripcion,
-//   fechaDeAprobacion,
-//   pagoId,
-//   orderId,
-//   tipoDePago,
-//   estado,
-//   importeDeLaTransaccion,
-// ) => {
-//   const newPagoCliente = await PagosCliente.create({
-//     idCaso,
-//     descripcion,
-//     fechaDeAprobacion,
-//     pagoId,
-//     orderId,
-//     tipoDePago,
-//     estado,
-//     importeDeLaTransaccion,
-//   });
-
-//   return newPagoCliente;
-// };
-
-// module.exports = { createPagosClientes };
+export { createPagosClientes };

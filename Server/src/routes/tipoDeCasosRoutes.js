@@ -1,9 +1,9 @@
-const { Router } = require("express");
-const {
+import { Router } from "express";
+import {
   postTipoDeCasoHandler,
   getTipoDeCasoHandler,
-} = require("../handlers/tipoDeCasosHandlers");
-const { getTipoDeCasoByIdHandler } = require("../handlers/casosHandlers");
+} from "../handlers/tipoDeCasosHandlers.js";
+import { getTipoDeCasoByIdHandler } from "../handlers/casosHandlers.js";
 
 const consultaRouter = Router();
 
@@ -13,4 +13,4 @@ consultaRouter.post("/", postTipoDeCasoHandler);
 
 //consultaRouter.post("/delete", deleteConsultaHandler);
 
-module.exports = consultaRouter;
+export default consultaRouter;
