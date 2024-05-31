@@ -52,13 +52,13 @@ function Status () {
 
 
 
-  // if (queries.payment_id) {
-    useEffect( () => {
+  if (queries.payment_id) {
+    // useEffect( () => {
       const datos = obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datos);
       setDatosPago(datos);
-    }, []);
-  // }
+    // }, []);
+  }
 
 
 
