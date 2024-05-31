@@ -23,9 +23,9 @@ const crearOrden = async (item) => {
     let body = {
       items: [
           {
-            //id: item.id,
+            id: item.idCaso,
             title: item.description,
-            //description: item.description,
+            description: item.description,
             quantity: Number(item.quantity),
             unit_price: Number(item.unit_price),
             currency_id: "ARS",
