@@ -45,7 +45,7 @@ function Detail() {
           dispatch(deleteAbogado(cedula));
           console.log('cedula', cedula);
           navigate('/home/lawyers');
-          dispatch(getAbogados())
+          
         }
       }else {
         const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
@@ -53,7 +53,7 @@ function Detail() {
         if (isConfirmed) {
           dispatch(deleteCliente(cedula));
           navigate('/home/customers');
-          dispatch(getClientes())
+          
         }
       }
     }
@@ -223,7 +223,9 @@ function Detail() {
             </label>
           </div>
           <div className="flex justify-center gap-2">
-            <button className="btn btn-sm btn-accent text-white">Eliminar registro</button>
+            <button className="btn btn-sm btn-accent text-white"
+            onClick={handleDelete}
+            >Eliminar registro</button>
             {datos?.matricula ? (
               <Link to="/home/lawyers">
                 <button className="btn btn-sm btn-accent text-white">Volver</button>
