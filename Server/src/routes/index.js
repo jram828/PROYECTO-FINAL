@@ -20,6 +20,7 @@ router.use("/casos", casosRouter);
 router.use("/login", loginRouter);
 router.use("/usuarios", usuariosRouter);
 router.use("/pagos", paymentsRouter);
+// router.use("/totalPagos", totalPagosRouter);
 router.use("/pagosClientes", pagosClientesRouter);
 router.use("/citas", citasRouter);
 

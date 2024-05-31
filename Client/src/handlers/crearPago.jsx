@@ -5,7 +5,7 @@ export async function crearPago(data) {
   const { description, quantity, unit_price,cedulaCliente } = data;
   console.log("data del post pago:", data);
 
-  const URL = "/pagos/crearorden";
+  const URL = "https://servidor-pasarela.onrender.com/create_order";
   const idempotencyKey = uuid();
   console.log("Idempotency key: ", idempotencyKey);
   try {

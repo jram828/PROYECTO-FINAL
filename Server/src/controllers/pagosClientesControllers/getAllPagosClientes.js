@@ -3,7 +3,7 @@
 const getAllPagosClientes = async () => {
   const getAllCasoBd = await PagosCliente.findAll({});
 
-  return getAllPagosClientes;
+  return getAllCasoBd;
 };
 
 export {
