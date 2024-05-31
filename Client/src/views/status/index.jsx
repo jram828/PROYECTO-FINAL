@@ -7,7 +7,7 @@ import Layout from "../../components/layout/layout";
 
 const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
-function Status () {
+async function Status () {
   
   const [queries, setQueries] = useState({});
   const [datosPago, setDatosPago] = useState({});
@@ -54,7 +54,7 @@ function Status () {
 
   if (queries.payment_id) {
     // useEffect( () => {
-      const datos = obtenerPago(queries.payment_id);
+      const datos = await obtenerPago(queries.payment_id);
       console.log("Informacion del pago: ", datos);
       setDatosPago(datos);
     // }, []);
