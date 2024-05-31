@@ -17,6 +17,7 @@ const obtenerPago = async (idPago) => {
     );
       // console.log('Respuesta obtener pago: ',data)
     const idCaso = data.additional_info.items[0].id;
+    console.log("idCaso: ", data.additional_info.items[0].id);
     const orderId = data.order.id;
     const importeDeLaTransaccion = data.transaction_amount;
     const estado = data.status;
