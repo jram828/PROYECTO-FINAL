@@ -22,45 +22,44 @@ const crearOrden = async (item) => {
 
     let body = {
       items: [
-          {
-            id: item.idCaso,
-            title: item.description,
-            description: item.description,
-            quantity: Number(item.quantity),
-            unit_price: Number(item.unit_price),
-            currency_id: "ARS",
-           
-          },
-        ],
-        payer: {
-          // email: req.body.payer,
-          email: "test_user_1490493949@testuser.com",
+        {
+          id: item.idCaso,
+          title: item.description,
+          description: item.description,
+          quantity: Number(item.quantity),
+          unit_price: Number(item.unit_price),
+          currency_id: "ARS",
         },
-        // Asi lo implemento Julian
-        // payment_methods: {
-        //   excluded_payment_methods: [],
-        //   excluded_payment_types: [],
-        //   installments: 12,
-        // },
-        //Implementacion Gustavo
-        payment_methods: {
-          // excluded_payment_types: [
-          //   {
-          //     id: 'ticket', // Excluir métodos de pago no deseados
-          //   },
-          // ],
-          installments: 12,
-        },
-        back_urls: {
-          success:
-            "https://proyecto-final-develop.vercel.app/#/home/payments/status",
-          failure: "https://proyecto-final-develop.vercel.app/#/home",
-          pending: "https://proyecto-final-develop.vercel.app/#/home",
-        },
-        notification_url:
-          "https://legaltech-develop.onrender.com/pagos/webhook",
-        auto_return: "approved",
-      };
+      ],
+      payer: {
+        // email: req.body.payer,
+        email: "test_user_1490493949@testuser.com",
+      },
+      // Asi lo implemento Julian
+      // payment_methods: {
+      //   excluded_payment_methods: [],
+      //   excluded_payment_types: [],
+      //   installments: 12,
+      // },
+      //Implementacion Gustavo
+      payment_methods: {
+        // excluded_payment_types: [
+        //   {
+        //     id: 'ticket', // Excluir métodos de pago no deseados
+        //   },
+        // ],
+        installments: 12,
+      },
+      back_urls: {
+        success:
+          // "https://proyecto-final-develop.vercel.app/#/home/payments/status",
+          "http://localhost:5173/#/home/payments/status",
+        failure: "https://proyecto-final-develop.vercel.app/#/home",
+        pending: "https://proyecto-final-develop.vercel.app/#/home",
+      },
+      notification_url: "https://legaltech-develop.onrender.com/pagos/webhook",
+      auto_return: "approved",
+    };
 
     //await preference.create() Asi llamaba Julian la API
 
