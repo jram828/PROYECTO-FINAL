@@ -4,7 +4,7 @@ import {
 } from "../pagosClientesControllers/postPagosClientes.js";
 
 const obtenerPago = async (idPago) => {
-  // console.log("Payment id: ", idPago);
+  console.log("Payment id: ", idPago);
   try {
     const { data } = await axios.get(
       `https://api.mercadopago.com/v1/payments/${idPago}`,
@@ -15,7 +15,7 @@ const obtenerPago = async (idPago) => {
         },
       }
     );
-
+      console.log('Respuesta obtener pago: ',data)
     const idCaso = data.additional_info.items[0].id;
     const orderId = data.order.id;
 
