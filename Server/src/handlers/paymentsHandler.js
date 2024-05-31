@@ -17,8 +17,9 @@ const getPaymentsHandler = async (req, res) => {
 
 const statusHandler = async (req, res) => {
   try {
-    const { id } = req.query;
+    const { id } = req.params;
     // const { id } = req.body;
+    console.log("params status: ", req.params);
     console.log("Id status handler: ", id);
     const response = await obtenerPago(id);
 
