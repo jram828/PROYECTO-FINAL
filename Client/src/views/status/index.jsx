@@ -35,8 +35,9 @@ function Status () {
   console.log("objeto queries: ", queries);
   console.log("Payment id: ", queries.payment_id);
   
+  
   const obtenerPago = async (id) => {
-    console.log("Payment id: ", id);
+    console.log("Payment id obtener pago: ", id);
     try {
     
     const paymentData = await verificarPago(id);
