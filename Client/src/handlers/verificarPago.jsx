@@ -7,7 +7,7 @@ export async function verificarPago(id) {
   const URL = "/pagos/status";
 
   try {
-   const response = await axios.post(URL, {
+   const response = await axios.get(URL, {
       id: id
    });
     console.log('Response handler verificar pago: ', response)
