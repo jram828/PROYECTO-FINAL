@@ -2,7 +2,7 @@ import axios from "axios";
 import {v4 as uuid} from "uuid"
 
 export async function crearPago(data) {
-  const { description, quantity, unit_price,cedulaCliente } = data;
+  const { description, quantity, unit_price,idCaso } = data;
   console.log("data del post pago:", data);
 
   const URL = "/pagos/crearorden";
@@ -13,7 +13,7 @@ export async function crearPago(data) {
       description: description,
       quantity: quantity,
       unit_price: unit_price,
-      id: cedulaCliente
+      id: idCaso
    },{headers:{"X-Idempotency-Key":idempotencyKey}});
     console.log('Response handler crear pago: ', response)
     return response.data;

@@ -18,33 +18,25 @@ const obtenerPago = async (idPago) => {
       // console.log('Respuesta obtener pago: ',data)
     const idCaso = data.additional_info.items[0].id;
     const orderId = data.order.id;
+    const importeDeLaTransaccion = data.transaction_amount;
+    const estado = data.status;
+    const descripcion = data.description;
+    const fechaDeAprobacion = data.date_approved;
+    const tipoDePago = data.payment_type_id;
+    const pagoId = data.id;
+    
 
-    const {
-      description,
-      date_approved,
-      id,
-      payment_type_id,
-      status,
-      transaction_amount,
-    } = data;
 
- console.log("Data crear pago:", {
-   description,
-   idCaso,
-   orderId,
-   date_approved,
-   payment_type_id,
-   status,
-   transaction_amount,
- });
+ console.log("Data crear pago:",)
     const newPago = createPagosClientes(
       idCaso,
-      description,
-      date_approved,
+      descripcion,
+      fechaDeAprobacion,
       orderId,
-      payment_type_id,
-      status,
-      transaction_amount,
+      tipoDePago,
+      estado,
+      importeDeLaTransaccion,
+      pagoId
     );
     return data;
   } catch (error) {
