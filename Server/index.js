@@ -1,5 +1,5 @@
-import { server,options, https } from "./src/server.js";
-
+import { server } from "./src/server.js";
+//,options, https
 import { models } from  "./src/DB.js";
 
 const { conn } = models;
@@ -15,6 +15,9 @@ conn
 //   console.log(`Server listening on port ${PORT}`);
 // });
 
-https.createServer(options, server).listen(PORT,() => {
-  console.log('Server listening on port ' + PORT);
+// https.createServer(options, server).listen(PORT,() => {
+//   console.log('Server listening on port ' + PORT);
+// });
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
