@@ -48,7 +48,7 @@ function Home() {
             </li>
             <li>
               <Link
-                to="/home/detail"
+                to="/home/datos"
                 className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
               >
                 <button>Datos Personales</button>
