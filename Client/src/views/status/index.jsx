@@ -28,6 +28,13 @@ function Status () {
         Object.assign(formattedQueries, { [key]: value });
       });
 
+        if (formattedQueries.payment_id) {
+          // useEffect(() => {
+            const datos = obtenerPago(queries.payment_id);
+            console.log("Informacion del pago: ", datos);
+            setDatosPago(datos);
+          // }, [queries.payment_id]);
+        }
       setQueries(formattedQueries);
       
     }, []);
@@ -52,13 +59,13 @@ function Status () {
 
 
 
-  if (queries.payment_id) {
-    useEffect(() => {
-      const datos = obtenerPago(queries.payment_id);
-      console.log("Informacion del pago: ", datos);
-      setDatosPago(datos);
-    }, [queries.payment_id]);
-  }
+  // if (queries.payment_id) {
+  //   useEffect(() => {
+  //     const datos = obtenerPago(queries.payment_id);
+  //     console.log("Informacion del pago: ", datos);
+  //     setDatosPago(datos);
+  //   }, [queries.payment_id]);
+  // }
 
 
 
