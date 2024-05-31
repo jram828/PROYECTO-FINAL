@@ -23,7 +23,7 @@ const crearOrden = async (item) => {
     let body = {
       items: [
         {
-          id: item.idCaso,
+          id: Number(item.id),
           title: item.description,
           description: item.description,
           quantity: Number(item.quantity),
