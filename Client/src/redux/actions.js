@@ -179,7 +179,7 @@ export const filterAbogado = (filtro) => {
 };
 
 export const orderAbogados = (value) => {
-  const endpoint = `${URL}abogados?field=apellido&order=${value}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}abogados?field=apellido&order=${value}&pagina=1&porPagina=50`;
 
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
@@ -191,7 +191,7 @@ export const orderAbogados = (value) => {
 };
 
 export const orderClientes = (value) => {
-  const endpoint = `${URL}clientes?field=apellido&order=${value}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}clientes?field=apellido&order=${value}&pagina=1&porPagina=50`;
 
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
