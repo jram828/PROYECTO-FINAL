@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export async function verificarPago(data) {
-  const { id } = data;
-  console.log("data del post pago:", data);
+export async function verificarPago(id) {
+  // const { id } = data;
+  console.log("Id verificar pago:", id);
 
   const URL = "/pagos/status";
 

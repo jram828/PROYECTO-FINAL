@@ -11,9 +11,9 @@ const obtenerPago = async (idPago) => {
       {
         headers: {
           Authorization:
-            "Bearer TEST-3176577694700734-051711-d19831d5da8b20319a010655906a334c-1817941600",
+            "Bearer APP_USR-7845349164975835-051714-ec5b987de7ec8e0f4239e0b93dc2fa4d-1817941600",
         },
-      },
+      }
     );
 
     const idCaso = data.additional_info.items[0].id;
