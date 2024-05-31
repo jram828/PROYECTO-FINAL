@@ -3,6 +3,7 @@ const { Sequelize } = require("sequelize");
 
 const fs = require("fs");
 const path = require("path");
+const { Server } = require("http");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
 /* **** Esto va cuando se hace el despliegue en RENDER */
@@ -89,8 +90,10 @@ Caso.belongsTo(Abogado);
 TipoDeCaso.hasMany(Caso);
 Caso.belongsTo(TipoDeCaso);
 
-Caso.hasMany(PagosCliente);
-PagosCliente.belongsTo(Caso);
+// Caso.hasMany(PagosCliente);
+// PagosCliente.belongsTo(Caso);
+Caso.hasMany(PagosCliente, { foreignKey: "idCaso" });
+PagosCliente.belongsTo(Caso, { foreignKey: "idCaso" });
 
 Caso.hasOne(Cotizacion);
 
