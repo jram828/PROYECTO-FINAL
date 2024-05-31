@@ -60,6 +60,4 @@ const createCaso = async (
   // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
 
-module.exports = { createCaso };
-
 export {createCaso};
