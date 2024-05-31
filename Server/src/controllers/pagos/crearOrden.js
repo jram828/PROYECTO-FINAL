@@ -15,7 +15,7 @@ const crearOrden = async (item) => {
   const client = new MercadoPagoConfig({accessToken: process.env.ACCESSTOKEN || ""})
 
   console.log('Estoy en el controller')
-  console.log('Body crear orden: ',item)
+  // console.log('Body crear orden: ',item)
 
   
   try {
@@ -69,7 +69,7 @@ const crearOrden = async (item) => {
     const preference = new Preference(client);
     console.log('Estoy por crear la preferencia')
     const response = await preference.create({body});
-    console.log('Response crear orden:',response)
+    // console.log('Response crear orden:',response)
    return response
   } catch (error) {
     console.log('Error en el controller')
