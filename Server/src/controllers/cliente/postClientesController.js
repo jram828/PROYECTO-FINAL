@@ -30,7 +30,7 @@ const createClienteBd = async (
     imagen,
     password,
   });
-  if(newCliente) sendEmailCliente(newCliente)
+  if(newCliente) sendEmailCliente(nombre,correo,"registro")
   console.log(newCliente);
   return {
     ...newCliente.toJSON(),

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './password.css';
 import Layout from '../../components/layout/layout';
 
+
 function Password() {
   return (
     <Layout>
