@@ -36,8 +36,9 @@ const postAbogadosHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
+    imagen,
     password,
-    administrador
+    administrador,
   } = req.body;
 
   try {
@@ -53,8 +54,9 @@ const postAbogadosHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
+      imagen,
       password,
-      administrador
+      administrador,
     );
     res.status(200).json(response);
   } catch (error) {

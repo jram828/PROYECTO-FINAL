@@ -1,5 +1,4 @@
-
-const { Cliente } = require('../../DB')
+const { Cliente } = require("../../DB");
 
 const createClienteBd = async (
   cedulaCliente,
@@ -12,7 +11,8 @@ const createClienteBd = async (
   codigoPostal,
   ciudad,
   pais,
-  password
+  imagen,
+  password,
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -25,7 +25,8 @@ const createClienteBd = async (
     codigoPostal,
     ciudad,
     pais,
-    password
+    imagen,
+    password,
   });
   console.log(newCliente);
   return {
