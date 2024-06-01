@@ -163,7 +163,7 @@ export const filterCliente = (filtro) => {
 };
 
 export const filterAbogado = (filtro) => {
-  const endpoint = `${URL}abogados?${filtro}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}abogados?${filtro}&pagina=1&porPagina=50`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {

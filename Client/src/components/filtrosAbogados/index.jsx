@@ -41,13 +41,14 @@ function FiltrosAbogados() {
             <Link to="/home/lawyers/crearabogado" className="btn btn-md hover:bg-primary hover:text-white w-full">Crear abogado</Link>
             <OrderAbogados />
             <SearchBar onFilter={handleFilter} />
+            {filterApplied && <button onClick={handleVerTodosClick} className="btn">Ver todos</button>}
             <Link to="/home" className="btn btn-md hover:bg-primary hover:text-white w-full">Volver</Link>
           </div>
         </div>
         <div className="md:w-2/3 p-2">
           <div className="flex flex-col gap-4">
             <Cards items={abogados} />
-            {filterApplied && <button onClick={handleVerTodosClick} className="btn">Ver todos</button>}
+           
           </div>
         </div>
       </div>
