@@ -1,9 +1,9 @@
-const {
+import {
   getAllPagosClientes,
-} = require("../controllers/pagosClientesControllers/getAllPagosClientes");
-const {
+} from "../controllers/pagosClientesControllers/getAllPagosClientes.js";
+import {
   createPagosClientes,
-} = require("../controllers/pagosClientesControllers/postPagosClientes");
+} from "../controllers/pagosClientesControllers/postPagosClientes.js";
 
 const getPagosClientesHandler = async (req, res) => {
   try {
@@ -43,7 +43,7 @@ const postPagosClientesHandler = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getPagosClientesHandler,
   postPagosClientesHandler,
 };

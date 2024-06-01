@@ -1,5 +1,6 @@
-const { Cliente } = require("../../DB");
+ import {models} from "../../DB.js";
 
+ const { Cliente } = models;
 const getAllCliente = async (filters) => {
   const pagina = [];
   const newFilters = {};
@@ -58,6 +59,6 @@ const getAllCliente = async (filters) => {
   return allClient;
 };
 
-module.exports = {
+export {
   getAllCliente,
 };

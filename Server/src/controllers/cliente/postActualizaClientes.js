@@ -1,4 +1,5 @@
-const { Cliente } = require("../../DB");
+ import {models} from "../../DB.js";
+
 
 const actualizaCliente = async (
   cedulaCliente,
@@ -45,5 +46,6 @@ const actualizaCliente = async (
 
   // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
+export {actualizaCliente};
 
-module.exports = { actualizaCliente };
+

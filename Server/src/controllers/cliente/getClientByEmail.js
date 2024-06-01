@@ -1,5 +1,6 @@
-const { Cliente, Abogado } = require("../../DB");
+import {models} from "../../DB.js";
 
+ const { Cliente, Abogado } = models;
 const getClientByEmail = async (correo) => {
   const cliente = await Cliente.findOne({
     where: {
@@ -19,6 +20,6 @@ const getClientByEmail = async (correo) => {
   return cliente;
 };
 
-module.exports = {
+export {
   getClientByEmail,
 };

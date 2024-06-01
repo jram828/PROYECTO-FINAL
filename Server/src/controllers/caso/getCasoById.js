@@ -1,11 +1,11 @@
-const {
+ import { models } from "../../DB.js";
+ const {
   Caso,
   Cliente,
   Abogado,
   TipoDeCaso,
   PagosCliente,
-} = require("../../DB");
-
+} = models
 const getCasoId = async (id) => {
   const caso = await Caso.findByPk(id, {
     include: [
@@ -32,6 +32,6 @@ const getCasoId = async (id) => {
 };
 // intento subir
 
-module.exports = {
+export  {
   getCasoId,
 };

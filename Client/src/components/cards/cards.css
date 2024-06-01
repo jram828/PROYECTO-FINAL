@@ -1,9 +1,15 @@
-.contenedorAbogados {
-    padding-top: 5%;
-    margin: 3rem;
+/* .contenedorAbogados {
+   
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 4rem;
+    grid-gap: 2rem;
     
 
 }
+
+@media (max-width: 768px) {
+    .contenedorAbogados {
+      grid-template-columns: 1fr;
+    }
+  } */

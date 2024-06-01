@@ -1,14 +1,14 @@
-const { getClienteById } = require("../controllers/cliente/getClienteById");
-const { getAllCliente } = require("../controllers/cliente/getAllClientes");
-const { getClienteByName } = require("../controllers/cliente/getClienteByName");
-const {
-  createClienteBd,
-} = require("../controllers/cliente/postClientesController");
-const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
-const {
+import { getClienteById } from "../controllers/cliente/getClienteByid.js";
+import { getAllCliente } from "../controllers/cliente/getAllClientes.js";
+import { getClienteByName } from "../controllers/cliente/getClienteByName.js";
+import { createClienteBd } from "../controllers/cliente/postClientesController.js";
+import { eliminaCliente } from "../controllers/cliente/postEliminaCliente.js";
+import {
   actualizaCliente,
-} = require("../controllers/cliente/postActualizaClientes");
-const { getClientByEmail } = require("../controllers/cliente/getClientByEmail");
+} from "../controllers/cliente/postActualizaClientes.js";
+import {
+  getClientByEmail,
+} from "../controllers/cliente/getClientByEmail.js";
 
 const clientesHandler = async (req, res) => {
   //const { name } = req.query;
@@ -141,7 +141,7 @@ const postActualizaClientes = async (req, res) => {
   }
   // res.status(200).send(`creando actividades`);
 };
-module.exports = {
+export  {
   clientesHandler,
   clientesDetailHandler,
   postClientesHandler,

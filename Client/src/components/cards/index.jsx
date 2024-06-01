@@ -1,15 +1,21 @@
-import './cards.css'
-import Card from '../card/index'
+import './cards.css';
+import Card from '../card/index';
 
-function Cards({ items }) {
-
+function Cards({ items, config }) {
   if (!Array.isArray(items)) {
     return null;
   }
+
   return (
-    <div className='contenedorAbogados'>
-      {items.map(item => <Card item={item} key={item.cedulaAbogado ? item.cedulaAbogado : item.cedulaCliente} />)}
-    </div>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8">
+  {items.map(item => (
+    <Card 
+      item={item} 
+      key={item.id} 
+      config={config} 
+    />
+  ))}
+</div>
   );
 }
 

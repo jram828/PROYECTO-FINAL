@@ -1,4 +1,4 @@
-.container {
+/* .container {
     background-color: transparent;
     opacity: 0.9;
     border-radius: 10px;
@@ -8,14 +8,14 @@
     margin: 0 auto;
     color: white;
     font-family: "Outfit", sans-serif;
-}
-
+} */
+/* 
 .container2 {
     display: flex;
     justify-content: space-between; 
-}
+} */
 
-.select {
+/* .select {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid white;
@@ -23,10 +23,10 @@
     background-color: var(--color-two);
     color: white;
     font-family: "Outfit", sans-serif;
-}
+} */
 
-.option {
-    background-color: var(--color-two);
+.customOption {
     color: white;
-    font-family: "Outfit", sans-serif;
-}
+    background-color: #0A2B3C; 
+  }
+

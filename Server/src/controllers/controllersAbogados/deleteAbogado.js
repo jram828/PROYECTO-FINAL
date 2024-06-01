@@ -1,4 +1,6 @@
-const { Abogado } = require("../../DB");
+import  { models }  from "../../DB.js";
+
+const Abogado=models.Abogado
 
 const deleteAbogado = async (cedulaAbogado) => {
   await Abogado.update(
@@ -14,6 +16,6 @@ const deleteAbogado = async (cedulaAbogado) => {
   return "Delete complete";
 };
 
-module.exports = {
+export  {
   deleteAbogado,
 };

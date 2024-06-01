@@ -1,5 +1,5 @@
-const { TipoDeCaso } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { TipoDeCaso } = models;
 const createTipoDeCaso = async (descripcion) => {
     
     const newTipoDeCaso = await TipoDeCaso.create({descripcion})
@@ -7,4 +7,4 @@ const createTipoDeCaso = async (descripcion) => {
     return newTipoDeCaso
 }  
     
-module.exports = {createTipoDeCaso};
+export {createTipoDeCaso};
