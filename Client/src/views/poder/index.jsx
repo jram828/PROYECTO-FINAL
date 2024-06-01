@@ -88,7 +88,7 @@ function generatePDF() {
           Sírvase señor(a) operador en insolvencia, reconocer el poder en los
           efectos mencionado de conformidad con el Decreto 806 del 4 de junio de
           2020, para lo cual me permito indiciar que el correo del apoderado que
-          constituyo es: <u>j.avellaneda@aveza.co</u>
+          constituyo es: <u>legaltech@gmail.com</u>
         </p>
         <div className="firmas">
           <div className="firmacliente">
