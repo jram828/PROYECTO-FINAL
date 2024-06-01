@@ -1,4 +1,10 @@
 import { models } from "../../DB.js";
+const {
+  ACCOUNTSID,
+  AUTHTOKEN,
+  NUMBER,
+} = process.env;
+import twilio from "twilio";
 
 const Abogado = models.Abogado
 
@@ -37,11 +43,20 @@ const createAbogadoBd = async (
     administrador,
   });
 
-  //  newAbogado.addCliente(clientes);
+        const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
+  const numero = "+573127461628";
+  client.messages
+    .create({
+      body: "Se ha creado un nuevo Abogado en Legaltech!",
+      from: "+12097210938",
+      to: numero,
+    })
+    .then((message) => console.log(message.sid))
+    .done();
+     
 
   return newAbogado;
 
-  // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
 
 export  { createAbogadoBd };
