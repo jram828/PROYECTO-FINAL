@@ -54,8 +54,7 @@ const getClientByEmailHandler = async (req, res) => {
 };
 
 const postClientesHandler = async (req, res) => {
-
-  console.log('Body post cliente:',req.body)
+  console.log("Body post cliente:", req.body);
   const {
     cedulaCliente,
     nombre,
@@ -67,7 +66,8 @@ const postClientesHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
-    password
+    imagen,
+    password,
   } = req.body;
 
   try {
@@ -82,9 +82,10 @@ const postClientesHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
-      password
+      imagen,
+      password,
     );
-    console.log('Response crear cliente', response)
+    console.log("Response crear cliente", response);
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");
   } catch (error) {

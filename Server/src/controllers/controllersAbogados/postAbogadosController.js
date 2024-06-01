@@ -15,7 +15,8 @@ const createAbogadoBd = async (
   ciudad,
   pais,
   password,
-  administrador
+  imagen,
+  administrador,
 ) => {
   // console.log('imagen',imagen)
 
@@ -32,7 +33,8 @@ const createAbogadoBd = async (
     ciudad,
     pais,
     password,
-    administrador
+    imagen,
+    administrador,
   });
 
   //  newAbogado.addCliente(clientes);
