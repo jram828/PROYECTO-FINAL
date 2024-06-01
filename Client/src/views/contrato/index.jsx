@@ -37,7 +37,7 @@ const Contrato = () => {
   console.log("Cliente Prev Contrato:", cliente);
 
   return (
-    <div className="contrato">
+    <div className="flex items-center justify-center min-h-screen p-6">
       <h1 className="titulo">Vista previa del contrato</h1>
       <br />
       <div id="divToPrint" className="divToPrint">
@@ -47,8 +47,8 @@ const Contrato = () => {
           <header id="titulocontrato" className="tituloo">
             <b>
               CONTRATO DE PRESTACIÓN DE SERVICIOS ENTRE{" "}
-              {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()}{" "}
-              Y{abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()}{" "}
+              {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()} Y
+              {abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()}{" "}
             </b>
           </header>
           <title>CONTRATO DE PRESTACIÓN DE SERVICIOS</title>
@@ -373,11 +373,10 @@ const Contrato = () => {
               <br />
               <br />
               <h2 className="firma">
-                {cliente.nombre.toUpperCase()}{" "}
-                {cliente.apellido.toUpperCase()} <br />
+                {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()}{" "}
+                <br />
                 C.C. No. {cliente.cedula} <br />
-                {cliente.direccion.toUpperCase()},{" "}
-                {cliente.ciudad}
+                {cliente.direccion.toUpperCase()}, {cliente.ciudad}
                 <br />
                 Cel: {cliente.celular}
               </h2>

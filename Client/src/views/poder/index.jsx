@@ -35,7 +35,7 @@ function generatePDF() {
   };
 
   return (
-    <div className="contenedorPoder">
+    <div className="flex items-center justify-center min-h-screen p-6">
       <h1 className="titulo">Poder</h1>
       <div className="poder" id="poder">
         <p className="titulopoder">
