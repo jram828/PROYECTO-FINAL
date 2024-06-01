@@ -104,7 +104,7 @@ function CrearAbogado() {
           >
             <h1 className={style.titulo}>Crear Abogado</h1>
             <div className="space-y-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-wrap justify-around">
                 <div className="mb-4">
                   <h2 className="text-xl mb-2">Foto de perfil</h2>
                   <input
@@ -123,6 +123,8 @@ function CrearAbogado() {
                     </div>
                   )}
                 </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="mx-4">
                   <label
                     htmlFor="nombre"
