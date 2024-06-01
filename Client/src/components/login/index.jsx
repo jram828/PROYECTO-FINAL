@@ -30,7 +30,7 @@ const githubProvider = new GithubAuthProvider();
 
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ clickHandlerRecordatorio, clickHandlerCrear }) => {
+const Login = ({ clickHandlerRecordatorio}) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -169,9 +169,6 @@ const dispatch = useDispatch();
         </div>
 
         <div>
-          <label htmlFor="tipodeusuario" className="">
-            Tipo de usuario:
-          </label>
           <select
             name="rol"
             id="rol"
@@ -206,13 +203,13 @@ const dispatch = useDispatch();
           </div>
 
           <div className="flex justify-center space-x-4">
-            <input
+            {/* <input
               type="button"
               name="crearusuario"
               value="Crear Usuario"
               className="btn btn-accent w-40"
               onClick={clickHandlerCrear}
-            />
+            /> */}
             <input
               type="button"
               name="password"
@@ -220,20 +217,19 @@ const dispatch = useDispatch();
               className="btn btn-accent w-40"
               onClick={clickHandlerRecordatorio}
             />
+            <button
+              onClick={() => handleSignIn(githubProvider)}
+              className="btn btn-accent w-40"
+            >
+              Sign in with GitHub
+            </button>
           </div>
         </div>
       </form>
       <div className="flex justify-center">
         <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage} />
       </div>
-      <div className={style.github}>
-        <button
-          onClick={() => handleSignIn(githubProvider)}
-          className="btn btn-accent w-40"
-        >
-          Sign in with GitHub
-        </button>
-      </div>
+      <div className={style.github}></div>
     </div>
   );
 };
