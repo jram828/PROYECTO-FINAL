@@ -3,28 +3,22 @@ import { printDivContent } from "../../utils/printDivContent";
 import { getCasos, getCasoById, getByIdCliente, getByIdAbogado, setAbogado, setCliente } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 
 const Poder = () => {
 
   const dispatch = useDispatch();
-  const { cedula } = useParams();
+  const location = useLocation();
+ 
 
+  const cliente = location.state?.cliente || {};
   const casos = useSelector((state) => state.casos);
   const caso = useSelector((state) => state.caso);
-  const cliente = useSelector((state) => state.cliente);
   const abogado = useSelector((state) => state.abogado)
+console.log("cliente:",cliente)
 
-
-
-  useEffect(()=>{
-    dispatch(getByIdCliente(cedula));
-    return () => {
-        dispatch(setCliente({}));
-    };
-  }, []);
-  console.log('cliente:', cliente)
 
   useEffect(() => {
     dispatch(getCasos()); 
@@ -45,9 +39,10 @@ const Poder = () => {
     console.log("caso", caso);
 
     useEffect(() => {
-      dispatch(getByIdAbogado(caso.AbogadoCedulaAbogado));
-      //return () => { dispatch(setAbogado({})) };
-  }, [dispatch]);
+      if (caso.AbogadoCedulaAbogado) {
+        dispatch(getByIdAbogado(caso.AbogadoCedulaAbogado));
+      }
+    }, [caso.AbogadoCedulaAbogado, dispatch]);
 
   console.log("abogado:", abogado)
 

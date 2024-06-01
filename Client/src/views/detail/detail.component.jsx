@@ -76,6 +76,14 @@ function Detail() {
         }
       }
     }
+
+    const handleGenerateContract = () => {
+      navigate('/home/documentos/contrato', { state: { cliente: datos } });
+    };
+
+    const handleGeneratePoder = () => {
+      navigate('/home/documentos/poder', { state: { cliente: datos } });
+    };
    
 
   return (
@@ -294,18 +302,16 @@ function Detail() {
               </Link>
             )}
             {datos?.matricula ? undefined : (
-              <Link to="/home/documentos/contrato">
-                <button className="btn btn-sm btn-accent text-white">
-                  Generar contrato
-                </button>
-              </Link>
+              <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
+              Generar contrato
+            </button>
             )}
             {datos?.matricula ? undefined : (
-              <Link to={`/home/documentos/poder/${cedula}`}>
-                <button className="btn btn-sm btn-accent text-white">
+              
+                <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
                   Generar poder
                 </button>
-              </Link>
+             
             )}
           </div>
         </div>

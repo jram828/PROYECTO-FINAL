@@ -85,7 +85,7 @@ function App() {
         <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
         <Route path="/home/documentos" element={<Documents />} />
         <Route path="/home/documentos/contrato" element={<Contrato />} />
-        <Route path="/home/documentos/poder/:cedula" element={<Poder />} />
+        <Route path="/home/documentos/poder" element={<Poder />} />
         <Route
           path="/home/customers/crearcliente"
           element={<CreateCliente />}
