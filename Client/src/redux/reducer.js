@@ -26,6 +26,7 @@ import {
   CLEAN_USER,
   SET_ABOGADO,
   SET_CLIENTE,
+  DELETE_CASO,
 } from "./actions";
 
 let initialState = {
@@ -151,6 +152,11 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           caso: action.payload,
         };
+        case DELETE_CASO:
+          return {
+            ...state,
+            casos: action.payload,
+          }
     case POST_CITA:
       return {
         ...state,
