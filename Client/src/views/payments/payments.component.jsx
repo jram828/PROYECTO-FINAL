@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 // const PUBLIC_KEY = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
 // import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { initMercadoPago } from "@mercadopago/sdk-react";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 import Layout from '../../components/layout/layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCasos } from '../../redux/actions';
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
@@ -16,7 +18,7 @@ function Payments() {
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    idCaso: "52",
+    idCaso: "",
     description: "Honorarios",
   });
 
@@ -44,6 +46,15 @@ function Payments() {
       [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
     });
   };
+
+  const dispatch = useDispatch();
+  const casos = useSelector((state) => state.casos);
+
+  console.log("casos", casos);
+
+  useEffect(() => {
+    dispatch(getCasos());
+  }, [dispatch]);
   
   return (
     <Layout>
@@ -51,6 +62,9 @@ function Payments() {
         <div>
           <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
             <h1 className="titulo">Realizar un pago</h1>
+            <br />
+            <h4 className="titulo">Selecciona el caso al cual se va a aplicar el pago e ingresa el valor de los honorarios que deseas pagar.</h4>
+            <br />
             <div className="input input-bordered flex items-center gap-2">
               <label htmlFor="correo" className="">
                 Valor a pagar:
@@ -63,6 +77,46 @@ function Payments() {
                 id="unit_price"
                 className="grow"
               />
+            </div>
+            <div className="input input-bordered flex items-center gap-2">
+              {/* <label htmlFor="correo" className="">
+                Número de caso:  
+              </label>
+              <input
+                name="idCaso"
+                type="number"
+                value={userPreference.idCaso}
+                onChange={handleChangePagos}
+                id="idCaso"
+                className="grow"
+              /> */}
+              {casos.datosPagina ? (
+                <label className="w-full">
+                  <select
+                    name="idCaso"
+                    id="idCaso"
+                    onChange={(event) => handleChangePagos(event)}
+                    className="input input-bordered text-lg pl-2 w-full"
+                  >
+                    <option value="" className="customOption">
+                      Seleccionar caso
+                    </option>
+                    {casos.datosPagina.map((caso) => (
+                      <option
+                        key={caso.id}
+                        value={caso.id}
+                        className="customOption"
+                      >
+                        {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                <label className="w-full">
+                  No se encontraron casos para asociar al pago.
+                </label>
+              )}
             </div>
             <div className="botonescrearusuario">
               <Link to="/home">

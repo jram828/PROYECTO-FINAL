@@ -12,19 +12,30 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendEmailCliente = ({nombre, correo})=>{
-
-    const templatePath = path.join(__dirname, 'templateCliente.html');
-    const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
+const sendEmailCliente = (nombre, correo, source, password) => {
     
-    const personalizedHtml = htmlTemplate
-    .replace('{{nombre}}', nombre)
-    .replace('{{correo}}', correo);
+    if (source === "registro") {
+      const templatePath = path.join(__dirname, "templateCliente.html");  
+      const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
+      
+      var personalizedHtml = htmlTemplate
+      .replace('{{nombre}}', nombre)
+      .replace('{{correo}}', correo);
+    } else {
+        const templatePath = path.join(__dirname, "templatePassword.html"); 
+        const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+
+        var personalizedHtml = htmlTemplate
+          .replace("{{nombre}}", nombre)
+          .replace("{{correo}}", correo)
+          .replace("{{password}}", password);
+    };
+
 
     const mailOptions = {
         from: EMAIL,
         to: correo,
-        subject: '🚀 lets go!!',
+        subject: '🚀 Bienvenido a Legaltech!!',
         html: personalizedHtml
     };
 

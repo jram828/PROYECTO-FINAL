@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 // import axios from "axios";
 import { verificarPago } from "../../handlers/verificarPago";
 import Layout from "../../components/layout/layout";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-blue.png";
 import { printDivContent } from "../../utils/printDivContent";
 // const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -59,14 +59,19 @@ function Status() {
 
   return (
     // <div className="comprobante">
-      <Layout>
-        <div
-          className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6"
-          id="comprobante"
-        >
+    <Layout>
+      <div
+        className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6"
+      >
+        <div id="comprobante">
           <div className="logo-legaltech">
-            <img src={logo} alt="logo-legaltech" />
+            <img
+              src={logo}
+              alt="logo-legaltech"
+              style={{ width: "150px", height: "150px" }}
+            />
           </div>
+          <br />
           <div className="mb-4">
             <p className="text-xl font-semibold">Estado de la transacción</p>
           </div>
@@ -75,14 +80,14 @@ function Status() {
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="input input-bordered flex items-center max-w-xs">
-                  ID de pago:
+                  ID de pago:  
                   <input value={datosPago.id} className="grow" readOnly />
                 </label>
               </div>
 
               <div>
                 <label className="input input-bordered flex items-center max-w-xs">
-                  Estado:
+                  Estado:  
                   <input value={datosPago.status} className="grow" readOnly />
                 </label>
               </div>
@@ -91,7 +96,7 @@ function Status() {
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="input input-bordered flex items-center max-w-xs">
-                  Valor:
+                  Valor:  
                   <input
                     value={datosPago.transaction_amount}
                     className="grow"
@@ -102,7 +107,7 @@ function Status() {
               <div>
                 <label className="input input-bordered flex items-center max-w-xs whitespace-nowrap">
                   {" "}
-                  Método de pago:
+                  Método de pago:  
                   <input
                     value={datosPago.payment_type_id}
                     className="grow"
@@ -115,7 +120,7 @@ function Status() {
             <div className="grid grid-cols-1 gap-4">
               <div className="">
                 <label className="input input-bordered flex items-center max-w-xs">
-                  Fecha:
+                  Fecha:  
                   <input
                     type="date"
                     value={datosPago.date_approved}
@@ -127,6 +132,7 @@ function Status() {
 
               <div>
                 <label className="">
+                  Descripción:  
                   <input
                     value={datosPago.description}
                     type="text"
@@ -138,22 +144,22 @@ function Status() {
               </div>
             </div>
           </div>
-
-          <div className="mt-6 flex justify-center">
-            <Link to="/home/payments">
-              <button className="btn btn-accent text-white">
-                Reintentar pago
-              </button>
-            </Link>
-            <button onClick={generatePDF} className="btn btn-accent text-white">
-              Guardar comprobante
-            </button>
-            <Link to="/home">
-              <button className="btn btn-accent text-white">Volver</button>
-            </Link>
-          </div>
         </div>
-      </Layout>
+        <div className="mt-6 flex justify-center">
+          <Link to="/home/payments">
+            <button className="btn btn-accent text-white">
+              Reintentar pago
+            </button>
+          </Link>
+          <button onClick={generatePDF} className="btn btn-accent text-white">
+            Guardar comprobante
+          </button>
+          <Link to="/home">
+            <button className="btn btn-accent text-white">Volver</button>
+          </Link>
+        </div>
+      </div>
+    </Layout>
     // </div>
   );
 }

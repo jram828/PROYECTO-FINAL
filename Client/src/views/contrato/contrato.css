@@ -56,3 +56,9 @@
     text-align: center;
     font-size: 12px;
    }
+
+   .divToPrint{
+    display: flex;
+       text-align: center;
+       flex-direction: column;
+   }
