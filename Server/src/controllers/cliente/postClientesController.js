@@ -1,4 +1,3 @@
-
 import {models} from '../../DB.js'
 import { sendEmailCliente} from "../../utils/emailNotifier.js";
 
@@ -14,7 +13,8 @@ const createClienteBd = async (
   codigoPostal,
   ciudad,
   pais,
-  password
+  imagen,
+  password,
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -27,7 +27,8 @@ const createClienteBd = async (
     codigoPostal,
     ciudad,
     pais,
-    password
+    imagen,
+    password,
   });
   if(newCliente) sendEmailCliente(newCliente)
   console.log(newCliente);
