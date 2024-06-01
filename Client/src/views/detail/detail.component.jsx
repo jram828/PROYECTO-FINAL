@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbogado, deleteCliente } from '../../redux/actions';
-import { getAbogados, getClientes} from '../../redux/actions'
 import Layout from '../../components/layout/layout';
 
 
@@ -19,22 +18,43 @@ function Detail() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  if (source === 'abogado') {
+  /*if (source === 'abogado') {
     var datos = useSelector((state) => state.abogado);
     var { cedula } = useParams();
     useEffect(() => {
       dispatch(getByIdAbogado(cedula));
-      // return setAbogado({});
+      //return setAbogado({});
     }, [dispatch, cedula]);
   } else {
     var datos = useSelector((state) => state.cliente);
     var { cedula } = useParams()
     useEffect(() =>{
       dispatch(getByIdCliente(cedula))
-      // return setCliente({});
+      //return setCliente({});
    }, [dispatch, cedula])
     console.log('datos', datos)
-  }
+  }*/
+
+
+  const { cedula } = useParams();
+
+  useEffect(() => {
+    if (source === 'abogado') {
+      dispatch(getByIdAbogado(cedula));
+    } else {
+      dispatch(getByIdCliente(cedula));
+    }
+
+    return () => {
+      if (source === 'abogado') {
+        dispatch(setAbogado({}));
+      } else {
+        dispatch(setCliente({}));
+      }
+    };
+  }, [dispatch, cedula, source]);
+
+  const datos = useSelector((state) => (source === 'abogado' ? state.abogado : state.cliente));
 
  
     const handleDelete = () => {
@@ -256,7 +276,9 @@ function Detail() {
             </label>
           </div>
           <div className="flex justify-center gap-2">
-            <button className="btn btn-sm btn-accent text-white">
+            <button 
+            onClick={handleDelete}
+            className="btn btn-sm btn-accent text-white">
               Eliminar registro
             </button>
             {datos?.matricula ? (
