@@ -17,25 +17,6 @@ function Detail() {
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
-
-  /*if (source === 'abogado') {
-    var datos = useSelector((state) => state.abogado);
-    var { cedula } = useParams();
-    useEffect(() => {
-      dispatch(getByIdAbogado(cedula));
-      //return setAbogado({});
-    }, [dispatch, cedula]);
-  } else {
-    var datos = useSelector((state) => state.cliente);
-    var { cedula } = useParams()
-    useEffect(() =>{
-      dispatch(getByIdCliente(cedula))
-      //return setCliente({});
-   }, [dispatch, cedula])
-    console.log('datos', datos)
-  }*/
-
-
   const { cedula } = useParams();
 
   useEffect(() => {
@@ -55,6 +36,24 @@ function Detail() {
   }, [dispatch, cedula, source]);
 
   const datos = useSelector((state) => (source === 'abogado' ? state.abogado : state.cliente));
+
+
+  /*if (source === 'abogado') {
+    var datos = useSelector((state) => state.abogado);
+    var { cedula } = useParams();
+    useEffect(() => {
+      dispatch(getByIdAbogado(cedula));
+      //return setAbogado({});
+    }, [dispatch, cedula]);
+  } else {
+    var datos = useSelector((state) => state.cliente);
+    var { cedula } = useParams()
+    useEffect(() =>{
+      dispatch(getByIdCliente(cedula))
+      //return setCliente({});
+   }, [dispatch, cedula])
+    console.log('datos', datos)
+  }*/
 
  
     const handleDelete = () => {
@@ -302,7 +301,7 @@ function Detail() {
               </Link>
             )}
             {datos?.matricula ? undefined : (
-              <Link to="/home/documentos/poder">
+              <Link to={`/home/documentos/poder/${cedula}`}>
                 <button className="btn btn-sm btn-accent text-white">
                   Generar poder
                 </button>
