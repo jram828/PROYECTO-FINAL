@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendEmailCliente = (nombre, correo) => {
+const sendEmailCliente = ({nombre, correo}) => {
     //   const templatePath = path.join(__dirname, "templateCliente.html");
     //   const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
 
