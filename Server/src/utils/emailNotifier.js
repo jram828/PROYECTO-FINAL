@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmailCliente = (nombre, correo, source, password) => {
-    
+    console.log("Datos email registro:", nombre, correo,source, password);
     if (source === "registro") {
       const templatePath = path.join(__dirname, "templateCliente.html");  
       const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
