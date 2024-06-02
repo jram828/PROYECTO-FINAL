@@ -56,6 +56,7 @@ function FiltrosCasos() {
 
   return (
     <div className='container grid grid-cols-2 gap-4'>
+       {user.administrador === true || user.cedulaAbogado ? (
       <div className="flex flex-col justify-start gap-4 p-4 rounded-lg bg-primary">
         <Link to='/home/cases/crearcaso' className='btn btn-md hover:bg-primary hover:text-white w-full'>
           <button >Crear caso</button>
@@ -66,6 +67,9 @@ function FiltrosCasos() {
           <button >Volver</button>
         </Link>
       </div>
+    ) :<Link to='/home' className='btn btn-md hover:bg-primary hover:text-white w-full'>
+    <button >Volver</button>
+  </Link>}
       <div>
       <div className=''>
     
