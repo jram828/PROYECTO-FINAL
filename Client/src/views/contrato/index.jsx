@@ -2,12 +2,13 @@
 import "./contrato.css";
 
 import { printDivContent } from "../../utils/printDivContent";
+import { useLocation } from "react-router-dom";
 
 function generatePDF() {
 printDivContent('contenedorcontrato');
 }
 
-const cliente = {
+/*const cliente = {
   nombre: "Juan Carlos",
   apellido: "Perez Paramo",
   direccion: "Calle 14 # 15 - 90",
@@ -19,21 +20,25 @@ const cliente = {
   valor_pretensiones_letras: "CINCUENTA MILLONES DE PESOS",
   honorarios: "2.000.000",
   honorarios_letras: "DOS MILLONES DE PESOS"
-}
+}*/
 
-const abogado = {
-  nombre: "Jeronimo Elias",
-  apellido: "Manzanares Castillo",
+const estudio = {
+  nombre: "Estudio Juridico LEGAL TECH",
   direccion: "Calle 50 # 70 - 85",
   celular: "3687412536",
-  correo: "jeronimo@gmail.com",
-  cedulaAbogado: "73698521",
+  correo: "legaltech@gmail.com",
+  valor_pretensiones: "50.000.000",
+  valor_pretensiones_letras: "CINCUENTA MILLONES DE PESOS",
+  honorarios: "2.000.000",
+  honorarios_letras: "DOS MILLONES DE PESOS",
+  cedula: "43526"
+
 };
 
 const Contrato = () => {
 
-  // const cliente = useSelector((state) => state.cliente);
-
+  const location = useLocation();
+  const cliente = location.state?.cliente || {};
   console.log("Cliente Prev Contrato:", cliente);
 
   return (
@@ -47,8 +52,8 @@ const Contrato = () => {
           <header id="titulocontrato" className="tituloo">
             <b>
               CONTRATO DE PRESTACIÓN DE SERVICIOS ENTRE{" "}
-              {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()} Y
-              {abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()}{" "}
+              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()} Y {""}
+              {estudio.nombre?.toUpperCase()} {" "}
             </b>
           </header>
           <title>CONTRATO DE PRESTACIÓN DE SERVICIOS</title>
@@ -58,7 +63,7 @@ const Contrato = () => {
             siguientes cláusulas: PRIMERA. OBJETO DEL CONTRATO: Representar y
             asesorar jurídicamente a{" "}
             <b>
-              {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()}
+              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}
             </b>
             , identificado/a con cédula de ciudadanía número No.{" "}
             <b>{cliente.cedula} </b>quien de ahora en adelante se denominará
@@ -66,8 +71,8 @@ const Contrato = () => {
             gestionar sus deudas de{" "}
             <b>
               {" "}
-              {cliente.valor_pretensiones_letras.toUpperCase()} M/C {"($"}
-              {cliente.valor_pretensiones}
+              {estudio.valor_pretensiones_letras?.toUpperCase()} M/C {"($"}
+              {estudio.valor_pretensiones}
               {".00)"}
             </b>
             , de conformidad a las disposiciones del Artículo 531 del Código
@@ -78,8 +83,8 @@ const Contrato = () => {
             para que decrete la apertura del proceso de liquidación patrimonial.
             Si el proceso continuó a liquidación patrimonial se aplicarán las
             condiciones económicas de honorarios previstas más abajo para esa
-            etapa. Para esto, el abogado <b>, {abogado.nombre} </b> identificado
-            con cédula de ciudadanía No. {abogado.cedulaAbogado} y portador de
+            etapa. Para esto, el abogado <b>, {estudio.nombre} </b> identificado
+            con cédula de ciudadanía No. {estudio.cedula} y portador de
             la Tarjeta Profesional de Abogado No. del Consejo Superior de la
             Judicatura, quien de ahora en adelante se denominará EL{" "}
             <b>APODERADO</b> se obliga a emplear todos los medios profesionales
@@ -187,16 +192,16 @@ const Contrato = () => {
             del
             <b>PODERDANTE</b>,{" "}
             <b>
-              LA SUMA DE {cliente.honorarios_letras.toUpperCase()} M/C ($
-              {cliente.honorarios}.00) ANTES DE IMPUESTOS
+              LA SUMA DE {estudio.honorarios_letras?.toUpperCase()} M/C ($
+              {estudio.honorarios}.00) ANTES DE IMPUESTOS
             </b>
             , este valor contempla las tarifas legales que se deben pagar a los
             operadores de insolvencia y los honorarios profesionales del{" "}
             <b>APODERADO</b>, los cuales serán cancelados así: si es de contado
             en una sola suma por valor de{" "}
             <b>
-              {cliente.honorarios_letras.toUpperCase()} M/C ($
-              {cliente.honorarios}.00) ANTES DE IMPUESTOS
+              {estudio.honorarios_letras?.toUpperCase()} M/C ($
+              {estudio.honorarios}.00) ANTES DE IMPUESTOS
             </b>
             , Y POR ÚLTIMO CUALQUIER IMPUESTO QUE SE GENERE. Para la
             representación legal y/o revisión el proceso en la etapa de
@@ -297,7 +302,7 @@ const Contrato = () => {
             TRATAMIENTO DE BASE DE DATOS PERSONALES: Para todos los efectos
             legales, el domicilio actual de las partes será: Por parte del{" "}
             <b>PODERDANTE</b>. Dirección física:{" "}
-            {cliente.direccion.toUpperCase()}
+            {cliente.direccion?.toUpperCase()}
             Celular: {cliente.telefono} correo electronico: {cliente.correo}y
             por parte del <b>APODERADO</b>, Dirección física: CARRERA 15 No. 107
             - 90 World Trade Center · Torre 3 · Oficina 202. al correo
@@ -373,10 +378,10 @@ const Contrato = () => {
               <br />
               <br />
               <h2 className="firma">
-                {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()}{" "}
+                {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}{" "}
                 <br />
                 C.C. No. {cliente.cedula} <br />
-                {cliente.direccion.toUpperCase()}, {cliente.ciudad}
+                {cliente.direccion?.toUpperCase()}, {cliente.ciudad}
                 <br />
                 Cel: {cliente.celular}
               </h2>
@@ -390,9 +395,9 @@ const Contrato = () => {
               <br />
               <br />
               <h2 className="firma">
-                {abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()}{" "}
+                {estudio.nombre?.toUpperCase()} {" "}
                 <br />
-                {abogado.cedulaAbogado} <br />
+                {estudio.cedula} <br />
                 CARRERA 15 No. 107 - 90 World Trade Center · Torre 3 · Oficina
                 202 <br />
                 Cel: (57)- 300 1234567

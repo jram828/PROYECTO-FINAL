@@ -36,13 +36,14 @@ function FiltrosClientes() {
               <Link to="/home/customers/crearcliente" className="btn btn-md hover:bg-primary hover:text-white w-full">Crear cliente</Link>
               <OrderClientes />
               <SearchBar onFilter={handleFilter} />
+              {filterApplied && <button className="btn" onClick={handleVerTodosClick}>Ver todos</button>}
               <Link to="/home" className="btn btn-md hover:bg-primary hover:text-white w-full">Volver</Link>
             </div>
           </div>
           <div className="md:w-2/3 p-2">
             <div className="flex flex-col gap-4">
               <Cards items={clientes} />
-              {filterApplied && <button className="btn" onClick={handleVerTodosClick}>Ver todos</button>}
+             
             </div>
           </div>
        </div>

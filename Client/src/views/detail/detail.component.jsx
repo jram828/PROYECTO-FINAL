@@ -17,25 +17,6 @@ function Detail() {
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
-
-  /*if (source === 'abogado') {
-    var datos = useSelector((state) => state.abogado);
-    var { cedula } = useParams();
-    useEffect(() => {
-      dispatch(getByIdAbogado(cedula));
-      //return setAbogado({});
-    }, [dispatch, cedula]);
-  } else {
-    var datos = useSelector((state) => state.cliente);
-    var { cedula } = useParams()
-    useEffect(() =>{
-      dispatch(getByIdCliente(cedula))
-      //return setCliente({});
-   }, [dispatch, cedula])
-    console.log('datos', datos)
-  }*/
-
-
   const { cedula } = useParams();
 
   useEffect(() => {
@@ -55,6 +36,24 @@ function Detail() {
   }, [dispatch, cedula, source]);
 
   const datos = useSelector((state) => (source === 'abogado' ? state.abogado : state.cliente));
+
+
+  /*if (source === 'abogado') {
+    var datos = useSelector((state) => state.abogado);
+    var { cedula } = useParams();
+    useEffect(() => {
+      dispatch(getByIdAbogado(cedula));
+      //return setAbogado({});
+    }, [dispatch, cedula]);
+  } else {
+    var datos = useSelector((state) => state.cliente);
+    var { cedula } = useParams()
+    useEffect(() =>{
+      dispatch(getByIdCliente(cedula))
+      //return setCliente({});
+   }, [dispatch, cedula])
+    console.log('datos', datos)
+  }*/
 
  
     const handleDelete = () => {
@@ -77,6 +76,14 @@ function Detail() {
         }
       }
     }
+
+    const handleGenerateContract = () => {
+      navigate('/home/documentos/contrato', { state: { cliente: datos } });
+    };
+
+    const handleGeneratePoder = () => {
+      navigate('/home/documentos/poder', { state: { cliente: datos } });
+    };
    
 
   return (
@@ -295,18 +302,16 @@ function Detail() {
               </Link>
             )}
             {datos?.matricula ? undefined : (
-              <Link to="/home/documentos/contrato">
-                <button className="btn btn-sm btn-accent text-white">
-                  Generar contrato
-                </button>
-              </Link>
+              <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
+              Generar contrato
+            </button>
             )}
             {datos?.matricula ? undefined : (
-              <Link to="/home/documentos/poder">
-                <button className="btn btn-sm btn-accent text-white">
+              
+                <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
                   Generar poder
                 </button>
-              </Link>
+             
             )}
           </div>
         </div>

@@ -9,17 +9,18 @@ function DetailCasos() {
   const { id } = useParams(); // Obtener el id de los parámetros de la ruta
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const caso = useSelector(state => state.caso); // Asumimos que el detalle del caso se almacena en 'casoDetail'
+  const caso = useSelector(state => state.caso); // Asumimos que el detalle del caso se almacena en 'caso'
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toISOString().split('T')[0];
+    if (!dateString) return ''; // Devuelve una cadena vacía si dateString es nulo o indefinido
+    const date = new Date(dateString);
+    if (isNaN(date)) return ''; // Devuelve una cadena vacía si la fecha no es válida
+    return date.toLocaleDateString('es-CA'); // Convierte al formato YYYY-MM-DD
   };
 
   useEffect(() => {
     dispatch(getCasoById(id));
   }, [dispatch, id]);
-   
-  
 
   const handleDelete = () => {
     const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
@@ -29,50 +30,44 @@ function DetailCasos() {
       dispatch(deleteCaso(id, fechaFin));
       navigate('/home/cases');
       dispatch(getCasos());
-      console.log("id", id, "fechaFin", fechaFin)
- 
+      console.log("id", id, "fechaFin", fechaFin);
     }
   };
-
-
-
 
   return (
     <Layout>
       <div className="detail-container">
-          
-            <p>Detalle</p>
-            <label className="detail-label">Tipo de caso:</label>
-              <input value={caso.TipoDeCaso.descripcion} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Abogado:</label>
-              <input value={`${caso.Abogado.apellido} ${caso.Abogado.nombre}`} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Cliente:</label>
-              <input value={`${caso.Cliente.apellido} ${caso.Cliente.nombre}`} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Descripcion:</label>
-              <input value={caso.descripcion} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Fecha de inicio:</label>
-              <input value={formatDate(caso.fecha)} className="detail-input"></input>
-              <br></br>
-              {caso.fechaFin && (
-              <>
-              <label className="detail-label">Fecha final:</label>
-              <input value={formatDate(caso.fechaFin)} className="detail-input" readOnly />
-              </>
-              )}
-              <br></br>
-              <br></br>
-    <button className='button' onClick={handleDelete}>Finalizar caso</button>
-              <Link to='/home/cases'>
-              <button>Volver</button>
-              </Link>
-              
+        <p>Detalle</p>
+        <label className="detail-label">Tipo de caso:</label>
+        <input value={caso?.TipoDeCaso?.descripcion || ''} className="detail-input" readOnly />
+        <br />
+        <label className="detail-label">Abogado:</label>
+        <input value={`${caso?.Abogado?.apellido || ''} ${caso?.Abogado?.nombre || ''}`} className="detail-input" readOnly />
+        <br />
+        <label className="detail-label">Cliente:</label>
+        <input value={`${caso?.Cliente?.apellido || ''} ${caso?.Cliente?.nombre || ''}`} className="detail-input" readOnly />
+        <br />
+        <label className="detail-label">Descripcion:</label>
+        <input value={caso?.descripcion || ''} className="detail-input" readOnly />
+        <br />
+        <label className="detail-label">Fecha de inicio:</label>
+        <input value={formatDate(caso?.fecha)} className="detail-input" readOnly />
+        <br />
+        {caso?.fechaFin && (
+          <>
+            <label className="detail-label">Fecha final:</label>
+            <input value={formatDate(caso.fechaFin)} className="detail-input" readOnly />
+          </>
+        )}
+        <br />
+        <br />
+        <button className='button' onClick={handleDelete}>Finalizar caso</button>
+        <Link to='/home/cases'>
+          <button>Volver</button>
+        </Link>
       </div>
     </Layout>
   )
 }
 
-export default DetailCasos
+export default DetailCasos;

@@ -22,6 +22,7 @@ export const DELETE_CASO = "DELETE_CASO;";
 export const POST_CITA = "POST_CITA";
 export const GET_CITAS = "GET_CITAS";
 export const POST_CONSULTA = "POST_CONSULTA";
+export const GET_CONSULTAS = "GET_CONSULTAS"
 
 export const LOGIN = "LOGIN";
 export const LOG = "LOG";
@@ -163,7 +164,7 @@ export const filterCliente = (filtro) => {
 };
 
 export const filterAbogado = (filtro) => {
-  const endpoint = `${URL}abogados?${filtro}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}abogados?${filtro}&pagina=1&porPagina=50`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {
@@ -336,8 +337,8 @@ export const getCitas = () => {
 
 export const postConsulta = async (payload) => {
   const endpoint = `${URL}consultas`;
- console.log("Payload consultas", payload);
-  // return async (dispatch) => {
+console.log("URL", endpoint, "PAYLOAD", payload)
+  return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
     // return dispatch({
     //   type: POST_CONSULTA,
@@ -370,5 +371,16 @@ export const loginWithProvider = (provider) => {
     } catch (error) {
       dispatch({ type: LOGIN_FAILED, payload: error.response.data });
     }
+  };
+};
+
+export const getConsultas = () => {
+  const endpoint = `${URL}consultas?porPagina=20`;
+  return async (dispatch) => {
+    const { data } = await axios.get(endpoint);
+    return dispatch({
+      type: GET_CONSULTAS,
+      payload: data,
+    });
   };
 };
