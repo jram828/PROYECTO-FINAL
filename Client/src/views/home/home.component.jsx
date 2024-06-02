@@ -55,14 +55,14 @@ function Home() {
               </Link>
             </li>
             <li>
-              {user.administrador === true || user.cedulaAbogado ? (
+              {/*{user.administrador === true || user.cedulaAbogado ? (*/}
                 <Link
                   to="/home/cases"
                   className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
                 >
                   <button>Casos</button>
                 </Link>
-              ) : undefined}
+              {/*}) : undefined}*/}
             </li>
             {/* <li>
               <Link

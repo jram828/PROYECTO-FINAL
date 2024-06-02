@@ -30,7 +30,6 @@ const sequelize = new Sequelize(DB_DEPLOY, {
   },
 });
 
-
 const basename = path.basename(__filename);
 const modelDefiners = [];
 
@@ -58,7 +57,6 @@ const {
   Cliente,
   Contrato,
   TipoDeCaso,
-  PagosCliente,
   DocumentoTemplate,
   DocumentoLegal,
   TipoNotificacion,
@@ -83,11 +81,6 @@ Caso.belongsTo(Abogado);
 
 TipoDeCaso.hasMany(Caso);
 Caso.belongsTo(TipoDeCaso);
-
-// Caso.hasMany(PagosCliente);
-// PagosCliente.belongsTo(Caso);
-Caso.hasMany(PagosCliente, { foreignKey: "idCaso" });
-PagosCliente.belongsTo(Caso, { foreignKey: "idCaso" });
 
 Caso.hasOne(Cotizacion);
 

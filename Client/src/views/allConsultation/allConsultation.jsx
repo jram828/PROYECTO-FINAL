@@ -30,7 +30,7 @@ function AllConsultations() {
                 <p><strong>Consulta:</strong>{consulta.consulta}</p>
                 <p><strong>Email:</strong> {consulta.correo}</p>
                 <p><strong>Telefono:</strong> {consulta.telefono}</p>
-                <button>Responder</button>
+                {/*<button>Responder</button>*/}
               </div>
             ))
           ) : (
