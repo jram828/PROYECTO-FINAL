@@ -9,13 +9,14 @@ const getPassword = async (email) => {
       correo: email,
     },
   });
-  
+  console.log("Password cliente: ", user.password);
   if (!user) {
     const user = await Abogado.findOne({
       where: {
         correo: email,
       },
     });
+    console.log("Password abogado: ", user.password);
     if (!user) throw new Error("Usuario no encontrado");
     sendEmailCliente(user.nombre, user.correo, "password",user.password);
     return {

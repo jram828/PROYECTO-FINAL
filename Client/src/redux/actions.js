@@ -344,7 +344,7 @@ export const postConsulta = async (payload) => {
 };
   
 export const recordarPassword = async (correo) => {
-  const endpoint = `${URL}login/password/?correo=${correo}`;
+  const endpoint = `${URL}login/password/correo?correo=${correo}`;
   console.log("URL", endpoint, "PAYLOAD", correo);
   // return async (dispatch) => {
   const data = await axios.get(endpoint);

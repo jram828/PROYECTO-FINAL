@@ -27,7 +27,7 @@ const recoverPasswordHandler = async (req, res) => {
     const { correo } = req.query;
         // const { correo} = req.body;
 
-        console.log("Body password:", req.body);
+        console.log("Correo query:", req.query);
     const response = await getPassword(correo);
     res.status(200).json(response);
   } catch (error) {

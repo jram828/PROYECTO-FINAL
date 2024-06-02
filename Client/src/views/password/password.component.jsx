@@ -57,7 +57,12 @@ function Password() {
           <br />
           <br />
           <div className="recordar-password">
-            <input className="inputbox2" type="submit" name="Enviar" />
+            <input
+              className="inputbox2"
+              type="submit"
+              name="Enviar"
+              onClick={handlerPassword}
+            />
             <br />
             <br />
 
@@ -66,8 +71,7 @@ function Password() {
                 type="button"
                 name="volver"
                 value="volver"
-                className="button"
-                onClick={handlerPassword}
+                className="inputbox2"
               />
             </Link>
           </div>
