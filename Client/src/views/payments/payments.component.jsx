@@ -57,7 +57,7 @@ function Payments() {
     dispatch(getCasos());
   }, [dispatch]);
 
-  const userCasos = casos.datosPagina.filter((caso)=>
+  const userCasos = casos.datosPagina?.filter((caso)=>
     (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
   )
   
@@ -174,20 +174,22 @@ function Payments() {
         
       ))}
       
+    
+    <div className="botonescrearusuario">
+    <Link to="/home">
+      <input
+        type="button"
+        name="Volver"
+        value="Volver"
+        className="btn btn-accent btn-sm"
+      />
+    </Link>
+    </div>
     </div>
 }
       
       </div>
-      <div className="botonescrearusuario">
-              <Link to="/home">
-                <input
-                  type="button"
-                  name="Volver"
-                  value="Volver"
-                  className="btn btn-accent btn-sm"
-                />
-              </Link>
-              </div>
+      
       
     </Layout>
   );
