@@ -12,7 +12,8 @@ export async function postCliente(userDataCreate) {
       numero,
       codigoPostal,
       ciudad,
-      pais,
+    pais,
+      imagen,
     } = userDataCreate;
 
   console.log("User data registro:", userDataCreate);
@@ -32,6 +33,7 @@ export async function postCliente(userDataCreate) {
       ciudad: `${ciudad}`,
       codigoPostal: `${codigoPostal}`,
       pais: `${pais}`,
+      imagen: `${imagen}`,
     });
     window.alert("Se ha registrado el cliente con éxito.");
   } catch (error) {

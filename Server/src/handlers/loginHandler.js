@@ -24,8 +24,11 @@ const loginHandlerGoogle = async (req, res) => {
 
 const recoverPasswordHandler = async (req, res) => {
   try {
-    const { email, rol } = req.query;
-    const response = await getPassword(email, rol);
+    const { correo } = req.query;
+        // const { correo} = req.body;
+
+        console.log("Correo query:", req.query);
+    const response = await getPassword(correo);
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });

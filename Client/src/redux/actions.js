@@ -335,51 +335,55 @@ export const getCitas = () => {
   };
 };
 
-export const postConsulta = (payload) => {
+export const postConsulta = async (payload) => {
   const endpoint = `${URL}consultas`;
-console.log("URL", endpoint, "PAYLOAD", payload)
-  return async (dispatch) => {
+  console.log("URL", endpoint, "PAYLOAD", payload)
+  // return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
-    return dispatch({
-      type: POST_CONSULTA,
-      payload: data,
-    });
-  };
+    return data;
+};
+  
+export const recordarPassword = async (correo) => {
+  const endpoint = `${URL}login/password/?correo=${correo}`;
+  console.log("URL", endpoint, "PAYLOAD", correo);
+  // return async (dispatch) => {
+  const data = await axios.get(endpoint);
+  return data;
 };
 
-// Token del local Storage
-const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
-var config = {};
-if (loggedUserJSON) {
-  const token = JSON.parse(loggedUserJSON);
-  config["headers"] = {
-    token: token.tokenUser,
-  };
-}
+  // Token del local Storage
+  const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
+  var config = {};
+  if (loggedUserJSON) {
+    const token = JSON.parse(loggedUserJSON);
+    config["headers"] = {
+      token: token.tokenUser,
+    };
+  }
 
-export const loginWithProvider = (provider) => {
-  return async function (dispatch) {
-    try {
-      const user = (
-        await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/auth/fromProvider`,
-          provider
-        )
-      ).data;
-      dispatch({ type: LOGIN, payload: user });
-    } catch (error) {
-      dispatch({ type: LOGIN_FAILED, payload: error.response.data });
-    }
+  export const loginWithProvider = (provider) => {
+    return async function (dispatch) {
+      try {
+        const user = (
+          await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/auth/fromProvider`,
+            provider
+          )
+        ).data;
+        dispatch({ type: LOGIN, payload: user });
+      } catch (error) {
+        dispatch({ type: LOGIN_FAILED, payload: error.response.data });
+      }
+    };
   };
-};
 
-export const getConsultas = () => {
-  const endpoint = `${URL}consultas?porPagina=20`;
-  return async (dispatch) => {
-    const { data } = await axios.get(endpoint);
-    return dispatch({
-      type: GET_CONSULTAS,
-      payload: data,
-    });
+  export const getConsultas = () => {
+    const endpoint = `${URL}consultas?porPagina=20`;
+    return async (dispatch) => {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_CONSULTAS,
+        payload: data,
+      });
+    };
   };
-};

@@ -11,7 +11,7 @@ function Card({item}) {
   const { cedulaAbogado,
     cedulaCliente, 
     apellido, 
-    nombre
+    nombre, imagen
      } = item;
 
      const dispatch = useDispatch()
@@ -41,7 +41,7 @@ function Card({item}) {
     
     <div className="w-64 mx-auto bg-primary text-white shadow-lg rounded-lg overflow-hidden h-64">
       <div className="avatar flex justify-center m-4">
-        <img src={picture} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
+        <img src={imagen} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
       </div>
       <div className="p-4">
       <Link  to={`/home/detail/${cedula}`} className='hover:text-white'>
