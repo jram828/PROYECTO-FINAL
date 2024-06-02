@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './consultations.css'
 import { postConsulta } from '../../redux/actions';
 import Layout from '../../components/layout/layout';
+import { crearConsulta } from '../../handlers/crearConsulta';
 
 function Consultations() {
 
@@ -25,7 +26,7 @@ function Consultations() {
   const submitHandlerRegistro = async (e) => {
     e.preventDefault();
     try {
-      await postConsulta(dataRegistro);
+      await crearConsulta(dataRegistro);
 
       window.alert("Consulta creado con éxito");
       setDataRegistro({

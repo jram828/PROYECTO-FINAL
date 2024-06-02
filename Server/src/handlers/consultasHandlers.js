@@ -13,6 +13,8 @@ const getConsultaHandler = async (req, res)=>{
 
 const postConsultaHandler = async (req, res) =>{
     const { nombre, apellido, correo, telefono, consulta } = req.body
+
+    console.log('Body crear consulta:', req.body)
     try {
         const response = await createConsultaBd( nombre, apellido, correo, telefono, consulta)
         res.status(200).json(response)

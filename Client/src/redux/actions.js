@@ -334,17 +334,18 @@ export const getCitas = () => {
   };
 };
 
-export const postConsulta = (payload) => {
+export const postConsulta = async (payload) => {
   const endpoint = `${URL}consultas`;
-
-  return async (dispatch) => {
+ console.log("Payload consultas", payload);
+  // return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
-    return dispatch({
-      type: POST_CONSULTA,
-      payload: data,
-    });
+    // return dispatch({
+    //   type: POST_CONSULTA,
+    //   payload: data,
+  // });
+  return data;
   };
-};
+// };
 
 // Token del local Storage
 const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
