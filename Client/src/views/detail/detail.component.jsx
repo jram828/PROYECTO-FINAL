@@ -83,6 +83,7 @@ function Detail() {
 
     const handleGeneratePoder = () => {
       navigate('/home/documentos/poder', { state: { cliente: datos } });
+      
     };
    
 
