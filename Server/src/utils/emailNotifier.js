@@ -65,20 +65,20 @@ const sendEmailCliente = ({nombre, correo}) => {
 const sendEmailPassword = (nombre, correo, password) => {
     console.log("Datos email:", nombre, correo, password);
     
-    const templatePath = path.join(__dirname, "templatePassword.html");
-    const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+    // const templatePath = path.join(__dirname, "templatePassword.html");
+    // const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
     console.log("Datos email password:", nombre, correo, password);
-    var personalizedHtml = htmlTemplate
-      .replace("{{nombre}}", nombre)
-      .replace("{{correo}}", correo)
-      .replace("{{password}}", password);
+    // var personalizedHtml = htmlTemplate
+    //   .replace("{{nombre}}", nombre)
+    //   .replace("{{correo}}", correo)
+    //   .replace("{{password}}", password);
   
 
   const mailOptions = {
     from: EMAIL,
     to: correo,
     subject: "🚀 Recordatorio de contraseña, Legaltech.",
-    html: personalizedHtml,
+    text: `${nombre}. Bienvenido a Legal Tech! Nos has solicitado recordar tu contraseña, aquí la tienes: ${password}`,
   };
 
   transporter.sendMail(mailOptions, function (error) {
