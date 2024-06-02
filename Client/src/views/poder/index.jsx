@@ -3,7 +3,7 @@ import { printDivContent } from "../../utils/printDivContent";
 import { getCasos, getCasoById, getByIdCliente, getByIdAbogado, setAbogado, setCliente } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -11,13 +11,21 @@ const Poder = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
  
 
   const cliente = location.state?.cliente || {};
+  
   const casos = useSelector((state) => state.casos);
   const caso = useSelector((state) => state.caso);
-  const abogado = useSelector((state) => state.abogado)
+  
+  const abogado= useSelector((state) => state.abogado)
+  
 console.log("cliente:",cliente)
+
+useEffect(()=> {
+  dispatch(setAbogado({}))
+}, [])
 
 
   useEffect(() => {
@@ -42,12 +50,25 @@ console.log("cliente:",cliente)
       if (caso.AbogadoCedulaAbogado) {
         dispatch(getByIdAbogado(caso.AbogadoCedulaAbogado));
       }
+      return () => {
+        
+          dispatch(setAbogado({}));
+          dispatch(setCliente({}));
+      }
     }, [caso.AbogadoCedulaAbogado, dispatch]);
 
-  console.log("abogado:", abogado)
+  //console.log("abogado:", abogado)
 
 function generatePDF() {
   printDivContent("poder");
+}
+
+const handleVolver = () => {
+  dispatch(setAbogado({}));
+  //window.localStorage.setItem("abogado", JSON.stringify({nombre:"", apellido:""}));
+  navigate(`/home/detail/${cliente.cedulaCliente}`)
+
+
 }
 
 
@@ -55,7 +76,7 @@ function generatePDF() {
     
     <div className="flex items-center justify-center min-h-screen p-6">
       <h1 className="titulo">Poder</h1>
-      {Object.keys(caso).length === 0 ? 
+      {Object.keys(abogado).length === 0 ? 
       <p>Se debe crear un caso</p> :
       <div className="poder" id="poder">
         <p className="titulopoder">
@@ -159,6 +180,7 @@ function generatePDF() {
         value="Generar PDF"
         onClick={generatePDF}
       />
+      <button onClick={handleVolver}>Volver</button>
     </div>
     </div>
     
