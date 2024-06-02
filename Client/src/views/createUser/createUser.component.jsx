@@ -76,6 +76,14 @@ function CreateUser () {
               onChange={handleChangeImage}
               className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
             />
+            {urlImage && (
+          <div>
+            <img
+         src={urlImage}
+         style={{ width: '100px', height: '100px' }}/>
+            <button onClick={handleDeleteImage}>Eliminar</button>
+          </div>
+        )}
           </div>
     
         <form
