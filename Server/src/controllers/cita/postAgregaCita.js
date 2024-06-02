@@ -1,8 +1,9 @@
 
 import  { models } from "../../DB.js";
 import moment from 'moment'
+import { sendEmailCita } from '../../utils/emailNotifier.js'
 
-const { Cita } = models
+const { Cita, Cliente, Abogado } = models
 const createCita = async (titulo,descripcion, fechaCita, horaCita,idCaso) => {
     
     const fechaUTC= moment(fechaCita).utc().toDate();

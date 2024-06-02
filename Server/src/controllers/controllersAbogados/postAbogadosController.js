@@ -27,20 +27,20 @@ const createAbogadoBd = async (
   // console.log('imagen',imagen)
 
   const newAbogado = await Abogado.create({
-    cedulaAbogado,
-    matricula,
-    nombre,
-    apellido,
-    correo,
-    telefono,
-    calle,
-    numero,
-    codigoPostal,
-    ciudad,
-    pais,
-    password,
-    imagen,
-    administrador,
+    cedulaAbogado: cedulaAbogado,
+    matricula: matricula,
+    nombre: nombre,
+    apellido: apellido,
+    correo: correo,
+    telefono: telefono,
+    calle: calle,
+    numero: numero,
+    codigoPostal: codigoPostal,
+    ciudad: ciudad,
+    pais: pais,
+    password: password,
+    imagen: imagen,
+    administrador: administrador,
   });
 
         const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
