@@ -19,8 +19,8 @@ export async function postCitaHandlers(data) {
       horaCita: `${horaCita}`,
       idCaso: `${idCaso}`,
     });
-    window.alert("Se ha registrado la cita con éxito.");
+    
   } catch (error) {
-    window.alert("No fue posible registrar la cita.");
+   error.mesage
   }
 }
