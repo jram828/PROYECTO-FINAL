@@ -25,10 +25,9 @@ const createAbogadoBd = async (
   administrador,
 ) => {
   // console.log('imagen',imagen)
-
-  const newAbogado = await Abogado.create({
-    cedulaAbogado,
-    matricula,
+try{
+  console.log(cedulaAbogado)
+  console.log(matricula,
     nombre,
     apellido,
     correo,
@@ -40,8 +39,24 @@ const createAbogadoBd = async (
     pais,
     password,
     imagen,
-    administrador,
+    administrador,)
+  const newAbogado = await Abogado.create({
+    cedulaAbogado: cedulaAbogado,
+    matricula: matricula,
+    nombre: nombre,
+    apellido: apellido,
+    correo: correo,
+    telefono: telefono,
+    calle: calle,
+    numero: numero,
+    codigoPostal: codigoPostal,
+    ciudad: ciudad,
+    pais: pais,
+    password: password,
+    imagen: imagen,
+    administrador: administrador,
   });
+
 
         const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
   const celular = "+573127461628";
@@ -53,9 +68,12 @@ const createAbogadoBd = async (
     })
     .then((message) => console.log(message.sid))
     .done();
-     
+    return newAbogado;
+  } catch(error){
+    console.log(error)
+  } 
 
-  return newAbogado;
+  
 
 };
 
