@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 import Layout from '../../components/layout/layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCasos } from '../../redux/actions';
+import { getCasos  } from '../../redux/actions';
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
@@ -15,6 +15,7 @@ function Payments() {
     locale: "es-CO",
   });
 
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
@@ -55,11 +56,17 @@ function Payments() {
   useEffect(() => {
     dispatch(getCasos());
   }, [dispatch]);
+
+  const userCasos = casos.datosPagina.filter((caso)=>
+    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
+  )
   
   return (
     <Layout>
       <div>
+      {user.cedulaCliente ? (
         <div>
+          
           <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
             <h1 className="titulo">Realizar un pago</h1>
             <br />
@@ -101,7 +108,7 @@ function Payments() {
                     <option value="" className="customOption">
                       Seleccionar caso
                     </option>
-                    {casos.datosPagina.map((caso) => (
+                    {userCasos.map((caso) => (
                       <option
                         key={caso.id}
                         value={caso.id}
@@ -144,8 +151,44 @@ function Payments() {
             initialization={{ preferenceId: responsePreference.id }}
             customization={{ texts: { valueProp: "smart_option" } }}
           /> */}
+        
         </div>
+      ) : 
+      <div className="contenedorCasos">
+      {casos.datosPagina?.map(caso => (
+        <div key={caso.id} className="caso-item">
+        <h3>Pagos del caso: n°{caso.id}</h3>
+        <p><strong>Descripción  del caso:</strong> {caso.descripcion} </p>
+        <p><strong>Cliente:</strong>  {caso.apellidoCliente}{caso.nombreCliente}</p>
+          {caso.pagos && caso.pagos.length > 0 && (
+            <div>
+              <h4>Pagos:</h4>
+              <ul>
+                {caso.pagos.map(pago => (
+                  <li key={pago.id}>{pago.descripcion}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        
+      ))}
+      
+    </div>
+}
+      
       </div>
+      <div className="botonescrearusuario">
+              <Link to="/home">
+                <input
+                  type="button"
+                  name="Volver"
+                  value="Volver"
+                  className="btn btn-accent btn-sm"
+                />
+              </Link>
+              </div>
+      
     </Layout>
   );
 }
