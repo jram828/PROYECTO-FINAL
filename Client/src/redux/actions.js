@@ -22,6 +22,7 @@ export const DELETE_CASO = "DELETE_CASO;";
 export const POST_CITA = "POST_CITA";
 export const GET_CITAS = "GET_CITAS";
 export const POST_CONSULTA = "POST_CONSULTA";
+export const GET_CONSULTAS = "GET_CONSULTAS"
 
 export const LOGIN = "LOGIN";
 export const LOG = "LOG";
@@ -336,7 +337,7 @@ export const getCitas = () => {
 
 export const postConsulta = (payload) => {
   const endpoint = `${URL}consultas`;
-
+console.log("URL", endpoint, "PAYLOAD", payload)
   return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
     return dispatch({
@@ -369,5 +370,16 @@ export const loginWithProvider = (provider) => {
     } catch (error) {
       dispatch({ type: LOGIN_FAILED, payload: error.response.data });
     }
+  };
+};
+
+export const getConsultas = () => {
+  const endpoint = `${URL}consultas?porPagina=20`;
+  return async (dispatch) => {
+    const { data } = await axios.get(endpoint);
+    return dispatch({
+      type: GET_CONSULTAS,
+      payload: data,
+    });
   };
 };
