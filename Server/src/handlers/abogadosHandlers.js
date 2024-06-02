@@ -46,8 +46,8 @@ const postAbogadosHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
-      imagen,
       password,
+      imagen,
       administrador,
     );
     res.status(200).json(response);
