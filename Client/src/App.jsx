@@ -7,7 +7,7 @@ import Documents from './views/documents/documents.component';
 import Diary from './views/diary/diary.components';
 import Payments from './views/payments/payments.component';
 import Consultations from './views/consultations/consultations.component';
-import Statistics from './views/allConsultation/allConsultation';
+// import Statistics from './views/allConsultation/allConsultation';
 import CreateUser from './views/createUser/createUser.component'
 import Password from './views/password/password.component';
 import CrearAbogado from './views/crearAbogado/crearAbogado.component'

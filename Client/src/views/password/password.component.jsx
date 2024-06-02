@@ -3,6 +3,7 @@ import './password.css';
 import Layout from '../../components/layout/layout';
 import { useState } from 'react';
 import axios from "axios";
+import { recordarPassword } from '../../redux/actions';
 
 function Password() {
 
@@ -17,11 +18,10 @@ function Password() {
     console.log("Datos recordar password:", correo);
 
     try {
-      const { data } = await axios(`/password/?correo=${correo}`
-      );
-      console.log("Respuesta password:", data);
+      await recordarPassword(correo);
+      // console.log("Respuesta password:", data);
     } catch (error) {
-      window.alert("Usuario o contraseña incorrectos");
+      window.alert("No se envióo el recordatorio");
     }
   }
     const handleChange = (e) => {

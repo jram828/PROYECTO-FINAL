@@ -340,23 +340,26 @@ export const postConsulta = async (payload) => {
   console.log("URL", endpoint, "PAYLOAD", payload)
   // return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
-    // return dispatch({
-    //   type: POST_CONSULTA,
-    //   payload: data,
-    // });
     return data;
-  };
-  // };
+};
+  
+export const recordarPassword = async (correo) => {
+  const endpoint = `${URL}login/password/?correo=${correo}`;
+  console.log("URL", endpoint, "PAYLOAD", correo);
+  // return async (dispatch) => {
+  const data = await axios.get(endpoint);
+  return data;
+};
 
   // Token del local Storage
-  // const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
-  // var config = {};
-  // if (loggedUserJSON) {
-  //   const token = JSON.parse(loggedUserJSON);
-  //   config["headers"] = {
-  //     token: token.tokenUser,
-  //   };
-  // }
+  const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
+  var config = {};
+  if (loggedUserJSON) {
+    const token = JSON.parse(loggedUserJSON);
+    config["headers"] = {
+      token: token.tokenUser,
+    };
+  }
 
   export const loginWithProvider = (provider) => {
     return async function (dispatch) {
