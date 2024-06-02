@@ -8,10 +8,14 @@ import OrderCasos from '../../components/orderCasos/orderCasos';
 import { Link } from 'react-router-dom';
 
 function FiltrosCasos() {
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const dispatch = useDispatch();
-  const casos = useSelector((state) => state.casos);
+  const casos= useSelector((state) => state.casos);
   const [filterApplied, setFilterApplied] = useState(false);
 
+  console.log("user", user)
+
+  
   useEffect(() => {
     dispatch(getCasos());
     const storedFilter = JSON.parse(localStorage.getItem('casosFilter'));
@@ -20,7 +24,7 @@ function FiltrosCasos() {
     }
   }, []);
 
-  console.log('casos', casos)
+
 
   const handleVerTodosClick = () => {
     dispatch(getCasos());
@@ -39,6 +43,17 @@ function FiltrosCasos() {
     return null;
   }
 
+  const userCasos = user.administrador ?
+  casos.datosPagina :
+  casos.datosPagina?.filter((caso=> 
+    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido) || 
+    (caso.nombreabogado === user.nombre && caso.apellidoAbogado === user.apellido)
+  ));
+
+  console.log("usercasos",userCasos)
+
+  
+
   return (
     <div className='container grid grid-cols-2 gap-4'>
       <div className="flex flex-col justify-start gap-4 p-4 rounded-lg bg-primary">
@@ -54,7 +69,7 @@ function FiltrosCasos() {
       <div>
       <div className=''>
     
-        <TarjetasCasos casos={casos}></TarjetasCasos>
+        <TarjetasCasos casos={userCasos}></TarjetasCasos>
    
     </div>
         {filterApplied && <button className='btn' onClick={handleVerTodosClick}>Ver todos</button>}
