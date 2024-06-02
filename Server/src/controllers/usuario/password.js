@@ -1,5 +1,5 @@
 import { models } from "../../DB.js";
-import { sendEmailCliente } from "../../utils/emailNotifier.js";
+import { sendEmailCliente, sendEmailPassword } from "../../utils/emailNotifier.js";
 
 const { Cliente, Abogado } = models;
 
@@ -26,7 +26,7 @@ const getPassword = async (email) => {
   //     password: user.password,
   //   };
   // }
-  sendEmailCliente(user.nombre, user.correo, "password", user.password);
+  sendEmailPassword(user.nombre, user.correo, "password", user.password);
   return user;
 };
 

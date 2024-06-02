@@ -12,25 +12,14 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendEmailCliente = (nombre, correo, source, password) => {
-    console.log("Datos email registro:", nombre, correo,source, password);
-    if (source === "registro") {
+const sendEmailCliente = (nombre, correo) => {
+    console.log("Datos email:", nombre, correo);
       const templatePath = path.join(__dirname, "templateCliente.html");  
       const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
       console.log('Datos email registro:',nombre,correo)
       var personalizedHtml = htmlTemplate
       .replace('{{nombre}}', nombre)
       .replace('{{correo}}', correo);
-    } else {
-        const templatePath = path.join(__dirname, "templatePassword.html"); 
-        const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
-console.log("Datos email password:", nombre, correo,password);
-        var personalizedHtml = htmlTemplate
-          .replace("{{nombre}}", nombre)
-          .replace("{{correo}}", correo)
-          .replace("{{password}}", password);
-    };
-
 
     const mailOptions = {
         from: EMAIL,
@@ -47,6 +36,33 @@ console.log("Datos email password:", nombre, correo,password);
         }
     })
 }
+
+const sendEmailPassword = (nombre, correo, password) => {
+  console.log("Datos email:", nombre, correo, source, password);
+    const templatePath = path.join(__dirname, "templatePassword.html");
+    const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+    console.log("Datos email password:", nombre, correo, password);
+    var personalizedHtml = htmlTemplate
+      .replace("{{nombre}}", nombre)
+      .replace("{{correo}}", correo)
+      .replace("{{password}}", password);
+  
+
+  const mailOptions = {
+    from: EMAIL,
+    to: correo,
+    subject: "🚀 Recordatorio de contraseña, Legaltech.",
+    html: personalizedHtml,
+  };
+
+  transporter.sendMail(mailOptions, function (error) {
+    if (error) {
+      console.log("⚠️" + error);
+    } else {
+      console.log("✅ Email sent: " + nombre);
+    }
+  });
+};
 
 const sendEmailCita = (cliente, abogado, newCita)=>{
 
@@ -77,5 +93,6 @@ const sendEmailCita = (cliente, abogado, newCita)=>{
 
 export {
     sendEmailCliente,
-    sendEmailCita
+    sendEmailCita,
+    sendEmailPassword
 }
