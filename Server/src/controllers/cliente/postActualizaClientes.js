@@ -1,5 +1,6 @@
  import {models} from "../../DB.js";
 
+const { Cliente } = models
 
 const actualizaCliente = async (
   cedulaCliente,
