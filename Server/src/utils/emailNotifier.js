@@ -17,14 +17,14 @@ const sendEmailCliente = (nombre, correo, source, password) => {
     if (source === "registro") {
       const templatePath = path.join(__dirname, "templateCliente.html");  
       const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
-      
+      console.log('Datos email registro:',nombre,correo)
       var personalizedHtml = htmlTemplate
       .replace('{{nombre}}', nombre)
       .replace('{{correo}}', correo);
     } else {
         const templatePath = path.join(__dirname, "templatePassword.html"); 
         const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
-
+console.log("Datos email password:", nombre, correo,password);
         var personalizedHtml = htmlTemplate
           .replace("{{nombre}}", nombre)
           .replace("{{correo}}", correo)
