@@ -93,10 +93,10 @@ function Home() {
             <li>
               {user.administrador === true ? (
                 <Link
-                  to="/home/statistics"
+                  to="/home/allconsultations"
                   className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
                 >
-                  <button>Estadísticas</button>
+                  <button>Consultas</button>
                 </Link>
               ) : undefined}
             </li>
