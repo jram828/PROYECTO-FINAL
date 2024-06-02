@@ -45,14 +45,15 @@ function Calendario() {
 
   useEffect(() => {
     if (citas) {
-      const filteredCitas = citas.datosPagina?.filter(cita => 
-        (cita.nombreCliente === datos.nombre && cita.apellidoCliente === datos.apellido) || 
-        (cita.nombreabogado === datos.nombre && cita.apellidoAbogado === datos.apellido)
-      );
+      const filteredCitas = datos.administrador ? 
+        citas.datosPagina : 
+        citas.datosPagina?.filter(cita => 
+          (cita.nombreCliente === datos.nombre && cita.apellidoCliente === datos.apellido) || 
+          (cita.nombreabogado === datos.nombre && cita.apellidoAbogado === datos.apellido)
+        );
       setCitasId(filteredCitas);
     }
-  }, [citas, datos.nombre, datos.apellido]);
-
+  }, [citas, datos]);
   const events = citasId?.map(cita => {
     const fechaCita = dayjs.tz(cita.fechaCita, 'America/Argentina/Buenos_Aires');
     const horaCita = dayjs(cita.horaCita, 'HH:mm:ss');
