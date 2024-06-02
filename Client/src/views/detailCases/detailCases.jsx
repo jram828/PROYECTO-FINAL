@@ -60,6 +60,18 @@ function DetailCasos() {
           </>
         )}
         <br />
+        {caso?.PagosClientes && caso.PagosClientes.length > 0 && (
+        <div>
+        <label htmlFor="pagosCliente">Pagos del Cliente:</label>
+        <select name="pagosCliente" id="pagosCliente">
+        {caso.PagosClientes.map((pago, index) => (
+        <option key={index} value={pago.pagoId}>
+          {pago.descripcion} - {new Date(pago.fechaDeAprobacion).toLocaleDateString()} - {pago.importeDeLaTransaccion}
+        </option>
+      ))}
+    </select>
+  </div>
+)}
         <br />
         <button className='button' onClick={handleDelete}>Finalizar caso</button>
         <Link to='/home/cases'>
