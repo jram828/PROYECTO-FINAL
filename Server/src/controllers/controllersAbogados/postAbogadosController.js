@@ -44,12 +44,12 @@ const createAbogadoBd = async (
   });
 
         const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
-  const numero = "+573127461628";
+  const celular = "+573127461628";
   client.messages
     .create({
       body: "Se ha creado un nuevo Abogado en Legaltech!",
       from: "+12097210938",
-      to: numero,
+      to: celular,
     })
     .then((message) => console.log(message.sid))
     .done();
