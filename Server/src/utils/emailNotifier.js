@@ -13,10 +13,32 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmailCliente = (nombre, correo) => {
-    console.log("Datos email:", nombre, correo);
+    //   const templatePath = path.join(__dirname, "templateCliente.html");
+    //   const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+
+    //   const personalizedHtml = htmlTemplate
+    //     .replace("{{nombre}}", nombre)
+    //     .replace("{{correo}}", correo);
+
+    //   const mailOptions = {
+    //     from: EMAIL,
+    //     to: correo,
+    //     subject: "🚀 lets go!!",
+    //     html: personalizedHtml,
+    //   };
+
+    //   transporter.sendMail(mailOptions, function (error) {
+    //     if (error) {
+    //       console.log("⚠️" + error);
+    //     } else {
+    //       console.log("✅ Email sent: " + nombre);
+    //     }
+    //   });
+    
+    // console.log("Datos email:", nombre, correo);
       const templatePath = path.join(__dirname, "templateCliente.html");  
       const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
-      console.log('Datos email registro:',nombre,correo)
+    //   console.log('Datos email registro:',nombre,correo)
       var personalizedHtml = htmlTemplate
       .replace('{{nombre}}', nombre)
       .replace('{{correo}}', correo);
@@ -38,7 +60,8 @@ const sendEmailCliente = (nombre, correo) => {
 }
 
 const sendEmailPassword = (nombre, correo, password) => {
-  console.log("Datos email:", nombre, correo, password);
+    console.log("Datos email:", nombre, correo, password);
+    
     const templatePath = path.join(__dirname, "templatePassword.html");
     const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
     console.log("Datos email password:", nombre, correo, password);

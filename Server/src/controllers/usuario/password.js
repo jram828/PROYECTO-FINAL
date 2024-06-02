@@ -26,7 +26,7 @@ const getPassword = async (email) => {
   //     password: user.password,
   //   };
   // }
-  sendEmailPassword(user.nombre, user.correo, "password", user.password);
+  sendEmailPassword(user.nombre, user.correo, user.password);
   return user;
 };
 
