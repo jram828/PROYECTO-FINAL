@@ -12,6 +12,9 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// const templatePath = path.join(__dirname, "templateCliente.html");
+// const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+
 const sendEmailCliente = ({nombre, correo}) => {
     //   const templatePath = path.join(__dirname, "templateCliente.html");
     //   const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
@@ -36,18 +39,18 @@ const sendEmailCliente = ({nombre, correo}) => {
     //   });
     
     // console.log("Datos email:", nombre, correo);
-      const templatePath = path.join(__dirname, "templateCliente.html");  
-      const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
+    //   const templatePath = path.join(__dirname, "templateCliente.html");  
+    //   const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
     //   console.log('Datos email registro:',nombre,correo)
-      var personalizedHtml = htmlTemplate
-      .replace('{{nombre}}', nombre)
-      .replace('{{correo}}', correo);
+    //   var personalizedHtml = htmlTemplate
+    //   .replace('{{nombre}}', nombre)
+    //   .replace('{{correo}}', correo);
 
     const mailOptions = {
         from: EMAIL,
         to: correo,
         subject: '🚀 Bienvenido a Legaltech!!',
-        html: personalizedHtml
+        text: 'Te han registrado en LegalTech.'
     };
 
     transporter.sendMail(mailOptions, function(error){
