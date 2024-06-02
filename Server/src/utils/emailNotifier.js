@@ -38,7 +38,7 @@ const sendEmailCliente = (nombre, correo) => {
 }
 
 const sendEmailPassword = (nombre, correo, password) => {
-  console.log("Datos email:", nombre, correo, source, password);
+  console.log("Datos email:", nombre, correo, password);
     const templatePath = path.join(__dirname, "templatePassword.html");
     const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
     console.log("Datos email password:", nombre, correo, password);
