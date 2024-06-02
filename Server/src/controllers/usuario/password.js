@@ -3,6 +3,7 @@ import { sendEmailCliente } from "../../utils/emailNotifier.js";
 
 const { Cliente, Abogado } = models;
 const getPassword = async (email) => {
+  console.log('Email get password: ',email)
   const user = await Cliente.findOne({
     where: {
       correo: email,

@@ -12,7 +12,7 @@ export async function crearConsulta(data) {
       nombre: nombre,
       consulta: consulta,
       correo: correo,
-      telefono: telefono,
+      telefono: 147852,
     });
     console.log("Response handler crear consulta: ", response);
     return response.data;
