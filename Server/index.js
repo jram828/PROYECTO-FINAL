@@ -7,7 +7,7 @@ const { conn } = models;
 const PORT = 3001;
 
 conn
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {})
   .catch((error) => console.error(error));
 
