@@ -1,7 +1,7 @@
+import {models} from '../../DB.js'
+import { sendEmailCliente} from "../../utils/emailNotifier.js";
 
-const { Cliente } = require('../../DB')
-const { sendEmailCliente} = require("../../utils/emailNotifier");
-
+const { Cliente } = models;
 const createClienteBd = async (
   cedulaCliente,
   nombre,
@@ -13,7 +13,8 @@ const createClienteBd = async (
   codigoPostal,
   ciudad,
   pais,
-  password
+  imagen,
+  password,
 ) => {
   const newCliente = await Cliente.create({
     cedulaCliente,
@@ -26,7 +27,8 @@ const createClienteBd = async (
     codigoPostal,
     ciudad,
     pais,
-    password
+    imagen,
+    password,
   });
   if(newCliente) sendEmailCliente(newCliente)
   console.log(newCliente);
@@ -35,6 +37,6 @@ const createClienteBd = async (
   };
 };
 
-module.exports = {
+export {
   createClienteBd,
 };

@@ -7,7 +7,7 @@ import Documents from './views/documents/documents.component';
 import Diary from './views/diary/diary.components';
 import Payments from './views/payments/payments.component';
 import Consultations from './views/consultations/consultations.component';
-import Statistics from './views/statistics/statistics.component';
+// import Statistics from './views/allConsultation/allConsultation';
 import CreateUser from './views/createUser/createUser.component'
 import Password from './views/password/password.component';
 import CrearAbogado from './views/crearAbogado/crearAbogado.component'
@@ -15,6 +15,7 @@ import CreateCliente from './components/createclient/index'
 import CrearCaso from './views/CrearCaso/crearCaso';
 import DetailCases from './views/detailCases/detailCases'
 import Data from './views/datosPersonales/datosPersonales.component';
+import AllConsultations from './views/allConsultation/allConsultation';
 import "./App.css";
 import { Routes, Route} from "react-router-dom";
 // import { useSelector } from 'react-redux';
@@ -27,19 +28,19 @@ import Poder from './views/poder';
 // import {Elements} from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 
-const VITE_SECRET_KEY =
-  'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
+// const VITE_SECRET_KEY =
+//   'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
 // const URL = import.meta.env.VITE_URL_BACK;
 // const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
+// axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
 axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
-
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 // const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2SaxkMSzQeUiBIBYUJetxGEXuNihUg6y0kFibN3kGJai5Fec5jKWo00YKuqtYox');
 
 function App() {
   
-  console.log("Stripe env:", VITE_SECRET_KEY);
+  // console.log("Stripe env:", VITE_SECRET_KEY);
     // const location = useLocation();
   //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
@@ -81,7 +82,7 @@ function App() {
         <Route path="/home/payments" element={<Payments />} />
         <Route path="/home/payments/status" element={<Status />} />
         <Route path="/home/consultation" element={<Consultations />} />
-        <Route path="/home/statistics" element={<Statistics />} />
+        <Route path="/home/allconsultations" element={<AllConsultations />} />
         <Route path="/home/lawyers/crearabogado" element={<CrearAbogado />} />
         <Route path="/home/documentos" element={<Documents />} />
         <Route path="/home/documentos/contrato" element={<Contrato />} />

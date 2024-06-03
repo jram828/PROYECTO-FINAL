@@ -1,12 +1,32 @@
-const { createCaso } = require("../controllers/caso/postAgregaCaso");
-const { getAllCaso } = require("../controllers/caso/getAllCaso");
-const { deleteCaso } = require("../controllers/caso/deleteCaso");
-const { getCasoId } = require("../controllers/caso/getCasoById,js");
+import { createCaso } from "../controllers/caso/postAgregaCaso.js";
+import { getAllCaso } from "../controllers/caso/getAllCaso.js";
+import { deleteCaso } from "../controllers/caso/deleteCaso.js";
+import { getCasoId } from "../controllers/caso/getCasoById.js";
 
 const createCasosHandler = async (req, res) => {
-  const { cedulaCliente, cedulaAbogado, fecha, descripcion, TipoDeCasoId } =
-    req.body;
+  const {
+    cedulaCliente,
+    cedulaAbogado,
+    fecha,
+    descripcion,
+    TipoDeCasoId,
+    importe,
+  } = req.body;
   //const fecha_caso= new Date(fecha)
+  console.log(
+    "cedulaCliente",
+    cedulaCliente,
+    "cedulaAbogado",
+    cedulaAbogado,
+    "fecha",
+    fecha,
+    "descripcion",
+    descripcion,
+    "TipoDeCasoId",
+    TipoDeCasoId,
+    "importe",
+    importe,
+  );
 
   try {
     const response = await createCaso(
@@ -15,6 +35,7 @@ const createCasosHandler = async (req, res) => {
       fecha,
       descripcion,
       TipoDeCasoId,
+      importe,
     );
     res.status(200).json(response);
   } catch (error) {
@@ -32,6 +53,7 @@ const getCasoHandler = async (req, res) => {
 };
 
 const getTipoDeCasoByIdHandler = async (req, res) => {
+  console.log(req.params);
   const { idCaso } = req.params;
   try {
     const response = await getCasoId(idCaso);
@@ -53,7 +75,7 @@ const deleteCasoHandler = async (req, res) => {
   }
 };
 
-module.exports = {
+export  {
   createCasosHandler,
   getCasoHandler,
   deleteCasoHandler,

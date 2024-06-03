@@ -1,27 +1,29 @@
 import './payments.css';
 import { Link } from "react-router-dom";
 // const PUBLIC_KEY = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { useState } from 'react';
+// import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { initMercadoPago } from "@mercadopago/sdk-react";
+import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
-// import {PaymentElement} from '@stripe/react-stripe-js';
 import Layout from '../../components/layout/layout';
-import { } from "@mercadopago/sdk-react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getCasos  } from '../../redux/actions';
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-47bcf8af-9fee-4169-9a1b-61804619024f", {
+  initMercadoPago("APP_USR-b26ba8db-fbe9-410e-af81-4a8481738a84", {
     locale: "es-CO",
   });
 
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedulaCliente: "123456",
+    idCaso: "",
     description: "Honorarios",
   });
 
-    const [responsePreference, setResponsePreference] = useState({});
+    // const [responsePreference, setResponsePreference] = useState({});
   
   const handlePay = async () => {
     try {
@@ -30,9 +32,9 @@ function Payments() {
       const paymentData = await crearPago(userPreference);
       console.log("Respuesta creacion pago: ", paymentData);
 
-      setResponsePreference(paymentData);
+      // setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
-      window.open(paymentData.sandbox_init_point, "_self");
+      window.open(paymentData.init_point, "_self");
     } catch (error) {
       console.error(error);
       // Manejo de errores
@@ -45,73 +47,31 @@ function Payments() {
       [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
     });
   };
-  //   const onSubmit = async (formData) => {
-  //     // callback llamado al hacer clic en Wallet Brick
-  //     // esto es posible porque Brick es un botón
-  //     // en este momento de envío, debes crear la preferencia
-  //     const yourRequestBodyHere = {
-  //       items: [
-  //         {
-  //           id: "202809963",
-  //           title: "Dummy title",
-  //           description: "Dummy description",
-  //           quantity: 1,
-  //           unit_price: 10,
-  //         },
-  //       ],
-  //       purpose: "wallet_purchase",
-  //     };
-  //     return new Promise((resolve, reject) => {
-  //       fetch("/create_preference", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(yourRequestBodyHere),
-  //       })
-  //         .then((response) => response.json())
-  //         .then((response) => {
-  //           // resolver la promesa con el ID de la preferencia
-  //           resolve(response.preference_id);
-  //         })
-  //         .catch((error) => {
-  //           // manejar la respuesta de error al intentar crear la preferencia
-  //           reject();
-  //         });
-  //     });
-  //   };
 
-  //   const onError = async (error) => {
-  //     // callback llamado para todos los casos de error de Brick
-  //     console.log(error);
-  //   };
+  const dispatch = useDispatch();
+  const casos = useSelector((state) => state.casos);
 
-  //   const onReady = async () => {
-  //     /*
-  //    Callback llamado cuando Brick esté listo.
-  //    Aquí puedes ocultar loadings en tu sitio, por ejemplo.
-  //  */
-  //   };
+  console.log("casos", casos);
 
+  useEffect(() => {
+    dispatch(getCasos());
+  }, [dispatch]);
 
-
-
-
-
-    // <form>
-    //   <PaymentElement />
-    //   <button>Submit</button>
-    // </form>
-
-
-
+  const userCasos = casos.datosPagina?.filter((caso)=>
+    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
+  )
   
   return (
     <Layout>
       <div>
+      {user.cedulaCliente ? (
         <div>
+          
           <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
             <h1 className="titulo">Realizar un pago</h1>
+            <br />
+            <h4 className="titulo">Selecciona el caso al cual se va a aplicar el pago e ingresa el valor de los honorarios que deseas pagar.</h4>
+            <br />
             <div className="input input-bordered flex items-center gap-2">
               <label htmlFor="correo" className="">
                 Valor a pagar:
@@ -124,17 +84,46 @@ function Payments() {
                 id="unit_price"
                 className="grow"
               />
-              {/* <label htmlFor="contrasena" className="labelcrearusuario">
-                  Contraseña:
+            </div>
+            <div className="input input-bordered flex items-center gap-2">
+              {/* <label htmlFor="correo" className="">
+                Número de caso:  
+              </label>
+              <input
+                name="idCaso"
+                type="number"
+                value={userPreference.idCaso}
+                onChange={handleChangePagos}
+                id="idCaso"
+                className="grow"
+              /> */}
+              {casos.datosPagina ? (
+                <label className="w-full">
+                  <select
+                    name="idCaso"
+                    id="idCaso"
+                    onChange={(event) => handleChangePagos(event)}
+                    className="input input-bordered text-lg pl-2 w-full"
+                  >
+                    <option value="" className="customOption">
+                      Seleccionar caso
+                    </option>
+                    {userCasos.map((caso) => (
+                      <option
+                        key={caso.id}
+                        value={caso.id}
+                        className="customOption"
+                      >
+                        {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`}
+                      </option>
+                    ))}
+                  </select>
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="cajascrearusuario"
-                  value={userDataCrear.password}
-                  onChange={handleChangeCrear}
-                /> */}
+              ) : (
+                <label className="w-full">
+                  No se encontraron casos para asociar al pago.
+                </label>
+              )}
             </div>
             <div className="botonescrearusuario">
               <Link to="/home">
@@ -145,7 +134,6 @@ function Payments() {
                   className="btn btn-accent btn-sm"
                 />
               </Link>
-              {/* <PaymentElement /> */}
               <input
                 type="button"
                 name="Pagar"
@@ -158,13 +146,51 @@ function Payments() {
           </div>
           <div id="wallet_container"></div>
 
-          <Wallet
+          {/* <Wallet
             onSubmit={handlePay}
             initialization={{ preferenceId: responsePreference.id }}
             customization={{ texts: { valueProp: "smart_option" } }}
-          />
+          /> */}
+        
         </div>
+      ) : 
+      <div className="contenedorCasos">
+      {casos.datosPagina?.map(caso => (
+        <div key={caso.id} className="caso-item">
+        <h3>Pagos del caso: n°{caso.id}</h3>
+        <p><strong>Descripción  del caso:</strong> {caso.descripcion} </p>
+        <p><strong>Cliente:</strong>  {caso.apellidoCliente}{caso.nombreCliente}</p>
+          {caso.pagos && caso.pagos.length > 0 && (
+            <div>
+              <h4>Pagos:</h4>
+              <ul>
+                {caso.pagos.map(pago => (
+                  <li key={pago.id}>{pago.descripcion}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        
+      ))}
+      
+    
+    <div className="botonescrearusuario">
+    <Link to="/home">
+      <input
+        type="button"
+        name="Volver"
+        value="Volver"
+        className="btn btn-accent btn-sm"
+      />
+    </Link>
+    </div>
+    </div>
+}
+      
       </div>
+      
+      
     </Layout>
   );
 }

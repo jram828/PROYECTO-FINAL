@@ -1,6 +1,7 @@
-const { getAllUsuario } = require("../controllers/usuario/getAllUsuario");
-const { crearUsuario } = require("../controllers/usuario/insertaUsuario");
-require("dotenv").config();
+import { getAllUsuario } from "../controllers/usuario/getAllUsuario.js";
+import { crearUsuario } from "../controllers/usuario/insertaUsuario.js";
+import dotenv from 'dotenv'
+dotenv.config();
 const {
   ACCOUNTSID,
   AUTHTOKEN,
@@ -11,12 +12,12 @@ const {
   OAUTH_REDIRECT_URI,
   OAUTH_ACCESS_TOKEN,
 } = process.env;
-const twilio = require("twilio");
-const nodemailer = require("nodemailer");
-const {google} = require("googleapis");
-const fs = require("fs");
+import twilio from "twilio";
+import nodemailer from "nodemailer";
+import {google} from "googleapis";
+import fs from "fs";
 // const { MAIL_USERNAME } = process.env;
-require("dotenv").config();
+//require("dotenv").config();
 
 const allUsuarios = async (req, res) => {
   console.log(req.query);
@@ -40,39 +41,7 @@ const postUsuariosHandler = async (req, res) => {
 
       const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
       const numero = "+573127461628";
-      // console.log("Datos google: ", GOOGLE_KEY);
-      // const transporter = nodemailer.createTransport({
-      //   host: "smtp-mail.outlook.com",
-      //   port: 587,
-      //   secure: true,
-      //   auth: {
-      //     user: "julian828@hotmail.com",
-      //     pass: GOOGLE_KEY,
-      //   },
-      //   tls: {
-      //     rejectUnauthorized: false,
-      //   },
-      // });
-      // const transporter = nodemailer.createTransport({
-      //   host: "smtp.ethereal.email",
-      //   port: 587,
-      //   auth: {
-      //     user: "vida40@ethereal.email",
-      //     pass: "6HT7t4MKUJ7yM3w9R7",
-      //   },
-      // });
-
-        // async function sendEmail(correo, GOOGLE_KEY) {
-        //   const info = await transporter.sendMail({
-        //     from: '"Legaltech" <legaltech.crm@gmail.com>',
-        //     to: correo,
-        //     subject: `Hola!`,
-        //     text: "Has sido registrado en Legaltech!",
-        //   });
-        //   console.log("Datos nodemailer: ", correo);
-        //   console.log("Message sent: %s", info.messageId);
-        // }
-      //  await sendEmail();
+     
       const oAuth2Client = new google.auth.OAuth2(
         OAUTH_CLIENTID,
         OAUTH_CLIENT_SECRET,
@@ -126,7 +95,7 @@ const postUsuariosHandler = async (req, res) => {
   // res.status(200).send(`creando actividades`);
 };
 
-module.exports = {
+export {
   postUsuariosHandler,
   allUsuarios,
 };

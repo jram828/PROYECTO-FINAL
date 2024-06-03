@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbogado, deleteCliente } from '../../redux/actions';
-import { getAbogados, getClientes} from '../../redux/actions'
 import Layout from '../../components/layout/layout';
 
 
@@ -18,23 +17,43 @@ function Detail() {
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const { cedula } = useParams();
 
-  if (source === 'abogado') {
+  useEffect(() => {
+    if (source === 'abogado') {
+      dispatch(getByIdAbogado(cedula));
+    } else {
+      dispatch(getByIdCliente(cedula));
+    }
+
+    return () => {
+      if (source === 'abogado') {
+        dispatch(setAbogado({}));
+      } else {
+        dispatch(setCliente({}));
+      }
+    };
+  }, [dispatch, cedula, source]);
+
+  const datos = useSelector((state) => (source === 'abogado' ? state.abogado : state.cliente));
+
+
+  /*if (source === 'abogado') {
     var datos = useSelector((state) => state.abogado);
     var { cedula } = useParams();
     useEffect(() => {
       dispatch(getByIdAbogado(cedula));
-      // return setAbogado({});
+      //return setAbogado({});
     }, [dispatch, cedula]);
   } else {
     var datos = useSelector((state) => state.cliente);
     var { cedula } = useParams()
     useEffect(() =>{
       dispatch(getByIdCliente(cedula))
-      // return setCliente({});
+      //return setCliente({});
    }, [dispatch, cedula])
     console.log('datos', datos)
-  }
+  }*/
 
  
     const handleDelete = () => {
@@ -45,7 +64,7 @@ function Detail() {
           dispatch(deleteAbogado(cedula));
           console.log('cedula', cedula);
           navigate('/home/lawyers');
-          dispatch(getAbogados())
+          
         }
       }else {
         const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
@@ -53,10 +72,19 @@ function Detail() {
         if (isConfirmed) {
           dispatch(deleteCliente(cedula));
           navigate('/home/customers');
-          dispatch(getClientes())
+          
         }
       }
     }
+
+    const handleGenerateContract = () => {
+      navigate('/home/documentos/contrato', { state: { cliente: datos } });
+    };
+
+    const handleGeneratePoder = () => {
+      navigate('/home/documentos/poder', { state: { cliente: datos } });
+      
+    };
    
 
   return (
@@ -69,7 +97,10 @@ function Detail() {
           <div key={cedula}></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mx-4">
-              <label htmlFor="nombre" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="nombre"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Nombre(s):
                 <input
                   type="text"
@@ -82,7 +113,10 @@ function Detail() {
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="apellidos" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="apellidos"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Apellido(s):
                 <input
                   type="text"
@@ -97,7 +131,10 @@ function Detail() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mx-4">
-              <label htmlFor="cedula" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="cedula"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Cédula:
                 <input
                   type="text"
@@ -111,7 +148,10 @@ function Detail() {
             </div>
             {datos?.matricula && (
               <div className="mx-4">
-                <label htmlFor="matricula" className="input input-bordered flex items-center max-w-xs">
+                <label
+                  htmlFor="matricula"
+                  className="input input-bordered flex items-center max-w-xs"
+                >
                   Matrícula:
                   <input
                     type="text"
@@ -127,7 +167,10 @@ function Detail() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mx-4">
-              <label htmlFor="correo" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="correo"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Correo:
                 <input
                   type="text"
@@ -140,7 +183,10 @@ function Detail() {
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="telefono" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="telefono"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Teléfono:
                 <input
                   type="text"
@@ -155,7 +201,10 @@ function Detail() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mx-4">
-              <label htmlFor="calle" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="calle"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Calle:
                 <input
                   type="text"
@@ -168,7 +217,10 @@ function Detail() {
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="numero" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="numero"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Número:
                 <input
                   type="text"
@@ -183,7 +235,10 @@ function Detail() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mx-4">
-              <label htmlFor="codigoPostal" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="codigoPostal"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 CP:
                 <input
                   type="text"
@@ -196,7 +251,10 @@ function Detail() {
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="ciudad" className="input input-bordered flex items-center max-w-xs">
+              <label
+                htmlFor="ciudad"
+                className="input input-bordered flex items-center max-w-xs"
+              >
                 Ciudad:
                 <input
                   type="text"
@@ -210,7 +268,10 @@ function Detail() {
             </div>
           </div>
           <div className="mx-4 max-w-xs">
-            <label htmlFor="pais" className="input input-bordered flex items-center max-w-xs">
+            <label
+              htmlFor="pais"
+              className="input input-bordered flex items-center max-w-xs"
+            >
               País:
               <input
                 type="text"
@@ -223,20 +284,40 @@ function Detail() {
             </label>
           </div>
           <div className="flex justify-center gap-2">
-            <button className="btn btn-sm btn-accent text-white">Eliminar registro</button>
+            <button 
+            onClick={handleDelete}
+            className="btn btn-sm btn-accent text-white">
+              Eliminar registro
+            </button>
             {datos?.matricula ? (
               <Link to="/home/lawyers">
-                <button className="btn btn-sm btn-accent text-white">Volver</button>
+                <button className="btn btn-sm btn-accent text-white">
+                  Volver
+                </button>
               </Link>
             ) : (
               <Link to="/home/customers">
-                <button className="btn btn-sm btn-accent text-white">Volver</button>
+                <button className="btn btn-sm btn-accent text-white">
+                  Volver
+                </button>
               </Link>
+            )}
+            {datos?.matricula ? undefined : (
+              <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
+              Generar contrato
+            </button>
+            )}
+            {datos?.matricula ? undefined : (
+              
+                <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
+                  Generar poder
+                </button>
+             
             )}
           </div>
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 export default Detail

@@ -1,9 +1,9 @@
-const { Router } = require("express");
-const { loginHandler, loginHandlerGoogle } = require('../handlers/loginHandler')
+import { Router } from "express";
+import { loginHandler, loginHandlerGoogle, recoverPasswordHandler } from '../handlers/loginHandler.js'
 
 const loginRouter = Router();
 
 loginRouter.get("/", loginHandler);
 loginRouter.get("/google", loginHandlerGoogle);
-
-module.exports = loginRouter
+loginRouter.get("/password", recoverPasswordHandler);
+export default loginRouter

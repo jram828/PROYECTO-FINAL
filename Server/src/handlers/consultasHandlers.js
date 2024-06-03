@@ -1,6 +1,6 @@
-const { getAllConsulta } = require('../controllers/getAllConsulta')
-const { createConsultaBd } = require('../controllers/postConsultaController')
-const { deleteConsulta } = require('../controllers/deleteConsulta')
+import { getAllConsulta } from '../controllers/getAllConsulta.js'
+import { createConsultaBd } from '../controllers/postConsultaController.js'
+import { deleteConsulta } from '../controllers/deleteConsulta.js'
 
 const getConsultaHandler = async (req, res)=>{
     try {
@@ -13,6 +13,8 @@ const getConsultaHandler = async (req, res)=>{
 
 const postConsultaHandler = async (req, res) =>{
     const { nombre, apellido, correo, telefono, consulta } = req.body
+
+    console.log('Body crear consulta:', req.body)
     try {
         const response = await createConsultaBd( nombre, apellido, correo, telefono, consulta)
         res.status(200).json(response)
@@ -32,7 +34,7 @@ const deleteConsultaHandler = async (req, res)=>{
     }
 }
 
-module.exports = {
+export {
     getConsultaHandler,
     postConsultaHandler,
     deleteConsultaHandler

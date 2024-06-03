@@ -11,7 +11,7 @@ function CreateUser () {
 
   // const URL_CLOUDINARY = import.meta.env.VITE_URL_CLOUDINARY;
    const URL_CLOUDINARY ="https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
-  const [ urlImage, setUrlImage] = useState ("")
+  // const [ urlImage, setUrlImage] = useState ("")
   
     const [userDataCrear, setUserDataCrear] = useState({
       correo: "",
@@ -48,7 +48,7 @@ function CreateUser () {
 
       const response = await axios.post(URL_CLOUDINARY, data)
       
-      setUrlImage(response.data.secure_url)
+      // setUrlImage(response.data.secure_url)
       console.log(response)
       setUserDataCrear({
         ...userDataCrear,
@@ -57,11 +57,11 @@ function CreateUser () {
 
     }
 
-    const handleDeleteImage = (e) => {
-      e.preventDefault();
-      setUrlImage("");
+    // const handleDeleteImage = (e) => {
+    //   e.preventDefault();
+    //   setUrlImage("");
 
-    }
+    // }
   
     return (
       <Layout>
@@ -76,6 +76,14 @@ function CreateUser () {
               onChange={handleChangeImage}
               className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
             />
+            {urlImage && (
+          <div>
+            <img
+         src={urlImage}
+         style={{ width: '100px', height: '100px' }}/>
+            <button onClick={handleDeleteImage}>Eliminar</button>
+          </div>
+        )}
           </div>
     
         <form

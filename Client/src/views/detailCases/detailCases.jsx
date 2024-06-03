@@ -9,76 +9,85 @@ function DetailCasos() {
   const { id } = useParams(); // Obtener el id de los parámetros de la ruta
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const caso = useSelector(state => state.caso); // Asumimos que el detalle del caso se almacena en 'casoDetail'
+  const caso = useSelector(state => state.caso); // Asumimos que el detalle del caso se almacena en 'caso'
+
+  const formatDate = (dateString) => {
+    if (!dateString) return ''; // Devuelve una cadena vacía si dateString es nulo o indefinido
+    const date = new Date(dateString);
+    if (isNaN(date)) return ''; // Devuelve una cadena vacía si la fecha no es válida
+    return date.toLocaleDateString('es-CA'); // Convierte al formato YYYY-MM-DD
+  };
 
   useEffect(() => {
     dispatch(getCasoById(id));
   }, [dispatch, id]);
-   
+
   const handleDelete = () => {
     const isConfirmed = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
     
     if (isConfirmed) {
-      dispatch(deleteCaso(id));
+      const fechaFin = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+      dispatch(deleteCaso(id, fechaFin));
       navigate('/home/cases');
       dispatch(getCasos());
+      console.log("id", id, "fechaFin", fechaFin);
     }
   };
 
- 
-
-
   return (
     <Layout>
-      <div className="container mx-auto py-8">
-  <div className="detail-container max-w-3xl mx-auto p-6 bg-primary rounded-lg shadow-md text-white">
-    <p className="text-center text-xl font-bold mb-6">Detalle</p>
-    
-    <div className="space-y-4">
-      <div className="flex items-center space-x-4">
-        <label className="detail-label w-1/3">Tipo de caso:</label>
-        <input value={caso.TipoDeCasoTipoDeCasoid} className="detail-input w-2/3 p-2 rounded" readOnly />
-      </div>
+    <div className="detail-container">
+      <p>Detalle</p>
+      
+      <label className="detail-label">Tipo de caso:</label>
+      <input value={caso?.TipoDeCaso?.descripcion || ''} className="detail-input" readOnly />
+      <br />
 
-      <div className="flex items-center space-x-4">
-        <label className="detail-label w-1/3">Abogado:</label>
-        <input value={caso.AbogadoCedulaAbogado} className="detail-input w-2/3 p-2 rounded" readOnly />
-      </div>
+      <label className="detail-label">Abogado:</label>
+      <input value={`${caso?.Abogado?.apellido || ''} ${caso?.Abogado?.nombre || ''}`} className="detail-input" readOnly />
+      <br />
 
-      <div className="flex items-center space-x-4">
-        <label className="detail-label w-1/3">Cliente:</label>
-        <input value={caso.ClienteCedulaCliente} className="detail-input w-2/3 p-2 rounded" readOnly />
-      </div>
+      <label className="detail-label">Cliente:</label>
+      <input value={`${caso?.Cliente?.apellido || ''} ${caso?.Cliente?.nombre || ''}`} className="detail-input" readOnly />
+      <br />
 
-      <div className="flex items-center space-x-4">
-        <label className="detail-label w-1/3">Descripcion:</label>
-        <input value={caso.descripcion} className="detail-input w-2/3 p-2 rounded" readOnly />
-      </div>
+      <label className="detail-label">Descripcion:</label>
+      <input value={caso?.descripcion || ''} className="detail-input" readOnly />
+      <br />
 
-      <div className="flex items-center space-x-4">
-        <label className="detail-label w-1/3">Fecha de inicio:</label>
-        <input value={caso.fecha} className="detail-input w-2/3 p-2 rounded" readOnly />
-      </div>
+      <label className="detail-label">Fecha de inicio:</label>
+      <input value={formatDate(caso?.fecha)} className="detail-input" readOnly />
+      <br />
 
-      {caso.fechaFin && (
-        <div className="flex items-center space-x-4">
-          <label className="detail-label w-1/3">Fecha final:</label>
-          <input value={caso.fechaFin} className="detail-input w-2/3 p-2 rounded" readOnly />
+      {caso?.fechaFin && (
+        <>
+          <label className="detail-label">Fecha final:</label>
+          <input value={formatDate(caso.fechaFin)} className="detail-input" readOnly />
+          <br />
+        </>
+      )}
+
+      {caso?.PagosClientes && caso.PagosClientes.length > 0 && (
+        <div>
+          <label htmlFor="pagosCliente">Pagos del Cliente:</label>
+          <select name="pagosCliente" id="pagosCliente">
+            {caso.PagosClientes.map((pago, index) => (
+              <option key={index} value={pago.pagoId}>
+                {pago.descripcion} - {new Date(pago.fechaDeAprobacion).toLocaleDateString()} - {pago.importeDeLaTransaccion}
+              </option>
+            ))}
+          </select>
         </div>
       )}
-    </div>
+      <br />
 
-    <div className="flex justify-between mt-6">
-      <button className="btn btn-accent text-white" onClick={handleDelete}>Eliminar caso</button>
-      <Link to="/home/cases">
-        <button className="btn btn-secondary">Volver</button>
+      <button className="button" onClick={handleDelete}>Finalizar caso</button>
+      <Link to='/home/cases'>
+        <button>Volver</button>
       </Link>
     </div>
-  </div>
-</div>
-
-    </Layout>
+  </Layout>
   )
 }
 
-export default DetailCasos
+export default DetailCasos;

@@ -1,9 +1,9 @@
-const {
+import {
   getAllPagosClientes,
-} = require("../controllers/pagosClientesControllers/getAllPagosClientes");
-const {
+} from "../controllers/pagosClientesControllers/getAllPagosClientes.js";
+import {
   createPagosClientes,
-} = require("../controllers/pagosClientesControllers/postPagosClientes");
+} from "../controllers/pagosClientesControllers/postPagosClientes.js";
 
 const getPagosClientesHandler = async (req, res) => {
   try {
@@ -15,22 +15,22 @@ const getPagosClientesHandler = async (req, res) => {
 };
 
 const postPagosClientesHandler = async (req, res) => {
-  // const {
-  //   idClient:,
-  //   descripcion,
-  //   fechaDeAprobacion,
-  //   grupoFinancieroId,
-  //   orderId,
-  //   tipoDePago,
-  //   estado,
-  //   importeDeLaTransaccion,
-  // } = req.body;
+  const {
+    idCaso,
+    descripcion,
+    fechaDeAprobacion,
+    pagoId,
+    orderId,
+    tipoDePago,
+    estado,
+    importeDeLaTransaccion,
+  } = req.body;
   try {
     const response = await createPagosClientes(
-      idCliente,
+      idCaso,
       descripcion,
       fechaDeAprobacion,
-      grupoFinancieroId,
+      pagoId,
       orderId,
       tipoDePago,
       estado,
@@ -38,11 +38,12 @@ const postPagosClientesHandler = async (req, res) => {
     );
     res.status(200).json(response);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
 
-module.exports = {
+export {
   getPagosClientesHandler,
   postPagosClientesHandler,
 };

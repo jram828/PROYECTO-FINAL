@@ -1,4 +1,12 @@
-const { Abogado } = require("../../DB");
+import { models } from "../../DB.js";
+const {
+  ACCOUNTSID,
+  AUTHTOKEN,
+  NUMBER,
+} = process.env;
+import twilio from "twilio";
+
+const Abogado = models.Abogado
 
 const createAbogadoBd = async (
   cedulaAbogado,
@@ -13,13 +21,13 @@ const createAbogadoBd = async (
   ciudad,
   pais,
   password,
-  administrador
+  imagen,
+  administrador,
 ) => {
   // console.log('imagen',imagen)
-
-  const newAbogado = await Abogado.create({
-    cedulaAbogado,
-    matricula,
+try{
+  console.log(cedulaAbogado)
+  console.log(matricula,
     nombre,
     apellido,
     correo,
@@ -30,14 +38,43 @@ const createAbogadoBd = async (
     ciudad,
     pais,
     password,
-    administrador
+    imagen,
+    administrador,)
+  const newAbogado = await Abogado.create({
+    cedulaAbogado: cedulaAbogado,
+    matricula: matricula,
+    nombre: nombre,
+    apellido: apellido,
+    correo: correo,
+    telefono: telefono,
+    calle: calle,
+    numero: numero,
+    codigoPostal: codigoPostal,
+    ciudad: ciudad,
+    pais: pais,
+    password: password,
+    imagen: imagen,
+    administrador: administrador,
   });
 
-  //  newAbogado.addCliente(clientes);
 
-  return newAbogado;
+        const client = new twilio(ACCOUNTSID, AUTHTOKEN, NUMBER);
+  const celular = "+573127461628";
+  client.messages
+    .create({
+      body: "Se ha creado un nuevo Abogado en Legaltech!",
+      from: "+12097210938",
+      to: celular,
+    })
+    .then((message) => console.log(message.sid))
+    .done();
+    return newAbogado;
+  } catch(error){
+    console.log(error)
+  } 
 
-  // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
+  
+
 };
 
-module.exports = { createAbogadoBd };
+export  { createAbogadoBd };

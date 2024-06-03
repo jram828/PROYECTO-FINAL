@@ -1,5 +1,7 @@
-const { Sequelize } = require("sequelize");
-const { Abogado } = require("../../DB");
+import { Sequelize } from "sequelize";
+import { models } from "../../DB.js";
+
+const Abogado=models.Abogado
 
 const getAllAbogados = async (filters) => {
   //filters = acá me traigo req.query
@@ -66,6 +68,6 @@ const getAllAbogados = async (filters) => {
   return getAllAbogadosBd;
 };
 
-module.exports = {
+export {
   getAllAbogados,
 };

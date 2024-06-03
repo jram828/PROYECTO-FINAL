@@ -1,4 +1,5 @@
-const { Abogado } = require("../../DB");
+import { models } from "../../DB.js";
+const Abogado=models.Abogado
 
 const getAbogadoById = async (cedulaAbogado) => {
   console.log(cedulaAbogado);
@@ -7,6 +8,6 @@ const getAbogadoById = async (cedulaAbogado) => {
   return abogado;
 };
 
-module.exports = {
+export {
   getAbogadoById,
 };

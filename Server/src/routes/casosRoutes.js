@@ -1,10 +1,10 @@
-const { Router } = require("express");
-const {
+import { Router } from "express";
+import {
   createCasosHandler,
   getCasoHandler,
   deleteCasoHandler,
   getTipoDeCasoByIdHandler,
-} = require("../handlers/casosHandlers");
+} from "../handlers/casosHandlers.js";
 
 const casosRouter = Router();
 
@@ -16,4 +16,4 @@ casosRouter.post("/", createCasosHandler);
 
 casosRouter.post("/findecaso", deleteCasoHandler);
 
-module.exports = casosRouter;
+export default casosRouter;

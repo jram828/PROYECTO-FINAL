@@ -6,8 +6,11 @@ import style from './crearCaso.module.css';
 import { Link } from "react-router-dom";
 import { getTiposCasos } from "../../handlers/todosTiposdecasos";
 import Layout from "../../components/layout/layout";
+import { useNavigate } from "react-router-dom";
 
 function CrearCaso() {
+
+  const navigate = useNavigate()
   const [userDataRegistro, setUserDataRegistro] = useState({
     cedulaAbogado: "",
     cedulaCliente: "",
@@ -86,6 +89,7 @@ function CrearCaso() {
       await postCaso(userDataRegistro);
 
       window.alert("Caso creado con éxito");
+      navigate('/home/cases')
     } catch (error) {
       console.error("Error al crear el caso:", error.message);
       window.alert("No se pudo crear el caso");

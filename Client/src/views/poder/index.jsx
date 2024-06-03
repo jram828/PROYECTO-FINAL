@@ -1,42 +1,83 @@
 import "./poder.css";
-// import { useSelector } from "react-redux";
 import { printDivContent } from "../../utils/printDivContent";
+import { getCasos, getCasoById, getByIdCliente, getByIdAbogado, setAbogado, setCliente } from "../../redux/actions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+
+
 
 const Poder = () => {
-  // const cliente = useSelector((state) => state.cliente);
 
-  // console.log('Cliente poder: ', cliente)
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+ 
+
+  const cliente = location.state?.cliente || {};
   
+  const casos = useSelector((state) => state.casos);
+  const caso = useSelector((state) => state.caso);
+  
+  const abogado= useSelector((state) => state.abogado)
+  
+console.log("cliente:",cliente)
+
+useEffect(()=> {
+  dispatch(setAbogado({}))
+}, [])
+
+
+  useEffect(() => {
+    dispatch(getCasos()); 
+  }, [dispatch]);
+    console.log('casos actualizados:', casos);
+
+    useEffect(() => {
+      if (casos && casos.datosPagina && cliente) {
+        const selectedCase = casos.datosPagina.find((c) => 
+          c.nombreCliente === cliente.nombre && c.apellidoCliente === cliente.apellido
+        );
+        if (selectedCase) {
+          dispatch(getCasoById(selectedCase.id));
+        }
+      }
+    }, [casos, cliente, dispatch]);
+  
+    console.log("caso", caso);
+
+    useEffect(() => {
+      if (caso.AbogadoCedulaAbogado) {
+        dispatch(getByIdAbogado(caso.AbogadoCedulaAbogado));
+      }
+      return () => {
+        
+          dispatch(setAbogado({}));
+          dispatch(setCliente({}));
+      }
+    }, [caso.AbogadoCedulaAbogado, dispatch]);
+
+  //console.log("abogado:", abogado)
+
 function generatePDF() {
   printDivContent("poder");
 }
 
-  const cliente = {
-    nombre: "Juan Carlos",
-    apellido: "Perez Paramo",
-    direccion: "Calle 14 # 15 - 90",
-    ciudad: "Medellín",
-    celular: "3627895641",
-    correo: "juan@gmail.com",
-    cedula: "78965412",
-    valor_pretensiones: "50.000.000",
-    valor_pretensiones_letras: "CINCUENTA MILLONES DE PESOS",
-    honorarios: "2.000.000",
-    honorarios_letras: "DOS MILLONES DE PESOS",
-  };
+const handleVolver = () => {
+  dispatch(setAbogado({}));
+  //window.localStorage.setItem("abogado", JSON.stringify({nombre:"", apellido:""}));
+  navigate(`/home/detail/${cliente.cedulaCliente}`)
 
-  const abogado = {
-    nombre: "Jeronimo Elias",
-    apellido: "Manzanares Castillo",
-    direccion: "Calle 50 # 70 - 85",
-    celular: "3687412536",
-    correo: "jeronimo@gmail.com",
-    cedulaAbogado: "73698521",
-  };
+
+}
+
 
   return (
-    <div className="contenedorPoder">
+    
+    <div className="flex items-center justify-center min-h-screen p-6">
       <h1 className="titulo">Poder</h1>
+      {Object.keys(abogado).length === 0 ? 
+      <p>Se debe crear un caso</p> :
       <div className="poder" id="poder">
         <p className="titulopoder">
           <b>
@@ -60,12 +101,12 @@ function generatePDF() {
         </p>
         <p className="parrafopoder">
           <b>
-            {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()},{" "}
+            {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()},{" "}
           </b>{" "}
           identificado/a como aparece al pie de mi firma, manifiesto que otorgo
           poder especial, amplio y suficiente al doctor{" "}
           <b>
-            {abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()},{" "}
+            {abogado.nombre?.toUpperCase()} {abogado.apellido?.toUpperCase()},{" "}
           </b>{" "}
           mayor de edad, identificado con cédula de ciudadanía No{" "}
           <b>{abogado.cedulaAbogado}</b> abogado en ejercicio con T.P. No 81657
@@ -88,7 +129,7 @@ function generatePDF() {
           Sírvase señor(a) operador en insolvencia, reconocer el poder en los
           efectos mencionado de conformidad con el Decreto 806 del 4 de junio de
           2020, para lo cual me permito indiciar que el correo del apoderado que
-          constituyo es: <u>j.avellaneda@aveza.co</u>
+          constituyo es: <u>legaltech@gmail.com</u>
         </p>
         <div className="firmas">
           <div className="firmacliente">
@@ -97,12 +138,12 @@ function generatePDF() {
             <br />
             <br />
             <h2 className="firma">
-              {cliente.nombre.toUpperCase()} {cliente.apellido.toUpperCase()}{" "}
+              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}{" "}
               <br />
-              C.C. No. {cliente.cedula} <br />
-              {cliente.direccion.toUpperCase()}, {cliente.ciudad}
+              C.C. No. {cliente.cedulaCliente} <br />
+              {cliente.calle?.toUpperCase()} {cliente.numero}, {cliente.ciudad}
               <br />
-              Cel: {cliente.celular}
+              Cel: {cliente.telefono}
             </h2>
           </div>
           <div className="firmaabogado">
@@ -111,13 +152,13 @@ function generatePDF() {
             <br />
             <br />
             <h2 className="firma">
-              {abogado.nombre.toUpperCase()} {abogado.apellido.toUpperCase()}{" "}
+              {abogado.nombre?.toUpperCase()} {abogado.apellido?.toUpperCase()}{" "}
               <br />
               {abogado.cedulaAbogado}
               <br />
               CARRERA 15 No. 107 - 90 World Trade Center · Torre 3 · Oficina 202{" "}
               <br />
-              Cel: (57)- 300 1234567
+              Cel: {abogado.telefono}
             </h2>
           </div>
         </div>
@@ -129,17 +170,24 @@ function generatePDF() {
           Buenos Aires, Argentina Tel: - Celular: (57)- 300 1234567
           <br />
         </footer>
+        <div>
       </div>
       <div className="documentoagenerar">
-        <input
-          className="inputbox2"
-          type="submit"
-          name="generar"
-          value="Generar PDF"
-          onClick={generatePDF}
-        />
-      </div>
+      <input
+        className="inputbox2"
+        type="submit"
+        name="generar"
+        value="Generar PDF"
+        onClick={generatePDF}
+      />
+      <button onClick={handleVolver}>Volver</button>
     </div>
-  );
-};
+    </div>
+    
+}
+      
+  </div>
+  )
+}
+
 export default Poder;

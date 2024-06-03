@@ -1,11 +1,12 @@
-const { Pagos } = require("../../DB");
+ import {models} from "../../DB.js";
 
+ const { Pagos } = models
 const webhook = async (body) => {
   const newPago = "";
   console.log('Body webhook controller: ', body)
   return body;
 };
 
-module.exports = {
+export {
   webhook,
 };

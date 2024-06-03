@@ -1,8 +1,8 @@
-import style from './home.module.css';
+// import style from './home.module.css';
 import { Link,  } from 'react-router-dom';
 import picture from "../../assets/homepic.jpg";
-import logo from '../../assets/logo.png'
-import legaltech from "../../assets/legaltech.png";
+// import logo from '../../assets/logo.png'
+// import legaltech from "../../assets/legaltech.png";
 import Layout from '../../components/layout/layout';
 
 
@@ -48,30 +48,30 @@ function Home() {
             </li>
             <li>
               <Link
-                to="/home/detail"
+                to="/home/datos"
                 className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
               >
                 <button>Datos Personales</button>
               </Link>
             </li>
             <li>
-              {user.administrador === true || user.cedulaAbogado ? (
+              {/*{user.administrador === true || user.cedulaAbogado ? (*/}
                 <Link
                   to="/home/cases"
                   className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
                 >
                   <button>Casos</button>
                 </Link>
-              ) : undefined}
+              {/*}) : undefined}*/}
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/home/documents"
                 className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
               >
                 <button>Documentos</button>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/home/diary"
@@ -93,10 +93,10 @@ function Home() {
             <li>
               {user.administrador === true ? (
                 <Link
-                  to="/home/statistics"
+                  to="/home/allconsultations"
                   className="flex items-center justify-center text-white hover:text-white hover:bg-accent h-full"
                 >
-                  <button>Estadísticas</button>
+                  <button>Consultas</button>
                 </Link>
               ) : undefined}
             </li>

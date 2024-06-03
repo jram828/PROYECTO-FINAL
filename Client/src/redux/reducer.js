@@ -26,6 +26,9 @@ import {
   CLEAN_USER,
   SET_ABOGADO,
   SET_CLIENTE,
+  DELETE_CASO,
+  GET_CONSULTAS,
+  MODIFICAR_DATOS,
 } from "./actions";
 
 let initialState = {
@@ -70,6 +73,7 @@ const rootReducer = (state = initialState, action) => {
         clientes: action.payload,
       };
     case GET_BY_ID_ABOGADO:
+      //window.localStorage.setItem("abogado", JSON.stringify(action.payload));
       return {
         ...state,
         abogado: action.payload,
@@ -151,6 +155,11 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           caso: action.payload,
         };
+        case DELETE_CASO:
+          return {
+            ...state,
+            casos: action.payload,
+          }
     case POST_CITA:
       return {
         ...state,
@@ -166,6 +175,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         consultas: action.payload,
       };
+    case GET_CONSULTAS:
+      return {
+        ...state,
+        consultas: action.payload,
+      }  
+     case MODIFICAR_DATOS:
+      return {
+        ...state,
+        cliente: action.payload
+      } 
     case LOGIN:
       return {
         ...state,

@@ -22,6 +22,7 @@ export const DELETE_CASO = "DELETE_CASO;";
 export const POST_CITA = "POST_CITA";
 export const GET_CITAS = "GET_CITAS";
 export const POST_CONSULTA = "POST_CONSULTA";
+export const GET_CONSULTAS = "GET_CONSULTAS"
 
 export const LOGIN = "LOGIN";
 export const LOG = "LOG";
@@ -44,6 +45,7 @@ export const LOG_FAILED = "LOG_FAILED";
 export const INCREMENT_NUMBER_PUNTUACION = "INCREMENT_NUMBER_PUNTUACION";
 export const CLEAN_ACTIONS = "CLEAN_ACTIONS";
 export const UPDATE_ACTION_ERROR = "UPDATE_ACTION_ERROR";
+export const MODIFICAR_DATOS = "MODIFICAR_DATOS";
 
 
 //const URL = 'http://localhost:3001/'
@@ -163,7 +165,7 @@ export const filterCliente = (filtro) => {
 };
 
 export const filterAbogado = (filtro) => {
-  const endpoint = `${URL}abogados?${filtro}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}abogados?${filtro}&pagina=1&porPagina=50`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {
@@ -179,7 +181,7 @@ export const filterAbogado = (filtro) => {
 };
 
 export const orderAbogados = (value) => {
-  const endpoint = `${URL}abogados?field=apellido&order=${value}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}abogados?field=apellido&order=${value}&pagina=1&porPagina=50`;
 
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
@@ -191,7 +193,7 @@ export const orderAbogados = (value) => {
 };
 
 export const orderClientes = (value) => {
-  const endpoint = `${URL}clientes?field=apellido&order=${value}?pagina=1&porPagina=50`;
+  const endpoint = `${URL}clientes?field=apellido&order=${value}&pagina=1&porPagina=50`;
 
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
@@ -281,8 +283,8 @@ export const orderCasos = (value) => {
   };
 };
 
-export const getCasoById = (id) => {
-  const endpoint = `${URL}casos/${id}`;
+export const getCasoById = (idCaso) => {
+  const endpoint = `${URL}casos/${idCaso}`;
   console.log("URL", endpoint);
   return async (dispatch) => {
     // try {
@@ -297,12 +299,12 @@ export const getCasoById = (id) => {
   };
 };
 
-export const deleteCaso = (id) => {
-  const endpoint = `${URL}casos/elimina`;
+export const deleteCaso = (idCaso, fechaFin) => {
+  const endpoint = `${URL}casos/findecaso`;
 
   return async (dispatch) => {
-    const data = await axios.post(endpoint, { id });
-    console.log("url", endpoint, "id", id);
+    const data = await axios.post(endpoint, { idCaso, fechaFin });
+    console.log("url", endpoint, "id", idCaso, "fechaFin", fechaFin);
 
     return dispatch({
       type: DELETE_CASO,
@@ -334,40 +336,69 @@ export const getCitas = () => {
   };
 };
 
-export const postConsulta = (payload) => {
+export const postConsulta = async (payload) => {
   const endpoint = `${URL}consultas`;
-
-  return async (dispatch) => {
+  console.log("URL", endpoint, "PAYLOAD", payload)
+  // return async (dispatch) => {
     const data = await axios.post(endpoint, payload);
-    return dispatch({
-      type: POST_CONSULTA,
-      payload: data,
-    });
-  };
+    return data;
+};
+  
+export const recordarPassword = async (correo) => {
+  const endpoint = `${URL}login/password/?correo=${correo}`;
+  console.log("URL", endpoint, "PAYLOAD", correo);
+  // return async (dispatch) => {
+  const data = await axios.get(endpoint);
+  return data;
 };
 
-// Token del local Storage
-const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
-var config = {};
-if (loggedUserJSON) {
-  const token = JSON.parse(loggedUserJSON);
-  config["headers"] = {
-    token: token.tokenUser,
-  };
-}
+  // Token del local Storage
+  const loggedUserJSON = window.localStorage.getItem("loggedNoteAppUser");
+  var config = {};
+  if (loggedUserJSON) {
+    const token = JSON.parse(loggedUserJSON);
+    config["headers"] = {
+      token: token.tokenUser,
+    };
+  }
 
-export const loginWithProvider = (provider) => {
-  return async function (dispatch) {
-    try {
-      const user = (
-        await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/auth/fromProvider`,
-          provider
-        )
-      ).data;
-      dispatch({ type: LOGIN, payload: user });
-    } catch (error) {
-      dispatch({ type: LOGIN_FAILED, payload: error.response.data });
-    }
+  export const loginWithProvider = (provider) => {
+    return async function (dispatch) {
+      try {
+        const user = (
+          await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/auth/fromProvider`,
+            provider
+          )
+        ).data;
+        dispatch({ type: LOGIN, payload: user });
+      } catch (error) {
+        dispatch({ type: LOGIN_FAILED, payload: error.response.data });
+      }
+    };
   };
-};
+
+  export const getConsultas = () => {
+    const endpoint = `${URL}consultas?porPagina=20`;
+    return async (dispatch) => {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_CONSULTAS,
+        payload: data,
+      });
+    };
+  };
+
+  export const modificarDatos = (payload) => {
+    const endpoint = `${URL}clientes/actualiza`;
+  
+    return async (dispatch) => {
+      const data = await axios.post(endpoint, payload);
+      console.log("URL", endpoint, "PAYLOAD", payload);
+      return dispatch({
+        type: MODIFICAR_DATOS,
+        payload: data,
+      });
+    };
+  };
+  

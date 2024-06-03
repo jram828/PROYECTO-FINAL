@@ -1,14 +1,14 @@
-const { getClienteById } = require("../controllers/cliente/getClienteById");
-const { getAllCliente } = require("../controllers/cliente/getAllClientes");
-const { getClienteByName } = require("../controllers/cliente/getClienteByName");
-const { createClienteBd } = require("../controllers/cliente/postClientesController");
-const { eliminaCliente } = require("../controllers/cliente/postEliminaCliente");
-const {
+import { getClienteById } from "../controllers/cliente/getClienteByid.js";
+import { getAllCliente } from "../controllers/cliente/getAllClientes.js";
+import { getClienteByName } from "../controllers/cliente/getClienteByName.js";
+import { createClienteBd } from "../controllers/cliente/postClientesController.js";
+import { eliminaCliente } from "../controllers/cliente/postEliminaCliente.js";
+import {
   actualizaCliente,
-} = require("../controllers/cliente/postActualizaClientes");
-const {
+} from "../controllers/cliente/postActualizaClientes.js";
+import {
   getClientByEmail,
-} = require("../controllers/cliente/getClientByEmail");
+} from "../controllers/cliente/getClientByEmail.js";
 
 const clientesHandler = async (req, res) => {
   //const { name } = req.query;
@@ -54,8 +54,7 @@ const getClientByEmailHandler = async (req, res) => {
 };
 
 const postClientesHandler = async (req, res) => {
-
-  console.log('Body post cliente:',req.body)
+  console.log("Body post cliente:", req.body);
   const {
     cedulaCliente,
     nombre,
@@ -67,7 +66,8 @@ const postClientesHandler = async (req, res) => {
     codigoPostal,
     ciudad,
     pais,
-    password
+    imagen,
+    password,
   } = req.body;
 
   try {
@@ -82,9 +82,10 @@ const postClientesHandler = async (req, res) => {
       codigoPostal,
       ciudad,
       pais,
-      password
+      imagen,
+      password,
     );
-    console.log('Response crear cliente', response)
+    console.log("Response crear cliente", response);
     if (response) res.status(200).json(response);
     else res.status(200).send("La cedula ya existe");
   } catch (error) {
@@ -140,7 +141,7 @@ const postActualizaClientes = async (req, res) => {
   }
   // res.status(200).send(`creando actividades`);
 };
-module.exports = {
+export  {
   clientesHandler,
   clientesDetailHandler,
   postClientesHandler,

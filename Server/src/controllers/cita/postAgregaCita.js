@@ -1,7 +1,9 @@
 
-const { Cita } = require("../../DB");
-const moment=require('moment')
+import  { models } from "../../DB.js";
+import moment from 'moment'
+import { sendEmailCita } from '../../utils/emailNotifier.js'
 
+const { Cita, Cliente, Abogado } = models
 const createCita = async (titulo,descripcion, fechaCita, horaCita,idCaso) => {
     
     const fechaUTC= moment(fechaCita).utc().toDate();
@@ -30,4 +32,4 @@ const createCita = async (titulo,descripcion, fechaCita, horaCita,idCaso) => {
 };
 
 
-module.exports = {createCita};
+export {createCita};
