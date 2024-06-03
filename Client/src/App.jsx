@@ -17,7 +17,7 @@ import DetailCases from './views/detailCases/detailCases'
 import Data from './views/datosPersonales/datosPersonales.component';
 import AllConsultations from './views/allConsultation/allConsultation';
 import "./App.css";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, Outlet} from "react-router-dom";
 // import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
@@ -62,7 +62,35 @@ function App() {
     <div className="App">
       {/* <Elements stripe={stripePromise} options={options}> */}
       <Routes>
-        <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Landing />} />
+        <Route path="/password" element={<Password />} />
+        <Route path="/crearusuario" element={<CreateUser />} />
+        
+        
+        <Route path="/home/*" element={<LayoutWithNav />}>
+        <Route path="lawyers" element={<LawyersPage />} />
+        <Route path="customers" element={<CustomersPage />} />
+        <Route path="datos" element={<Data />} />
+        <Route path="detail/:cedula" element={<Detail />} />
+        <Route path="cases" element={<Cases />} />
+        <Route path="cases/:id" element={<DetailCases />} />
+        <Route path="cases/crearcaso" element={<CrearCaso />} />
+        <Route path="costumers/:id" element={<Detail />} />
+        <Route path="lawyers/:id" element={<Detail />} />
+        <Route path="documents" element={<Documents />} />
+        <Route path="diary" element={<Diary />} />
+        <Route path="payments" element={<Payments />} />
+        <Route path="payments/status" element={<Status />} />
+        <Route path="consultation" element={<Consultations />} />
+        <Route path="allconsultations" element={<AllConsultations />} />
+        <Route path="lawyers/crearabogado" element={<CrearAbogado />} />
+        <Route path="documentos" element={<Documents />} />
+        <Route path="documentos/contrato" element={<Contrato />} />
+        <Route path="documentos/poder" element={<Poder />} />
+        <Route path="customers/crearcliente" element={<CreateCliente />} />
+      </Route>
+
+        {/* <Route path="/" element={<Landing />} />
 
         <Route path="/password" element={<Password />} />
         <Route path="/crearusuario" element={<CreateUser />} />
@@ -90,16 +118,33 @@ function App() {
         <Route
           path="/home/customers/crearcliente"
           element={<CreateCliente />}
-        />
+        /> */}
+
         {/*
         <Route
           path="/home/crearcaso"
           element={isAuthenticated ? <CrearCaso /> : <Landing />}
   />*/}
+
       </Routes>
       {/* </Elements> */}
     </div>
   );
 }
+
+function LayoutWithNav() {
+  return (
+    <div className="flex h-screen">
+      {/* Barra de navegación a la izquierda */}
+      <Home className="w-1/4 bg-primary text-white" />
+      
+      {/* Contenedor principal del contenido a la derecha */}
+      <div className="flex-1 w-3/4 bg-primary p-4 overflow-y-auto">
+        <Outlet />
+      </div>
+    </div>
+  );
+}
+
 
 export default App;

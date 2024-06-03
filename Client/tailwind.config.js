@@ -1,4 +1,6 @@
+const { addIconSelectors } = require('@iconify/tailwind');
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './index.html',
@@ -33,21 +35,22 @@ module.exports = {
       },
     },
     colors: {
-      primary: '#0A2B3C', // blue
+      primary: '#1D195B', // blue
       secondary: '#D8D0C5', // cream
-      tertiary: '#D9832C', // orange
+      tertiary: '#3C63ED', // 
       quaternary: '#6E7C7C', // gray
       white: '#FFFFFF',
       black: '#000000',
+      'bg-global': '#FF0000',
     },
   },
   daisyui: {
     themes: [
       {
         mytheme: {
-          primary: '#0A2B3C', // blue
+          primary: '#1D195B', // blue
           secondary: '#D8D0C5', // cream
-          accent: '#D9832C', // orange
+          accent: '#3C63ED', // 
           neutral: '#6E7C7C', // gray
           'base-100': '#FFFFFF', // white 
           info: '#6E7C7C', // gray
@@ -62,5 +65,6 @@ module.exports = {
     require('tailwindcss'),
     require('autoprefixer'),
     require('daisyui'),
+    addIconSelectors(['mdi', 'mdi-light']),
   ],
 };
