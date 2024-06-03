@@ -41,51 +41,51 @@ const SearchBar = ({ onFilter }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 mb-4">
-        <div className="input input-bordered flex items-center gap-2 mb-4">
-          <label>Nombre:</label>
-        <br />
-          <input
-            placeholder="Busqueda..." 
-            type="text" 
-            value={nombre} 
-            onKeyDown={handleKeyDown}
-            onChange={(e) => handleInputChange(e, setNombre)}
-            className=""
-          />
-        </div>
-       
-       
-       <div className="input input-bordered flex items-center gap-2 mb-4">
-        <label>Apellido:</label>
-       <br />
-        <input
-          placeholder="Busqueda..." 
-          type="text" 
-          value={apellido} 
-          onKeyDown={handleKeyDown}
-          onChange={(e) => handleInputChange(e, setApellido)}
-          className=""
-        />
-       </div>
-       
-       
-       <div className="input input-bordered flex items-center gap-2 mb-4">
-        <label className=''>Ciudad:</label>
-       <br />
-        <input 
-          placeholder="Busqueda..." 
-          type="text" 
-          value={ciudad} 
-          onKeyDown={handleKeyDown}
-          onChange={(e) => handleInputChange(e, setCiudad)}
-          className=""
-        />
-       </div>
-      
-       <button onClick={handleSearch} className='btn btn-md hover:bg-primary hover:text-white w-full'>Buscar</button>
-
+    <div className="flex gap-2 mb-4">
+  <div className="flex gap-2 items-center">
+    <div className="input input-bordered flex items-center gap-2 mb-4">
+      <label>Nombre:</label>
+      <br />
+      <input
+        placeholder="Busqueda..." 
+        type="text" 
+        value={nombre} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleInputChange(e, setNombre)}
+        className=""
+      />
     </div>
+   
+    <div className="input input-bordered flex items-center gap-2 mb-4">
+      <label>Apellido:</label>
+      <br />
+      <input
+        placeholder="Busqueda..." 
+        type="text" 
+        value={apellido} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleInputChange(e, setApellido)}
+        className=""
+      />
+    </div>
+   
+    <div className="input input-bordered flex items-center gap-2 mb-4">
+      <label className=''>Ciudad:</label>
+      <br />
+      <input 
+        placeholder="Busqueda..." 
+        type="text" 
+        value={ciudad} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleInputChange(e, setCiudad)}
+        className=""
+      />
+    </div>
+    
+    <button onClick={handleSearch} className='btn btn-md hover:bg-primary hover:text-white'>Buscar</button>
+  </div>
+</div>
+
   );
 };
 
