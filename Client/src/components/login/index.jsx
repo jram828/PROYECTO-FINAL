@@ -85,7 +85,7 @@ const dispatch = useDispatch();
       console.log("Login 2:", data);
       const { access } = data;
       console.log("Access: ", access);
-      if (access) {
+      if (access === true) {
         window.localStorage.setItem("loggedUser", JSON.stringify(data.usuario));
         dispatch(setAuth(access));
         navigate("/home");

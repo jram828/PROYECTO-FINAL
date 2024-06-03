@@ -8,6 +8,7 @@ import { crearPago } from '../../handlers/crearPago';
 import Layout from '../../components/layout/layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCasos  } from '../../redux/actions';
+import loading from "../../assets/loading.gif";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
@@ -22,6 +23,8 @@ function Payments() {
     idCaso: "",
     description: "Honorarios",
   });
+
+  const [loadingState, setLoadingState] = useState(true);
 
     // const [responsePreference, setResponsePreference] = useState({});
   
@@ -54,7 +57,12 @@ function Payments() {
   console.log("casos", casos);
 
   useEffect(() => {
-    dispatch(getCasos());
+    const fetchData = async () => {
+    setLoadingState(true);
+      await dispatch(getCasos());
+      setLoadingState(false);
+    }
+    fetchData()
   }, [dispatch]);
 
   const userCasos = casos.datosPagina?.filter((caso)=>
@@ -154,25 +162,31 @@ function Payments() {
         
         </div>
       ) : 
-      <div className="contenedorCasos">
-      {casos.datosPagina?.map(caso => (
-        <div key={caso.id} className="caso-item">
-        <h3>Pagos del caso: n°{caso.id}</h3>
-        <p><strong>Descripción  del caso:</strong> {caso.descripcion} </p>
-        <p><strong>Cliente:</strong>  {caso.apellidoCliente}{caso.nombreCliente}</p>
-          {caso.pagos && caso.pagos.length > 0 && (
-            <div>
-              <h4>Pagos:</h4>
-              <ul>
-                {caso.pagos.map(pago => (
-                  <li key={pago.id}>{pago.descripcion}</li>
-                ))}
-              </ul>
+     <div className="contenedorCasos">
+            {loadingState ? (
+              <div className="loading-container">
+              <h2 className="loading">Cargando...</h2>
+              <img className="loading-image" src={loading} alt="loading" />
             </div>
-          )}
-        </div>
-        
-      ))}
+            ) : (
+              casos.datosPagina?.map(caso => (
+                <div key={caso.id} className="caso-item">
+                  <h3>Pagos del caso: n°{caso.id}</h3>
+                  <p><strong>Descripción del caso:</strong> {caso.descripcion}</p>
+                  <p><strong>Cliente:</strong> {caso.apellidoCliente}{caso.nombreCliente}</p>
+                  {caso.pagos && caso.pagos.length > 0 && (
+                    <div>
+                      <h4>Pagos:</h4>
+                      <ul>
+                        {caso.pagos.map(pago => (
+                          <li key={pago.id}>{pago.descripcion}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
       
     
     <div className="botonescrearusuario">
