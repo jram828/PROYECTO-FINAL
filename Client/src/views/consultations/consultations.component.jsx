@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import './consultations.css'
 import { postConsulta } from '../../redux/actions';
 import Layout from '../../components/layout/layout';
+import { useNavigate } from 'react-router-dom';
 
 function Consultations() {
+
+  const navigate = useNavigate()
 
   const [dataRegistro, setDataRegistro] = useState({
     nombre:"",
@@ -22,10 +25,10 @@ function Consultations() {
     }));
   };
 
-  const submitHandlerRegistro = async (e) => {
+  const submitHandlerRegistro =  (e) => {
     e.preventDefault();
     try {
-      await postConsulta(dataRegistro);
+       postConsulta(dataRegistro);
 
       window.alert("Consulta creado con éxito");
       setDataRegistro({
@@ -34,7 +37,9 @@ function Consultations() {
         correo: "",
         telefono: "",
         consulta: "",
+        
       });
+      navigate('/')
     } catch (error) {
       console.error("Error al crear la consulta:", error.message);
       window.alert("No se pudo crear la consulta");
