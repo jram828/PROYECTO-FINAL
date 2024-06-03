@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import Layout from "../layout/layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+
 const CreateCliente = () => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+
   const URL_CLOUDINARY =
     "https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
   const [urlImage, setUrlImage] = useState("");
@@ -35,22 +38,15 @@ const CreateCliente = () => {
 
   const submitHandlerRegistro = (e) => {
     e.preventDefault();
+    try {
     postCliente(userDataRegistro);
-    setUserDataRegistro({
-      cedulaCliente: "",
-      nombre: "",
-      apellido: "",
-      correo: "",
-      password: "",
-      telefono: "",
-      calle: "",
-      numero: "",
-      codigoPostal: "",
-      ciudad: "",
-      pais: "",
-      imagen: "",
-    });
-    navigate("/home/customers");
+      
+    window.alert("Cliente creado con éxito");
+    navigate('/home/customers')
+    } catch (error) {
+    window.alert("No se pudo crear el cliente");
+  }
+
   };
 
   const handleChangeImage = async (e) => {
