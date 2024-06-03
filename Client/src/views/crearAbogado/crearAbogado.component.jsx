@@ -7,8 +7,11 @@ import { postAbogado } from '../../handlers/crearAbogado';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/layout';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function CrearAbogado() {
+
+  const navigate = useNavigate()
   
   //const addLawyer = userStoreLawyers((state) => state.addLawyer);
        const URL_CLOUDINARY =     "https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
@@ -59,11 +62,14 @@ function CrearAbogado() {
         //addLawyer(userDataRegistro); 
   
         window.alert('Abogado creado con éxito');
+        navigate('/home/lawyers')
       } catch (error) {
       
         console.error('Error al crear el abogado:', error.message);
         window.alert('No se pudo crear el abogado');
       }
+      
+
     };
    
     const handleChangeImage = async (e) => {

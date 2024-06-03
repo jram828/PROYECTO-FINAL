@@ -3,6 +3,7 @@ import Layout from '../../components/layout/layout';
 import { getConsultas } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function AllConsultations() {
 
@@ -38,6 +39,11 @@ function AllConsultations() {
           )}
         </div>
         </div>
+        <br></br>
+        <br></br>
+        <Link to='/home'>
+        <button className="btn btn-accent btn-sm" type="button">Volver</button>
+        </Link>
       </div>
     </Layout>
   )

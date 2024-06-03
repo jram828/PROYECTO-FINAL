@@ -45,6 +45,7 @@ export const LOG_FAILED = "LOG_FAILED";
 export const INCREMENT_NUMBER_PUNTUACION = "INCREMENT_NUMBER_PUNTUACION";
 export const CLEAN_ACTIONS = "CLEAN_ACTIONS";
 export const UPDATE_ACTION_ERROR = "UPDATE_ACTION_ERROR";
+export const MODIFICAR_DATOS = "MODIFICAR_DATOS";
 
 
 //const URL = 'http://localhost:3001/'
@@ -387,3 +388,17 @@ export const recordarPassword = async (correo) => {
       });
     };
   };
+
+  export const modificarDatos = (payload) => {
+    const endpoint = `${URL}clientes/actualiza`;
+  
+    return async (dispatch) => {
+      const data = await axios.post(endpoint, payload);
+      console.log("URL", endpoint, "PAYLOAD", payload);
+      return dispatch({
+        type: MODIFICAR_DATOS,
+        payload: data,
+      });
+    };
+  };
+  
