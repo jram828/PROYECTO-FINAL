@@ -6,6 +6,7 @@ import { filterAbogado, getAbogados } from '../../redux/actions';
 import SearchBar from '../../components/searchBarAbogado/index';
 import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
 import { Link  } from 'react-router-dom';
+import loading from "../../assets/loading.gif";
 
 
 function FiltrosAbogados() {
@@ -47,8 +48,14 @@ function FiltrosAbogados() {
         </div>
         <div className="md:w-2/3 p-2">
           <div className="flex flex-col gap-4">
-            <Cards items={abogados} />
-           
+          {abogados.length > 0 ? (
+              <Cards items={abogados} />
+            ) : (
+              <div className="loading-container">
+               <h2 className="loading">Cargando...</h2>
+                <img className="loading-image" src={loading} alt="loading" />
+              </div>
+            )}
           </div>
         </div>
       </div>

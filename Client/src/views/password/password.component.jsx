@@ -4,8 +4,11 @@ import Layout from '../../components/layout/layout';
 import { useState } from 'react';
 import axios from "axios";
 import { recordarPassword } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 function Password() {
+
+  const navigate = useNavigate()
 
     const [userData, setUserData] = useState({
       correo: "",
@@ -20,8 +23,11 @@ function Password() {
     try {
       await recordarPassword(correo);
       // console.log("Respuesta password:", data);
+      window.alert("Se envió el recordatorio por email")
+      navigate('/')
+
     } catch (error) {
-      window.alert("No se envióo el recordatorio");
+      window.alert("No se envió el recordatorio");
     }
   }
     const handleChange = (e) => {
@@ -35,7 +41,6 @@ function Password() {
   return (
     <Layout>
       <div className="contenedorrecordatorio">
-        <div></div>
         <h1 className="titulo">Recordar contraseña</h1>
         <br />
 
@@ -58,7 +63,7 @@ function Password() {
           <br />
           <div className="recordar-password">
             <input
-              className="inputbox2"
+              className="btn btn-accent w-40"
               type="submit"
               name="Enviar"
               onClick={handlerPassword}
@@ -71,7 +76,7 @@ function Password() {
                 type="button"
                 name="volver"
                 value="volver"
-                className="inputbox2"
+                className="btn btn-accent w-40"
               />
             </Link>
           </div>
