@@ -95,119 +95,123 @@ function CrearCaso() {
   
   return (
   <Layout>
-    <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
-      <h1 className={style.titulo}>Crear caso</h1>
-      <form onSubmit={submitHandlerRegistro} className={style.formulario}>
-        <br />
-        <div className="space-y-4">
-          <div className="w-full px-4">
-            <label className="w-full">
-              <select
-                name="TipoDeCasoId"
-                id="TipoDeCasoId"
-                className="input select-bordered text-lg pl-2 w-full"
-                onChange={(event) => handleChangeRegistro(event)}
-              >
-                <option value="" className={style.customOption}>Tipo de caso</option>
-                {tipos.allTipoDeCaso.map((tipo) => (
-                  <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoid} className={style.customOption}>
-                    {tipo.descripcion}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-
-          <div className="w-full px-4">
-            <label className="input input-bordered flex items-center w-full">Fecha:
-              <input
-                className="grow w-full"
-                name="fecha"
-                id="fecha"
-                type="date"
-                value={userDataRegistro.fecha}
-                onChange={handleChangeRegistro}
-              />
-            </label>
-          </div>
-
-          <div className="w-full px-4">
-            <label className="input input-bordered flex items-center w-full">Final:
-              <input
-                className="grow w-full"
-                name="fechaFin"
-                id="fechaFin"
-                type="date"
-                value={userDataRegistro.fechaFin}
-                onChange={handleChangeRegistro}
-              />
-            </label>
-          </div>
-
-          <div className="w-full px-4">
-            <label className="w-full">
-              <select
-                name="cedulaAbogado"
-                id="cedulaAbogado"
-                className="input select-bordered text-lg pl-2 w-full"
-                onChange={(event) => handleChangeRegistro(event)}
-              >
-                <option value="" className={style.customOption}>Abogados</option>
-                {abogados.map((abogado) => (
-                  <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.customOption}>
-                    {abogado.nombre} {abogado.apellido}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-
-          <div className="w-full px-4">
-            <label className="w-full">
-              <select
-                name="cedulaCliente"
-                id="cedulaCliente"
-                onChange={handleChangeRegistro}
-                className="input select-bordered text-lg pl-2 w-full"
-              >
-                <option value="" className={style.customOption}>Clientes</option>
-                {clientes.map((cliente) => (
-                  <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.customOption}>
-                    {cliente.nombre} {cliente.apellido}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-
-          <div className="w-full px-4">
-            <label className="w-full">
-              <textarea
-                className="textarea textarea-bordered h-24 w-full"
-                name="descripcion"
-                id="descripcion"
-                value={userDataRegistro.descripcion}
-                onChange={handleChangeRegistro}
-                placeholder="Descripción"
-              ></textarea>
-            </label>
-          </div>
+    <div className="container mx-auto py-8">
+  <div className="space-y-6 w-full max-w-lg h-full p-6 bg-primary rounded-lg shadow-md text-white mx-auto">
+    <h1 className={`text-center ${style.titulo}`}>Crear caso</h1>
+    <form onSubmit={submitHandlerRegistro}>
+      <br />
+      <div className="space-y-4">
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="TipoDeCasoId"
+              id="TipoDeCasoId"
+              className="input select-bordered text-lg pl-2 w-full"
+              onChange={(event) => handleChangeRegistro(event)}
+            >
+              <option value="" className={style.customOption}>Tipo de caso</option>
+              {tipos.allTipoDeCaso.map((tipo) => (
+                <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoId} className={style.customOption}>
+                  {tipo.descripcion}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
 
-        <div className="flex justify-center gap-2 mt-4">
-          <button
-            type="submit"
-            className="btn btn-sm btn-accent text-white"
-            value="Guardar"
-          >
-            Guardar
-          </button>
-          <Link to="/home/cases">
-            <button className="btn btn-sm btn-accent text-white">Volver</button>
-          </Link>
+        <div className="w-full px-4">
+          <label className="input input-bordered flex items-center w-full">
+            Fecha:
+            <input
+              className="ml-2 grow w-full"
+              name="fecha"
+              id="fecha"
+              type="date"
+              value={userDataRegistro.fecha}
+              onChange={handleChangeRegistro}
+            />
+          </label>
         </div>
-      </form>
-    </div>
+
+        <div className="w-full px-4">
+          <label className="input input-bordered flex items-center w-full">
+            Final:
+            <input
+              className="ml-2 grow w-full"
+              name="fechaFin"
+              id="fechaFin"
+              type="date"
+              value={userDataRegistro.fechaFin}
+              onChange={handleChangeRegistro}
+            />
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="cedulaAbogado"
+              id="cedulaAbogado"
+              className="input select-bordered text-lg pl-2 w-full"
+              onChange={(event) => handleChangeRegistro(event)}
+            >
+              <option value="" className={style.customOption}>Abogados</option>
+              {abogados.map((abogado) => (
+                <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.customOption}>
+                  {abogado.nombre} {abogado.apellido}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="cedulaCliente"
+              id="cedulaCliente"
+              onChange={handleChangeRegistro}
+              className="input select-bordered text-lg pl-2 w-full"
+            >
+              <option value="" className={style.customOption}>Clientes</option>
+              {clientes.map((cliente) => (
+                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.customOption}>
+                  {cliente.nombre} {cliente.apellido}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <textarea
+              className="textarea textarea-bordered h-24 w-full"
+              name="descripcion"
+              id="descripcion"
+              value={userDataRegistro.descripcion}
+              onChange={handleChangeRegistro}
+              placeholder="Descripción"
+            ></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-2 mt-4">
+        <button
+          type="submit"
+          className="btn btn-sm btn-accent text-white"
+        >
+          Guardar
+        </button>
+        <Link to="/home/cases">
+          <button className="btn btn-sm btn-accent text-white">Volver</button>
+        </Link>
+      </div>
+    </form>
+  </div>
+</div>
+
   </Layout>
   );
 }

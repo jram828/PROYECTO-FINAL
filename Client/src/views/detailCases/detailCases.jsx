@@ -30,38 +30,53 @@ function DetailCasos() {
 
   return (
     <Layout>
-      <div className="detail-container">
-          
-            <p>Detalle</p>
-            <label className="detail-label">Tipo de caso:</label>
-              <input value={caso.TipoDeCasoTipoDeCasoid} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Abogado:</label>
-              <input value={caso.AbogadoCedulaAbogado} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Cliente:</label>
-              <input value={caso.ClienteCedulaCliente} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Descripcion:</label>
-              <input value={caso.descripcion} className="detail-input"></input>
-              <br></br>
-              <label className="detail-label">Fecha de inicio:</label>
-              <input value={caso.fecha} className="detail-input"></input>
-              <br></br>
-              {caso.fechaFin && (
-              <>
-              <label className="detail-label">Fecha final:</label>
-              <input value={caso.fechaFin} className="detail-input" readOnly />
-              </>
-              )}
-              <br></br>
-              <br></br>
-    <button className='button' onClick={handleDelete}>Eliminar caso</button>
-              <Link to='/home/cases'>
-              <button>Volver</button>
-              </Link>
-              
+      <div className="container mx-auto py-8">
+  <div className="detail-container max-w-3xl mx-auto p-6 bg-primary rounded-lg shadow-md text-white">
+    <p className="text-center text-xl font-bold mb-6">Detalle</p>
+    
+    <div className="space-y-4">
+      <div className="flex items-center space-x-4">
+        <label className="detail-label w-1/3">Tipo de caso:</label>
+        <input value={caso.TipoDeCasoTipoDeCasoid} className="detail-input w-2/3 p-2 rounded" readOnly />
       </div>
+
+      <div className="flex items-center space-x-4">
+        <label className="detail-label w-1/3">Abogado:</label>
+        <input value={caso.AbogadoCedulaAbogado} className="detail-input w-2/3 p-2 rounded" readOnly />
+      </div>
+
+      <div className="flex items-center space-x-4">
+        <label className="detail-label w-1/3">Cliente:</label>
+        <input value={caso.ClienteCedulaCliente} className="detail-input w-2/3 p-2 rounded" readOnly />
+      </div>
+
+      <div className="flex items-center space-x-4">
+        <label className="detail-label w-1/3">Descripcion:</label>
+        <input value={caso.descripcion} className="detail-input w-2/3 p-2 rounded" readOnly />
+      </div>
+
+      <div className="flex items-center space-x-4">
+        <label className="detail-label w-1/3">Fecha de inicio:</label>
+        <input value={caso.fecha} className="detail-input w-2/3 p-2 rounded" readOnly />
+      </div>
+
+      {caso.fechaFin && (
+        <div className="flex items-center space-x-4">
+          <label className="detail-label w-1/3">Fecha final:</label>
+          <input value={caso.fechaFin} className="detail-input w-2/3 p-2 rounded" readOnly />
+        </div>
+      )}
+    </div>
+
+    <div className="flex justify-between mt-6">
+      <button className="btn btn-accent text-white" onClick={handleDelete}>Eliminar caso</button>
+      <Link to="/home/cases">
+        <button className="btn btn-secondary">Volver</button>
+      </Link>
+    </div>
+  </div>
+</div>
+
     </Layout>
   )
 }
