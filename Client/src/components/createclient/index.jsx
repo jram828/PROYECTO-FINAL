@@ -1,17 +1,19 @@
 import { useState } from "react";
 import style from "./createClient.module.css";
-import { postCliente } from "../../handlers/createCliente"
-import { Link } from 'react-router-dom';
-import Layout from '../layout/layout'
+import { postCliente } from "../../handlers/createCliente";
+import { Link } from "react-router-dom";
+import Layout from "../layout/layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 
 const CreateCliente = () => {
 
   const navigate = useNavigate()
+
   const URL_CLOUDINARY =
     "https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
-   const [urlImage, setUrlImage] = useState("");
+  const [urlImage, setUrlImage] = useState("");
   const [userDataRegistro, setUserDataRegistro] = useState({
     cedulaCliente: "",
     nombre: "",
@@ -24,7 +26,7 @@ const CreateCliente = () => {
     codigoPostal: "",
     ciudad: "",
     pais: "",
-    imagen:"",
+    imagen: "",
   });
 
   const handleChangeRegistro = (e) => {
@@ -38,11 +40,13 @@ const CreateCliente = () => {
     e.preventDefault();
     try {
     postCliente(userDataRegistro);
+      
     window.alert("Cliente creado con éxito");
     navigate('/home/customers')
     } catch (error) {
     window.alert("No se pudo crear el cliente");
   }
+
   };
 
   const handleChangeImage = async (e) => {
@@ -68,10 +72,10 @@ const CreateCliente = () => {
     });
   };
 
-      const handleDeleteImage = (e) => {
-        e.preventDefault();
-        setUrlImage("");
-      };
+  const handleDeleteImage = (e) => {
+    e.preventDefault();
+    setUrlImage("");
+  };
 
   return (
     <Layout>
