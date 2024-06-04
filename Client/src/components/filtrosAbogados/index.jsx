@@ -13,6 +13,8 @@ function FiltrosAbogados() {
   const dispatch = useDispatch();
   const abogados = useSelector((state) => state.abogados);
   const [filterApplied, setFilterApplied] = useState(false);
+  const [searchPerformed, setSearchPerformed] = useState(false);
+
 
   useEffect(() => {
     dispatch(getAbogados());
@@ -25,13 +27,15 @@ function FiltrosAbogados() {
   const handleVerTodosClick = () => {
     dispatch(getAbogados());
     localStorage.removeItem('abogadoFilter');
-    setFilterApplied(false); 
+    setFilterApplied(false);
+    setSearchPerformed(false);
   };
 
   const handleFilter = (filtro, inputValue) => {
     dispatch(filterAbogado(filtro, inputValue));
     localStorage.setItem('abogadoFilter', JSON.stringify({ filtro, inputValue }));
     setFilterApplied(true);
+    setSearchPerformed(true);
   };
 
   return (
@@ -48,14 +52,16 @@ function FiltrosAbogados() {
         </div>
         <div className="md:w-2/3 p-2">
           <div className="flex flex-col gap-4">
-          {abogados.length > 0 ? (
-              <Cards items={abogados} />
-            ) : (
+          {searchPerformed && abogados.length === 0 && (
+              <p>No hay coincidencias</p>
+            )}
+            {!searchPerformed && abogados.length === 0 && (
               <div className="loading-container">
-               <h2 className="loading">Cargando...</h2>
+                <h2 className="loading">Cargando...</h2>
                 <img className="loading-image" src={loading} alt="loading" />
               </div>
             )}
+            {abogados.length > 0 && <Cards items={abogados} />}
           </div>
         </div>
       </div>
