@@ -1,57 +1,63 @@
-.containerLogin{
+.containerLogin {
   background-color: var(--color-two);
   opacity: 0.9;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin-top: 250px;
-  width: 400px;
-  color: white; 
+  max-width: 400px;
+  color: white;
   font-family: "Outfit", sans-serif;
   justify-content: center;
   display: flex;
-      flex-direction: column;
-      align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerLoginParent {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 
-.label{
-   font-family: "Outfit", sans-serif;
+
+.label {
+  font-family: "Outfit", sans-serif;
   font-size: 120%;
   color: white;
   margin: 10px;
   text-align: left;
 }
 
-   .celdas{
-      justify-content: flex-start;
-      width: 100px;
-   }
+.celdas {
+  justify-content: flex-start;
+  width: 100px;
+}
 
-   .errores{
-   font-size: 100%;
-   color: red
+.errores {
+  font-size: 100%;
+  color: red;
 }
 
 .input {
-   width: 80%;
-   padding: 10px;
-   margin-bottom: 10px;
-   border: 1px solid white; /* Color del borde */
-   border-radius: 5px;
-   background-color: transparent; /* Fondo transparente */
-   color: white; /* Color del texto */
-   font-family: "Outfit", sans-serif; /* Estilo de fuente */
-   outline: none; /* Elimina el contorno al seleccionar el campo */
- }
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-family: "Outfit", sans-serif;
+  outline: none;
+}
 
- .select {
-   
+.select {
   justify-content: flex-start;
-   font-family: "Outfit", sans-serif; 
-   outline: none; 
- }
+  font-family: "Outfit", sans-serif;
+  outline: none;
+}
 
- .custom-select {
+.custom-select {
   color: var(--tw-text-opacity, 1) color-white;
   background-color: var(--tw-bg-opacity, 1) bg-primary;
 }
@@ -63,15 +69,23 @@
 
 .customOption {
   color: white;
-  background-color: #1f2937; 
+  background-color: #1f2937;
 }
 
 .button {
   width: 180px;
   height: auto;
-  font-size: 14px; 
-  letter-spacing: 0.5px; 
+  font-size: 14px;
+  letter-spacing: 0.5px;
   margin: 2px;
 }
 
+.google-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ddd;
+}
 
+.github-button {
+  color: white;
+}

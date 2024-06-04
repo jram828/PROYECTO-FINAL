@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import { validar } from "../../utils/validacion";
-import style from "./login.module.css";
+import  "./login.module.css";
+import  "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { setAuth, setUserToken } from "../../redux/actions";
@@ -10,6 +11,8 @@ import { useDispatch} from "react-redux";
 import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup} from "firebase/auth";
 import  {loginWithProvider } from "../../redux/actions";
+import logoGit from "../../assets/logo.git.png"
+import logoGit from "../../assets/logo.git.png"
 
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
@@ -127,44 +130,73 @@ const dispatch = useDispatch();
   };
 
   return (
-    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-      <form onSubmit={submitHandler}>
-        <div className="flex justify-center mb-6">
-          {/* <img
-        src={logo}
-        alt="Logo Legaltech"
-        style={{ height: "90px", width: "100%" }}
-      /> */}
-        </div>
+<div className="min-h-screen  items-center bg-primary containerLoginParent">
+  <form onSubmit={submitHandler} className="w-full max-w-lg p-8 rounded-lg">
+    <div className="mb-6">
+      <h2 className="text-center text-2xl font-bold text-white">Iniciar Sesión</h2>
+    </div>
+    
+    <div className="mb-4">
+      <label htmlFor="usuario" className="block text-sm font-medium text-white">
+        Usuario:
+      </label>
+      <input
+        type="text"
+        name="email"
+        id="username"
+        placeholder="Ingrese su Usuario"
+        value={userData.email}
+        onChange={handleChange}
+        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
+<div className="min-h-screen  items-center bg-primary containerLoginParent">
+  <form onSubmit={submitHandler} className="w-full max-w-lg p-8 rounded-lg">
+    <div className="mb-6">
+      <h2 className="text-center text-2xl font-bold text-white">Iniciar Sesión</h2>
+    </div>
+    
+    <div className="mb-4">
+      <label htmlFor="usuario" className="block text-sm font-medium text-white">
+        Usuario:
+      </label>
+      <input
+        type="text"
+        name="email"
+        id="username"
+        placeholder="Ingrese su Usuario"
+        value={userData.email}
+        onChange={handleChange}
+        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
 
-        <div className="input input-bordered flex items-center gap-2 mb-4">
-          <label htmlFor="usuario" className={style.label}>
-            Usuario:
-          </label>
-          <input
-            type="text"
-            name="email"
-            id="username"
-            placeholder="Ingrese su Usuario"
-            value={userData.email}
-            onChange={handleChange}
-            className="grow"
-          />
-        </div>
-
-        <div className="input input-bordered flex items-center gap-2 mb-4">
-          <label className={style.label} htmlFor="password">
-            Contraseña:
-          </label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Ingrese su contraseña"
-            value={userData.password}
-            onChange={handleChange}
-            className="grow"
-          />
-        </div>
+    <div className="mb-4">
+      <label htmlFor="password" className="block text-sm font-medium text-white">
+        Contraseña:
+      </label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Ingrese su contraseña"
+        value={userData.password}
+        onChange={handleChange}
+        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
+    <div className="mb-4">
+      <label htmlFor="password" className="block text-sm font-medium text-white">
+        Contraseña:
+      </label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Ingrese su contraseña"
+        value={userData.password}
+        onChange={handleChange}
+        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
 
         <div>
           <select
