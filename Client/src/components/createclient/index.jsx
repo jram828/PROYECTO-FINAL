@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./createClient.module.css";
 import { postCliente } from "../../handlers/createCliente";
 import { Link } from "react-router-dom";
 import Layout from "../layout/layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import validation from '../../components/validation/validation';
 
 
 const CreateCliente = () => {
@@ -14,7 +15,7 @@ const CreateCliente = () => {
   const URL_CLOUDINARY =
     "https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
   const [urlImage, setUrlImage] = useState("");
-  const [userDataRegistro, setUserDataRegistro] = useState({
+  const [dataRegistro, setDataRegistro] = useState({
     cedulaCliente: "",
     nombre: "",
     apellido: "",
@@ -29,17 +30,23 @@ const CreateCliente = () => {
     imagen: "",
   });
 
+  const [errors, setErrors]= useState({});
+
   const handleChangeRegistro = (e) => {
-    setUserDataRegistro({
-      ...userDataRegistro,
+    setDataRegistro({
+      ...dataRegistro,
       [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
     });
+    setErrors(validation({
+      ...dataRegistro,
+      [e.target.name]: e.target.value,
+  }))
   };
 
   const submitHandlerRegistro = (e) => {
     e.preventDefault();
     try {
-    postCliente(userDataRegistro);
+    postCliente(dataRegistro);
       
     window.alert("Cliente creado con éxito");
     navigate('/home/customers')
@@ -66,8 +73,8 @@ const CreateCliente = () => {
 
     setUrlImage(response.data.secure_url);
     console.log(response);
-    setUserDataRegistro({
-      ...userDataRegistro,
+    setDataRegistro({
+      ...dataRegistro,
       imagen: response.data.secure_url,
     });
   };
@@ -76,6 +83,15 @@ const CreateCliente = () => {
     e.preventDefault();
     setUrlImage("");
   };
+
+  /*useEffect(() => {
+    if( dataRegistro.nombre !== '' || dataRegistro.apellido !== '' || dataRegistro.cedulaCliente !== '' || dataRegistro.telefono!== '' || dataRegistro.correo !== '' ||
+    dataRegistro.calle !== '' || dataRegistro.numero!== '' || dataRegistro.ciudad !== '' || dataRegistro.pais !== '' || dataRegistro.codigoPostal !== ''
+    ) {
+        const dataValidated = validation(dataRegistro);
+        setErrors(dataValidated);
+    }
+ }, [dataRegistro])*/
 
   return (
     <Layout>
@@ -120,9 +136,13 @@ const CreateCliente = () => {
                       name="nombre"
                       id="name"
                       className="grow"
-                      value={userDataRegistro.nombre}
+                      value={dataRegistro.nombre}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.nombre && 
+                    <p className="error_form">
+                    {errors.nombre}
+                   </p>}
                   </label>
                 </div>
                 <div className="w-full sm:w-auto mx-4 mb-4">
@@ -136,9 +156,13 @@ const CreateCliente = () => {
                       className="grow"
                       name="apellido"
                       id="lastname"
-                      value={userDataRegistro.apellido}
+                      value={dataRegistro.apellido}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.apellido && 
+                    <p className="error_form">
+                    {errors.apellido}
+                   </p>}
                   </label>
                 </div>
               </div>
@@ -155,9 +179,13 @@ const CreateCliente = () => {
                       name="correo"
                       id="email"
                       className="grow"
-                      value={userDataRegistro.correo}
+                      value={dataRegistro.correo}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.correo && 
+                    <p className="error_form">
+                    {errors.correo}
+                   </p>}
                   </label>
                 </div>
                 <div className="w-full sm:w-auto mx-4 mb-4">
@@ -171,7 +199,7 @@ const CreateCliente = () => {
                       name="password"
                       id="password"
                       className="grow"
-                      value={userDataRegistro.password}
+                      value={dataRegistro.password}
                       onChange={handleChangeRegistro}
                     />
                   </label>
@@ -190,9 +218,13 @@ const CreateCliente = () => {
                       className="grow"
                       name="cedulaCliente"
                       id="cedula"
-                      value={userDataRegistro.cedulaCliente}
+                      value={dataRegistro.cedulaCliente}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.cedulaCliente && 
+                    <p className="error_form">
+                    {errors.cedulaCliente}
+                   </p>}
                   </label>
                 </div>
                 <div className="w-full sm:w-auto mx-4 mb-4">
@@ -206,9 +238,13 @@ const CreateCliente = () => {
                       name="telefono"
                       id="telefono"
                       className="grow"
-                      value={userDataRegistro.telefono}
+                      value={dataRegistro.telefono}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.telefono && 
+                    <p className="error_form">
+                    {errors.telefono}
+                   </p>}
                   </label>
                 </div>
               </div>
@@ -225,9 +261,13 @@ const CreateCliente = () => {
                       name="calle"
                       id="street"
                       className="grow"
-                      value={userDataRegistro.calle}
+                      value={dataRegistro.calle}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.calle && 
+                    <p className="error_form">
+                    {errors.calle}
+                   </p>}
                   </label>
                 </div>
                 <div className="w-full sm:w-auto mx-4 mb-4">
@@ -241,9 +281,13 @@ const CreateCliente = () => {
                       className="grow"
                       name="numero"
                       id="numero"
-                      value={userDataRegistro.numero}
+                      value={dataRegistro.numero}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.numero && 
+                    <p className="error_form">
+                    {errors.numero}
+                   </p>}
                   </label>
                 </div>
               </div>
@@ -260,9 +304,13 @@ const CreateCliente = () => {
                       className="grow"
                       name="codigoPostal"
                       id="codigopostal"
-                      value={userDataRegistro.codigoPostal}
+                      value={dataRegistro.codigoPostal}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.codigoPostal && 
+                    <p className="error_form">
+                    {errors.codigoPostal}
+                   </p>}
                   </label>
                 </div>
                 <div className="w-full sm:w-auto mx-4 mb-4">
@@ -276,9 +324,13 @@ const CreateCliente = () => {
                       name="ciudad"
                       id="city"
                       className="grow"
-                      value={userDataRegistro.ciudad}
+                      value={dataRegistro.ciudad}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.ciudad && 
+                    <p className="error_form">
+                    {errors.ciudad}
+                   </p>}
                   </label>
                 </div>
               </div>
@@ -295,9 +347,13 @@ const CreateCliente = () => {
                       name="pais"
                       id="country"
                       className="grow"
-                      value={userDataRegistro.pais}
+                      value={dataRegistro.pais}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.pais && 
+                    <p className="error_form">
+                    {errors.pais}
+                   </p>}
                   </label>
                 </div>
               </div>
@@ -310,10 +366,10 @@ const CreateCliente = () => {
                 type="submit"
                 value="Guardar"
                 disabled={
-                  !userDataRegistro.correo ||
-                  !userDataRegistro.cedulaCliente ||
-                  !userDataRegistro.nombre ||
-                  !userDataRegistro.apellido
+                  !dataRegistro.correo ||
+                  !dataRegistro.cedulaCliente ||
+                  !dataRegistro.nombre ||
+                  !dataRegistro.apellido
                 }
               >
                 Guardar
