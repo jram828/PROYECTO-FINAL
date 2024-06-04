@@ -5,15 +5,19 @@ import { getClientes } from "../../handlers/todosClientes";
 import style from './crearCaso.module.css';
 import { Link } from "react-router-dom";
 import { getTiposCasos } from "../../handlers/todosTiposdecasos";
+import Layout from "../../components/layout/layout";
+import { useNavigate } from "react-router-dom";
 
 function CrearCaso() {
+
+  const navigate = useNavigate()
   const [userDataRegistro, setUserDataRegistro] = useState({
     cedulaAbogado: "",
     cedulaCliente: "",
     fecha: "",
     fechaFin: "",
     descripcion: "",
-    TipoDeCasoid: "",
+    TipoDeCasoId: "",
   });
   console.log(userDataRegistro);
 
@@ -49,13 +53,17 @@ function CrearCaso() {
     obtenerClientes();
   }, []);
 
-  const [tipos, setTipos] = useState([]);
+  const [tipos, setTipos] = useState({ allTipoDeCaso: [] });
 
   useEffect(() => {
     const obtenerTipos = async () => {
       try {
         const listaTipos = await getTiposCasos();
-        setTipos(listaTipos);
+        if (listaTipos && Array.isArray(listaTipos.allTipoDeCaso)) {
+          setTipos(listaTipos);
+        } else {
+          console.error("Error: La respuesta no es un objeto esperado", listaTipos);
+        }
       } catch (error) {
         console.error("Error al obtener los tipos de casos:", error);
       }
@@ -63,6 +71,7 @@ function CrearCaso() {
 
     obtenerTipos();
   }, []);
+
   
 
   const handleChangeRegistro = (e) => {
@@ -80,6 +89,7 @@ function CrearCaso() {
       await postCaso(userDataRegistro);
 
       window.alert("Caso creado con éxito");
+      navigate('/home/cases')
     } catch (error) {
       console.error("Error al crear el caso:", error.message);
       window.alert("No se pudo crear el caso");
@@ -88,94 +98,125 @@ function CrearCaso() {
 
   
   return (
+  <Layout>
+    <div className="container mx-auto py-8">
+  <div className="space-y-6 w-full max-w-lg h-full p-6 bg-primary rounded-lg shadow-md text-white mx-auto">
+    <h1 className={`text-center ${style.titulo}`}>Crear caso</h1>
+    <form onSubmit={submitHandlerRegistro}>
+      <br />
+      <div className="space-y-4">
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="TipoDeCasoId"
+              id="TipoDeCasoId"
+              className="input select-bordered text-lg pl-2 w-full"
+              onChange={(event) => handleChangeRegistro(event)}
+            >
+              <option value="" className={style.customOption}>Tipo de caso</option>
+              {tipos.allTipoDeCaso.map((tipo) => (
+                <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoId} className={style.customOption}>
+                  {tipo.descripcion}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
 
-<div className={style.container}>
-      <h1 className={style.titulo}>Crear caso</h1>
-      <form onSubmit={submitHandlerRegistro} className={style.formulario}>
-        <div className={style.inputrow}>
-          
-            <label className={style.label}>Tipo de caso:</label>
-             <select
-            name="TipoDeCasoid"
-            id="TipoDeCasoid"
-            className={style.select}
-            onChange={(event) => handleChangeRegistro(event)}
-          >
-             <option value="" className={style.option}>Tipos de casos</option>
-            {/*tipos?.map((tipo) => (
-              <option key={tipo.TipoDeCasoid} value={tipo.TipoDeCasoid} className={style.option}>
-                {tipo.descripcion} 
-              </option>
-            ))*/}
-          </select>
-    
-          <label className={style.label}>Fecha:</label>
-          <input
-            className={style.input}
-            name="fecha"
-            id="fecha"
-            value={userDataRegistro.fecha}
-            onChange={handleChangeRegistro}
-          />
-          
-          <label className={style.label}>Fecha Final:</label>
-          <input
-            className={style.input}
-            name="fechaFin"
-            id="fechaFin"
-            value={userDataRegistro.fechaFin}
-            onChange={handleChangeRegistro}
-          />
+        <div className="w-full px-4">
+          <label className="input input-bordered flex items-center w-full">
+            Fecha:
+            <input
+              className="ml-2 grow w-full"
+              name="fecha"
+              id="fecha"
+              type="date"
+              value={userDataRegistro.fecha}
+              onChange={handleChangeRegistro}
+            />
+          </label>
         </div>
-        <div className={style.inputrow}>
-          <label className={style.label}>Abogado:</label>
-          <select
-            name="cedulaAbogado"
-            id="cedulaAbogado"
-            className={style.select}
-            onChange={(event) => handleChangeRegistro(event)}
-          >
-            <option value="" className={style.option}>Abogados</option>
-            {abogados.map((abogado) => (
-              <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.option}>
-                {abogado.nombre} {abogado.apellido} {abogado.cedulaAbogado}
-              </option>
-            ))}
-          </select>
-          <label className={style.label}>Cliente:</label>
-          <select
-            name="cedulaCliente"
-            id="cedulaCliente"
-            onChange={handleChangeRegistro}
-            className={style.select}
-          >
-            <option value="" className={style.option}>Clientes</option>
-            {clientes.map((cliente) => (
-              <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.option}>
-                {cliente.nombre} {cliente.apellido}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={style.inputrow}>
-          <label className={style.label}>Descripcion:</label>
-          <textarea
-            className={style.input}
-            name="descripcion"
-            id="descripcion"
-            value={userDataRegistro.descripcion}
-            onChange={handleChangeRegistro}
-          ></textarea>
-        </div>
-        <div className="botones">
-          <input type="submit" className="button" value="Guardar" />
-          <Link to="/home/cases/:id">
-          <button className='button'>Volver</button>
-          </Link>
-        </div>
-      </form>
-    </div>
 
+        <div className="w-full px-4">
+          <label className="input input-bordered flex items-center w-full">
+            Final:
+            <input
+              className="ml-2 grow w-full"
+              name="fechaFin"
+              id="fechaFin"
+              type="date"
+              value={userDataRegistro.fechaFin}
+              onChange={handleChangeRegistro}
+            />
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="cedulaAbogado"
+              id="cedulaAbogado"
+              className="input select-bordered text-lg pl-2 w-full"
+              onChange={(event) => handleChangeRegistro(event)}
+            >
+              <option value="" className={style.customOption}>Abogados</option>
+              {abogados.map((abogado) => (
+                <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.customOption}>
+                  {abogado.nombre} {abogado.apellido}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <select
+              name="cedulaCliente"
+              id="cedulaCliente"
+              onChange={handleChangeRegistro}
+              className="input select-bordered text-lg pl-2 w-full"
+            >
+              <option value="" className={style.customOption}>Clientes</option>
+              {clientes.map((cliente) => (
+                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.customOption}>
+                  {cliente.nombre} {cliente.apellido}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="w-full px-4">
+          <label className="w-full">
+            <textarea
+              className="textarea textarea-bordered h-24 w-full"
+              name="descripcion"
+              id="descripcion"
+              value={userDataRegistro.descripcion}
+              onChange={handleChangeRegistro}
+              placeholder="Descripción"
+            ></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-2 mt-4">
+        <button
+          type="submit"
+          className="btn btn-sm btn-accent text-white"
+        >
+          Guardar
+        </button>
+        <Link to="/home/cases">
+          <button className="btn btn-sm btn-accent text-white">Volver</button>
+        </Link>
+      </div>
+    </form>
+  </div>
+</div>
+
+  </Layout>
   );
 }
 

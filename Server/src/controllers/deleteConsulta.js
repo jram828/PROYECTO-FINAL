@@ -1,5 +1,5 @@
-const { Consulta } = require('../DB')
-
+ import {models} from '../DB.js'
+ const { Consulta } = models;
 const deleteConsulta = async (id)=>{
    
     await Consulta.update(
@@ -14,6 +14,6 @@ const deleteConsulta = async (id)=>{
     return 'Delete complete'
 }
 
-module.exports = {
+export {
     deleteConsulta
 }

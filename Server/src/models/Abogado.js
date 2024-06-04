@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize");
+import { DataTypes } from "sequelize";
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
   sequelize.define("Abogado", {
     cedulaAbogado: {
       type: DataTypes.INTEGER,
@@ -81,6 +81,7 @@ module.exports = (sequelize) => {
     administrador: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+      
     },
   });
 };

@@ -1,6 +1,7 @@
-const { DataTypes } = require("sequelize");
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
+
   sequelize.define("Cliente", {
     cedulaCliente: {
       type: DataTypes.INTEGER,
@@ -59,12 +60,12 @@ module.exports = (sequelize) => {
         len: [1, 100],
       },
     },
-    imagen: {
-      type: DataTypes.STRING,
-    },
     activo: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
+    },
+    imagen: {
+      type: DataTypes.STRING,
     },
     password: {
       type: DataTypes.STRING,

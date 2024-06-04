@@ -1,27 +1,11 @@
-const { Sequelize } = require("sequelize");
-const { Caso, Cliente, Abogado, PagosCliente } = require("../../DB");
+ import {models} from "../../DB.js";
+ const { PagosCliente } = models
 const getAllPagosClientes = async () => {
-  const getAllPagosClientesBd = await PagosCliente.findAll({
-    include: [
-      {
-        model: Caso,
-        attributes: ["descripcion"],
-        include: [
-          {
-            model: Abogado,
-            attributes: ["apellido", "nombre"],
-          },
-          {
-            model: Cliente,
-            attributes: ["apellido", "nombre"],
-          },
-        ],
-      },
-    ],
-  });
+  const getAllCasoBd = await PagosCliente.findAll({});
 
-  return getAllPagosClientesBd;
+  return getAllCasoBd;
 };
-module.exports = {
+
+export {
   getAllPagosClientes,
 };

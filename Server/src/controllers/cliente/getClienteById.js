@@ -1,5 +1,6 @@
-const { Cliente} = require('../../DB')
+import {models} from '../../DB.js'
 
+ const { Cliente} = models;
 const getClienteById = async (cedulaCliente)=>{
 
     const consulta= {
@@ -14,6 +15,6 @@ const getClienteById = async (cedulaCliente)=>{
     return cliente;
 }
 
-module.exports ={
+export {
     getClienteById,
 }

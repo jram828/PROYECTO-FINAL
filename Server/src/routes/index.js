@@ -1,14 +1,15 @@
-const { Router } = require("express");
-const abogadosRouter = require("./abogadosRoutes");
-const clientesRoutes = require("../routes/clienteRoutes");
-const consultaRouter = require("./consultaRoutes");
-const tipoDeCasosRouter = require("./tipoDeCasosRoutes");
-const casosRouter = require("./casosRoutes");
-const loginRouter = require("./../routes/loginRoute");
-const usuariosRouter = require("./../routes/usuariosRoutes");
-const paymentsRouter = require("./../routes/paymentsRoutes");
-const citasRouter = require("./../routes/citasRoutes");
-const { pagosClientesRouter } = require("./pagosClientesRoutes");
+import { Router } from  "express";
+import abogadosRouter from "./abogadosRoutes.js";
+import clientesRoutes from '../routes/clienteRoutes.js';
+import consultaRouter from "./consultaRoutes.js";
+import tipoDeCasosRouter from "./tipoDeCasosRoutes.js";
+import casosRouter from "./casosRoutes.js";
+import loginRouter from "./../routes/loginRoute.js";
+import usuariosRouter from "./../routes/usuariosRoutes.js";
+import paymentsRouter from "./../routes/paymentsRoutes.js";
+import citasRouter from "./../routes/citasRoutes.js";
+import pagosClientesRouter from "./pagosClienteRoutes.js";
+
 const router = Router();
 
 router.use("/abogados", abogadosRouter);
@@ -19,7 +20,8 @@ router.use("/casos", casosRouter);
 router.use("/login", loginRouter);
 router.use("/usuarios", usuariosRouter);
 router.use("/pagos", paymentsRouter);
+// router.use("/totalPagos", totalPagosRouter);
 router.use("/pagosClientes", pagosClientesRouter);
 router.use("/citas", citasRouter);
 
-module.exports = router;
+export default router;

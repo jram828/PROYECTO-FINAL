@@ -1,5 +1,5 @@
-const { Cliente, Abogado, Usuario } = require('../../DB')
-
+ import {models} from '../../DB.js'
+const { Cliente, Abogado, Usuario } = models;
 const getPayments = async (password, email)=>{
     const login = await Usuario.findOne({
         where:{
@@ -26,6 +26,6 @@ const getPayments = async (password, email)=>{
     }
 }
 
-module.exports = {
+export {
     getPayments
 }

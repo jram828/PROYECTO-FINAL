@@ -12,13 +12,14 @@ export async function postCliente(userDataCreate) {
       numero,
       codigoPostal,
       ciudad,
-      pais,
+    pais,
+      imagen,
     } = userDataCreate;
 
   console.log("User data registro:", userDataCreate);
   
 
-  const URL = "/clientes";
+  const URL = "https://legaltech-develop.onrender.com/clientes";
   try {
     await axios.post(URL, {
       cedulaCliente: `${cedulaCliente}`,
@@ -32,9 +33,10 @@ export async function postCliente(userDataCreate) {
       ciudad: `${ciudad}`,
       codigoPostal: `${codigoPostal}`,
       pais: `${pais}`,
+      imagen: `${imagen}`,
     });
-    window.alert("Se ha registrado el cliente con éxito.");
+   
   } catch (error) {
-    window.alert("No fue posible registrar el cliente.");
+    throw error
   }
 }

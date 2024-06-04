@@ -1,15 +1,7 @@
-const {
-  deleteAbogado,
-} = require("../controllers/controllersAbogados/deleteAbogado");
-const {
-  getAbogadoById,
-} = require("../controllers/controllersAbogados/getAbogadoById");
-const {
-  getAllAbogados,
-} = require("../controllers/controllersAbogados/getAllAbogados");
-const {
-  createAbogadoBd,
-} = require("../controllers/controllersAbogados/postAbogadosController");
+import { deleteAbogado,} from "../controllers/controllersAbogados/deleteAbogado.js";
+import { getAbogadoById,} from "../controllers/controllersAbogados/getAbogadoById.js";
+import { getAllAbogados,} from "../controllers/controllersAbogados/getAllAbogados.js";
+import { createAbogadoBd,} from "../controllers/controllersAbogados/postAbogadosController.js";
 
 const getAbogadosHandler = async (req, res) => {
   try {
@@ -56,6 +48,7 @@ const postAbogadosHandler = async (req, res) => {
       pais,
       imagen,
       password,
+      imagen,
       administrador,
     );
     res.status(200).json(response);
@@ -85,7 +78,7 @@ const deleteAbogadoHandler = async (req, res) => {
   }
 };
 
-module.exports = {
+export  {
   getAbogadosHandler,
   getAbogadoDetailHandler,
   postAbogadosHandler,

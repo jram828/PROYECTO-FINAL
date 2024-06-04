@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const { getAbogadosHandler, postAbogadosHandler, getAbogadoDetailHandler, deleteAbogadoHandler } = require("../handlers/abogadosHandlers");
+import { Router } from "express";
+import { getAbogadosHandler, postAbogadosHandler, getAbogadoDetailHandler, deleteAbogadoHandler } from "../handlers/abogadosHandlers.js";
 
 const abogadosRouter = Router();
 
@@ -11,4 +11,4 @@ abogadosRouter.post("/", postAbogadosHandler);
 
 abogadosRouter.post("/delete", deleteAbogadoHandler );
 
-module.exports = abogadosRouter; 
+export default abogadosRouter; 

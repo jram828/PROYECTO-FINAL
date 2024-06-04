@@ -1,65 +1,18 @@
-.detail-container {
-    background-color: var(--color-two);
-    opacity: 0.9;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 50px;
-    width: 100%;
-    color: white;
+  h1{
     font-family: "Outfit", sans-serif;
-  }
-  
-  .detail-container p {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .detail-form {
-    width: 100%;
-  }
-  
-  .detail-input-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .detail-label {
-    font-size: 16px;
-    margin-right: 20px;
-    margin-left: 10px;
-    flex: 1;
-    width: 30%;
-    text-align: left;
-  }
-  
-  .detail-input {
-    width: calc(70% - 20px);
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: transparent;
     color: white;
+
+}
+
+  .label-text{
     font-family: "Outfit", sans-serif;
-    outline: none;
-    flex: 1;
+    color: white;
+    
   }
-  
   .detail-buttons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    gap: 10px;
   }
   
-  .last-input-group label {
-    margin-right: 5px;
-    width: 80px;
-    display: inline-block;
-    vertical-align: baseline;
-  }
-  
-  .last-input-group input {
-    margin-left: 10px;
-    vertical-align: baseline;
-  }

@@ -1,38 +1,67 @@
-const { Sequelize } = require("sequelize");
-const { Caso, Cliente, Abogado, TipoDeCaso } = require("../../DB");
+import { Sequelize } from "sequelize";
+import { models } from "../../DB.js";
 
+const { Caso, Cliente, Abogado, TipoDeCaso } = models
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
   const indiceInicial = paginaActual * tamañoPagina;
   const indiceFinal = indiceInicial + tamañoPagina;
   return arreglo.slice(indiceInicial, indiceFinal);
 }
 
+//Si la variable todos viene en true, muestra todos los casos aun los que han sido finalizados
 const getAllCaso = async (filters) => {
-  //Consulta a la base de datos
-  const getAllCasoBd = await Caso.findAll({
-    where: {
-      [Sequelize.Op.or]: [
-        { fechaFin: null },
-        { fechaFin: { [Sequelize.Op.gt]: Sequelize.literal("CURRENT_DATE") } },
-      ],
-    },
-    attributes: ["idCaso", "fecha", "descripcion"],
-    include: [
-      {
-        model: Cliente,
-        attributes: ["apellido", "nombre"],
-      },
-      {
-        model: Abogado,
-        attributes: ["apellido", "nombre"],
-      },
-      {
-        model: TipoDeCaso,
-        attributes: ["descripcion"],
-      },
-    ],
-  });
+  let getAllCasoBd = [];
+  console.log("Esto viene en el query en todos ... ", filters.query.todos);
+  // if (!filters.query.todos || filters.query.todos==='false' ) {
 
+  //Consulta a la base de datos
+  if (!filters.query.todos || filters.query.todos === "false") {
+    getAllCasoBd = await Caso.findAll({
+      where: {
+        [Sequelize.Op.or]: [
+          { fechaFin: null },
+          {
+            fechaFin: { [Sequelize.Op.gt]: Sequelize.literal("CURRENT_DATE") },
+          },
+        ],
+      },
+      attributes: ["idCaso", "fecha", "descripcion"],
+      include: [
+        {
+          model: Cliente,
+          attributes: ["apellido", "nombre"],
+        },
+        {
+          model: Abogado,
+          attributes: ["apellido", "nombre"],
+        },
+        {
+          model: TipoDeCaso,
+          attributes: ["descripcion"],
+        },
+      ],
+    });
+  } else {
+    getAllCasoBd = await Caso.findAll({
+      attributes: ["idCaso", "fecha", "descripcion"],
+      include: [
+        {
+          model: Cliente,
+          attributes: ["apellido", "nombre"],
+        },
+        {
+          model: Abogado,
+          attributes: ["apellido", "nombre"],
+        },
+        {
+          model: TipoDeCaso,
+          attributes: ["descripcion"],
+        },
+      ],
+    });
+  }
+
+  //console.log(getAllCasoBd)
   //Obtiene los campos a devolver
   let datos = getAllCasoBd.map((elemento) => ({
     id: elemento.idCaso,
@@ -48,11 +77,19 @@ const getAllCaso = async (filters) => {
   //Filtra de acuerdo a los parametros recibidos
   Object.entries(filters.query).forEach(([field, value]) => {
     console.log("campo.... ", field, " valor..... ", value);
-    if (field !== "ordenarPor" && field !== "pagina" && field !== "porPagina")
-      datos = datos.filter((elemento) => elemento[field] === value);
+    if (
+      field !== "ordenarPor" &&
+      field !== "pagina" &&
+      field !== "porPagina" &&
+      field !== "todos"
+    )
+      datos = datos.filter(
+        (elemento) => elemento[field].toUpperCase() === value.toUpperCase()
+      );
   });
 
   //Ordena de acuerdo al parametro de ordenacion recibido
+
   let arregloOrdenado = [];
 
   switch (filters.query.ordenarPor) {
@@ -89,6 +126,7 @@ const getAllCaso = async (filters) => {
   }
 
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
+  console.log("Arreglo ordenado");
   console.log(arregloOrdenado);
   let elementos = 3;
   let offset = 1;
@@ -96,13 +134,13 @@ const getAllCaso = async (filters) => {
   if (filters.query.pagina)
     offset = (filters.query.pagina - 1) * parseInt(elementos);
 
-  //console.log('offset....',offset,'  elementos........',elementos)
+  console.log("offset....", offset, "  elementos........", elementos);
   const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);
-  const paginaActual = paginarArreglo(arregloOrdenado, offset, elementos);
+  const paginaActual = paginarArreglo(arregloOrdenado, offset - 1, elementos);
   console.log(paginaActual);
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };
 
-module.exports = {
+export  {
   getAllCaso,
 };
