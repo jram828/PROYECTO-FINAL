@@ -44,7 +44,7 @@ const sendEmailPassword = (nombre, correo, password) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    const templatePath = path.join(__dirname, "", "templateCliente.html");
+    const templatePath = path.join(__dirname, "", "templatePassword.html");
     const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
 
     console.log("Datos email password:", nombre, correo, password);

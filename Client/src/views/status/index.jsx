@@ -122,7 +122,7 @@ function Status() {
                 <label className="input input-bordered flex items-center max-w-xs">
                   Fecha:  
                   <input
-                    type="date"
+                    type="text"
                     value={datosPago.date_approved}
                     className="grow"
                     readOnly
