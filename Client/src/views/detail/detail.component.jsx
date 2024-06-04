@@ -77,14 +77,14 @@ function Detail() {
       }
     }
 
-    const handleGenerateContract = () => {
+   /* const handleGenerateContract = () => {
       navigate('/home/documentos/contrato', { state: { cliente: datos } });
     };
 
     const handleGeneratePoder = () => {
       navigate('/home/documentos/poder', { state: { cliente: datos } });
       
-    };
+    };*/
    
 
   return (
@@ -302,7 +302,7 @@ function Detail() {
                 </button>
               </Link>
             )}
-            {datos?.matricula ? undefined : (
+           {/* {datos?.matricula ? undefined : (
               <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
               Generar contrato
             </button>
@@ -313,7 +313,7 @@ function Detail() {
                   Generar poder
                 </button>
              
-            )}
+            )}*/}
           </div>
         </div>
       </div>
