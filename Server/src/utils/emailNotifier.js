@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 const { EMAIL_PASSWORD,EMAIL } = process.env
 import fs from 'fs'
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 const transporter = nodemailer.createTransport({
@@ -12,31 +13,35 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+
 // const templatePath = path.join(__dirname, "templateCliente.html");
 // const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
 
 const sendEmailCliente = ({nombre, correo}) => {
-    //   const templatePath = path.join(__dirname, "templateCliente.html");
-    //   const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
 
-    //   const personalizedHtml = htmlTemplate
-    //     .replace("{{nombre}}", nombre)
-    //     .replace("{{correo}}", correo);
+    const templatePath = path.join(__dirname, '', "templateCliente.html");
+    const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
 
-    //   const mailOptions = {
-    //     from: EMAIL,
-    //     to: correo,
-    //     subject: "🚀 lets go!!",
-    //     html: personalizedHtml,
-    //   };
+       const personalizedHtml = htmlTemplate
+         .replace("{{nombre}}", nombre)
+         .replace("{{correo}}", correo);
 
-    //   transporter.sendMail(mailOptions, function (error) {
-    //     if (error) {
-    //       console.log("⚠️" + error);
-    //     } else {
-    //       console.log("✅ Email sent: " + nombre);
-    //     }
-    //   });
+       const mailOptions = {
+         from: EMAIL,
+         to: correo,
+         subject: "🚀 lets go!!",
+         html: personalizedHtml,
+       };
+
+       transporter.sendMail(mailOptions, function (error) {
+         if (error) {
+           console.log("⚠️" + error);
+         } else {
+           console.log("✅ Email sent: " + nombre);
+         }
+       });
     
     // console.log("Datos email:", nombre, correo);
     //   const templatePath = path.join(__dirname, "templateCliente.html");  
@@ -46,20 +51,20 @@ const sendEmailCliente = ({nombre, correo}) => {
     //   .replace('{{nombre}}', nombre)
     //   .replace('{{correo}}', correo);
 
-    const mailOptions = {
-        from: EMAIL,
-        to: correo,
-        subject: '🚀 Bienvenido a Legaltech!!',
-        text: 'Te han registrado en LegalTech.'
-    };
+    // const mailOptions = {
+    //     from: EMAIL,
+    //     to: correo,
+    //     subject: '🚀 Bienvenido a Legaltech!!',
+    //     text: 'Te han registrado en LegalTech.'
+    // };
 
-    transporter.sendMail(mailOptions, function(error){
-        if (error) {
-            console.log('⚠️' + error)
-        } else {
-            console.log('✅ Email sent: '+ nombre)
-        }
-    })
+    // transporter.sendMail(mailOptions, function(error){
+    //     if (error) {
+    //         console.log('⚠️' + error)
+    //     } else {
+    //         console.log('✅ Email sent: '+ nombre)
+    //     }
+    // })
 }
 
 const sendEmailPassword = (nombre, correo, password) => {

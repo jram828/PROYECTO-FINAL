@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+
 config(); // Cargar variables de entorno desde el archivo .env
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
@@ -13,32 +14,37 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
 // Configuración de Sequelize para entorno local
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
-//   logging: false,
-//   native: false,
-// });
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
+  logging: false,
+  native: false,
+});
 
 // Configuración de Sequelize para despliegue en Render
 
-const sequelize = new Sequelize(DB_DEPLOY, {
-  logging: false,
-  native: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-    },
-  },
-});
+// const sequelize = new Sequelize(DB_DEPLOY, {
+//   logging: false,
+//   native: false,
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//     },
+//   },
+// });
 
 
 const basename = path.basename(__filename);
 const modelDefiners = [];
 
+
+
 // Leer todos los archivos de modelos y agregarlos a modelDefiners
 fs.readdirSync(path.join(__dirname, '/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
+    console.log(__dirname)
+    console.log(file)
     modelDefiners.push(import(path.join(__dirname, '/models', file)));
   });
 
