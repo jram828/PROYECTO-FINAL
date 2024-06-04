@@ -112,6 +112,20 @@ function DetailCasos() {
             Volver
           </button>
         </Link>
+        {user?.cedulaCliente? undefined : (
+              <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
+              Generar contrato
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
+            </button>
+            )}
+            {user?.cedulaCliente ? undefined : (
+              
+                <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
+                  Generar poder
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
+                </button>
+             
+            )}
       </div>
     </div>
   </div>
