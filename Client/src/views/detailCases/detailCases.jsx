@@ -36,49 +36,57 @@ function DetailCasos() {
 
   return (
     <Layout>
-      <div className="detail-container">
-        <p>Detalle</p>
-        <label className="detail-label">Tipo de caso:</label>
-        <input value={caso?.TipoDeCaso?.descripcion || ''} className="detail-input" readOnly />
-        <br />
-        <label className="detail-label">Abogado:</label>
-        <input value={`${caso?.Abogado?.apellido || ''} ${caso?.Abogado?.nombre || ''}`} className="detail-input" readOnly />
-        <br />
-        <label className="detail-label">Cliente:</label>
-        <input value={`${caso?.Cliente?.apellido || ''} ${caso?.Cliente?.nombre || ''}`} className="detail-input" readOnly />
-        <br />
-        <label className="detail-label">Descripcion:</label>
-        <input value={caso?.descripcion || ''} className="detail-input" readOnly />
-        <br />
-        <label className="detail-label">Fecha de inicio:</label>
-        <input value={formatDate(caso?.fecha)} className="detail-input" readOnly />
-        <br />
-        {caso?.fechaFin && (
-          <>
-            <label className="detail-label">Fecha final:</label>
-            <input value={formatDate(caso.fechaFin)} className="detail-input" readOnly />
-          </>
-        )}
-        <br />
-        {caso?.PagosClientes && caso.PagosClientes.length > 0 && (
+    <div className="detail-container">
+      <p>Detalle</p>
+      
+      <label className="detail-label">Tipo de caso:</label>
+      <input value={caso?.TipoDeCaso?.descripcion || ''} className="detail-input" readOnly />
+      <br />
+
+      <label className="detail-label">Abogado:</label>
+      <input value={`${caso?.Abogado?.apellido || ''} ${caso?.Abogado?.nombre || ''}`} className="detail-input" readOnly />
+      <br />
+
+      <label className="detail-label">Cliente:</label>
+      <input value={`${caso?.Cliente?.apellido || ''} ${caso?.Cliente?.nombre || ''}`} className="detail-input" readOnly />
+      <br />
+
+      <label className="detail-label">Descripcion:</label>
+      <input value={caso?.descripcion || ''} className="detail-input" readOnly />
+      <br />
+
+      <label className="detail-label">Fecha de inicio:</label>
+      <input value={formatDate(caso?.fecha)} className="detail-input" readOnly />
+      <br />
+
+      {caso?.fechaFin && (
+        <>
+          <label className="detail-label">Fecha final:</label>
+          <input value={formatDate(caso.fechaFin)} className="detail-input" readOnly />
+          <br />
+        </>
+      )}
+
+      {caso?.PagosClientes && caso.PagosClientes.length > 0 && (
         <div>
-        <label htmlFor="pagosCliente">Pagos del Cliente:</label>
-        <select name="pagosCliente" id="pagosCliente">
-        {caso.PagosClientes.map((pago, index) => (
-        <option key={index} value={pago.pagoId}>
-          {pago.descripcion} - {new Date(pago.fechaDeAprobacion).toLocaleDateString()} - {pago.importeDeLaTransaccion}
-        </option>
-      ))}
-    </select>
-  </div>
-)}
-        <br />
-        <button className='button' onClick={handleDelete}>Finalizar caso</button>
-        <Link to='/home/cases'>
-          <button>Volver</button>
-        </Link>
-      </div>
-    </Layout>
+          <label htmlFor="pagosCliente">Pagos del Cliente:</label>
+          <select name="pagosCliente" id="pagosCliente">
+            {caso.PagosClientes.map((pago, index) => (
+              <option key={index} value={pago.pagoId}>
+                {pago.descripcion} - {new Date(pago.fechaDeAprobacion).toLocaleDateString()} - {pago.importeDeLaTransaccion}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+      <br />
+
+      <button className="button" onClick={handleDelete}>Finalizar caso</button>
+      <Link to='/home/cases'>
+        <button>Volver</button>
+      </Link>
+    </div>
+  </Layout>
   )
 }
 

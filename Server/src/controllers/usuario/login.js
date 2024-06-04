@@ -9,10 +9,16 @@ const getLogin = async (password, email, rol) => {
         administrador: true,
       },
     });
-    return {
-      access: true,
-      usuario: login,
-    };
+    if (login) {
+      return {
+        access: true,
+        usuario: login,
+      };
+    } else {
+      return {
+        access: false,
+      };
+    }
   } else {
     const login = await Cliente.findOne({
       where: {

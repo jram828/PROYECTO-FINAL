@@ -35,6 +35,9 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/mdi-light": "^1.1.10",
+    "@iconify/tailwind": "^1.1.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",

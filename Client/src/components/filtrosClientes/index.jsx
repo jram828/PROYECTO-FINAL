@@ -29,30 +29,43 @@ function FiltrosClientes() {
 
   return (
     <div className="container">
-      <div className="md:flex md:flex-row md:space-x-4">
-        <div className="md:w-1/3">
-          <div className="flex flex-col justify-start gap-4 p-4 rounded-md max-h-screen bg-primary">
-            <Link to="/home/customers/crearcliente" className="btn btn-md hover:bg-primary hover:text-white w-full">Crear cliente</Link>
+  <div className="md:flex md:flex-col md:space-y-4">
+    <div>
+      <div className="flex justify-end p-4">
+        <Link to="/home/customers/crearcliente" className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white">
+          Crear cliente
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
+          </Link>
+      </div>
+    </div>
+    <div className="flex flex-col gap-4 p-4 rounded-md max-h-screen bg-white">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-5"> 
             <OrderClientes />
             <SearchBar onFilter={handleFilter} />
             {filterApplied && <button className="btn" onClick={handleVerTodosClick}>Ver todos</button>}
-            <Link to="/home" className="btn btn-md hover:bg-primary hover:text-white w-full">Volver</Link>
-          </div>
-        </div>
-        <div className="md:w-2/3 p-2">
-          <div className="flex flex-col gap-4">
-            {clientes.length > 0 ? (
-              <Cards items={clientes} />
-            ) : (
-              <div className="loading-container">
-                <h2 className="loading">Cargando...</h2>
-                <img className="loading-image" src={loading} alt="loading" />
-              </div>
-            )}
           </div>
         </div>
       </div>
     </div>
+    <div className="md:flex md:flex-row md:space-x-4">
+      <div className=" p-2">
+        <div className="flex flex-col gap-4">
+          {clientes.length > 0 ? (
+            <Cards items={clientes} />
+          ) : (
+            <div className="loading-container">
+              <h2 className="loading">Cargando...</h2>
+              <img className="loading-image" src={loading} alt="loading" />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   );
 }
 
