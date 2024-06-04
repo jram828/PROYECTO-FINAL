@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useParams, Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAbogado, deleteCliente } from '../../redux/actions';
-import Layout from '../../components/layout/layout';
+
 
 
 function Detail() {
@@ -88,25 +88,26 @@ function Detail() {
    
 
   return (
-    <Layout>
-      <div className="flex items-center justify-center min-h-screen p-6">
-        <div className="space-y-6 w-full max-w-3xl p-6 bg-primary rounded-lg shadow-md text-white">
+    
+      <div className="flex bg-white rounded-lg items-center justify-center min-h-screen p-6">
+        <div className="space-y-6 w-full max-w-3xl p-6 bg-secondary rounded-lg shadow-md text-black">
           <div>
-            <h1 className="text-2xl font-bold">Detail</h1>
+            <h1 className="text-2xl font-bold text-black text-center">Detail</h1>
           </div>
+
           <div key={cedula}></div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="nombre"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm input-bordered flex items-center max-w-xs"
               >
                 Nombre(s):
                 <input
                   type="text"
                   name="nombre"
                   id="name"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.nombre}
                   disabled
                 />
@@ -115,32 +116,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="apellidos"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Apellido(s):
                 <input
                   type="text"
                   name="apellido"
                   id="lastname"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.apellido}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="cedula"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Cédula:
                 <input
                   type="text"
                   name="cedula"
                   id="cedula"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={cedula}
                   disabled
                 />
@@ -150,14 +151,14 @@ function Detail() {
               <div className="mx-4">
                 <label
                   htmlFor="matricula"
-                  className="input input-bordered flex items-center max-w-xs"
+                  className="input input-sm flex items-center max-w-xs"
                 >
                   Matrícula:
                   <input
                     type="text"
                     name="matricula"
                     id="matricula"
-                    className="input-field"
+                    className="input-field ml-2"
                     value={datos.matricula}
                     disabled
                   />
@@ -165,18 +166,18 @@ function Detail() {
               </div>
             )}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="correo"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Correo:
                 <input
                   type="text"
                   name="correo"
                   id="correo"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.correo}
                   disabled
                 />
@@ -185,32 +186,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="telefono"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Teléfono:
                 <input
                   type="text"
                   name="telefono"
                   id="telefono"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.telefono}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="calle"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Calle:
                 <input
                   type="text"
                   name="calle"
                   id="calle"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.calle}
                   disabled
                 />
@@ -219,32 +220,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="numero"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Número:
                 <input
                   type="text"
                   name="numero"
                   id="numero"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.numero}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="codigoPostal"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 CP:
                 <input
                   type="text"
                   name="codigoPostal"
                   id="codigoPostal"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.codigoPostal}
                   disabled
                 />
@@ -253,14 +254,14 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="ciudad"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Ciudad:
                 <input
                   type="text"
                   name="ciudad"
                   id="ciudad"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.ciudad}
                   disabled
                 />
@@ -270,14 +271,14 @@ function Detail() {
           <div className="mx-4 max-w-xs">
             <label
               htmlFor="pais"
-              className="input input-bordered flex items-center max-w-xs"
+              className="input input-sm flex items-center max-w-xs"
             >
               País:
               <input
                 type="text"
                 name="pais"
                 id="pais"
-                className="input-field"
+                className="input-field ml-2"
                 value={datos?.pais}
                 disabled
               />
@@ -286,18 +287,21 @@ function Detail() {
           <div className="flex justify-center gap-2">
             <button 
             onClick={handleDelete}
-            className="btn btn-sm btn-accent text-white">
+            className="btn btn-sm w-35 border border-error bg-white hover:bg-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="black" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zM9 17h2V8H9zm4 0h2V8h-2zM7 6v13z"></path></svg>
               Eliminar registro
             </button>
             {datos?.matricula ? (
               <Link to="/home/lawyers">
-                <button className="btn btn-sm btn-accent text-white">
+                <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
                   Volver
                 </button>
               </Link>
             ) : (
               <Link to="/home/customers">
-                <button className="btn btn-sm btn-accent text-white">
+                <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
                   Volver
                 </button>
               </Link>
@@ -305,19 +309,21 @@ function Detail() {
            {/* {datos?.matricula ? undefined : (
               <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
               Generar contrato
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
             </button>
             )}
             {datos?.matricula ? undefined : (
               
                 <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
                   Generar poder
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
                 </button>
              
             )}*/}
           </div>
         </div>
       </div>
-    </Layout>
+   
   );
 }
 export default Detail

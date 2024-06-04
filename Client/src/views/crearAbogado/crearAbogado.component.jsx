@@ -5,7 +5,7 @@ import style from './crearAbogado.module.css';
 import { useState, useEffect } from 'react';
 import { postAbogado } from '../../handlers/crearAbogado';
 import { Link } from 'react-router-dom';
-import Layout from '../../components/layout/layout';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import validation from '../../components/validation/validation';
@@ -118,19 +118,19 @@ function CrearAbogado() {
        }, [dataRegistro])*/
 
   return (
-    <Layout>
-      <div className="flex items-center justify-center min-h-screen p-6">
-        <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
+    
+      <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+        <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
           <form
             className={style.datos}
             method="post"
             onSubmit={submitHandlerRegistro}
           >
-            <h1 className={style.titulo}>Crear Abogado</h1>
+            <h1 className="text-2xl font-bold text-black text-center">Crear Abogado</h1>
             <div className="space-y-3">
               <div className="flex flex-wrap justify-around">
                 <div className="mb-4">
-                  <h2 className="text-xl mb-2">Foto de perfil</h2>
+                  <h2 className="text-lg mb-2 text-center">Foto de perfil</h2>
                   <input
                     type="file"
                     accept="image/*"
@@ -148,18 +148,18 @@ function CrearAbogado() {
                   )}
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="nombre"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Nombre(s):
                     <input
                       type="text"
                       name="nombre"
                       id="name"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.nombre}
                       onChange={handleChangeRegistro}
                     />
@@ -172,12 +172,12 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="apellidos"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Apellido(s):
                     <input
                       type="text"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="apellido"
                       id="lastname"
                       value={dataRegistro.apellido}
@@ -191,16 +191,16 @@ function CrearAbogado() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="numerocedula"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Cédula n°:
                     <input
                       type="number"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="cedulaAbogado"
                       id="cedula"
                       value={dataRegistro.cedulaAbogado}
@@ -215,12 +215,12 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="matricula"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Matricula:
                     <input
                       type="number"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="matricula"
                       id="matricula"
                       value={dataRegistro.matricula}
@@ -234,18 +234,18 @@ function CrearAbogado() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="correo"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Email:
                     <input
                       type="email"
                       name="correo"
                       id="email"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.correo}
                       onChange={handleChangeRegistro}
                     />
@@ -258,14 +258,14 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="password"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Contraseña:
                     <input
                       type="password"
                       name="password"
                       id="email"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.password}
                       onChange={handleChangeRegistro}
                     />
@@ -273,11 +273,11 @@ function CrearAbogado() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="telefono"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     {" "}
                     Teléfono:
@@ -285,7 +285,7 @@ function CrearAbogado() {
                       type="number"
                       name="telefono"
                       id="telefono"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.telefono}
                       onChange={handleChangeRegistro}
                     />
@@ -299,14 +299,14 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="calle"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Calle:
                     <input
                       type="text"
                       name="calle"
                       id="street"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.calle}
                       onChange={handleChangeRegistro}
                     />
@@ -318,16 +318,16 @@ function CrearAbogado() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="numero"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Numero:
                     <input
                       type="text"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="numero"
                       id="numero"
                       value={dataRegistro.numero}
@@ -342,12 +342,12 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="codigopostal"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     CP:
                     <input
                       type="number"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="codigoPostal"
                       id="codigopostal"
                       value={dataRegistro.codigoPostal}
@@ -361,18 +361,18 @@ function CrearAbogado() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                   <label
                     htmlFor="ciudad"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Ciudad:
                     <input
                       type="text"
                       name="ciudad"
                       id="city"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.ciudad}
                       onChange={handleChangeRegistro}
                     />
@@ -385,14 +385,14 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="ciudad"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Pais:
                     <input
                       type="text"
                       name="pais"
                       id="country"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.pais}
                       onChange={handleChangeRegistro}
                     />
@@ -405,12 +405,12 @@ function CrearAbogado() {
               </div>
               <br />
               <div>
-                <label htmlFor="apellidos" className="cursor-pointer label">
+                <label htmlFor="apellidos" className="cursor-pointer label text-sm ">
                   Administrador?
                   <br />
                   <input
                     type="checkbox"
-                    className="checkbox checkbox-accent"
+                    className="checkbox checkbox-accent mt-2"
                     name="administrador"
                     id="administrador"
                     value={dataRegistro.administrador}
@@ -422,8 +422,15 @@ function CrearAbogado() {
 
             <br />
             <div className="flex justify-center gap-2">
+             
+              <Link to="/home/lawyers">
+                <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+                  Volver
+                </button>
+              </Link>
               <button
-                className="btn btn-sm btn-accent text-white"
+                className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white"
                 type="submit"
                 value="Guardar"
                 disabled={
@@ -433,18 +440,14 @@ function CrearAbogado() {
                   !dataRegistro.apellido
                 }
               >
-                Guardar
+                Crear Abogado
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
               </button>
-              <Link to="/home/lawyers">
-                <button className="btn btn-sm btn-accent text-white">
-                  Volver
-                </button>
-              </Link>
             </div>
           </form>
         </div>
       </div>
-    </Layout>
+    
   );
   }
 
