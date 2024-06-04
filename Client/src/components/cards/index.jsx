@@ -1,6 +1,7 @@
 import './cards.css';
 import Card from '../card/index';
 
+
 function Cards({ items, config }) {
   if (!Array.isArray(items)) {
     return null;

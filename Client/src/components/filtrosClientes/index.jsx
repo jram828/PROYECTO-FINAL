@@ -13,6 +13,8 @@ function FiltrosClientes() {
   const clientes = useSelector((state) => state.clientes);
   const [filterApplied, setFilterApplied] = useState(false);
 
+  
+
   useEffect(() => {
     dispatch(getClientes());
   }, [dispatch]);
@@ -41,10 +43,10 @@ function FiltrosClientes() {
     <div className="flex flex-col gap-4 p-4 rounded-md max-h-screen bg-white">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
-          <div className="flex gap-5"> 
+          <div className="flex gap-3 ml-0"> 
             <OrderClientes />
             <SearchBar onFilter={handleFilter} />
-            {filterApplied && <button className="btn" onClick={handleVerTodosClick}>Ver todos</button>}
+            {filterApplied && <button className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white" onClick={handleVerTodosClick}>Ver todos</button>}
           </div>
         </div>
       </div>

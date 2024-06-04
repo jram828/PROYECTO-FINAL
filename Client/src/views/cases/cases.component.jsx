@@ -3,26 +3,16 @@ import React from 'react'
 // import { Link } from 'react-router-dom';
 import FiltrosCasos from '../../components/filtrosCasos/filtrosCasos';
 // import OrderCasos from '../../components/orderCasos/orderCasos';
-import Layout from '../../components/layout/layout';
+
 
 function Cases() {
   return (
-    <Layout>
-      <div>
-        <br></br>
-       
-          {/* <p>Casos</p> */}
+    
+      <div className='container'>
         
-          {/* <Link to='/home/cases/crearcaso'>
-            <button >Crear caso</button>
-          </Link>
-          <Link to='/home'>
-            <button >Volver</button>
-          </Link>
-          <OrderCasos></OrderCasos>  */}
           <FiltrosCasos></FiltrosCasos>
         </div>
-     </Layout>    
+      
   )
 }
 
