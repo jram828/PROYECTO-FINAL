@@ -6,6 +6,7 @@ import { getCasoById, deleteCaso, getCasos } from '../../redux/actions';
 
 
 function DetailCasos() {
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const { id } = useParams(); // Obtener el id de los parámetros de la ruta
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +33,15 @@ function DetailCasos() {
       dispatch(getCasos());
       console.log("id", id, "fechaFin", fechaFin);
     }
+  };
+
+  const handleGenerateContract = () => {
+    navigate('/home/documentos/contrato', { state: { caso: caso } });
+  };
+
+  const handleGeneratePoder = () => {
+    navigate('/home/documentos/poder', { state: { caso: caso } });
+    
   };
 
   return (

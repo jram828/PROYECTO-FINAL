@@ -49,7 +49,7 @@ const sendEmailCliente = ({nombre, correo}) => {
            console.log("✅ Email sent: " + nombre);
          }
        });
-
+} 
 
 
 
