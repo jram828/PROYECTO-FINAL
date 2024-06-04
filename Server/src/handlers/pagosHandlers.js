@@ -1,9 +1,5 @@
-import {
-  getAllPagosClientes,
-} from "../controllers/pagosClientesControllers/getAllPagosClientes.js";
-import {
-  createPagosClientes,
-} from "../controllers/pagosClientesControllers/postPagosClientes.js";
+import { getAllPagosClientes } from "../controllers/pagosClientesControllers/getAllPagosClientes.js";
+import { createPagosClientes} from "../controllers/pagosClientesControllers/postPagosClientes.js";
 
 const getPagosClientesHandler = async (req, res) => {
   try {

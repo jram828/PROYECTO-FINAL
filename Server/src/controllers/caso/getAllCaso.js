@@ -29,11 +29,11 @@ const getAllCaso = async (filters) => {
       include: [
         {
           model: Cliente,
-          attributes: ["apellido", "nombre"],
+          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
         },
         {
           model: Abogado,
-          attributes: ["apellido", "nombre"],
+          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
         },
         {
           model: TipoDeCaso,
@@ -47,11 +47,11 @@ const getAllCaso = async (filters) => {
       include: [
         {
           model: Cliente,
-          attributes: ["apellido", "nombre"],
+          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
         },
         {
           model: Abogado,
-          attributes: ["apellido", "nombre"],
+          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
         },
         {
           model: TipoDeCaso,
@@ -61,7 +61,7 @@ const getAllCaso = async (filters) => {
     });
   }
 
-  //console.log(getAllCasoBd)
+  //console.log(getAllCasoBd.descripcion)
   //Obtiene los campos a devolver
   let datos = getAllCasoBd.map((elemento) => ({
     id: elemento.idCaso,
@@ -69,8 +69,16 @@ const getAllCaso = async (filters) => {
     fecha: elemento.fecha,
     nombreCliente: elemento.Cliente.nombre,
     apellidoCliente: elemento.Cliente.apellido,
+    calleCliente: elemento.Cliente.calle,
+    numeroCliente: elemento.Cliente.numero,
+    ciudadCliente: elemento.Cliente.ciudad,
+    telefonoCliente: elemento.Cliente.telefono,
     nombreabogado: elemento.Abogado.nombre,
     apellidoAbogado: elemento.Abogado.apellido,
+    calleAbogado: elemento.Abogado.calle,
+    numeroAbogado: elemento.Abogado.numero,
+    ciudadAbogado: elemento.Abogado.ciudad,
+    telefonoAbogado: elemento.Abogado.telefono,
     tipoCaso: elemento.TipoDeCaso.descripcion,
   }));
 
