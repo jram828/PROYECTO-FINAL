@@ -1,5 +1,5 @@
 import './card.css'
-import picture from "../../assets/profile-orange.png"
+
 import { Link  } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';

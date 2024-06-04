@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import style from "./createClient.module.css";
 import { postCliente } from "../../handlers/createCliente";
 import { Link } from "react-router-dom";
-import Layout from "../layout/layout";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import validation from '../../components/validation/validation';
@@ -94,19 +94,19 @@ const CreateCliente = () => {
  }, [dataRegistro])*/
 
   return (
-    <Layout>
-      <div className="flex items-center justify-center min-h-screen p-6">
-        <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-primary rounded-lg shadow-md text-white">
+    
+      <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+        <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
           <form
             className={style.datos}
             method="post"
             onSubmit={submitHandlerRegistro}
           >
-            <h1 className={style.titulo}>Crear Cliente</h1>
+            <h1 className="text-2xl font-bold text-black text-center">Crear Cliente</h1>
             <div className="space-y-3">
               <div className="flex flex-wrap justify-around">
-                <div className="mb-4">
-                  <h2 className="text-xl mb-2">Foto de perfil</h2>
+                <div className="mb-2">
+                  <h2 className="text-lg mb-2 text-center">Foto de perfil</h2>
                   <input
                     type="file"
                     accept="image/*"
@@ -124,18 +124,18 @@ const CreateCliente = () => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className=" mx-4 ">
                   <label
                     htmlFor="nombre"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Nombre(s):
                     <input
                       type="text"
                       name="nombre"
                       id="name"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.nombre}
                       onChange={handleChangeRegistro}
                     />
@@ -145,15 +145,15 @@ const CreateCliente = () => {
                    </p>}
                   </label>
                 </div>
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="apellidos"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Apellido(s):
                     <input
                       type="text"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="apellido"
                       id="lastname"
                       value={dataRegistro.apellido}
@@ -167,18 +167,18 @@ const CreateCliente = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mx-4">
                   <label
                     htmlFor="correo"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Email:
                     <input
                       type="email"
                       name="correo"
                       id="email"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.correo}
                       onChange={handleChangeRegistro}
                     />
@@ -188,17 +188,17 @@ const CreateCliente = () => {
                    </p>}
                   </label>
                 </div>
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="password"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Contraseña:
                     <input
                       type="password"
                       name="password"
                       id="password"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.password}
                       onChange={handleChangeRegistro}
                     />
@@ -206,16 +206,16 @@ const CreateCliente = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mx-4">
                   <label
                     htmlFor="numerocedula"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Cédula n°:
                     <input
                       type="number"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="cedulaCliente"
                       id="cedula"
                       value={dataRegistro.cedulaCliente}
@@ -227,17 +227,17 @@ const CreateCliente = () => {
                    </p>}
                   </label>
                 </div>
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="telefono"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
-                    Teléfono:
+                    Teléfono: 
                     <input
                       type="number"
                       name="telefono"
                       id="telefono"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.telefono}
                       onChange={handleChangeRegistro}
                     />
@@ -249,18 +249,18 @@ const CreateCliente = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mx-4">
                   <label
                     htmlFor="calle"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Calle:
                     <input
                       type="text"
                       name="calle"
                       id="street"
-                      className="grow"
+                      className="grow ml-2"
                       value={dataRegistro.calle}
                       onChange={handleChangeRegistro}
                     />
@@ -270,15 +270,15 @@ const CreateCliente = () => {
                    </p>}
                   </label>
                 </div>
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="numero"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Número:
                     <input
                       type="text"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="numero"
                       id="numero"
                       value={dataRegistro.numero}
@@ -292,16 +292,16 @@ const CreateCliente = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mx-4">
                   <label
                     htmlFor="codigopostal"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     CP:
                     <input
                       type="number"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       name="codigoPostal"
                       id="codigopostal"
                       value={dataRegistro.codigoPostal}
@@ -313,17 +313,17 @@ const CreateCliente = () => {
                    </p>}
                   </label>
                 </div>
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="ciudad"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     Ciudad:
                     <input
                       type="text"
                       name="ciudad"
                       id="city"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.ciudad}
                       onChange={handleChangeRegistro}
                     />
@@ -336,17 +336,17 @@ const CreateCliente = () => {
               </div>
 
               <div className="flex flex-wrap justify-around">
-                <div className="w-full sm:w-auto mx-4 mb-4">
+                <div className="w-full sm:w-auto mx-4 mb-2">
                   <label
                     htmlFor="pais"
-                    className="input input-bordered flex items-center max-w-xs"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
                   >
                     País:
                     <input
                       type="text"
                       name="pais"
                       id="country"
-                      className="grow"
+                      className="grow ml-2 text-black"
                       value={dataRegistro.pais}
                       onChange={handleChangeRegistro}
                     />
@@ -361,8 +361,17 @@ const CreateCliente = () => {
 
             <br />
             <div className="flex justify-center gap-2">
+              
+
+              <Link to="/home/customers">
+              <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+                  Volver
+                </button>
+              </Link>
+
               <button
-                className="btn btn-sm btn-accent text-white"
+                className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white"
                 type="submit"
                 value="Guardar"
                 disabled={
@@ -372,19 +381,14 @@ const CreateCliente = () => {
                   !dataRegistro.apellido
                 }
               >
-                Guardar
+                Crear Cliente
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
               </button>
-
-              <Link to="/home/customers">
-                <button className="btn btn-sm btn-accent text-white">
-                  Volver
-                </button>
-              </Link>
             </div>
           </form>
         </div>
       </div>
-    </Layout>
+    
   );
 };
 export default CreateCliente;

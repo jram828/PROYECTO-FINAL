@@ -7,7 +7,7 @@ function TarjetasCasos({ casos }) {
   }
 
   return (
-    <div className='contenedorcasos'>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-4">
       {casos.map(caso => (
         <TarjetaCaso
           caso={caso} 

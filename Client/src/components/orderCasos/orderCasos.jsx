@@ -13,15 +13,18 @@ function OrderCasos() {
 
   return (
     <div>
-      <div>
-      <select onChange={handleOrder} className="input select-bordered flex items-center text-lg pl-2 custom-select ">
-          <option value='' className="customOption">Ordenar por</option>
-          <option value='apellidoAbogado' className="customOption">Abogado</option>
-          <option value='apellidoCliente' className="customOption">Cliente</option>
-        </select>
-      
-      </div>
+    <div>
+      <select
+        onChange={handleOrder}
+        className="w-40 h-8 p-2 border text-xs border-secondary rounded-lg bg-white text-black focus:outline-none"
+        defaultValue=""
+      >
+        <option value="" selected hidden>Ordenar por</option>
+        <option value="apellidoAbogado" className="text-black">Abogado</option>
+        <option value="apellidoCliente" className="text-black">Cliente</option>
+      </select>
     </div>
+  </div>
   );
 }
 
