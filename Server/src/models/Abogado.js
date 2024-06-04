@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
 export default (sequelize) => {
-  sequelize.define("Abogado", {
+  const Abogado=sequelize.define("Abogado", {
     cedulaAbogado: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -84,4 +84,5 @@ export default (sequelize) => {
       
     },
   });
+  return Abogado
 };
