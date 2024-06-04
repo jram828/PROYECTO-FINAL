@@ -39,17 +39,26 @@ function Card({item}) {
 
   return (
     
-    <div className="w-64 mx-auto bg-primary text-white shadow-lg rounded-lg overflow-hidden h-64">
-      <div className="avatar flex justify-center m-4">
-        <img src={imagen} alt="Profile Picture" className="rounded-full border-2 border-secondary !w-24 !h-24" />
+    <div className="w-64 mx-auto bg-secondary text-black shadow-lg rounded-lg overflow-hidden h-64">
+      <div className="avatar flex justify-center mt-4">
+        <img src={imagen} alt="Profile Picture" className="rounded-full !w-28 !h-28" />
       </div>
-      <div className="p-4">
-      <Link  to={`/home/detail/${cedula}`} className='hover:text-white'>
-        <h2 className="text-xl font-semibold truncate">Apellido: {apellido}</h2>
-        <h2 className="text-xl font-semibold truncate">Nombre: {nombre}</h2>
-      </Link>
-        <h2 className="text-xl font-semibold truncate">Cédula: {cedulaAbogado ? cedulaAbogado : cedulaCliente}</h2>
-      </div>
+      <div className="p-4 flex flex-col items-center">
+      <Link  to={`/home/detail/${cedula}`} className='hover:text-black'>
+      <h2 className="text-lg text-center font-semibold truncate">
+        <span className="font-bold">Apellido: </span> 
+        <span className="text-lg">{apellido}</span>
+      </h2>
+      <h2 className="text-lg text-center font-semibold truncate">
+        <span className="font-bold">Nombre: </span> 
+        <span className="text-lg">{nombre}</span>
+      </h2>
+    <h2 className="text-lg text-center font-semibold truncate">
+      <span className="font-bold">Cédula: </span> 
+      <span className="text-lg">{cedulaAbogado ? cedulaAbogado : cedulaCliente}</span>
+    </h2>
+    </Link>
+  </div>
     </div>
      
   )

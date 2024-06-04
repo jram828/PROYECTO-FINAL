@@ -28,6 +28,7 @@ import {
   SET_CLIENTE,
   DELETE_CASO,
   GET_CONSULTAS,
+  MODIFICAR_DATOS,
 } from "./actions";
 
 let initialState = {
@@ -179,6 +180,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         consultas: action.payload,
       }  
+     case MODIFICAR_DATOS:
+      return {
+        ...state,
+        cliente: action.payload
+      } 
     case LOGIN:
       return {
         ...state,

@@ -2,8 +2,14 @@ import nodemailer from 'nodemailer';
 const { EMAIL_PASSWORD,EMAIL } = process.env
 import fs from 'fs'
 import path from 'path';
+
 import { fileURLToPath } from 'url';
 
+
+
+// Obtener el nombre de este archivo
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -12,6 +18,7 @@ const transporter = nodemailer.createTransport({
         pass: EMAIL_PASSWORD
     }
 });
+
 
 
 // const templatePath = path.join(__dirname, "templateCliente.html");
@@ -42,14 +49,13 @@ const sendEmailCliente = ({nombre, correo}) => {
            console.log("✅ Email sent: " + nombre);
          }
        });
-    
-    // console.log("Datos email:", nombre, correo);
-    //   const templatePath = path.join(__dirname, "templateCliente.html");  
-    //   const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
-    //   console.log('Datos email registro:',nombre,correo)
-    //   var personalizedHtml = htmlTemplate
-    //   .replace('{{nombre}}', nombre)
-    //   .replace('{{correo}}', correo);
+
+
+
+
+
+    // const templatePath = path.join(__dirname, "templateCliente.html");
+    // const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
 
     // const mailOptions = {
     //     from: EMAIL,
@@ -65,25 +71,30 @@ const sendEmailCliente = ({nombre, correo}) => {
     //         console.log('✅ Email sent: '+ nombre)
     //     }
     // })
-}
+
 
 const sendEmailPassword = (nombre, correo, password) => {
     console.log("Datos email:", nombre, correo, password);
     
-    // const templatePath = path.join(__dirname, "templatePassword.html");
-    // const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    const templatePath = path.join(__dirname, "", "templatePassword.html");
+    const htmlTemplate = fs.readFileSync(templatePath, "Utf8");
+
     console.log("Datos email password:", nombre, correo, password);
-    // var personalizedHtml = htmlTemplate
-    //   .replace("{{nombre}}", nombre)
-    //   .replace("{{correo}}", correo)
-    //   .replace("{{password}}", password);
+    var personalizedHtml = htmlTemplate
+      .replace("{{nombre}}", nombre)
+      .replace("{{correo}}", correo)
+      .replace("{{password}}", password);
   
 
   const mailOptions = {
     from: EMAIL,
     to: correo,
-    subject: "🚀 Recordatorio de contraseña, Legaltech.",
-    text: `${nombre}. Bienvenido a Legal Tech! Nos has solicitado recordar tu contraseña, aquí la tienes: ${password}`,
+      subject: "🚀 Recordatorio de contraseña, Legaltech.",
+    html: personalizedHtml
+    // text: `${nombre}. Bienvenido a Legal Tech! Nos has solicitado recordar tu contraseña, aquí la tienes: ${password}`,
   };
 
   transporter.sendMail(mailOptions, function (error) {
@@ -97,8 +108,8 @@ const sendEmailPassword = (nombre, correo, password) => {
 
 const sendEmailCita = (cliente, abogado, newCita)=>{
 
-    const templatePath = path.join(__dirname, 'templateCitas.html');
-    const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
+    // const templatePath = path.join(__dirname, 'templateCitas.html');
+    // const htmlTemplate = fs.readFileSync(templatePath, 'Utf8')
 
     const personalizedHtml = htmlTemplate
     .replace('{{cliente}}', cliente.nombre)

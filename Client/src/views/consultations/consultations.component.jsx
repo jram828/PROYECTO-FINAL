@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './consultations.css'
 import { postConsulta } from '../../redux/actions';
 import Layout from '../../components/layout/layout';
+import { useNavigate } from 'react-router-dom';
+import validation from '../../components/validation/validation';
+
 
 function Consultations() {
+
+  const navigate = useNavigate()
 
   const [dataRegistro, setDataRegistro] = useState({
     nombre:"",
@@ -14,18 +19,24 @@ function Consultations() {
     consulta:"",
   });
 
+  const [errors, setErrors]= useState({});
+
   const handleChangeRegistro = (e) => {
     const { name, value } = e.target;
     setDataRegistro((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    setErrors(validation({
+      ...dataRegistro,
+      [name]: value,
+    }))
   };
 
-  const submitHandlerRegistro = async (e) => {
+  const submitHandlerRegistro =  (e) => {
     e.preventDefault();
     try {
-      await postConsulta(dataRegistro);
+       postConsulta(dataRegistro);
 
       window.alert("Consulta creado con éxito");
       setDataRegistro({
@@ -34,7 +45,9 @@ function Consultations() {
         correo: "",
         telefono: "",
         consulta: "",
+        
       });
+      navigate('/')
     } catch (error) {
       console.error("Error al crear la consulta:", error.message);
       window.alert("No se pudo crear la consulta");
@@ -42,6 +55,13 @@ function Consultations() {
   };
 
   console.log('data', dataRegistro)
+
+  /*useEffect(() => {
+    if( dataRegistro.nombre !== '' || dataRegistro.apellido !== '' || dataRegistro.correo !== '' || dataRegistro.telefono!== '' || dataRegistro.consulta !== '' ) {
+        const dataValidated = validation(dataRegistro);
+        setErrors(dataValidated);
+    }
+ }, [dataRegistro])*/
 
   return (
     <Layout>
@@ -59,6 +79,10 @@ function Consultations() {
             className="grow"
             required
           />
+           {errors.nombre && 
+            <p className="error_form">
+            {errors.nombre}
+            </p>}
         </div>
         <br />
         <div className="input input-bordered flex items-center gap-2">
@@ -71,6 +95,10 @@ function Consultations() {
             className="grow"
             required
           />
+           {errors.apellido && 
+            <p className="error_form">
+            {errors.apellido}
+            </p>}
         </div>
         <br />
         <div className="input input-bordered flex items-center gap-2">
@@ -83,6 +111,10 @@ function Consultations() {
             className="grow"
             required
           />
+           {errors.correo && 
+            <p className="error_form">
+            {errors.correo}
+            </p>}
         </div>
         <br />
         <div className="input input-bordered flex items-center gap-2">
@@ -95,6 +127,10 @@ function Consultations() {
             className="grow"
             required
           />
+           {errors.telefono && 
+            <p className="error_form">
+            {errors.telefono}
+            </p>}
         </div>
         <br />
         <div className="form-control">
@@ -118,9 +154,15 @@ function Consultations() {
           />
         </div>
         <div className="detail-buttons">
-          <button type="submit" className="btn btn-accent btn-sm">Enviar Consulta</button>
+          <button 
+          type="submit" 
+          className="btn btn-accent btn-sm"
+          disabled={!dataRegistro.nombre || !dataRegistro.apellido || !dataRegistro.correo || !dataRegistro.telefono || errors.nombre || errors.apellido|| errors.correo || errors.telefono || dataRegistro.consulta == '' }
+          >Enviar Consulta</button>
           <Link to="/">
-            <button className="btn btn-accent btn-sm" type="button">Volver</button>
+            <button 
+            className="btn btn-accent btn-sm" 
+            type="button">Volver</button>
           </Link>
         </div>
       </form>

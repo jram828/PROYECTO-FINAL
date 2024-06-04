@@ -9,6 +9,8 @@ function Cases() {
   return (
     <Layout>
       <div>
+        <br></br>
+       
           {/* <p>Casos</p> */}
         
           {/* <Link to='/home/cases/crearcaso'>

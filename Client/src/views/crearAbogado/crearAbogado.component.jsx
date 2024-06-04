@@ -2,18 +2,22 @@
 import style from './crearAbogado.module.css';
 //import { Link } from 'react-router-dom';
 //import userStoreLawyers from '../../store/lawyers';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { postAbogado } from '../../handlers/crearAbogado';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/layout';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import validation from '../../components/validation/validation';
 
 function CrearAbogado() {
+
+  const navigate = useNavigate()
   
   //const addLawyer = userStoreLawyers((state) => state.addLawyer);
        const URL_CLOUDINARY =     "https://api.cloudinary.com/v1_1/dzrqzpflw/image/upload";
   const [urlImage, setUrlImage] = useState("");
-    const [userDataRegistro, setUserDataRegistro] = useState({
+    const [dataRegistro, setDataRegistro] = useState({
       cedulaAbogado: '',
       matricula: '',
       nombre: '',
@@ -30,19 +34,26 @@ function CrearAbogado() {
       imagen:'',
       
     });
-    console.log(userDataRegistro)
+    console.log(dataRegistro)
+
+    const [errors, setErrors]= useState({});
   
     const handleChangeRegistro = (e) => {
       const { name, value } = e.target;
-      setUserDataRegistro(prevState => ({
+      setDataRegistro(prevState => ({
         ...prevState,
         [name]: value
       }));
+      setErrors(validation({
+        ...dataRegistro,
+        [name]: value,
+      }))
+
   };
   
   const handleChangeAdministrador = (e) => {
     if (e.target.checked) {
-      setUserDataRegistro((prevState) => ({
+      setDataRegistro((prevState) => ({
         ...prevState,
         administrador: true,
       }));
@@ -50,20 +61,23 @@ function CrearAbogado() {
     
    
   };
-    console.log(setUserDataRegistro)
+    console.log(setDataRegistro)
   
     const submitHandlerRegistro = async (e) => {
       e.preventDefault();
       try {
-        await postAbogado(userDataRegistro);
-        //addLawyer(userDataRegistro); 
+        await postAbogado(dataRegistro);
+        //addLawyer(dataRegistro); 
   
         window.alert('Abogado creado con éxito');
+        navigate('/home/lawyers')
       } catch (error) {
       
         console.error('Error al crear el abogado:', error.message);
         window.alert('No se pudo crear el abogado');
       }
+      
+
     };
    
     const handleChangeImage = async (e) => {
@@ -83,8 +97,8 @@ function CrearAbogado() {
 
       setUrlImage(response.data.secure_url);
       console.log(response);
-      setUserDataRegistro({
-        ...userDataRegistro,
+      setDataRegistro({
+        ...dataRegistro,
         imagen: response.data.secure_url,
       });
     };
@@ -93,6 +107,16 @@ function CrearAbogado() {
           e.preventDefault();
           setUrlImage("");
         };
+
+        /*useEffect(() => {
+          if( dataRegistro.nombre !== '' || dataRegistro.apellido !== '' || dataRegistro.cedulaAbogado !== '' || dataRegistro.matricula !== '' || dataRegistro.telefono!== '' || dataRegistro.correo !== '' ||
+          dataRegistro.calle !== '' || dataRegistro.numero!== '' || dataRegistro.ciudad !== '' || dataRegistro.pais !== '' || dataRegistro.codigoPostal !== ''
+          ) {
+              const dataValidated = validation(dataRegistro);
+              setErrors(dataValidated);
+          }
+       }, [dataRegistro])*/
+
   return (
     <Layout>
       <div className="flex items-center justify-center min-h-screen p-6">
@@ -136,9 +160,13 @@ function CrearAbogado() {
                       name="nombre"
                       id="name"
                       className="grow"
-                      value={userDataRegistro.nombre}
+                      value={dataRegistro.nombre}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.nombre && 
+            <p className="error_form">
+            {errors.nombre}
+            </p>}
                   </label>
                 </div>
                 <div className="mx-4">
@@ -152,9 +180,13 @@ function CrearAbogado() {
                       className="grow"
                       name="apellido"
                       id="lastname"
-                      value={userDataRegistro.apellido}
+                      value={dataRegistro.apellido}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.apellido && 
+            <p className="error_form">
+            {errors.apellido}
+            </p>}
                   </label>
                 </div>
               </div>
@@ -171,9 +203,13 @@ function CrearAbogado() {
                       className="grow"
                       name="cedulaAbogado"
                       id="cedula"
-                      value={userDataRegistro.cedulaAbogado}
+                      value={dataRegistro.cedulaAbogado}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.cedulaAbogado && 
+            <p className="error_form">
+            {errors.cedulaAbogado}
+            </p>}
                   </label>
                 </div>
                 <div className="mx-4">
@@ -187,9 +223,13 @@ function CrearAbogado() {
                       className="grow"
                       name="matricula"
                       id="matricula"
-                      value={userDataRegistro.matricula}
+                      value={dataRegistro.matricula}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.matricula && 
+            <p className="error_form">
+            {errors.matricula}
+            </p>}
                   </label>
                 </div>
               </div>
@@ -206,9 +246,13 @@ function CrearAbogado() {
                       name="correo"
                       id="email"
                       className="grow"
-                      value={userDataRegistro.correo}
+                      value={dataRegistro.correo}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.correo && 
+            <p className="error_form">
+            {errors.correo}
+            </p>}
                   </label>
                 </div>
                 <div className="mx-4">
@@ -222,7 +266,7 @@ function CrearAbogado() {
                       name="password"
                       id="email"
                       className="grow"
-                      value={userDataRegistro.password}
+                      value={dataRegistro.password}
                       onChange={handleChangeRegistro}
                     />
                   </label>
@@ -242,9 +286,13 @@ function CrearAbogado() {
                       name="telefono"
                       id="telefono"
                       className="grow"
-                      value={userDataRegistro.telefono}
+                      value={dataRegistro.telefono}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.telefono && 
+            <p className="error_form">
+            {errors.telefono}
+            </p>}
                   </label>
                 </div>
 
@@ -259,9 +307,13 @@ function CrearAbogado() {
                       name="calle"
                       id="street"
                       className="grow"
-                      value={userDataRegistro.calle}
+                      value={dataRegistro.calle}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.calle && 
+            <p className="error_form">
+            {errors.calle}
+            </p>}
                   </label>
                 </div>
               </div>
@@ -278,9 +330,13 @@ function CrearAbogado() {
                       className="grow"
                       name="numero"
                       id="numero"
-                      value={userDataRegistro.numero}
+                      value={dataRegistro.numero}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.numero && 
+            <p className="error_form">
+            {errors.numero}
+            </p>}
                   </label>
                 </div>
                 <div className="mx-4">
@@ -294,9 +350,13 @@ function CrearAbogado() {
                       className="grow"
                       name="codigoPostal"
                       id="codigopostal"
-                      value={userDataRegistro.codigoPostal}
+                      value={dataRegistro.codigoPostal}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.codigoPostal && 
+            <p className="error_form">
+            {errors.codigoPostal}
+            </p>}
                   </label>
                 </div>
               </div>
@@ -313,9 +373,13 @@ function CrearAbogado() {
                       name="ciudad"
                       id="city"
                       className="grow"
-                      value={userDataRegistro.ciudad}
+                      value={dataRegistro.ciudad}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.ciudad && 
+            <p className="error_form">
+            {errors.ciudad}
+            </p>}
                   </label>
                 </div>
                 <div className="mx-4">
@@ -329,9 +393,13 @@ function CrearAbogado() {
                       name="pais"
                       id="country"
                       className="grow"
-                      value={userDataRegistro.pais}
+                      value={dataRegistro.pais}
                       onChange={handleChangeRegistro}
                     />
+                    {errors.pais && 
+            <p className="error_form">
+            {errors.pais}
+            </p>}
                   </label>
                 </div>
               </div>
@@ -345,7 +413,7 @@ function CrearAbogado() {
                     className="checkbox checkbox-accent"
                     name="administrador"
                     id="administrador"
-                    value={userDataRegistro.administrador}
+                    value={dataRegistro.administrador}
                     onChange={handleChangeAdministrador}
                   />
                 </label>
@@ -359,10 +427,10 @@ function CrearAbogado() {
                 type="submit"
                 value="Guardar"
                 disabled={
-                  !userDataRegistro.correo ||
-                  !userDataRegistro.cedulaAbogado ||
-                  !userDataRegistro.nombre ||
-                  !userDataRegistro.apellido
+                  !dataRegistro.correo ||
+                  !dataRegistro.cedulaAbogado ||
+                  !dataRegistro.nombre ||
+                  !dataRegistro.apellido
                 }
               >
                 Guardar
