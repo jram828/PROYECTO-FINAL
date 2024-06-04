@@ -20,7 +20,7 @@ function OrderAbogado() {
       defaultValue=""
     >
       <option value="" selected hidden>Ordenar</option>
-      <option value="asc" className="text-black">A-Z</option>
+      <option value="asc" >A-Z</option>
       <option value="desc" className="text-black">Z-A</option>
     </select>
   </div>
