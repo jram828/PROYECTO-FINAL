@@ -3,6 +3,7 @@ import "./contrato.css";
 
 import { printDivContent } from "../../utils/printDivContent";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function generatePDF() {
 printDivContent('contenedorcontrato');
@@ -38,8 +39,8 @@ const estudio = {
 const Contrato = () => {
 
   const location = useLocation();
-  const cliente = location.state?.cliente || {};
-  console.log("Cliente Prev Contrato:", cliente);
+  const caso = location.state?.caso || {};
+  console.log("Caso Prev Contrato:", caso);
 
   return (
     <div className="flex items-center justify-center min-h-screen p-6">
@@ -52,7 +53,7 @@ const Contrato = () => {
           <header id="titulocontrato" className="tituloo">
             <b>
               CONTRATO DE PRESTACIÓN DE SERVICIOS ENTRE{" "}
-              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()} Y {""}
+              {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()} Y {""}
               {estudio.nombre?.toUpperCase()} {" "}
             </b>
           </header>
@@ -63,10 +64,10 @@ const Contrato = () => {
             siguientes cláusulas: PRIMERA. OBJETO DEL CONTRATO: Representar y
             asesorar jurídicamente a{" "}
             <b>
-              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}
+              {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()}
             </b>
             , identificado/a con cédula de ciudadanía número No.{" "}
-            <b>{cliente.cedula} </b>quien de ahora en adelante se denominará
+            <b>{caso?.Cliente?.cedula} </b>quien de ahora en adelante se denominará
             <b> PODERDANTE</b>, en un proceso de negociación de pasivos para
             gestionar sus deudas de{" "}
             <b>
@@ -302,8 +303,8 @@ const Contrato = () => {
             TRATAMIENTO DE BASE DE DATOS PERSONALES: Para todos los efectos
             legales, el domicilio actual de las partes será: Por parte del{" "}
             <b>PODERDANTE</b>. Dirección física:{" "}
-            {cliente.direccion?.toUpperCase()}
-            Celular: {cliente.telefono} correo electronico: {cliente.correo}y
+            {caso?.Cliente?.direccion?.toUpperCase()}
+            Celular: {caso?.Cliente?.telefono} y
             por parte del <b>APODERADO</b>, Dirección física: CARRERA 15 No. 107
             - 90 World Trade Center · Torre 3 · Oficina 202. al correo
             electrónico: pedro.perez@legaltech.com Celular 3001234567. . Así
@@ -378,12 +379,12 @@ const Contrato = () => {
               <br />
               <br />
               <h2 className="firma">
-                {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}{" "}
+                {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()}{" "}
                 <br />
-                C.C. No. {cliente.cedula} <br />
-                {cliente.direccion?.toUpperCase()}, {cliente.ciudad}
+                C.C. No. {caso?.Cliente?.cedula} <br />
+                {caso?.Cliente?.direccion?.toUpperCase()}, {caso?.Cliente?.ciudad}
                 <br />
-                Cel: {cliente.celular}
+                Cel: {caso?.Cliente?.celular}
               </h2>
             </div>
             <div className="firmaabogado">
@@ -417,6 +418,9 @@ const Contrato = () => {
           value="Guardar en PDF"
           onClick={generatePDF}
         />
+        <Link to={`/home/cases/${caso.idCaso}`}>
+      <button>Volver</button>
+      </Link>
         <br />
       </div>
     </div>

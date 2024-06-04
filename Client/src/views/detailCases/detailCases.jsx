@@ -6,6 +6,7 @@ import { getCasoById, deleteCaso, getCasos } from '../../redux/actions';
 import Layout from '../../components/layout/layout';
 
 function DetailCasos() {
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const { id } = useParams(); // Obtener el id de los parámetros de la ruta
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +33,15 @@ function DetailCasos() {
       dispatch(getCasos());
       console.log("id", id, "fechaFin", fechaFin);
     }
+  };
+
+  const handleGenerateContract = () => {
+    navigate('/home/documentos/contrato', { state: { caso: caso } });
+  };
+
+  const handleGeneratePoder = () => {
+    navigate('/home/documentos/poder', { state: { caso: caso } });
+    
   };
 
   return (
@@ -85,6 +95,18 @@ function DetailCasos() {
       <Link to='/home/cases'>
         <button>Volver</button>
       </Link>
+      {user?.cedulaCliente ? undefined : (
+              <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
+              Generar contrato
+            </button>
+            )}
+            {user?.cedulaCliente ? undefined : (
+              
+                <button onClick={handleGeneratePoder} className="btn btn-sm btn-accent text-white">
+                  Generar poder
+                </button>
+             
+            )}
     </div>
   </Layout>
   )
