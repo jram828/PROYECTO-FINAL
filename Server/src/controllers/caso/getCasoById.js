@@ -11,19 +11,15 @@ const getCasoId = async (id) => {
     include: [
       {
         model: Cliente,
-        attributes: ["apellido", "nombre"],
+        attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
       },
       {
         model: Abogado,
-        attributes: ["apellido", "nombre"],
+        attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
       },
       {
         model: TipoDeCaso,
-        attributes: ["descripcion", "activo"],
-      },
-      {
-        model: PagosCliente,
-        // attributes: ["descripcion", "activo"],
+        attributes: ["descripcion"],
       },
     ],
   });
@@ -35,3 +31,5 @@ const getCasoId = async (id) => {
 export  {
   getCasoId,
 };
+
+
