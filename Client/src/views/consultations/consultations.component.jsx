@@ -144,7 +144,6 @@ function Consultations() {
               dataRegistro.consulta ? 'translate-y-[-1.5rem] scale-75' : ''
             }`}
           > */}
-           
           {/* </label> */}
           <textarea
             name="consulta"
