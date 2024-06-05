@@ -2,11 +2,12 @@ import './filtrosAbogados.css';
 import { useState, useEffect } from 'react';
 import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterAbogado, getAbogados } from '../../redux/actions';
+import { filterAbogado, getAbogados, orderAbogados } from '../../redux/actions';
 import SearchBar from '../../components/searchBarAbogado/index';
 import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
 import { Link  } from 'react-router-dom';
 import loading from "../../assets/loading.gif";
+
 
 
 function FiltrosAbogados() {
@@ -14,20 +15,32 @@ function FiltrosAbogados() {
   const abogados = useSelector((state) => state.abogados);
   const [filterApplied, setFilterApplied] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [order, setOrder] = useState('');
 
 
   useEffect(() => {
-    dispatch(getAbogados());
-    const storedFilter = JSON.parse(localStorage.getItem('abogadoFilter'));
-    if (storedFilter) {
-      setFilterApplied(true);
+    if (order) {
+      dispatch(orderAbogados(order, currentPage));
+      const storedFilter = JSON.parse(localStorage.getItem('abogadoFilter'));
+      if (storedFilter) {
+        setFilterApplied(true);
+      }
+    } else {
+      dispatch(getAbogados(currentPage));
+      const storedFilter = JSON.parse(localStorage.getItem('abogadoFilter'));
+      if (storedFilter) {
+        setFilterApplied(true);
+      }
     }
-  }, [dispatch]);
+  }, [dispatch, currentPage, order]);
 
+  console.log("order",order,"currentpage", currentPage)
   const handleVerTodosClick = () => {
-    dispatch(getAbogados());
-    localStorage.removeItem('abogadoFilter');
-    setFilterApplied(false);
+    setOrder('');
+    setCurrentPage(1); 
+    dispatch(getAbogados(1)); 
+    setFilterApplied(false); 
     setSearchPerformed(false);
   };
 
@@ -36,6 +49,15 @@ function FiltrosAbogados() {
     localStorage.setItem('abogadoFilter', JSON.stringify({ filtro, inputValue }));
     setFilterApplied(true);
     setSearchPerformed(true);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const handleOrderChange = (newOrder) => {
+    setOrder(newOrder);
+    setCurrentPage(1); 
   };
 
   return (
@@ -53,7 +75,7 @@ function FiltrosAbogados() {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <div className="flex gap-3 ml-0">
-            <OrderAbogados />
+          <OrderAbogados onOrderChange={handleOrderChange} />
             <SearchBar onFilter={handleFilter} />
             {filterApplied && <button onClick={handleVerTodosClick} className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white">Ver todos</button>}
           </div>
@@ -73,12 +95,30 @@ function FiltrosAbogados() {
             </div>
           )}
             {abogados.length > 0 && <Cards items={abogados} />}
+            </div>
+            {searchPerformed ? ( undefined) : (
+              <div className="pagination">
+                {currentPage > 1 && (
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                  >
+                    &lt;&lt;
+                  </button>
+                )}
+                <span>Página {currentPage}</span>
+                {abogados.length === 6 && (
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  >
+                    &gt;&gt;
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
   );
 }
 
