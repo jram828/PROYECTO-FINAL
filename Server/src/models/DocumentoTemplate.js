@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    sequelize.define('DocumentoTemplate',{
+   const  DocumentoTemplate=sequelize.define('DocumentoTemplate',{
         nombre:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,4 +21,5 @@ export default (sequelize) => {
             allowNull: false
         }
     })
+    return DocumentoTemplate
 }

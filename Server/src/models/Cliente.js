@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
 
-  sequelize.define("Cliente", {
+  const Cliente = sequelize.define("Cliente", {
     cedulaCliente: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -72,4 +72,5 @@ export default (sequelize) => {
       allowNull: false,
     },
   });
+  return Cliente
 };

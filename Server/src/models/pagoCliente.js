@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
 export default (sequelize) => {
-  sequelize.define("PagosCliente", {
+  const PagosCliente=sequelize.define("PagosCliente", {
     idCaso: {
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -43,4 +43,5 @@ export default (sequelize) => {
       allowNull: false,
     },
   });
+  return PagosCliente
 };
