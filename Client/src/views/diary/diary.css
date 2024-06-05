@@ -23,8 +23,9 @@
 
 .calendario {
   flex: 1;
-  background-color: var(--color-four);
-  border-radius: 5px;
+  background-color: #F8F8F8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
   font-family: "Outfit", sans-serif;
   display: flex;

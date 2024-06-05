@@ -88,6 +88,7 @@ function Calendario() {
         localizer={localizer}
         events={events}
         messages={messages}
+        
         ></Calendar>
           
       </div>
