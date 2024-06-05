@@ -1,0 +1,35 @@
+.review-tab {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-tab h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.review {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review h3 {
+    margin: 0;
+    color: #555;
+}
+
+.review p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.rating {
+    margin-top: 5px;
+    color: #ff9900;
+}
