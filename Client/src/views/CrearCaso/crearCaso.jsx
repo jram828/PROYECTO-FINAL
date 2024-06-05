@@ -178,9 +178,9 @@ function CrearCaso() {
               className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
               value={userDataRegistro.cedulaCliente}
             >
-              <option value="" className="text-black">Clientes</option>
+              <option value="" className="!text-black">Clientes</option>
               {clientes.map((cliente) => (
-                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className="text-black">
+                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className="!text-black">
                   {cliente.nombre} {cliente.apellido}
                 </option>
               ))}

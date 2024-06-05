@@ -38,7 +38,6 @@ function Card({item}) {
       console.log('cedula', cedula);
 
   return (
-    
     <div className="w-64 mx-auto bg-secondary text-black shadow-lg rounded-lg overflow-hidden h-64">
       <div className="avatar flex justify-center mt-4">
         <img src={imagen} alt="Profile Picture" className="rounded-full !w-28 !h-28" />
@@ -59,8 +58,7 @@ function Card({item}) {
     </h2>
     </Link>
   </div>
-    </div>
-     
+    </div>  
   )
 }
 

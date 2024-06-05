@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './consultations.css'
 import { postConsulta } from '../../redux/actions';
-import Layout from '../../components/layout/layout';
+
 import { useNavigate } from 'react-router-dom';
 import validation from '../../components/validation/validation';
 
@@ -64,7 +64,7 @@ function Consultations() {
  }, [dataRegistro])*/
 
   return (
-    <Layout>
+   
     <div>
     <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
       <h1>Formulario de Contacto</h1>
@@ -168,7 +168,7 @@ function Consultations() {
       </form>
     </div>
   </div>
-  </Layout>
+  
 );
 }
 

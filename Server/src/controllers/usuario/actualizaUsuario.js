@@ -1,34 +1,46 @@
-const { Cliente } = require("../../DB");
+import { models } from "../../DB.js";
+const { Cliente } = models;
 
-const actualizaCliente = async (cedulaCliente,nombre,apellido,correo,telefono,calle,numero,codigoPostal,ciudad,pais) => {
-    // console.log('imagen',imagen)
+const actualizaCliente = async (
+  cedulaCliente,
+  nombre,
+  apellido,
+  correo,
+  telefono,
+  calle,
+  numero,
+  codigoPostal,
+  ciudad,
+  pais,
+) => {
+  // console.log('imagen',imagen)
 
-    const [updateCount, updateClient] = await Cliente.update({nombre: nombre, 
-                                                              apellido: apellido,
-                                                            correo:correo,
-                                                            telefono: telefono,
-                                                            calle: calle,
-                                                            numero: numero,
-                                                            codigoPostal: codigoPostal,
-                                                            ciudad: ciudad,
-                                                            pais: pais },{
-        where: {
-            cedulaCliente: cedulaCliente
-        }
-    }
-);
+  const [updateCount, updateClient] = await Cliente.update(
+    {
+      nombre: nombre,
+      apellido: apellido,
+      correo: correo,
+      telefono: telefono,
+      calle: calle,
+      numero: numero,
+      codigoPostal: codigoPostal,
+      ciudad: ciudad,
+      pais: pais,
+    },
+    {
+      where: {
+        cedulaCliente: cedulaCliente,
+      },
+    },
+  );
 
-if (updateCount > 0) {
-    return 'Actualizado'
+  if (updateCount > 0) {
+    return "Actualizado";
   } else {
-    return ''
+    return "";
   }
-   
-    
-    // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
-     
+
+  // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
 
-
-module.exports = {actualizaCliente};
-
+export { actualizaCliente };

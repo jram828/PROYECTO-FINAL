@@ -1,10 +1,11 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    sequelize.define('Contrato', {
+    const Contrato= sequelize.define('Contrato', {
         archivo:{
             type: DataTypes.STRING,
             unique: true
         }
     })
+    return Contrato
 }

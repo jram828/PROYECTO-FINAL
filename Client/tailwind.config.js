@@ -49,7 +49,7 @@ module.exports = {
       {
         mytheme: {
           primary: '#1D195B', // blue
-          secondary: 'F8F8F8', // cream
+          secondary: '#F8F8F8', // cream
           accent: '#3C63ED', // 
           neutral: '#6E7C7C', // gray
           'base-100': '#FFFFFF', // white 

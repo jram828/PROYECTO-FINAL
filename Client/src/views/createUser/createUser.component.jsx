@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createUser.css';
-import Layout from '../../components/layout/layout';
+
 import { crearUsuario } from '../../handlers/crearUsuario';
 // import process from 'dotenv'
 
@@ -64,7 +64,7 @@ function CreateUser () {
     // }
   
     return (
-      <Layout>
+      
         <div className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6">
           <h1 className="text-2xl font-semibold mb-4">Crear Usuario</h1>
     
@@ -153,7 +153,7 @@ function CreateUser () {
           </div>
         </form>
         </div>
-      </Layout>
+      
     );
 }
 
