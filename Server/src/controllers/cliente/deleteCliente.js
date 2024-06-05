@@ -1,5 +1,5 @@
-const { Cliente } = require("../../DB");
-
+import { models } from "../../DB.js";
+const { Cliente } = models;
 const deleteCliente = async (cedulaCliente) => {
   await Cliente.update(
     {
@@ -9,11 +9,9 @@ const deleteCliente = async (cedulaCliente) => {
       where: {
         cedulaCliente: cedulaCliente,
       },
-    }
+    },
   );
   return "Delete complete";
 };
 
-module.exports = {
-  deleteCliente,
-};
+export { deleteCliente };
