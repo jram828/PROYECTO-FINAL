@@ -38,7 +38,7 @@ module.exports = {
       primary: '#1D195B', // blue
       secondary: '#D8D0C5', // cream
       tertiary: '#3C63ED', // 
-      quaternary: '#6E7C7C', // gray
+      quaternary: '#9CA3AF', // gray
       white: '#FFFFFF',
       black: '#000000',
       'bg-global': '#FF0000',
