@@ -1,14 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { orderAbogados } from "../../redux/actions";
 import './orderAbogado.css'
 
-function OrderAbogado() {
-  const dispatch = useDispatch();
-  
+function OrderAbogado({ onOrderChange }) {
   function handleOrder(event) {
     event.preventDefault();
-    dispatch(orderAbogados(event.target.value));
+    const orderValue = event.target.value;
+    onOrderChange(orderValue);
   }
 
   return (
