@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) =>{
-    sequelize.define('Consulta',{
+    const Consulta=sequelize.define('Consulta',{
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -44,4 +44,5 @@ export default (sequelize) =>{
             defaultValue: true
         }
     })
+    return Consulta
 }

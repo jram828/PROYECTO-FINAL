@@ -29,6 +29,7 @@ import {
   DELETE_CASO,
   GET_CONSULTAS,
   MODIFICAR_DATOS,
+  GET_PAGOS,
 } from "./actions";
 
 let initialState = {
@@ -44,6 +45,7 @@ let initialState = {
   caso:{},
   cita: [],
   consultas: [],
+  pagos:[],
   source: "cliente",
   // userGit: null,
   loginError: "",
@@ -184,6 +186,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         cliente: action.payload
+      } 
+     case GET_PAGOS:
+      return {
+        ...state,
+        pagos:action.payload
       } 
     case LOGIN:
       return {

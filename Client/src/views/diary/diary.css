@@ -5,6 +5,8 @@
   justify-content: center;
   min-height: 80vh;
   padding: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 
 @media (min-width: 1024px) { 
@@ -23,8 +25,9 @@
 
 .calendario {
   flex: 1;
-  background-color: var(--color-four);
-  border-radius: 5px;
+  background-color: #F8F8F8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
   font-family: "Outfit", sans-serif;
   display: flex;
@@ -38,8 +41,8 @@
 
 .formCita {
   flex: 1;
-  margin: 10px;
-  margin-top: 30px;
+  margin: 3rem;
+  justify-content: center;
   display: flex;
   
   align-items: center;

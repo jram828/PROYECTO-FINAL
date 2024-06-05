@@ -11,6 +11,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup} from "firebase/auth";
 import  {loginWithProvider } from "../../redux/actions";
 
+
 // import { ClickHandlerCrear, ClickHandlerRecordatorio, Loginf } from "../../handlers/login";
 
 // Configuración de Firebase
@@ -127,20 +128,24 @@ const dispatch = useDispatch();
   };
 
   return (
-    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
+    <div className="space-y-6 w-full max-w-lg p-6 bg-white ">
+      <h1 className="text-2xl font-bold text-primary">Inicia Sesión</h1>
+        <p className="py-1 text-primary">
+          ¡Bienvenido al portal CRM para clientes y abogados! 
+        </p>
       <form onSubmit={submitHandler}>
-        <div className="flex justify-center mb-6">
+        {/* <div className="flex justify-center mb-6"> */}
           {/* <img
         src={logo}
         alt="Logo Legaltech"
         style={{ height: "90px", width: "100%" }}
       /> */}
-        </div>
+        {/* </div> */}
 
-        <div className="input input-bordered flex items-center gap-2 mb-4">
-          <label htmlFor="usuario" className={style.label}>
-            Usuario:
+        <label htmlFor="usuario" >
+          <span className="label-text !text-black text-lg">Usuario: </span>
           </label>
+        <div className="input !border-neutral text-neutral flex items-center gap-2 mb-4">
           <input
             type="text"
             name="email"
@@ -148,14 +153,15 @@ const dispatch = useDispatch();
             placeholder="Ingrese su Usuario"
             value={userData.email}
             onChange={handleChange}
-            className="grow"
+            className="grow ml-2"
           />
         </div>
 
-        <div className="input input-bordered flex items-center gap-2 mb-4">
-          <label className={style.label} htmlFor="password">
-            Contraseña:
-          </label>
+        <label className={style.label} htmlFor="password">
+          <span className="label-text !text-black text-lg">Contraseña: </span>
+        </label>
+        <div className="input !border-neutral text-neutral flex items-center gap-2 mb-4">
+          
           <input
             name="password"
             type="password"
@@ -166,38 +172,44 @@ const dispatch = useDispatch();
           />
         </div>
 
+        <label className={style.label} htmlFor="password">
+          <span className="label-text !text-black text-lg">Tipo de Usuario: </span>
+        </label>
         <div>
           <select
             name="rol"
             id="rol"
             onChange={handleChange}
-            className="input select-bordered flex items-center text-lg pl-2 custom-select"
+            className="input border text-xs !border-black rounded-lg bg-secondary text-black focus:outline-none"
           >
-            <option value="" className={style.customOption}>
+            <option value="" className="text-black">
               Tipo de usuario:
             </option>
-            <option value="Administrador" className={style.customOption}>
+            <option value="Administrador" className="text-black">
               Administrador
             </option>
-            <option value="Abogado" className={style.customOption}>
+            <option value="Abogado" className="text-black">
               Abogado
             </option>
-            <option value="Cliente" className={style.customOption}>
+            <option value="Cliente" className="text-black">
               Cliente
             </option>
           </select>{" "}
         </div>
         <br />
         <div className="flex flex-col space-y-4">
-          <div className="flex justify-center space-x-4">
-            <Link to="/home/consultation" className="btn btn-accent w-40">
-              <button>Consultas</button>
+          <div className="flex justify-between space-x-4">
+            <Link to="/home/consultation" className="">
+              <a className="text-lg text-accent">Consultas</a>
             </Link>
-            <input
-              type="submit"
-              value="Ingresar"
-              className="btn btn-accent w-40"
-            />
+            <a
+              type="button"
+              name="password"
+              value="¿Olvidó su contraseña?"
+              className="text-lg text-accent cursor-pointer"
+              onClick={clickHandlerRecordatorio}
+            >¿Olvidó su contraseña?</a>
+            
           </div>
 
           <div className="flex justify-center space-x-4">
@@ -209,23 +221,22 @@ const dispatch = useDispatch();
               onClick={clickHandlerCrear}
             /> */}
             <input
-              type="button"
-              name="password"
-              value="¿Olvidó su contraseña?"
-              className="btn btn-accent w-40"
-              onClick={clickHandlerRecordatorio}
+              type="submit"
+              value="Ingresar"
+              className="btn btn-md btn-accent w-full"
             />
-            <button
-              onClick={() => handleSignIn(githubProvider)}
-              className="btn btn-accent w-40"
-            >
-              Sign in with GitHub
-            </button>
+            
           </div>
         </div>
       </form>
-      <div className="flex justify-center">
+      <div className="flex-column  justify-center">
         <GoogleLogin onSuccess={ResponseMessage} onError={errorMessage} />
+        <button
+              onClick={() => handleSignIn(githubProvider)}
+              className="btn btn-md w-full bg-white mt-2 "
+            >
+              Sign in with GitHub
+            </button>
       </div>
       <div className={style.github}></div>
     </div>

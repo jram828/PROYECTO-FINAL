@@ -73,104 +73,112 @@ function FormCita() {
  }, [dataRegistro])*/
 
   return (
-    <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md mx-auto">
-    <h1 className="tituloCita text-center">Crear Cita</h1>
-    <form onSubmit={submitHandlerRegistro} className="formularioCita flex flex-col items-center">
-        <div className="input-row">
-          <div className="input input-bordered flex items-center gap-2">
-            <label className="label">Titulo:</label>
-            <input type="text"
-            name="titulo"
-            id="titulo"
-            value={dataRegistro.titulo}
-            onChange={handleChangeRegistro} />
-            {errors.titulo && 
-            <p className="error_form">
-            {errors.titulo}
-            </p>}
+    
+      <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+        <h1 className="text-2xl font-bold text-black text-center">Crear Cita</h1>
+        <form onSubmit={submitHandlerRegistro} className="flex flex-col items-center space-y-6">
+          <div className="flex flex-col items-center gap-2 justify-center">
+            <div className="mx-4">
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Titulo:
+              <input
+                type="text"
+                name="titulo"
+                id="titulo"
+                value={dataRegistro.titulo}
+                onChange={handleChangeRegistro}
+                className="grow ml-2 text-black"
+              />
+              </label>
+              {errors.titulo && <p className="error_form">{errors.titulo}</p>}
+            </div>
+
+            <div className="mx-4">
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Fecha:
+              <DatePicker
+                selected={dataRegistro.fechaCita}
+                name="fechaCita"
+                id="fechaCita"
+                onChange={(date) => handleChangeRegistro({ target: { name: 'fechaCita', value: date } })}
+                className="grow ml-2 text-black"
+                type="date"
+              />
+              </label>
+              {errors.fechaCita && <p className="error_form">{errors.fechaCita}</p>}
+            </div>
+
+            <div className="mx-4">
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Hora:
+              <input
+                type="time"
+                name="horaCita"
+                id="horaCita"
+                value={dataRegistro.horaCita}
+                onChange={handleChangeRegistro}
+                className="grow ml-2 text-black"
+              />
+              </label>
+              {errors.horaCita && <p className="error_form">{errors.horaCita}</p>}
+            </div>
+
+            <div className="mx-4">
+              <label className="w-full">
+                <select
+                  name="idCaso"
+                  id="idCaso"
+                  onChange={handleChangeRegistro}
+                  className="!w-72 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
+                >
+                  <option value="" className="text-black">Seleccionar caso</option>
+                  {casos.datosPagina.map(caso => (
+                    <option key={caso.id} value={caso.id} className="text-black">
+                      {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`} 
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="px-4">
+              <label className="">
+                <textarea
+                  className="textarea textarea-sm textarea-secondary !border-black !text-black text-xs h-24 !w-72"
+                  type="text"
+                  name="descripcion"
+                  id="descripcion"
+                  placeholder="Detalles"
+                  value={dataRegistro.descripcion}
+                  onChange={handleChangeRegistro}
+                ></textarea>
+              </label>
+            </div>
           </div>
-          <br />
-          <div className="input input-bordered flex items-center gap-2">
-            <label className="label">Fecha:</label>
-            <DatePicker
-            selected={dataRegistro.fechaCita}
-            name="fechaCita"
-            id="fechaCita"
-            onChange={(date) => handleChangeRegistro({ target: { name: 'fechaCita', value: date } })}
-            />
-            {errors.fechaCita && 
-            <p className="error_form">
-            {errors.fechaCita}
-            </p>}
-            {/*<input type="text"
-            name="fechaCita"
-            id="fechaCita"
-            value={dataRegistro.fechaCita}
-            onChange={handleChangeRegistro} />*/}
-          </div>
-          <br />
-          <div className="input input-bordered flex items-center gap-2">
-            <label className="label">Hora:</label>
-              <input className="grow"
-              type="time"
-              name="horaCita"
-              id="horaCita"
-              value={dataRegistro.horaCita}
-              onChange={handleChangeRegistro} />
-              {errors.horaCita && 
-            <p className="error_form">
-            {errors.horaCita}
-            </p>}
-          </div>
+          <div className="flex justify-center gap-2">
             
-        <br />
-        <div className="w-full px-4">
-          <label className="w-full">
-          <select
-              name="idCaso"
-              id="idCaso"
-              onChange={(event) => handleChangeRegistro(event)}
-              className="input input-bordered text-lg pl-2 w-full"
-              >
-              <option value="" className="customOption">Seleccionar caso</option>
-              {casos.datosPagina.map(caso => (
-                <option key={caso.id} value={caso.id} className="customOption">
-                  {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`} 
-                </option>
-              ))}
-          </select>
-          </label>
-        </div>
-        <br></br>
-        <div className="w-full px-4">
-          <label className="w-full">
-          <textarea className="textarea textarea-bordered h-24 w-full"
-          type="text"
-          name="descripcion"
-          id="descripcion"
-          placeholder="Detalles"
-          value={dataRegistro.descripcion}
-          onChange={handleChangeRegistro}
-          ></textarea>
-          </label>
-        </div>
-        </div>
-        <div className="flex justify-center gap-2">
-          <input type="submit" 
-          disabled={
-            !dataRegistro.titulo ||
-            !dataRegistro.fechaCita ||
-            !dataRegistro.horaCita||
-            !dataRegistro.descripcion
-          }
-          className="btn btn-sm btn-accent text-white" value="Crear" />
-          <Link to='/home'>
-          <button className="btn btn-sm btn-accent text-white">Volver</button>
-          </Link>
-        </div>
-      </form>
-    </div>
-   
+            <Link to='/home'>
+              <button className="btn btn-sm w-40 border border-accent bg-white hover:bg-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+                Volver
+                </button>
+            </Link>
+
+            <button
+              type="submit"
+              disabled={
+                !dataRegistro.titulo ||
+                !dataRegistro.fechaCita ||
+                !dataRegistro.horaCita ||
+                !dataRegistro.descripcion
+              }
+              className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white"
+              value="Crear"
+            >
+              Crear Cita
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 20 20"><path fill="white" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699M1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756zm5.267 6.877v1.666H5v-1.666zm4.166 0v1.666H9.167v-1.666zm4.167 0v1.666h-1.667v-1.666zm-8.333-3.977v1.666H5v-1.666zm4.166 0v1.666H9.167v-1.666zm4.167 0v1.666h-1.667v-1.666zM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0z"></path></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    
     
   );
 }

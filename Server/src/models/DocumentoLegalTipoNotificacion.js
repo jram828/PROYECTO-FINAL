@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    sequelize.define('DocumentoLegalTipoNotificacion',{
+    const DocumentoLegalTipoNotificacion=sequelize.define('DocumentoLegalTipoNotificacion',{
         dia:{
             type: DataTypes.DATE,
             allowNull: false,
@@ -10,4 +10,5 @@ export default (sequelize) => {
             type: DataTypes.BOOLEAN,
         }
     })
+    return DocumentoLegalTipoNotificacion
 }
