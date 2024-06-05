@@ -25,7 +25,6 @@ function AllConsultations() {
   console.log("consultas", consultas)
 
   return (
-    
       <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
         <div >
         <Link to='/home'>
