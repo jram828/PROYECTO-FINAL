@@ -77,26 +77,34 @@ const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+  
     const { email, password, rol } = userData;
     console.log("Datos login:", email, password, rol);
-
+  
     try {
       const { data } = await axios(`/login/?email=${email}&password=${password}&rol=${rol}`);
       console.log("Login 2:", data);
       const { access } = data;
       console.log("Access: ", access);
+  
       if (access === true) {
         window.localStorage.setItem("loggedUser", JSON.stringify(data.usuario));
         dispatch(setAuth(access));
-        navigate("/home");
+        
+        if (data.usuario.administrador || data.usuario.cedulaAbogado) {
+          navigate("/home/customers");
+        } else if (data.usuario.cedulaCliente) {
+          navigate("/home/datos");
+        } else {
+          navigate("/home");
+        }
       } else {
         window.alert("Usuario o contraseña incorrectos");
       }
     } catch (error) {
       window.alert("Usuario o contraseña incorrectos");
     }
-  };
+  }
 
   const ResponseMessage = async (response) => {
     const user = jwtDecode(response.credential);

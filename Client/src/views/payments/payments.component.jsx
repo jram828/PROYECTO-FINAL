@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getPagos  } from '../../redux/actions';
+import { getPagos, getCasos  } from '../../redux/actions';
 import loading from "../../assets/loading.gif";
 
 function Payments() {
@@ -53,6 +53,16 @@ function Payments() {
 
   const dispatch = useDispatch();
   const pagos = useSelector((state) => state.pagos);
+  const casos = useSelector((state) => state.casos)
+
+  useEffect(() => {
+    const fetchData = async () => {
+    setLoadingState(true);
+      await dispatch(getCasos());
+      setLoadingState(false);
+    }
+    fetchData()
+  }, [dispatch]);
 
 
   useEffect(() => {
@@ -72,7 +82,11 @@ function Payments() {
     return `${dia}-${mes}-${año}`;
   }
 
-  
+  const fechaFormateada = formatearFecha(pagos?.fechaDeAprobacion);
+
+  const userCasos = casos.datosPagina?.filter((caso)=>
+    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
+  )
 
 
   
@@ -141,11 +155,11 @@ function Payments() {
               )}
             </div>
             <div className="flex flex-row items-center justify-center">
-              <Link to="/home">
+              {/*<Link to="/home">
               <button className="btn btn-xs border border-accent bg-white hover:bg-white !w-36 mr-2" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
                 Volver</button>
-              </Link>
+            </Link>*/}
               <input
                 type="button"
                 name="Pagar"
@@ -176,7 +190,7 @@ function Payments() {
               pagos.map(pago => (
                 <div key={pago?.pagoId} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
                   <h3 className="text-xl font-bold text-black text-center">Caso: n°{pago?.idCaso} {pago?.Caso?.descripcion}</h3>
-                  <p><strong>Cliente:</strong> {pago?.Cliente?.apellido} {pago?.Cliente?.nombre}</p>
+                  <p><strong>Cliente:</strong> {pago?.Caso?.Cliente?.apellido} {pago?.Caso?.Cliente?.nombre}</p>
                   <p><strong>Fecha:</strong> {formatearFecha(pago?.fechaDeAprobacion)}</p>
                   <p><strong>Monto:</strong> {pago?.importeDeLaTransaccion}</p>
                   <p><strong>Descripción:</strong> {pago?.descripcion}</p>
@@ -186,11 +200,11 @@ function Payments() {
       
     
     <div className="botonescrearusuario">
-    <Link to="/home">
+    {/*<Link to="/home">
           <button className="btn btn-xs border border-accent bg-white hover:bg-white " type="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
             Volver</button>
-    </Link>
+          </Link>*/}
     </div>
     </div>
 }

@@ -154,12 +154,12 @@ function FormCita() {
           </div>
           <div className="flex justify-center gap-2">
             
-            <Link to='/home'>
+            {/*<Link to='/home'>
               <button className="btn btn-sm w-40 border border-accent bg-white hover:bg-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
                 Volver
                 </button>
-            </Link>
+                </Link>*/}
 
             <button
               type="submit"
