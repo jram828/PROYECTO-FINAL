@@ -74,7 +74,6 @@ function Payments() {
       <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
       {user.cedulaCliente ? (
         <div>
-          
           <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
             <h1 className="text-2xl font-bold text-black text-center">Realizar un pago</h1>
             
