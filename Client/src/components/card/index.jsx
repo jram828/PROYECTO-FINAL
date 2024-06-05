@@ -58,8 +58,7 @@ function Card({item}) {
     </h2>
     </Link>
   </div>
-    </div>
-     
+    </div>  
   )
 }
 
