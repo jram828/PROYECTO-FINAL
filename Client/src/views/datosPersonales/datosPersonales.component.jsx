@@ -192,14 +192,14 @@ function Data() {
 
       <br />
       <div className="flex justify-center gap-2">
-        <Link to="/home">
+        {/*<Link to="/home">
           <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
             <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512">
               <path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path>
             </svg>
             Volver
           </button>
-        </Link>
+        </Link>*/}
         <button className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white" type="submit">
           Actualizar Datos
           <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 20 20"><path fill="white" d="M10.2 3.28c3.53 0 6.43 2.61 6.92 6h2.08l-3.5 4l-3.5-4h2.32a4.44 4.44 0 0 0-4.32-3.45c-1.45 0-2.73.71-3.54 1.78L4.95 5.66a6.97 6.97 0 0 1 5.25-2.38m-.4 13.44c-3.52 0-6.43-2.61-6.92-6H.8l3.5-4c1.17 1.33 2.33 2.67 3.5 4H5.48a4.44 4.44 0 0 0 4.32 3.45c1.45 0 2.73-.71 3.54-1.78l1.71 1.95a6.95 6.95 0 0 1-5.25 2.38"></path></svg>

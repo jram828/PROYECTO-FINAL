@@ -8,11 +8,11 @@ function Cards({ items, config }) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-4">
-  {items.map(item => (
+    <div  className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-4">
+  {items.map((item, index) => (
     <Card 
       item={item} 
-      key={item.id} 
+      key={index} 
       config={config} 
     />
   ))}
