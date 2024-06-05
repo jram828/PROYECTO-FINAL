@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    sequelize.define('Cotizacion',{
+    const Cotizacion= sequelize.define('Cotizacion',{
         fecha:{
             type: DataTypes.DATE,
             allowNull: false
@@ -15,4 +15,5 @@ export default (sequelize) => {
             allowNull: false
         }
     })
+    return Cotizacion
 }
