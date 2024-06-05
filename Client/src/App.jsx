@@ -24,6 +24,8 @@ import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
 import Review from './views/Review/Review.jsx';
+import Contrato from './views/contrato/index.jsx';
+import Poder from './views/poder/index.jsx';
 
 // const VITE_SECRET_KEY =
 //   'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
@@ -40,21 +42,12 @@ function App() {
   // console.log("Stripe env:", VITE_SECRET_KEY);
     // const location = useLocation();
   //  const isAuthenticated = useSelector((state) => state.isAuthenticated);
-
     //Funcion para verificar datos de ingreso
-
   // const options = {
   //   // passing the client secret obtained from the server
   //   clientSecret: `${VITE_SECRET_KEY}`,
   // };
 
-
-    
-     
-   
-
-
-  
   return (
     <div className="App">
       {/* <Elements stripe={stripePromise} options={options}> */}
@@ -62,8 +55,6 @@ function App() {
       <Route path="/" element={<Landing />} />
         <Route path="/password" element={<Password />} />
         <Route path="/crearusuario" element={<CreateUser />} />
-        
-        
         <Route path="/home/*" element={<LayoutWithNav />}>
         <Route path="lawyers" element={<LawyersPage />} />
         <Route path="customers" element={<CustomersPage />} />
@@ -76,6 +67,7 @@ function App() {
         <Route path="lawyers/:id" element={<Detail />} />
         <Route path="documents" element={<Documents />} />
         <Route path="diary" element={<Diary />} />
+        <Route path="review" element={<Review />} />
         <Route path="payments" element={<Payments />} />
         <Route path="payments/status" element={<Status />} />
         <Route path="consultation" element={<Consultations />} />
