@@ -67,8 +67,18 @@ function generatePDF() {
 
   return (
     
-    <div className="flex items-center justify-center min-h-screen p-6">
-      <h1 className="titulo">Poder</h1>
+    <div className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+
+      <div className="flex self-start">
+      <Link to={`/home/cases/${caso.idCaso}`}>
+       <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+            Volver
+            </button>
+      </Link>
+      </div>
+      <h1 className="text-2xl font-bold text-black text-center">Poder</h1>
+      <br />
       <div className="poder" id="poder">
         <p className="titulopoder">
           <b>
@@ -171,9 +181,7 @@ function generatePDF() {
         value="Generar PDF"
         onClick={generatePDF}
       />
-      <Link to={`/home/cases/${caso.idCaso}`}>
-      <button>Volver</button>
-      </Link>
+      
     </div>
     </div>
     
