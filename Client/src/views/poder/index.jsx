@@ -68,7 +68,6 @@ function generatePDF() {
   return (
     
     <div className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
-
       <div className="flex self-start">
       <Link to={`/home/cases/${caso.idCaso}`}>
        <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
