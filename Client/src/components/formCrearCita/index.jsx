@@ -73,13 +73,13 @@ function FormCita() {
  }, [dataRegistro])*/
 
   return (
-    <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+    
       <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
         <h1 className="text-2xl font-bold text-black text-center">Crear Cita</h1>
         <form onSubmit={submitHandlerRegistro} className="flex flex-col items-center space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="flex flex-col items-center gap-2 justify-center">
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">Titulo:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Titulo:
               <input
                 type="text"
                 name="titulo"
@@ -93,20 +93,21 @@ function FormCita() {
             </div>
 
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">Fecha:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Fecha:
               <DatePicker
                 selected={dataRegistro.fechaCita}
                 name="fechaCita"
                 id="fechaCita"
                 onChange={(date) => handleChangeRegistro({ target: { name: 'fechaCita', value: date } })}
                 className="grow ml-2 text-black"
+                type="date"
               />
               </label>
               {errors.fechaCita && <p className="error_form">{errors.fechaCita}</p>}
             </div>
 
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">Hora:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Hora:
               <input
                 type="time"
                 name="horaCita"
@@ -125,7 +126,7 @@ function FormCita() {
                   name="idCaso"
                   id="idCaso"
                   onChange={handleChangeRegistro}
-                  className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
+                  className="!w-72 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
                 >
                   <option value="" className="text-black">Seleccionar caso</option>
                   {casos.datosPagina.map(caso => (
@@ -140,7 +141,7 @@ function FormCita() {
             <div className="px-4">
               <label className="">
                 <textarea
-                  className="textarea textarea-sm textarea-secondary !border-black !text-black text-xs h-24 !w-52"
+                  className="textarea textarea-sm textarea-secondary !border-black !text-black text-xs h-24 !w-72"
                   type="text"
                   name="descripcion"
                   id="descripcion"
@@ -154,7 +155,7 @@ function FormCita() {
           <div className="flex justify-center gap-2">
             
             <Link to='/home'>
-              <button className="btn btn-sm w-35 border border-accent bg-white hover:bg-white">
+              <button className="btn btn-sm w-40 border border-accent bg-white hover:bg-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
                 Volver
                 </button>
@@ -177,7 +178,7 @@ function FormCita() {
           </div>
         </form>
       </div>
-    </div>
+    
     
   );
 }

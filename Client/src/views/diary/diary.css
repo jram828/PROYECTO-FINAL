@@ -5,6 +5,8 @@
   justify-content: center;
   min-height: 80vh;
   padding: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 
 @media (min-width: 1024px) { 
@@ -39,8 +41,8 @@
 
 .formCita {
   flex: 1;
-  margin: 10px;
-  margin-top: 30px;
+  margin: 3rem;
+  justify-content: center;
   display: flex;
   
   align-items: center;
