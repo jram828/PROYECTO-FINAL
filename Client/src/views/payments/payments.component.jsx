@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getCasos  } from '../../redux/actions';
+import { getPagos  } from '../../redux/actions';
 import loading from "../../assets/loading.gif";
 
 function Payments() {
@@ -52,22 +52,29 @@ function Payments() {
   };
 
   const dispatch = useDispatch();
-  const casos = useSelector((state) => state.casos);
+  const pagos = useSelector((state) => state.pagos);
 
-  console.log("casos", casos);
 
   useEffect(() => {
     const fetchData = async () => {
     setLoadingState(true);
-      await dispatch(getCasos());
+      await dispatch(getPagos());
       setLoadingState(false);
     }
     fetchData()
   }, [dispatch]);
 
-  const userCasos = casos.datosPagina?.filter((caso)=>
-    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
-  )
+  function formatearFecha(fechaISO) {
+    const fecha = new Date(fechaISO);
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses son 0-11
+    const año = fecha.getFullYear();
+    return `${dia}-${mes}-${año}`;
+  }
+
+  
+
+
   
   return (
     
@@ -166,22 +173,14 @@ function Payments() {
               <img className="loading-image" src={loading} alt="loading" />
             </div>
             ) : (
-              casos.datosPagina?.map(caso => (
-                <div key={caso.id} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
-                  <h3 className="text-xl font-bold text-black text-center">Pagos del caso: n°{caso.id}</h3>
-                  <p><strong>Descripción del caso:</strong> {caso.descripcion}</p>
-                  <p><strong>Cliente:</strong> {caso.apellidoCliente}{caso.nombreCliente}</p>
-                  {caso.pagos && caso.pagos.length > 0 && (
-                    <div>
-                      <h4>Pagos:</h4>
-                      <ul>
-                        {caso.pagos.map(pago => (
-                          <li key={pago.id}>{pago.descripcion}</li>
-                        ))}
-                      </ul>
+              pagos.map(pago => (
+                <div key={pago?.pagoId} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
+                  <h3 className="text-xl font-bold text-black text-center">Caso: n°{pago?.idCaso} {pago?.Caso?.descripcion}</h3>
+                  <p><strong>Cliente:</strong> {pago?.Cliente?.apellido} {pago?.Cliente?.nombre}</p>
+                  <p><strong>Fecha:</strong> {formatearFecha(pago?.fechaDeAprobacion)}</p>
+                  <p><strong>Monto:</strong> {pago?.importeDeLaTransaccion}</p>
+                  <p><strong>Descripción:</strong> {pago?.descripcion}</p>
                     </div>
-                  )}
-                </div>
               ))
             )}
       
