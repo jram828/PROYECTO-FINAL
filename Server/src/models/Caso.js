@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequlize)=>{
-    sequlize.define('Caso',{
+    const Caso=sequlize.define('Caso',{
         idCaso: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -23,4 +23,5 @@ export default (sequlize)=>{
             }
         }
     })
+    return Caso
 }

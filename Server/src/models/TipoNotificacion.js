@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-    sequelize.define('TipoNotificacion',{
+    const TipoNotificacion=sequelize.define('TipoNotificacion',{
         descripcion:{
             type: DataTypes.TEXT,
             allowNull: false,
@@ -18,4 +18,5 @@ export default (sequelize) => {
             allowNull: false
         }
     })
+    return TipoNotificacion
 }
