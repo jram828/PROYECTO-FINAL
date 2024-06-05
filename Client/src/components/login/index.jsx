@@ -226,7 +226,6 @@ const dispatch = useDispatch();
               value="Ingresar"
               className="btn btn-md btn-accent w-full"
             />
-            
           </div>
         </div>
       </form>
