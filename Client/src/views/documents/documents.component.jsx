@@ -1,5 +1,5 @@
 import './documents.css';
-import Layout from '../../components/layout/layout'
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Documents = () => {
   };
 
   return (
-    <Layout>
+    
       <div className="p-6 bg-primary shadow-md rounded-lg max-w-md mx-auto mt-4 text-white">
       <h1 className="text-2xl font-bold mb-6">Generar Documentos Legales</h1>
       <form>
@@ -66,7 +66,7 @@ const Documents = () => {
         </div>
       </form>
       </div>
-    </Layout>
+   
   );
 };
 export default Documents;
