@@ -10,12 +10,13 @@ function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
 
 //Si la variable todos viene en true, muestra todos los casos aun los que han sido finalizados
 const getAllCaso = async (filters) => {
+  const todos= filters.query.todos || 'true' 
   let getAllCasoBd = [];
   console.log("Esto viene en el query en todos ... ", filters.query.todos);
   // if (!filters.query.todos || filters.query.todos==='false' ) {
 
   //Consulta a la base de datos
-  if (!filters.query.todos || filters.query.todos === "false") {
+  if (todos.toUpperCase() === "FALSE") {
     getAllCasoBd = await Caso.findAll({
       where: {
         [Sequelize.Op.or]: [
@@ -136,15 +137,13 @@ const getAllCaso = async (filters) => {
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
   console.log("Arreglo ordenado");
   console.log(arregloOrdenado);
-  let elementos = 3;
-  let offset = 1;
-  if (filters.query.porPagina) elementos = filters.query.porPagina;
-  if (filters.query.pagina)
-    offset = (filters.query.pagina - 1) * parseInt(elementos);
-
-  console.log("offset....", offset, "  elementos........", elementos);
+  let elementos = filters.query.porPagina || 3;
+  let offset = filters.query.pagina || 1;
+  //if (filters.query.porPagina) elementos = filters.query.porPagina;
+  //if (filters.query.pagina) offset = filters.query.pagina
+  //console.log("offset....", offset, "  elementos........", elementos);
   const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);
-  const paginaActual = paginarArreglo(arregloOrdenado, offset - 1, elementos);
+  const paginaActual = paginarArreglo(arregloOrdenado, offset -1 , elementos);
   console.log(paginaActual);
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };

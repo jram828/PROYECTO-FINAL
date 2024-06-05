@@ -3,6 +3,6 @@ import { getCasoxMesHandler } from '../handlers/dashboardHandlers.js'
 
 const dashboardRouter = Router();
 
-abogadosRouter.get("/casosxMes", getCasoxMesHandler);
+dashboardRouter.get("/casosxMes", getCasoxMesHandler);
 
-export { dashboardRouter }
+export default  dashboardRouter 
