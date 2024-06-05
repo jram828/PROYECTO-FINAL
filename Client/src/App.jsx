@@ -23,10 +23,7 @@ import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
-import Contrato from './views/contrato';
-import Poder from './views/poder';
-// import {Elements} from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
+import Review from './views/Review/Review.jsx';
 
 // const VITE_SECRET_KEY =
 //   'sk_test_51PKAEZRwrbUIzCadXKYTM0PPKAfgjU35yaufcCpIKD1mYMnr84hN1ZSqIvxdaFSZ8jZFu9ej95uyJKVUznOZgPXj00LwKPCzW';
@@ -103,6 +100,7 @@ function App() {
         <Route path="/home/cases" element={<Cases />} />
         <Route path="/home/cases/:id" element={<DetailCases />} />
         <Route path="/home/cases/crearcaso" element={<CrearCaso />} />
+        <Route path="/home/review" element={<Review />} />
         <Route path="/home/costumers/:id" element={<Detail />} />
         <Route path="/home/lawyers/:id" element={<Detail />} />
         <Route path="/home/documents" element={<Documents />} />
