@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) =>{
-    sequelize.define('Cita',{
+    const Cita=sequelize.define('Cita',{
         idCita:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -29,4 +29,5 @@ export default (sequelize) =>{
             type:DataTypes.TIME
         }
     })
+    return Cita
 }
