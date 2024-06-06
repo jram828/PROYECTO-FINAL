@@ -1,14 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { orderAbogados } from "../../redux/actions";
 import './orderAbogado.css'
 
-function OrderAbogado() {
-  const dispatch = useDispatch();
-  
+function OrderAbogado({ onOrderChange }) {
   function handleOrder(event) {
     event.preventDefault();
-    dispatch(orderAbogados(event.target.value));
+    const orderValue = event.target.value;
+    onOrderChange(orderValue);
   }
 
   return (
@@ -20,7 +17,7 @@ function OrderAbogado() {
       defaultValue=""
     >
       <option value="" selected hidden>Ordenar</option>
-      <option value="asc" className="text-black">A-Z</option>
+      <option value="asc" >A-Z</option>
       <option value="desc" className="text-black">Z-A</option>
     </select>
   </div>

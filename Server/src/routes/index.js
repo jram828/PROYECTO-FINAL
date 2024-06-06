@@ -11,6 +11,7 @@ import citasRouter from "./../routes/citasRoutes.js";
 import pagosClientesRouter from "./pagosClienteRoutes.js";
 import reviewsRouter from "./reviewsRoutes.js";
 // import reviewsRouter from "./reviewsRoutes.js";
+import dashboardRouter from './dashboardRoutes.js'
 
 const router = Router();
 
@@ -25,5 +26,6 @@ router.use("/pagos", paymentsRouter);
 router.use("/reviews", reviewsRouter);
 router.use("/pagosClientes", pagosClientesRouter);
 router.use("/citas", citasRouter);
+router.use("/dashboard", dashboardRouter)
 
 export default router;

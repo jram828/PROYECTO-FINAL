@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { initMercadoPago } from "@mercadopago/sdk-react";
 import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
-import Layout from '../../components/layout/layout';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { getCasos  } from '../../redux/actions';
+import { getPagos, getCasos  } from '../../redux/actions';
 import loading from "../../assets/loading.gif";
 
 function Payments() {
@@ -52,9 +52,8 @@ function Payments() {
   };
 
   const dispatch = useDispatch();
-  const casos = useSelector((state) => state.casos);
-
-  console.log("casos", casos);
+  const pagos = useSelector((state) => state.pagos);
+  const casos = useSelector((state) => state.casos)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,35 +64,57 @@ function Payments() {
     fetchData()
   }, [dispatch]);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+    setLoadingState(true);
+      await dispatch(getPagos());
+      setLoadingState(false);
+    }
+    fetchData()
+  }, [dispatch]);
+
+  function formatearFecha(fechaISO) {
+    const fecha = new Date(fechaISO);
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses son 0-11
+    const año = fecha.getFullYear();
+    return `${dia}-${mes}-${año}`;
+  }
+
+  const fechaFormateada = formatearFecha(pagos?.fechaDeAprobacion);
+
   const userCasos = casos.datosPagina?.filter((caso)=>
     (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
   )
+
+
   
   return (
-    <Layout>
-      <div>
+    
+      <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
       {user.cedulaCliente ? (
         <div>
-          
-          <div className="space-y-6 w-full max-w-lg p-6 bg-primary rounded-lg shadow-md">
-            <h1 className="titulo">Realizar un pago</h1>
-            <br />
-            <h4 className="titulo">Selecciona el caso al cual se va a aplicar el pago e ingresa el valor de los honorarios que deseas pagar.</h4>
-            <br />
-            <div className="input input-bordered flex items-center gap-2">
-              <label htmlFor="correo" className="">
+          <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+            <h1 className="text-2xl font-bold text-black text-center">Realizar un pago</h1>
+            
+            <h4 className="text-md text-left">Selecciona el caso al cual se va a aplicar el pago <br /> e ingresa el valor de los honorarios que deseas pagar.</h4>
+            
+            <div className="">
+              <label htmlFor="correo" className="input input-md text-md !border-black !rounded-lg input-secondary flex items-center  !text-black">
                 Valor a pagar:
-              </label>
+              
               <input
                 name="unit_price"
                 type="number"
                 value={userPreference.unit_price}
                 onChange={handleChangePagos}
                 id="unit_price"
-                className="grow"
+                className="grow ml-2 text-black"
               />
+              </label>
             </div>
-            <div className="input input-bordered flex items-center gap-2">
+            <div className="">
               {/* <label htmlFor="correo" className="">
                 Número de caso:  
               </label>
@@ -111,7 +132,7 @@ function Payments() {
                     name="idCaso"
                     id="idCaso"
                     onChange={(event) => handleChangePagos(event)}
-                    className="input input-bordered text-lg pl-2 w-full"
+                    className="w-full h-12 p-2 border text-sm border-black rounded-lg bg-secondary text-black focus:outline-none"
                   >
                     <option value="" className="customOption">
                       Seleccionar caso
@@ -120,7 +141,7 @@ function Payments() {
                       <option
                         key={caso.id}
                         value={caso.id}
-                        className="customOption"
+                        className="text-black"
                       >
                         {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`}
                       </option>
@@ -128,25 +149,22 @@ function Payments() {
                   </select>
                 </label>
               ) : (
-                <label className="w-full">
+                <label className="w-full text-black text-md">
                   No se encontraron casos para asociar al pago.
                 </label>
               )}
             </div>
-            <div className="botonescrearusuario">
-              <Link to="/home">
-                <input
-                  type="button"
-                  name="Volver"
-                  value="Volver"
-                  className="btn btn-accent btn-sm"
-                />
-              </Link>
+            <div className="flex flex-row items-center justify-center">
+              {/*<Link to="/home">
+              <button className="btn btn-xs border border-accent bg-white hover:bg-white !w-36 mr-2" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+                Volver</button>
+            </Link>*/}
               <input
                 type="button"
                 name="Pagar"
                 value="Pagar"
-                className="btn btn-accent btn-sm"
+                className="btn btn-xs border border-success bg-white hover:bg-white !w-36 ml-2"
                 onClick={handlePay}
               />
             </div>
@@ -169,35 +187,24 @@ function Payments() {
               <img className="loading-image" src={loading} alt="loading" />
             </div>
             ) : (
-              casos.datosPagina?.map(caso => (
-                <div key={caso.id} className="caso-item">
-                  <h3>Pagos del caso: n°{caso.id}</h3>
-                  <p><strong>Descripción del caso:</strong> {caso.descripcion}</p>
-                  <p><strong>Cliente:</strong> {caso.apellidoCliente}{caso.nombreCliente}</p>
-                  {caso.pagos && caso.pagos.length > 0 && (
-                    <div>
-                      <h4>Pagos:</h4>
-                      <ul>
-                        {caso.pagos.map(pago => (
-                          <li key={pago.id}>{pago.descripcion}</li>
-                        ))}
-                      </ul>
+              pagos.map(pago => (
+                <div key={pago?.pagoId} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
+                  <h3 className="text-xl font-bold text-black text-center">Caso: n°{pago?.idCaso} {pago?.Caso?.descripcion}</h3>
+                  <p><strong>Cliente:</strong> {pago?.Caso?.Cliente?.apellido} {pago?.Caso?.Cliente?.nombre}</p>
+                  <p><strong>Fecha:</strong> {formatearFecha(pago?.fechaDeAprobacion)}</p>
+                  <p><strong>Monto:</strong> {pago?.importeDeLaTransaccion}</p>
+                  <p><strong>Descripción:</strong> {pago?.descripcion}</p>
                     </div>
-                  )}
-                </div>
               ))
             )}
       
     
     <div className="botonescrearusuario">
-    <Link to="/home">
-      <input
-        type="button"
-        name="Volver"
-        value="Volver"
-        className="btn btn-accent btn-sm"
-      />
-    </Link>
+    {/*<Link to="/home">
+          <button className="btn btn-xs border border-accent bg-white hover:bg-white " type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+            Volver</button>
+          </Link>*/}
     </div>
     </div>
 }
@@ -205,7 +212,7 @@ function Payments() {
       </div>
       
       
-    </Layout>
+    
   );
 }
 

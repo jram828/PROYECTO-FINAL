@@ -77,14 +77,14 @@ function Detail() {
       }
     }
 
-    const handleGenerateContract = () => {
+   /* const handleGenerateContract = () => {
       navigate('/home/documentos/contrato', { state: { cliente: datos } });
     };
 
     const handleGeneratePoder = () => {
       navigate('/home/documentos/poder', { state: { cliente: datos } });
       
-    };
+    };*/
    
 
   return (
@@ -94,19 +94,20 @@ function Detail() {
           <div>
             <h1 className="text-2xl font-bold text-black text-center">Detail</h1>
           </div>
+
           <div key={cedula}></div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="nombre"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm input-bordered flex items-center max-w-xs"
               >
                 Nombre(s):
                 <input
                   type="text"
                   name="nombre"
                   id="name"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.nombre}
                   disabled
                 />
@@ -115,32 +116,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="apellidos"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Apellido(s):
                 <input
                   type="text"
                   name="apellido"
                   id="lastname"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.apellido}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="cedula"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Cédula:
                 <input
                   type="text"
                   name="cedula"
                   id="cedula"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={cedula}
                   disabled
                 />
@@ -150,14 +151,14 @@ function Detail() {
               <div className="mx-4">
                 <label
                   htmlFor="matricula"
-                  className="input input-bordered flex items-center max-w-xs"
+                  className="input input-sm flex items-center max-w-xs"
                 >
                   Matrícula:
                   <input
                     type="text"
                     name="matricula"
                     id="matricula"
-                    className="input-field"
+                    className="input-field ml-2"
                     value={datos.matricula}
                     disabled
                   />
@@ -165,18 +166,18 @@ function Detail() {
               </div>
             )}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="correo"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Correo:
                 <input
                   type="text"
                   name="correo"
                   id="correo"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.correo}
                   disabled
                 />
@@ -185,32 +186,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="telefono"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Teléfono:
                 <input
                   type="text"
                   name="telefono"
                   id="telefono"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.telefono}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="calle"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Calle:
                 <input
                   type="text"
                   name="calle"
                   id="calle"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.calle}
                   disabled
                 />
@@ -219,32 +220,32 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="numero"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Número:
                 <input
                   type="text"
                   name="numero"
                   id="numero"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.numero}
                   disabled
                 />
               </label>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
               <label
                 htmlFor="codigoPostal"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 CP:
                 <input
                   type="text"
                   name="codigoPostal"
                   id="codigoPostal"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.codigoPostal}
                   disabled
                 />
@@ -253,14 +254,14 @@ function Detail() {
             <div className="mx-4">
               <label
                 htmlFor="ciudad"
-                className="input input-bordered flex items-center max-w-xs"
+                className="input input-sm flex items-center max-w-xs"
               >
                 Ciudad:
                 <input
                   type="text"
                   name="ciudad"
                   id="ciudad"
-                  className="input-field"
+                  className="input-field ml-2"
                   value={datos?.ciudad}
                   disabled
                 />
@@ -270,14 +271,14 @@ function Detail() {
           <div className="mx-4 max-w-xs">
             <label
               htmlFor="pais"
-              className="input input-bordered flex items-center max-w-xs"
+              className="input input-sm flex items-center max-w-xs"
             >
               País:
               <input
                 type="text"
                 name="pais"
                 id="pais"
-                className="input-field"
+                className="input-field ml-2"
                 value={datos?.pais}
                 disabled
               />
@@ -305,7 +306,7 @@ function Detail() {
                 </button>
               </Link>
             )}
-            {datos?.matricula ? undefined : (
+           {/* {datos?.matricula ? undefined : (
               <button onClick={handleGenerateContract} className="btn btn-sm btn-accent text-white">
               Generar contrato
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
@@ -318,7 +319,7 @@ function Detail() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
                 </button>
              
-            )}
+            )}*/}
           </div>
         </div>
       </div>
