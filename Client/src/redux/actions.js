@@ -48,6 +48,35 @@ export const UPDATE_ACTION_ERROR = "UPDATE_ACTION_ERROR";
 export const MODIFICAR_DATOS = "MODIFICAR_DATOS";
 export const GET_PAGOS = "GET_PAGOS";
 
+export const ADD_REVIEW = "ADD_REVIEW";
+export const FETCH_REVIEWS = "FETCH_REVIEWS";
+export const FETCH_REVIEWS_SUCCESS = "FETCH_REVIEWS_SUCCESS";
+export const FETCH_REVIEWS_FAILURE = "FETCH_REVIEWS_FAILURE";
+export const ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
+
+// agregar una reseña
+export const addReview = (content, rating) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`${URL}reviews`, { content, rating });
+      dispatch({ type: ADD_REVIEW, payload: response.data });
+    } catch (error) {
+      dispatch({ type: ADD_REVIEW_FAILURE, payload: error.message });
+    }
+  };
+};
+
+// obtener reseñas
+export const fetchReviews = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}reviews`);
+      dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: response.data });
+    } catch (error) {
+      dispatch({ type: FETCH_REVIEWS_FAILURE, payload: error.message });
+    }
+  };
+};
 
 //const URL = 'http://localhost:3001/'
 //const URL = 'https://legaltech-6u3y.onrender.com/'
