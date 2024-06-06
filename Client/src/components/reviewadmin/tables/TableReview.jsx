@@ -1,4 +1,4 @@
-// import { SpeakerNotesOff, DeleteForever } from '@mui/icons-material';
+
 
 const TableReview = ({ review, functionUnlock, functionDelete, variantSuccess = "btn-success", variantDanger = "btn-error" }) => {
   return (

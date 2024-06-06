@@ -1,4 +1,12 @@
 import {
+  ADD_REVIEW,
+  FETCH_REVIEWS_SUCCESS,
+  FETCH_REVIEWS_FAILURE,
+  ADD_REVIEW_FAILURE,
+} from "./actions";
+
+
+import {
   SET_AUTHENTICATED,
   SET_USERTOKEN,
   GET_ABOGADOS,
@@ -47,6 +55,8 @@ let initialState = {
   consultas: [],
   pagos:[],
   source: "cliente",
+  reviews: [],
+  reviewError: "",
   // userGit: null,
   loginError: "",
   logError: "",
@@ -210,6 +220,25 @@ const rootReducer = (state = initialState, action) => {
       };
     case CLEAN_USER:
       return initialState;
+
+      case ADD_REVIEW:
+      return {
+        ...state,
+        reviews: [...state.reviews, action.payload],
+        reviewError: "",
+      };
+    case FETCH_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        reviews: action.payload,
+        reviewError: "",
+      };
+    case FETCH_REVIEWS_FAILURE:
+    case ADD_REVIEW_FAILURE:
+      return {
+        ...state,
+        reviewError: action.payload,
+      };
 
     default:
       return state;
