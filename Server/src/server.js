@@ -1,9 +1,9 @@
 //import https from 'https';
 //import fs from 'fs';
-import express from 'express';
-import router from './routes/index.js';
-import morgan from 'morgan';
-import cors from 'cors';
+import express from "express";
+import router from "./routes/index.js";
+import morgan from "morgan";
+import cors from "cors";
 
 const server = express();
 // const options = {
@@ -17,7 +17,8 @@ server.use(cors());
 
 server.use(router);
 
-export  {server,
-// options,
-// https
+export {
+  server,
+  // options,
+  // https
 };
