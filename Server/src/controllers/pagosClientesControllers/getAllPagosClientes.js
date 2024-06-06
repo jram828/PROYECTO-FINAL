@@ -51,7 +51,7 @@ const getAllPagosClientes = async (filters) => {
     order,
     offset: offset || 0,
 
-    limit: limit2 || 5,
+    limit: limit2 || 6,
   });
 
   return getAllPagosClientesBd;

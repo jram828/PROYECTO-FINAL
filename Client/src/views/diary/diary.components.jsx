@@ -7,7 +7,7 @@ function Diary() {
   
   return (
     
-      <div className='containerDiary '>
+      <div className='containerDiary max-w-full'>
         
         <div className='calendario'> 
           <p className='agenda'>Agenda</p>

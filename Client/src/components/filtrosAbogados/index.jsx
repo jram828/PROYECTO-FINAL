@@ -61,30 +61,30 @@ function FiltrosAbogados() {
   };
 
   return (
-    <div className="container">
-  <div className="md:flex md:flex-col md:space-y-4">
-    <div>
-      <div className="flex justify-end p-4">
+    <div className="flex">
+  <div className="md:flex md:flex-col md:space-y-4 w-full">
+    
+      <div className="flex justify-end p-2">
         <Link to="/home/lawyers/crearabogado" className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white">
           Crear abogado
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
         </Link>
       </div>
-    </div>
-    <div className="flex flex-col gap-4 p-4 rounded-md max-h-screen bg-white">
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-2">
-          <div className="flex gap-3 ml-0">
+    
+    
+      <div className="flex justify-between self-center">
+        
+          <div className="flex gap-4">
           <OrderAbogados onOrderChange={handleOrderChange} />
             <SearchBar onFilter={handleFilter} />
             {filterApplied && <button onClick={handleVerTodosClick} className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white">Ver todos</button>}
           </div>
-        </div>
+        
       </div>
-    </div>
-    <div className="md:flex md:flex-row md:space-x-4">
-      <div className="p-2">
-        <div className="flex flex-col gap-4">
+    
+    
+      <div className="flex flex-col p-2">
+        <div className="flex flex-col">
           {searchPerformed && abogados.length === 0 && (
             <p>No hay coincidencias</p>
           )}
@@ -97,18 +97,21 @@ function FiltrosAbogados() {
             {abogados.length > 0 && <Cards items={abogados} />}
             </div>
             {searchPerformed ? ( undefined) : (
-              <div className="pagination">
+              <div className="pagination mt-4 join self-center">
                 {currentPage > 1 && (
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
+                    className="join-item btn btn-xs btn-accent"
                   >
                     &lt;&lt;
                   </button>
                 )}
-                <span>Página {currentPage}</span>
+                <span className="join-item btn btn-xs btn-accent">Página {currentPage}</span>
                 {abogados.length === 6 && (
                   <button
+                    className="join-item btn btn-xs btn-accent"
                     onClick={() => handlePageChange(currentPage + 1)}
+                    
                   >
                     &gt;&gt;
                   </button>
@@ -116,7 +119,7 @@ function FiltrosAbogados() {
               </div>
             )}
           </div>
-        </div>
+        
       </div>
     </div>
   );
