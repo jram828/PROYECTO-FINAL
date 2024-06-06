@@ -1,0 +1,32 @@
+/* .reviews-list-container {
+    margin-top: 20px;
+  }
+  
+  .reviews-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .review-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .review-item p {
+    margin: 5px 0;
+  }
+
+  .star-rating svg {
+    color: yellow;
+  }
+  
+  
+  .review-item:hover {
+    transform: scale(1.10); 
+    transition: transform 0.3s ease; 
+  }
+  
+   */

@@ -17,7 +17,6 @@ dayjs.extend(timezone);
 
 
 
-
 function Calendario() {
   const datos = JSON.parse(localStorage.getItem("loggedUser"));
   const messages = {
@@ -34,6 +33,7 @@ function Calendario() {
     event: "Evento",
   };
 
+  
   const localizer = dayjsLocalizer(dayjs);
   const dispatch = useDispatch();
   const citas = useSelector(state => state.citas);
@@ -54,6 +54,9 @@ function Calendario() {
       setCitasId(filteredCitas);
     }
   }, [citas, datos]);
+
+
+  
   const events = citasId?.map(cita => {
     const fechaCita = dayjs.tz(cita.fechaCita, 'America/Argentina/Buenos_Aires');
     const horaCita = dayjs(cita.horaCita, 'HH:mm:ss');
@@ -82,7 +85,7 @@ function Calendario() {
     <div>
       <div style={{
         height: "500px",
-        width: "500px",
+        width: "450px",
       }}>
         <Calendar
         localizer={localizer}

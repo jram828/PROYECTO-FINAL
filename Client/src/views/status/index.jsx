@@ -104,7 +104,7 @@ function Status() {
                 <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   Fecha:  
                   <input
-                    type="date"
+                    type="text"
                     value={datosPago.date_approved}
                     className="grow ml-2 text-black" disabled
                   />

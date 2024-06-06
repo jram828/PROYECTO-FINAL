@@ -18,12 +18,11 @@ import Data from './views/datosPersonales/datosPersonales.component';
 import AllConsultations from './views/allConsultation/allConsultation';
 import "./App.css";
 import { Routes, Route, Outlet} from "react-router-dom";
-// import { useSelector } from 'react-redux';
 import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
-import Review from './views/Review/Review.jsx';
+import Review from './components/Review/Form/ReviewFrom.jsx';
 import Contrato from './views/contrato/index.jsx';
 import Poder from './views/poder/index.jsx';
 
