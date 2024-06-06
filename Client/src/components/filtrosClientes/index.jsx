@@ -67,7 +67,6 @@ function FiltrosClientes() {
               </div>  
         </div>
 
-        
           <div className="p-2">
             <div className="flex flex-col">
               {clientes.length > 0 ? (
