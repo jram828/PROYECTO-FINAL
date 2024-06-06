@@ -79,7 +79,7 @@ function FormCita() {
         <form onSubmit={submitHandlerRegistro} className="flex flex-col items-center space-y-6">
           <div className="flex flex-col items-center gap-2 justify-center">
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Titulo:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72 relative">Titulo:
               <input
                 type="text"
                 name="titulo"
@@ -88,12 +88,12 @@ function FormCita() {
                 onChange={handleChangeRegistro}
                 className="grow ml-2 text-black"
               />
+              {errors.titulo && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.titulo}</p>}
               </label>
-              {errors.titulo && <p className="error_form">{errors.titulo}</p>}
             </div>
 
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Fecha:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72 relative">Fecha:
               <DatePicker
                 selected={dataRegistro.fechaCita}
                 name="fechaCita"
@@ -102,12 +102,12 @@ function FormCita() {
                 className="grow ml-2 text-black"
                 type="date"
               />
+              {errors.fechaCita && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.fechaCita}</p>}
               </label>
-              {errors.fechaCita && <p className="error_form">{errors.fechaCita}</p>}
             </div>
 
             <div className="mx-4">
-              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72">Hora:
+              <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72 relative">Hora:
               <input
                 type="time"
                 name="horaCita"
@@ -117,7 +117,7 @@ function FormCita() {
                 className="grow ml-2 text-black"
               />
               </label>
-              {errors.horaCita && <p className="error_form">{errors.horaCita}</p>}
+              {errors.horaCita && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.horaCita}</p>}
             </div>
 
             <div className="mx-4">
@@ -126,7 +126,7 @@ function FormCita() {
                   name="idCaso"
                   id="idCaso"
                   onChange={handleChangeRegistro}
-                  className="!w-72 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
+                  className="!w-72 h-9 p-2 border text-sm border-black rounded-md bg-secondary text-black focus:outline-none"
                 >
                   <option value="" className="text-black">Seleccionar caso</option>
                   {casos.datosPagina.map(caso => (
@@ -141,7 +141,7 @@ function FormCita() {
             <div className="px-4">
               <label className="">
                 <textarea
-                  className="textarea textarea-sm textarea-secondary !border-black !text-black text-xs h-24 !w-72"
+                  className="textarea textarea-sm textarea-secondary !border-black !text-black text-sm h-24 !w-72"
                   type="text"
                   name="descripcion"
                   id="descripcion"

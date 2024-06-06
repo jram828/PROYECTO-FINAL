@@ -130,7 +130,7 @@ const CreateCliente = () => {
                   value={dataRegistro.nombre}
                   onChange={handleChangeRegistro}
                 />
-                {errors.nombre && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.nombre}</p>}
+               
                 {errors.nombre && (
                   <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.nombre}</p>
                 )}
@@ -151,7 +151,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.apellido && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.apellido}</p>}
-                {errors.apellido && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.apellido}</p>}
+                
               </label>
             </div>
           </div>
@@ -169,7 +169,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.correo && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.correo}</p>}
-                {errors.correo && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.correo}</p>}
+                
               </label>
             </div>
             <div className="mx-4">
@@ -200,7 +200,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.cedulaCliente && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.cedulaCliente}</p>}
-                {errors.cedulaCliente && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.cedulaCliente}</p>}
+                
               </label>
             </div>
             <div className="mx-4">
@@ -216,7 +216,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.telefono && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.telefono}</p>}
-                {errors.telefono && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.telefono}</p>}
+                
               </label>
             </div>
           </div>
@@ -234,7 +234,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.calle && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.calle}</p>}
-                {errors.calle && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.calle}</p>}
+               
               </label>
             </div>
             <div className="mx-4">
@@ -250,7 +250,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.numero && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.numero}</p>}
-                {errors.numero && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.numero}</p>}
+               
               </label>
             </div>
           </div>
@@ -268,7 +268,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.codigoPostal && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.codigoPostal}</p>}
-                {errors.codigoPostal && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.codigoPostal}</p>}
+               
               </label>
             </div>
             <div className="mx-4">
@@ -284,7 +284,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.ciudad && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.ciudad}</p>}
-                {errors.ciudad && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.ciudad}</p>}
+                
               </label>
             </div>
           </div>
@@ -302,7 +302,7 @@ const CreateCliente = () => {
                   onChange={handleChangeRegistro}
                 />
                 {errors.pais && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.pais}</p>}
-                {errors.pais && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.pais}</p>}
+                
               </label>
             </div>
           </div>
