@@ -1,5 +1,5 @@
 import { models } from "../../DB.js";
-const { Review } = models;
+const { Review, Cliente } = models;
 const getAllReview = async (filters) => {
   const pagina = [];
   const newFilters = {};
@@ -35,6 +35,12 @@ const getAllReview = async (filters) => {
       // activo: true,
       ...newFilters,
     },
+    // include: [
+    //   {
+    //     model: Cliente,
+    //     // attributes: ["apellido", "nombre"],
+    //   },
+    // ],
     order,
     offset: offset || 0,
 
