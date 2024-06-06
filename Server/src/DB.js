@@ -85,7 +85,7 @@ Cita.belongsTo(Caso, { foreignKey: "idCaso" });
 Cotizacion.belongsTo(Caso);
 Cotizacion.hasOne(Contrato);
 Contrato.belongsTo(Cotizacion);
-Consulta.belongsTo(Cliente);
+// Consulta.belongsTo(Cliente);
 
 Cliente.belongsTo(Usuario);
 Abogado.belongsTo(Usuario);
