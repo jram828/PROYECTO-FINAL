@@ -23,7 +23,7 @@ import LawyersPage from './views/lawyers/lawyers.component';
 import CustomersPage from './views/customers/customers.component';
 import axios from "axios";
 import Status from './views/status';
-// import Review from './views/Review/Review.jsx';
+// import Review from './components/reviewadmin/review.jsx';
 import Contrato from './views/contrato/index.jsx';
 import Poder from './views/poder/index.jsx';
 
@@ -67,7 +67,7 @@ function App() {
         <Route path="lawyers/:id" element={<Detail />} />
         <Route path="documents" element={<Documents />} />
         <Route path="diary" element={<Diary />} />
-        <Route path="review" element={<Review />} />
+        {/* <Route path="review" element={<Review />} /> */}
         <Route path="payments" element={<Payments />} />
         <Route path="payments/status" element={<Status />} />
         <Route path="consultation" element={<Consultations />} />
