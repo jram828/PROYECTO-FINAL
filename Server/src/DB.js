@@ -20,32 +20,30 @@ config(); // Cargar variables de entorno desde el archivo .env
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
-
-
 // Obtener el nombre de este archivo
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
 // Configuración de Sequelize para entorno local
-// const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
-//   {
-//     logging: false,
-//     native: false,
-//   },
-// );
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
+  {
+    logging: false,
+    native: false,
+  },
+);
 
 // Configuración de Sequelize para despliegue en Render
 
-const sequelize = new Sequelize(DB_DEPLOY, {
-  logging: false,
-  native: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-    },
-  },
-});
+// const sequelize = new Sequelize(DB_DEPLOY, {
+//   logging: false,
+//   native: false,
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//     },
+//   },
+// });
 
 const Caso = casoModel(sequelize);
 const Cotizacion = cotizacionModel(sequelize);

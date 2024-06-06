@@ -1,16 +1,16 @@
 import { Sequelize } from "sequelize";
 import { models } from "../../DB.js";
 
-const { Caso, Cliente, Abogado, TipoDeCaso } = models
+const { Caso, Cliente, Abogado, TipoDeCaso } = models;
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
-  const indiceInicial = paginaActual * tamañoPagina;
-  const indiceFinal = indiceInicial + tamañoPagina;
+  const indiceInicial = parseInt(paginaActual) * parseInt(tamañoPagina);
+  const indiceFinal = indiceInicial + parseInt(tamañoPagina);
   return arreglo.slice(indiceInicial, indiceFinal);
 }
 
 //Si la variable todos viene en true, muestra todos los casos aun los que han sido finalizados
 const getAllCaso = async (filters) => {
-  const todos= filters.query.todos || 'true' 
+  const todos = filters.query.todos || "true";
   let getAllCasoBd = [];
   console.log("Esto viene en el query en todos ... ", filters.query.todos);
   // if (!filters.query.todos || filters.query.todos==='false' ) {
@@ -30,11 +30,25 @@ const getAllCaso = async (filters) => {
       include: [
         {
           model: Cliente,
-          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
+          attributes: [
+            "apellido",
+            "nombre",
+            "calle",
+            "numero",
+            "ciudad",
+            "telefono",
+          ],
         },
         {
           model: Abogado,
-          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
+          attributes: [
+            "apellido",
+            "nombre",
+            "calle",
+            "numero",
+            "ciudad",
+            "telefono",
+          ],
         },
         {
           model: TipoDeCaso,
@@ -48,11 +62,25 @@ const getAllCaso = async (filters) => {
       include: [
         {
           model: Cliente,
-          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
+          attributes: [
+            "apellido",
+            "nombre",
+            "calle",
+            "numero",
+            "ciudad",
+            "telefono",
+          ],
         },
         {
           model: Abogado,
-          attributes: ["apellido", "nombre", "calle", "numero", "ciudad", "telefono"],
+          attributes: [
+            "apellido",
+            "nombre",
+            "calle",
+            "numero",
+            "ciudad",
+            "telefono",
+          ],
         },
         {
           model: TipoDeCaso,
@@ -93,7 +121,7 @@ const getAllCaso = async (filters) => {
       field !== "todos"
     )
       datos = datos.filter(
-        (elemento) => elemento[field].toUpperCase() === value.toUpperCase()
+        (elemento) => elemento[field].toUpperCase() === value.toUpperCase(),
       );
   });
 
@@ -143,11 +171,9 @@ const getAllCaso = async (filters) => {
   //if (filters.query.pagina) offset = filters.query.pagina
   //console.log("offset....", offset, "  elementos........", elementos);
   const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);
-  const paginaActual = paginarArreglo(arregloOrdenado, offset -1 , elementos);
+  const paginaActual = paginarArreglo(arregloOrdenado, offset - 1, elementos);
   console.log(paginaActual);
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };
 
-export  {
-  getAllCaso,
-};
+export { getAllCaso };

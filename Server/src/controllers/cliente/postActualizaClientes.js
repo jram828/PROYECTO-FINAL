@@ -1,6 +1,6 @@
- import {models} from "../../DB.js";
+import { models } from "../../DB.js";
 
-const { Cliente } = models
+const { Cliente } = models;
 
 const actualizaCliente = async (
   cedulaCliente,
@@ -47,6 +47,4 @@ const actualizaCliente = async (
 
   // return await Abogado.create({nombre, duracion,dificultad, temporada}); //?ASI También puede ser
 };
-export {actualizaCliente};
-
-
+export { actualizaCliente };
