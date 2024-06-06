@@ -1,6 +1,6 @@
-const { Router } = require("express");
+import { Router } from "express";
 
-const { allUsuarios, postUsuariosHandler } = require("../handlers/usuariosHandlers");
+import { allUsuarios, postUsuariosHandler } from "../handlers/usuariosHandlers.js";
 
 const usuariosRouter = Router();
 
@@ -10,4 +10,4 @@ usuariosRouter.post("/", postUsuariosHandler);
 
 //consultaRouter.post("/delete", deleteConsultaHandler);
 
-module.exports = usuariosRouter;
+export default usuariosRouter;

@@ -1,13 +1,16 @@
-const { Router } = require("express");
-
-const { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes, getClientByEmailHandler } = require("../handlers/clientesHandlers");
+import { Router } from "express";
+import { clientesDetailHandler, clientesHandler, postClientesHandler, postEliminaClientes,postActualizaClientes, 
+    getClientByEmailHandler } from "../handlers/clientesHandlers.js";
 
 const clientesRouter = Router();
 
-
 clientesRouter.get("/", clientesHandler);
 
+clientesRouter.get("/email", getClientByEmailHandler);
+
 clientesRouter.get("/:cedulaCliente", clientesDetailHandler);
+
+clientesRouter.get("/email", getClientByEmailHandler);
 
 clientesRouter.post("/", postClientesHandler);
 
@@ -15,12 +18,7 @@ clientesRouter.post("/elimina", postEliminaClientes);
 
 clientesRouter.post("/actualiza", postActualizaClientes);
 
-clientesRouter.get("/email", getClientByEmailHandler);
-
 //clientesRoutes.get("/cedulaCliente", getClientByIDHandler);
 
-
-
-
-module.exports = clientesRouter;
+export default clientesRouter;
 

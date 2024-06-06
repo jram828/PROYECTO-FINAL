@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('DocumentoLegalTipoNotificacion',{
+export default (sequelize) => {
+    const DocumentoLegalTipoNotificacion=sequelize.define('DocumentoLegalTipoNotificacion',{
         dia:{
             type: DataTypes.DATE,
             allowNull: false,
@@ -10,4 +10,5 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
         }
     })
+    return DocumentoLegalTipoNotificacion
 }

@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
+import { DataTypes } from "sequelize";
 
-module.exports = (sequelize) => {
-  sequelize.define("Abogado", {
+export default (sequelize) => {
+  const Abogado=sequelize.define("Abogado", {
     cedulaAbogado: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -67,6 +67,9 @@ module.exports = (sequelize) => {
         len: [1, 100],
       },
     },
+    imagen: {
+      type: DataTypes.STRING,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -78,6 +81,8 @@ module.exports = (sequelize) => {
     administrador: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+      
     },
   });
+  return Abogado
 };

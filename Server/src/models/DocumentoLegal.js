@@ -1,10 +1,11 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('DocumentoLegal', {
+export default (sequelize) => {
+    const DocumentoLegal=sequelize.define('DocumentoLegal', {
         urlDocumento:{
             type: DataTypes.STRING,
             allowNull: false
         }
     })
+    return DocumentoLegal
 }

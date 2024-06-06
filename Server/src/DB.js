@@ -1,97 +1,112 @@
-require("dotenv").config();
-const { Sequelize } = require("sequelize");
+import { config } from "dotenv";
+import { Sequelize } from "sequelize";
+import abogadoModel from "./models/Abogado.js";
+import casoModel from "./models/Caso.js";
+import citaModel from "./models/Cita.js";
+import clienteModel from "./models/Cliente.js";
+import consultaModel from "./models/Consulta.js";
+import contratoModel from "./models/Contrato.js";
+import cotizacionModel from "./models/Cotizacion.js";
+import documentoLegalModel from "./models/DocumentoLegal.js";
+import documentoLegalModelTipoNoti from "./models/DocumentoLegalTipoNotificacion.js";
+import documentoLegalTemplateModel from "./models/DocumentoTemplate.js";
+import pagoClienteModel from "./models/pagoCliente.js";
+import reviewModel from "./models/Review.js";
+import tipoCasoModel from "./models/TipoDeCaso.js";
+import tipoNotificacionModel from "./models/TipoNotificacion.js";
+import usuarioModel from "./models/Usuario.js";
 
-const fs = require('fs');
-const path = require('path');
+config(); // Cargar variables de entorno desde el archivo .env
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
-//   logging: false,
-//   native: false,
-// });
 
 
-/* **** Esto va cuando se hace el despliegue en RENDER */
-console.log("Dbdeploy: ", DB_DEPLOY);
+// Obtener el nombre de este archivo
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// Configuración de Sequelize para entorno local
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
+//   {
+//     logging: false,
+//     native: false,
+//   },
+// );
+
+// Configuración de Sequelize para despliegue en Render
+
 const sequelize = new Sequelize(DB_DEPLOY, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  logging: false,
+  native: false,
   dialectOptions: {
     ssl: {
       require: true,
-    },
-  },
+    },
+  },
 });
 
-/*  ******   Esto va cuando lo quiero ejecutar localmente */
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`, {
-//   logging: false, 
-//   native: false, 
-// });
+const Caso = casoModel(sequelize);
+const Cotizacion = cotizacionModel(sequelize);
+const Consulta = consultaModel(sequelize);
+const Abogado = abogadoModel(sequelize);
+const Cliente = clienteModel(sequelize);
+const Contrato = contratoModel(sequelize);
+const Review = reviewModel(sequelize);
+const TipoDeCaso = tipoCasoModel(sequelize);
+const DocumentoTemplate = documentoLegalTemplateModel(sequelize);
+const DocumentoLegal = documentoLegalModel(sequelize);
+const TipoNotificacion = tipoNotificacionModel(sequelize);
+const DocumentoLegalTipoNotificacion = documentoLegalModelTipoNoti(sequelize);
+const Usuario = usuarioModel(sequelize);
+const Cita = citaModel(sequelize);
+const PagosCliente = pagoClienteModel(sequelize);
 
-const basename = path.basename(__filename);
-const modelDefiners = [];
+TipoDeCaso.belongsToMany(DocumentoTemplate, {
+  through: "TipoDeCasoDocumentoTemplate",
+});
+DocumentoTemplate.belongsToMany(TipoDeCaso, {
+  through: "TipoDeCasoDocumentoTemplate",
+});
+DocumentoLegal.belongsToMany(TipoNotificacion, {
+  through: DocumentoLegalTipoNotificacion,
+});
+TipoNotificacion.belongsToMany(DocumentoLegal, {
+  through: DocumentoLegalTipoNotificacion,
+});
 
-fs.readdirSync(path.join(__dirname, '/models'))
-.filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-.forEach((file) => {
-  modelDefiners.push(require(path.join(__dirname, '/models', file)));
-})
+DocumentoLegal.belongsTo(DocumentoTemplate);
+DocumentoLegal.belongsTo(Caso);
 
-modelDefiners.forEach(model => model(sequelize));
+Cliente.hasMany(Caso);
+Caso.belongsTo(Cliente);
 
-let entries = Object.entries(sequelize.models);
-let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
-sequelize.models = Object.fromEntries(capsEntries);
+Abogado.hasMany(Caso);
+Caso.belongsTo(Abogado);
 
-const { Caso,
-        Cotizacion,
-        Consulta,
-        Abogado,
-        Cliente, 
-        Contrato, 
-        TipoDeCaso, 
-        DocumentoTemplate, 
-        DocumentoLegal, 
-        TipoNotificacion, 
-        DocumentoLegalTipoNotificacion,
-        Usuario,
-        Cita 
-      } = sequelize.models;
+TipoDeCaso.hasMany(Caso);
+Caso.belongsTo(TipoDeCaso);
 
-TipoDeCaso.belongsToMany(DocumentoTemplate, { through: 'TipoDeCasoDocumentoTemplate' })
-DocumentoTemplate.belongsToMany(TipoDeCaso, { through: 'TipoDeCasoDocumentoTemplate' })
-DocumentoLegal.belongsToMany(TipoNotificacion, {through: DocumentoLegalTipoNotificacion})
-TipoNotificacion.belongsToMany(DocumentoLegal,{through: DocumentoLegalTipoNotificacion})
+Caso.hasOne(Cotizacion);
 
-DocumentoLegal.belongsTo(DocumentoTemplate)
-DocumentoLegal.belongsTo(Caso)
+Caso.hasMany(PagosCliente, { foreignKey: "idCaso" });
+PagosCliente.belongsTo(Caso, { foreignKey: "idCaso" });
 
+Caso.hasMany(Cita, { foreignKey: "idCaso" });
+Cita.belongsTo(Caso, { foreignKey: "idCaso" });
 
-Cliente.hasMany(Caso)
-Caso.belongsTo(Cliente)
-
-Abogado.hasMany(Caso)
-Caso.belongsTo(Abogado)
-
-TipoDeCaso.hasMany(Caso)
-Caso.belongsTo(TipoDeCaso)
-
-Caso.hasOne(Cotizacion)
-
-Caso.hasMany(Cita, {foreignKey: 'idCaso'})
-Cita.belongsTo(Caso, {foreignKey: 'idCaso'})
-
-Cotizacion.belongsTo(Caso)
-Cotizacion.hasOne(Contrato)
-Contrato.belongsTo(Cotizacion)
-Consulta.belongsTo(Cliente)
+Cotizacion.belongsTo(Caso);
+Cotizacion.hasOne(Contrato);
+Contrato.belongsTo(Cotizacion);
+// Consulta.belongsTo(Cliente);
 
 Cliente.belongsTo(Usuario);
-Abogado.belongsTo(Usuario)
+Abogado.belongsTo(Usuario);
 
-
-module.exports = {
+const models = {
   ...sequelize.models,
   conn: sequelize,
 };
+
+export { models };

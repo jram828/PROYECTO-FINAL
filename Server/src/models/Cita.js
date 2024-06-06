@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) =>{
-    sequelize.define('Cita',{
+export default (sequelize) =>{
+    const Cita=sequelize.define('Cita',{
         idCita:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -29,4 +29,5 @@ module.exports = (sequelize) =>{
             type:DataTypes.TIME
         }
     })
+    return Cita
 }

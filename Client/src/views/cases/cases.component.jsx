@@ -1,24 +1,18 @@
 import './cases.css';
 import React from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import FiltrosCasos from '../../components/filtrosCasos/filtrosCasos';
+// import OrderCasos from '../../components/orderCasos/orderCasos';
+
 
 function Cases() {
   return (
-    <div>
-      <div>
-        <p>Casos</p>
+    
+      <div className='container'>
         
-       
-      </div>
-      <Link to='/home/cases/crearcaso'>
-          <button >Crear caso</button>
-        </Link>
-        <FiltrosCasos></FiltrosCasos>
-      <Link to='/home'>
-          <button >Volver</button>
-        </Link>
-    </div>
+          <FiltrosCasos></FiltrosCasos>
+        </div>
+      
   )
 }
 

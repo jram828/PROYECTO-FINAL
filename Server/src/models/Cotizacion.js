@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('Cotizacion',{
+export default (sequelize) => {
+    const Cotizacion= sequelize.define('Cotizacion',{
         fecha:{
             type: DataTypes.DATE,
             allowNull: false
@@ -15,4 +15,5 @@ module.exports = (sequelize) => {
             allowNull: false
         }
     })
+    return Cotizacion
 }

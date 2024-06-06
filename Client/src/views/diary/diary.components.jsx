@@ -6,16 +6,18 @@ import FormCita from '../../components/formCrearCita/index';
 function Diary() {
   
   return (
-    <div className='containerDiary'>
-      
-      <div className='calendario'> 
-        <p className='agenda'>Agenda</p>
-        <Calendario></Calendario>
+    
+      <div className='containerDiary '>
+        
+        <div className='calendario'> 
+          <p className='agenda'>Agenda</p>
+          <Calendario></Calendario>
+        </div>
+        <div className='formCita'>
+          <FormCita></FormCita>
+        </div>
       </div>
-      <div className='formCita'>
-        <FormCita></FormCita>
-      </div>
-    </div>
+    
   )
 }
 

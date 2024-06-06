@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('TipoNotificacion',{
+export default (sequelize) => {
+    const TipoNotificacion=sequelize.define('TipoNotificacion',{
         descripcion:{
             type: DataTypes.TEXT,
             allowNull: false,
@@ -18,4 +18,5 @@ module.exports = (sequelize) => {
             allowNull: false
         }
     })
+    return TipoNotificacion
 }

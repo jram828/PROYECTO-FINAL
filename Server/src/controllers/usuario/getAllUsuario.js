@@ -1,8 +1,7 @@
 
-const { Cliente } = require('../../DB');
-const { Usuario } = require('../../DB');
-const { Abogado } = require('../../DB');
+import {models} from '../../DB.js';
 
+const { Cliente, Usuario, Abogado } = models
 
 const getAllUsuario = async(offset,porPagina)=>{
         const consultaAbogado= {
@@ -35,6 +34,6 @@ const getAllUsuario = async(offset,porPagina)=>{
    
  }
 
-module.exports = {
+export {
     getAllUsuario
 }

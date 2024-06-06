@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('DocumentoTemplate',{
+export default (sequelize) => {
+   const  DocumentoTemplate=sequelize.define('DocumentoTemplate',{
         nombre:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,4 +21,5 @@ module.exports = (sequelize) => {
             allowNull: false
         }
     })
+    return DocumentoTemplate
 }

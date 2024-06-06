@@ -5,15 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/LOGO GRIS.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- google fonts -->
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="src/styles.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Outfit:wght@100..900&family=Play:wght@400;700&display=swap" rel="stylesheet">
 
     <title>LegalTech</title>
   </head>
-  <body>
-    <div id="root"></div>
+
+  <body class="min-h-screen flex flex-col bg-white">
+    <!-- <div class="navbar bg-primary">
+      <img src="src/assets/logo.png" alt="Logo" class="h-16 mr-3">
+      <span class="text-white text-xl font-bold">LegalTech</span>
+    </div> -->
+
+    <!-- Contenedor principal -->
+    <div  id="root" class="flex-grow h-full w-full"></div>
+
+
+    <!-- Scripts de JavaScript si es necesario -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,25 +1,32 @@
 import './payments.css';
 import { Link } from "react-router-dom";
 // const PUBLIC_KEY = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { useState } from 'react';
+// import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { initMercadoPago } from "@mercadopago/sdk-react";
+import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getPagos, getCasos  } from '../../redux/actions';
+import loading from "../../assets/loading.gif";
 
 function Payments() {
   // initMercadoPago(PUBLIC_KEY);
-  initMercadoPago("TEST-06f58ad5-9c71-4fff-9bbf-67a1b9a05576", { locale: 'es-CO' });
+  initMercadoPago("APP_USR-b26ba8db-fbe9-410e-af81-4a8481738a84", {
+    locale: "es-CO",
+  });
 
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   const [userPreference, setUserPreference] = useState({
     quantity: "1",
     unit_price: "",
-    cedula: "",
+    idCaso: "",
     description: "Honorarios",
   });
 
-    const [responsePreference, setResponsePreference] = useState({});
+  const [loadingState, setLoadingState] = useState(true);
+
+    // const [responsePreference, setResponsePreference] = useState({});
   
   const handlePay = async () => {
     try {
@@ -28,7 +35,7 @@ function Payments() {
       const paymentData = await crearPago(userPreference);
       console.log("Respuesta creacion pago: ", paymentData);
 
-      setResponsePreference(paymentData);
+      // setResponsePreference(paymentData);
       // Redirigir a la página de pago de MercadoPago
       window.open(paymentData.init_point, "_self");
     } catch (error) {
@@ -43,111 +50,169 @@ function Payments() {
       [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
     });
   };
-  //   const onSubmit = async (formData) => {
-  //     // callback llamado al hacer clic en Wallet Brick
-  //     // esto es posible porque Brick es un botón
-  //     // en este momento de envío, debes crear la preferencia
-  //     const yourRequestBodyHere = {
-  //       items: [
-  //         {
-  //           id: "202809963",
-  //           title: "Dummy title",
-  //           description: "Dummy description",
-  //           quantity: 1,
-  //           unit_price: 10,
-  //         },
-  //       ],
-  //       purpose: "wallet_purchase",
-  //     };
-  //     return new Promise((resolve, reject) => {
-  //       fetch("/create_preference", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(yourRequestBodyHere),
-  //       })
-  //         .then((response) => response.json())
-  //         .then((response) => {
-  //           // resolver la promesa con el ID de la preferencia
-  //           resolve(response.preference_id);
-  //         })
-  //         .catch((error) => {
-  //           // manejar la respuesta de error al intentar crear la preferencia
-  //           reject();
-  //         });
-  //     });
-  //   };
 
-  //   const onError = async (error) => {
-  //     // callback llamado para todos los casos de error de Brick
-  //     console.log(error);
-  //   };
+  const dispatch = useDispatch();
+  const pagos = useSelector((state) => state.pagos);
+  const casos = useSelector((state) => state.casos)
 
-  //   const onReady = async () => {
-  //     /*
-  //    Callback llamado cuando Brick esté listo.
-  //    Aquí puedes ocultar loadings en tu sitio, por ejemplo.
-  //  */
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+    setLoadingState(true);
+      await dispatch(getCasos());
+      setLoadingState(false);
+    }
+    fetchData()
+  }, [dispatch]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+    setLoadingState(true);
+      await dispatch(getPagos());
+      setLoadingState(false);
+    }
+    fetchData()
+  }, [dispatch]);
+
+  function formatearFecha(fechaISO) {
+    const fecha = new Date(fechaISO);
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses son 0-11
+    const año = fecha.getFullYear();
+    return `${dia}-${mes}-${año}`;
+  }
+
+  const fechaFormateada = formatearFecha(pagos?.fechaDeAprobacion);
+
+  const userCasos = casos.datosPagina?.filter((caso)=>
+    (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
+  )
+
+
+  
   return (
-    <div>
-      <div>
-        <p>Realizar pago</p>
-        <div className="contenedorcrearusuario">
-          <h1 className="titulo">Crear Usuario</h1>
-          <div className="nombreapellido">
-            <label htmlFor="correo" className="labelcrearusuario">
-              Valor a pagar:
-            </label>
-            <input
-              name="unit_price"
-              type="number"
-              value={userPreference.unit_price}
-              onChange={handleChangePagos}
-              id="unit_price"
-              className="cajascrearusuario"
-            />
-            {/* <label htmlFor="contrasena" className="labelcrearusuario">
-                Contraseña:
+    
+      <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+      {user.cedulaCliente ? (
+        <div>
+          <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+            <h1 className="text-2xl font-bold text-black text-center">Realizar un pago</h1>
+            
+            <h4 className="text-md text-left">Selecciona el caso al cual se va a aplicar el pago <br /> e ingresa el valor de los honorarios que deseas pagar.</h4>
+            
+            <div className="">
+              <label htmlFor="correo" className="input input-md text-md !border-black !rounded-lg input-secondary flex items-center  !text-black">
+                Valor a pagar:
+              
+              <input
+                name="unit_price"
+                type="number"
+                value={userPreference.unit_price}
+                onChange={handleChangePagos}
+                id="unit_price"
+                className="grow ml-2 text-black"
+              />
+              </label>
+            </div>
+            <div className="">
+              {/* <label htmlFor="correo" className="">
+                Número de caso:  
               </label>
               <input
-                type="password"
-                name="password"
-                id="password"
-                className="cajascrearusuario"
-                value={userDataCrear.password}
-                onChange={handleChangeCrear}
+                name="idCaso"
+                type="number"
+                value={userPreference.idCaso}
+                onChange={handleChangePagos}
+                id="idCaso"
+                className="grow"
               /> */}
-          </div>
-          <div className="botonescrearusuario">
-            <Link to="/home">
+              {casos.datosPagina ? (
+                <label className="w-full">
+                  <select
+                    name="idCaso"
+                    id="idCaso"
+                    onChange={(event) => handleChangePagos(event)}
+                    className="w-full h-12 p-2 border text-sm border-black rounded-lg bg-secondary text-black focus:outline-none"
+                  >
+                    <option value="" className="customOption">
+                      Seleccionar caso
+                    </option>
+                    {userCasos.map((caso) => (
+                      <option
+                        key={caso.id}
+                        value={caso.id}
+                        className="text-black"
+                      >
+                        {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                <label className="w-full text-black text-md">
+                  No se encontraron casos para asociar al pago.
+                </label>
+              )}
+            </div>
+            <div className="flex flex-row items-center justify-center">
+              {/*<Link to="/home">
+              <button className="btn btn-xs border border-accent bg-white hover:bg-white !w-36 mr-2" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+                Volver</button>
+            </Link>*/}
               <input
                 type="button"
-                name="Volver"
-                value="volver"
-                className="button"
+                name="Pagar"
+                value="Pagar"
+                className="btn btn-xs border border-success bg-white hover:bg-white !w-36 ml-2"
+                onClick={handlePay}
               />
-            </Link>
-            <input
-              type="button"
-              name="pagar"
-              value="Pagar"
-              className="button"
-              onClick={handlePay}
-            />
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
-        <div id="wallet_container"></div>
+          <div id="wallet_container"></div>
 
-        <Wallet
-          onSubmit={handlePay}
-          initialization={{ preferenceId: responsePreference.id }}
-          customization={{ texts: { valueProp: "smart_option" } }}
-        />
-      </div>
+          {/* <Wallet
+            onSubmit={handlePay}
+            initialization={{ preferenceId: responsePreference.id }}
+            customization={{ texts: { valueProp: "smart_option" } }}
+          /> */}
+        
+        </div>
+      ) : 
+     <div className="contenedorCasos">
+            {loadingState ? (
+              <div className="loading-container">
+              <h2 className="loading">Cargando...</h2>
+              <img className="loading-image" src={loading} alt="loading" />
+            </div>
+            ) : (
+              pagos.map(pago => (
+                <div key={pago?.pagoId} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
+                  <h3 className="text-xl font-bold text-black text-center">Caso: n°{pago?.idCaso} {pago?.Caso?.descripcion}</h3>
+                  <p><strong>Cliente:</strong> {pago?.Caso?.Cliente?.apellido} {pago?.Caso?.Cliente?.nombre}</p>
+                  <p><strong>Fecha:</strong> {formatearFecha(pago?.fechaDeAprobacion)}</p>
+                  <p><strong>Monto:</strong> {pago?.importeDeLaTransaccion}</p>
+                  <p><strong>Descripción:</strong> {pago?.descripcion}</p>
+                    </div>
+              ))
+            )}
+      
+    
+    <div className="botonescrearusuario">
+    {/*<Link to="/home">
+          <button className="btn btn-xs border border-accent bg-white hover:bg-white " type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+            Volver</button>
+          </Link>*/}
     </div>
+    </div>
+}
+      
+      </div>
+      
+      
+    
   );
 }
 

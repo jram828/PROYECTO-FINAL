@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) =>{
-    sequelize.define('Consulta',{
+export default (sequelize) =>{
+    const Consulta=sequelize.define('Consulta',{
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -44,4 +44,5 @@ module.exports = (sequelize) =>{
             defaultValue: true
         }
     })
+    return Consulta
 }

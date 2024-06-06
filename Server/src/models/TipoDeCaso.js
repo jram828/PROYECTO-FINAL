@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+import { DataTypes } from 'sequelize';
 
-module.exports = (sequelize) => {
-    sequelize.define('TipoDeCaso',{
+export default (sequelize) => {
+    const TipoDeCaso=sequelize.define('TipoDeCaso',{
         TipoDeCasoid:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -19,4 +19,5 @@ module.exports = (sequelize) => {
             defaultValue: true
           }
     })
+    return TipoDeCaso
 }

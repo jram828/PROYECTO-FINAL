@@ -1,19 +1,19 @@
-const { TipoDeCaso } = require("../../DB");
-
+ import {models} from "../../DB.js";
+ const { TipoDeCaso } = models;
 const deleteTipoDeCaso = async (TipoDeCasoid) => {
   await Caso.update(
     {
-        activo: false,
+      activo: false,
     },
     {
       where: {
         TipoDeCasoid: TipoDeCasoid,
       },
-    }
+    },
   );
-  return JSON.stringify({ mensaje: "Se elimino el tipo de caso" })
+  return JSON.stringify({ mensaje: "Se elimino el tipo de caso" });
 };
 
-module.exports = {
+export {
   deleteTipoDeCaso,
 };
