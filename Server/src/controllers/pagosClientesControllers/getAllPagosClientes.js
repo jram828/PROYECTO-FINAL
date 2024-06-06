@@ -14,7 +14,7 @@ const getAllPagosClientes = async (filters) => {
   }
 
   delete filters.order;
-  delete filters.field;
+  delete filters.field; //? este modulo esta en prueba
 
   Object.entries(filters).forEach(([field, value]) => {
     if (value) {
