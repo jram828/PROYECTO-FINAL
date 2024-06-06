@@ -97,8 +97,10 @@ const CreateCliente = () => {
     
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
     <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+
       <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
         <h1 className="text-2xl font-bold text-black text-center">Crear Cliente</h1>
+        
         <div className="space-y-3">
           <div className="flex flex-wrap justify-around">
             <div className="mb-4">
