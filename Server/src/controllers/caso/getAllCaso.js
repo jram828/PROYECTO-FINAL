@@ -2,9 +2,12 @@ import { Sequelize } from "sequelize";
 import { models } from "../../DB.js";
 
 const { Caso, Cliente, Abogado, TipoDeCaso } = models
+
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
-  const indiceInicial = paginaActual * tamañoPagina;
-  const indiceFinal = indiceInicial + tamañoPagina;
+  const indiceInicial = parseInt(paginaActual) * parseInt(tamañoPagina);
+  const indiceFinal = indiceInicial + parseInt(tamañoPagina);
+  // console.log('Indice Inicial: ', indiceInicial)
+  // console.log('Indice Final: ', indiceFinal)  
   return arreglo.slice(indiceInicial, indiceFinal);
 }
 
@@ -85,7 +88,7 @@ const getAllCaso = async (filters) => {
 
   //Filtra de acuerdo a los parametros recibidos
   Object.entries(filters.query).forEach(([field, value]) => {
-    console.log("campo.... ", field, " valor..... ", value);
+   // console.log("campo.... ", field, " valor..... ", value);
     if (
       field !== "ordenarPor" &&
       field !== "pagina" &&
@@ -135,8 +138,8 @@ const getAllCaso = async (filters) => {
   }
 
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
-  console.log("Arreglo ordenado");
-  console.log(arregloOrdenado);
+//  console.log("Arreglo ordenado");
+//  console.log(arregloOrdenado);
   let elementos = filters.query.porPagina || 3;
   let offset = filters.query.pagina || 1;
   //if (filters.query.porPagina) elementos = filters.query.porPagina;
@@ -144,7 +147,7 @@ const getAllCaso = async (filters) => {
   //console.log("offset....", offset, "  elementos........", elementos);
   const totalPaginas = Math.ceil(arregloOrdenado.length / elementos);
   const paginaActual = paginarArreglo(arregloOrdenado, offset -1 , elementos);
-  console.log(paginaActual);
+//  console.log(paginaActual);
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };
 

@@ -4,8 +4,8 @@ import { models } from "../../DB.js";
 const { Cita, Caso, Cliente, Abogado, TipoDeCaso } = models
 
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
-  const indiceInicial = paginaActual * tamañoPagina;
-  const indiceFinal = indiceInicial + tamañoPagina;
+  const indiceInicial = parseInt(paginaActual) * parseInt(tamañoPagina);
+  const indiceFinal = indiceInicial + parseInt(tamañoPagina);
   return arreglo.slice(indiceInicial, indiceFinal);
 }
 
