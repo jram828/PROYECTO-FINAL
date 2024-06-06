@@ -3,7 +3,7 @@ import { printDivContent } from "../../utils/printDivContent";
 import { getCasos, getCasoById, getByIdCliente, getByIdAbogado, setAbogado, setCliente } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -14,16 +14,16 @@ const Poder = () => {
   const navigate = useNavigate();
  
 
-  const cliente = location.state?.cliente || {};
+  const caso = location.state?.caso || {};
   
-  const casos = useSelector((state) => state.casos);
-  const caso = useSelector((state) => state.caso);
+  //const casos = useSelector((state) => state.casos);
+  //const caso = useSelector((state) => state.caso);
   
-  const abogado= useSelector((state) => state.abogado)
+  //const abogado= useSelector((state) => state.abogado)
   
-console.log("cliente:",cliente)
+console.log("caso:",caso)
 
-useEffect(()=> {
+/*useEffect(()=> {
   dispatch(setAbogado({}))
 }, [])
 
@@ -55,7 +55,7 @@ useEffect(()=> {
           dispatch(setAbogado({}));
           dispatch(setCliente({}));
       }
-    }, [caso.AbogadoCedulaAbogado, dispatch]);
+    }, [caso.AbogadoCedulaAbogado, dispatch]);*/
 
   //console.log("abogado:", abogado)
 
@@ -63,28 +63,28 @@ function generatePDF() {
   printDivContent("poder");
 }
 
-const handleVolver = () => {
-  dispatch(setAbogado({}));
-  //window.localStorage.setItem("abogado", JSON.stringify({nombre:"", apellido:""}));
-  navigate(`/home/detail/${cliente.cedulaCliente}`)
-
-
-}
 
 
   return (
     
-    <div className="flex items-center justify-center min-h-screen p-6">
-      <h1 className="titulo">Poder</h1>
-      {Object.keys(abogado).length === 0 ? 
-      <p>Se debe crear un caso</p> :
+    <div className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+      <div className="flex self-start">
+      <Link to={`/home/cases/${caso.idCaso}`}>
+       <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+            Volver
+            </button>
+      </Link>
+      </div>
+      <h1 className="text-2xl font-bold text-black text-center">Poder</h1>
+      <br />
       <div className="poder" id="poder">
         <p className="titulopoder">
           <b>
             CONTRATO DE PRESTACIÓN DE SERVICIOS ENTRE
             <br />
-            {cliente.nombre} {cliente.apellido} Y {abogado.nombre}{" "}
-            {abogado.apellido}.
+            {caso?.Cliente?.nombre} {caso?.Cliente?.apellido} Y {caso?.Abogado?.nombre}{" "}
+            {caso?.Abogado?.apellido}.
           </b>
         </p>
         <br />
@@ -101,15 +101,15 @@ const handleVolver = () => {
         </p>
         <p className="parrafopoder">
           <b>
-            {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()},{" "}
+            {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()},{" "}
           </b>{" "}
           identificado/a como aparece al pie de mi firma, manifiesto que otorgo
           poder especial, amplio y suficiente al doctor{" "}
           <b>
-            {abogado.nombre?.toUpperCase()} {abogado.apellido?.toUpperCase()},{" "}
+            {caso?.Abogado?.nombre?.toUpperCase()} {caso?.Abogado?.apellido?.toUpperCase()},{" "}
           </b>{" "}
           mayor de edad, identificado con cédula de ciudadanía No{" "}
-          <b>{abogado.cedulaAbogado}</b> abogado en ejercicio con T.P. No 81657
+          <b>{caso?.CedulaAbogadoCedula}</b> abogado en ejercicio con T.P. No 81657
           del Consejo Superior de la Judicatura. Para que me represente en el
           proceso referido en los términos del Título IV del Código General del
           Proceso, Ley 1564 de 2012, inicie y tramite el proceso de negociación
@@ -138,12 +138,12 @@ const handleVolver = () => {
             <br />
             <br />
             <h2 className="firma">
-              {cliente.nombre?.toUpperCase()} {cliente.apellido?.toUpperCase()}{" "}
+              {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()}{" "}
               <br />
-              C.C. No. {cliente.cedulaCliente} <br />
-              {cliente.calle?.toUpperCase()} {cliente.numero}, {cliente.ciudad}
+              C.C. No. {caso?.ClienteCedulaCliente} <br />
+              {caso?.Cliente?.calle?.toUpperCase()} {caso?.Cliente?.numero}, {caso?.Cliente?.ciudad}
               <br />
-              Cel: {cliente.telefono}
+              Cel: {caso?.Cliente?.telefono}
             </h2>
           </div>
           <div className="firmaabogado">
@@ -152,13 +152,13 @@ const handleVolver = () => {
             <br />
             <br />
             <h2 className="firma">
-              {abogado.nombre?.toUpperCase()} {abogado.apellido?.toUpperCase()}{" "}
+              {caso?.Abogado?.nombre?.toUpperCase()} {caso?.Abogado?.apellido?.toUpperCase()}{" "}
               <br />
-              {abogado.cedulaAbogado}
+              {caso?.CedulaAbogadoCedula}
               <br />
               CARRERA 15 No. 107 - 90 World Trade Center · Torre 3 · Oficina 202{" "}
               <br />
-              Cel: {abogado.telefono}
+              Cel: {caso?.Abogado?.telefono}
             </h2>
           </div>
         </div>
@@ -180,11 +180,11 @@ const handleVolver = () => {
         value="Generar PDF"
         onClick={generatePDF}
       />
-      <button onClick={handleVolver}>Volver</button>
+      
     </div>
     </div>
     
-}
+
       
   </div>
   )

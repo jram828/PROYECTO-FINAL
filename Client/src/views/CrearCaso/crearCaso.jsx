@@ -5,7 +5,7 @@ import { getClientes } from "../../handlers/todosClientes";
 import style from './crearCaso.module.css';
 import { Link } from "react-router-dom";
 import { getTiposCasos } from "../../handlers/todosTiposdecasos";
-import Layout from "../../components/layout/layout";
+
 import { useNavigate } from "react-router-dom";
 
 function CrearCaso() {
@@ -98,36 +98,37 @@ function CrearCaso() {
 
   
   return (
-  <Layout>
-    <div className="container mx-auto py-8">
-  <div className="space-y-6 w-full max-w-lg h-full p-6 bg-primary rounded-lg shadow-md text-white mx-auto">
-    <h1 className={`text-center ${style.titulo}`}>Crear caso</h1>
+  
+    <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
+    <div className="space-y-6 w-1/3 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+    <h1 className="text-2xl font-bold text-black text-center">Crear caso</h1>
     <form onSubmit={submitHandlerRegistro}>
-      <br />
-      <div className="space-y-4">
-        <div className="w-full px-4">
-          <label className="w-full">
+      
+      <div className="space-y-3">
+      <div className="flex flex-col items-center space-y-3">
+        {/* <div className="w-52 items-center px-2"> */}
+          <label className="">
             <select
               name="TipoDeCasoId"
               id="TipoDeCasoId"
-              className="input select-bordered text-lg pl-2 w-full"
+              className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
               onChange={(event) => handleChangeRegistro(event)}
             >
-              <option value="" className={style.customOption}>Tipo de caso</option>
+              <option value="" disabled selected className="text-black">Tipo de caso</option>
               {tipos.allTipoDeCaso.map((tipo) => (
-                <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoId} className={style.customOption}>
+                <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoId} className="text-black">
                   {tipo.descripcion}
                 </option>
               ))}
             </select>
           </label>
-        </div>
+        {/* </div> */}
 
-        <div className="w-full px-4">
-          <label className="input input-bordered flex items-center w-full">
+        <div className="mx-4 items-center">
+          <label className="input input-sm text-xs !border-black !rounded-lg input-secondary flex items-center !w-52 !text-black">
             Fecha:
             <input
-              className="ml-2 grow w-full"
+              className="grow ml-2 text-black"
               name="fecha"
               id="fecha"
               type="date"
@@ -137,11 +138,11 @@ function CrearCaso() {
           </label>
         </div>
 
-        <div className="w-full px-4">
-          <label className="input input-bordered flex items-center w-full">
+        <div className="mx-4">
+          <label className="input input-sm text-xs !border-black !rounded-lg input-secondary flex items-center !w-52 !text-black">
             Final:
             <input
-              className="ml-2 grow w-full"
+              className="grow ml-2 text-black"
               name="fechaFin"
               id="fechaFin"
               type="date"
@@ -151,46 +152,47 @@ function CrearCaso() {
           </label>
         </div>
 
-        <div className="w-full px-4">
-          <label className="w-full">
+        
+          <label className="">
             <select
               name="cedulaAbogado"
               id="cedulaAbogado"
-              className="input select-bordered text-lg pl-2 w-full"
+              className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
               onChange={(event) => handleChangeRegistro(event)}
+              value={userDataRegistro.cedulaAbogado}
             >
-              <option value="" className={style.customOption}>Abogados</option>
+              <option value="" className="text-black">Abogados</option>
               {abogados.map((abogado) => (
-                <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className={style.customOption}>
+                <option key={abogado.cedulaAbogado} value={abogado.cedulaAbogado} className="text-black">
                   {abogado.nombre} {abogado.apellido}
                 </option>
               ))}
             </select>
           </label>
-        </div>
 
-        <div className="w-full px-4">
-          <label className="w-full">
+          <label className="">
             <select
               name="cedulaCliente"
               id="cedulaCliente"
               onChange={handleChangeRegistro}
-              className="input select-bordered text-lg pl-2 w-full"
+              className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
+              value={userDataRegistro.cedulaCliente}
             >
-              <option value="" className={style.customOption}>Clientes</option>
+              <option value="" className="!text-black">Clientes</option>
               {clientes.map((cliente) => (
-                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className={style.customOption}>
+                <option key={cliente.cedulaCliente} value={cliente.cedulaCliente} className="!text-black">
                   {cliente.nombre} {cliente.apellido}
                 </option>
               ))}
             </select>
           </label>
-        </div>
+        
 
-        <div className="w-full px-4">
-          <label className="w-full">
+
+        <div className="">
+          <label className="">
             <textarea
-              className="textarea textarea-bordered h-24 w-full"
+              className="textarea textarea-sm textarea-secondary !border-black !text-black text-xs h-24 !w-52"
               name="descripcion"
               id="descripcion"
               value={userDataRegistro.descripcion}
@@ -199,24 +201,30 @@ function CrearCaso() {
             ></textarea>
           </label>
         </div>
-      </div>
+        </div>
+        </div>
 
       <div className="flex justify-center gap-2 mt-4">
+        <Link to="/home/cases">
+            <button className="btn btn-xs border border-accent bg-white hover:bg-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+            Volver
+            </button>
+        </Link>
         <button
           type="submit"
-          className="btn btn-sm btn-accent text-white"
+          className="btn btn-xs  bg-accent text-white hover:bg-primary hover:text-white"
         >
-          Guardar
+          Crear Caso
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
         </button>
-        <Link to="/home/cases">
-          <button className="btn btn-sm btn-accent text-white">Volver</button>
-        </Link>
+        
       </div>
     </form>
   </div>
-</div>
+    </div>
 
-  </Layout>
+ 
   );
 }
 

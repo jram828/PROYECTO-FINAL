@@ -1,13 +1,13 @@
 import './diary.css';
 import Calendario from '../../components/calendar';
 import FormCita from '../../components/formCrearCita/index';
-import Layout from '../../components/layout/layout';
+
 
 function Diary() {
   
   return (
-    <Layout>
-      <div className='containerDiary'>
+    
+      <div className='containerDiary '>
         
         <div className='calendario'> 
           <p className='agenda'>Agenda</p>
@@ -17,7 +17,7 @@ function Diary() {
           <FormCita></FormCita>
         </div>
       </div>
-    </Layout>
+    
   )
 }
 

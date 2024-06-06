@@ -46,6 +46,7 @@ export const INCREMENT_NUMBER_PUNTUACION = "INCREMENT_NUMBER_PUNTUACION";
 export const CLEAN_ACTIONS = "CLEAN_ACTIONS";
 export const UPDATE_ACTION_ERROR = "UPDATE_ACTION_ERROR";
 export const MODIFICAR_DATOS = "MODIFICAR_DATOS";
+export const GET_PAGOS = "GET_PAGOS";
 
 
 //const URL = 'http://localhost:3001/'
@@ -92,8 +93,8 @@ export const setCliente = (source) => {
   };
 };
 
-export const getClientes = () => {
-  const endpoint = `${URL}clientes?pagina=1&porPagina=50`;
+export const getClientes = (page) => {
+  const endpoint = `${URL}clientes?pagina=${page}&porPagina=6`;
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
     return dispatch({
@@ -103,8 +104,8 @@ export const getClientes = () => {
   };
 };
 
-export const getAbogados = () => {
-  const endpoint = `${URL}abogados?pagina=1&porPagina=50`;
+export const getAbogados = (page) => {
+  const endpoint = `${URL}abogados?pagina=${page}&porPagina=6`;
 
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
@@ -180,9 +181,9 @@ export const filterAbogado = (filtro) => {
   };
 };
 
-export const orderAbogados = (value) => {
-  const endpoint = `${URL}abogados?field=apellido&order=${value}&pagina=1&porPagina=50`;
-
+export const orderAbogados = (value, page) => {
+  const endpoint = `${URL}abogados?field=apellido&order=${value}&pagina=${page}&porPagina=6`;
+console.log("endpoint", endpoint)
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
     return dispatch({
@@ -192,9 +193,9 @@ export const orderAbogados = (value) => {
   };
 };
 
-export const orderClientes = (value) => {
-  const endpoint = `${URL}clientes?field=apellido&order=${value}&pagina=1&porPagina=50`;
-
+export const orderClientes = (value, page) => {
+  const endpoint = `${URL}clientes?field=apellido&order=${value}&pagina=${page}&porPagina=6`;
+ console.log("endpoint", endpoint)
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
     return dispatch({
@@ -397,6 +398,17 @@ export const recordarPassword = async (correo) => {
       console.log("URL", endpoint, "PAYLOAD", payload);
       return dispatch({
         type: MODIFICAR_DATOS,
+        payload: data,
+      });
+    };
+  };
+
+  export const getPagos= () => {
+    const endpoint = `${URL}pagosClientes`;
+    return async (dispatch) => {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_PAGOS,
         payload: data,
       });
     };
