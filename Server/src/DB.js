@@ -20,8 +20,6 @@ config(); // Cargar variables de entorno desde el archivo .env
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
-
-
 // Obtener el nombre de este archivo
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -43,8 +41,8 @@ const sequelize = new Sequelize(DB_DEPLOY, {
   dialectOptions: {
     ssl: {
       require: true,
-    },
-  },
+    },
+  },
 });
 
 const Caso = casoModel(sequelize);

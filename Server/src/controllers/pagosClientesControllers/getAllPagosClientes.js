@@ -7,7 +7,7 @@ const getAllPagosClientes = async (filters) => {
   const newOrder = {};
   const order = [];
   const limit2 = filters.porPagina;
-
+  // console.log("pagosClientes 10", filters);
   if (filters.field) {
     const ord = filters.order?.toUpperCase() || "ASC";
     order.push([filters.field, ord]);
@@ -32,6 +32,10 @@ const getAllPagosClientes = async (filters) => {
   const offset = (filters.pagina - 1) * parseInt(limit2);
 
   const getAllPagosClientesBd = await PagosCliente.findAll({
+    where: {
+      // activo: true,
+      ...newFilters,
+    },
     include: [
       {
         model: Caso,
