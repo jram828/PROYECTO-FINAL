@@ -12,26 +12,32 @@ function AllConsultations() {
   const dispatch = useDispatch();
   const consultas = useSelector((state) => state.consultas);
   const [loadingState, setLoadingState] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoadingState(true);
-      await dispatch(getConsultas());
+      await dispatch(getConsultas(currentPage));
       setLoadingState(false);
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
 
   console.log("consultas", consultas)
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
 
   return (
       <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
         <div >
-        <Link to='/home'>
+        {/*<Link to='/home'>
           <button className="btn btn-xs border border-accent bg-white hover:bg-white " type="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
             Volver</button>
-        </Link>
+        </Link>*/}
           <h1 className="text-2xl font-bold text-black text-center">Consultas</h1>
           <div className="consultations-list">
             {loadingState ? (
@@ -54,6 +60,26 @@ function AllConsultations() {
             ) : (
               <p>No hay consultas disponibles</p>
             )}
+
+               <div className="pagination mt-4 join self-center">
+                  {currentPage > 1 && (
+                    <button 
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      className="join-item btn btn-xs btn-accent"
+                    >
+                      &lt;&lt;
+                    </button>
+                  )}
+                  <span className="join-item btn btn-xs btn-accent">Página {currentPage}</span>
+                  {consultas.length === 6 && (
+                    <button 
+                      className="join-item btn btn-xs btn-accent"
+                      onClick={() => handlePageChange(currentPage + 1)}
+                    >
+                      &gt;&gt;
+                    </button>
+                  )}
+                </div>
           </div>
         </div>
         
