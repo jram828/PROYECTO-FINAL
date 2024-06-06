@@ -74,7 +74,7 @@ function FormCita() {
 
   return (
     
-      <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+      <div className="space-y-6 mr-5 ml-0 w-full h-full p-6 bg-secondary rounded-lg shadow-md text-black">
         <h1 className="text-2xl font-bold text-black text-center">Crear Cita</h1>
         <form onSubmit={submitHandlerRegistro} className="flex flex-col items-center space-y-6">
           <div className="flex flex-col items-center gap-2 justify-center">

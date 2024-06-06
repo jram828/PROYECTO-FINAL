@@ -1,8 +1,8 @@
 .containerDiary {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
   min-height: 80vh;
   padding: 10px;
   border-radius: 10px;
@@ -17,6 +17,7 @@
 
 .agenda {
   font-size: 24px;
+  
   margin-bottom: 25px;
   font-weight: bold;
   text-align: center;
@@ -36,12 +37,12 @@
   padding: 10px;
   box-sizing: border-box;
   height: auto; 
-  max-width: 85vh;
+  max-width: 80vh;
 }
 
 .formCita {
   flex: 1;
-  margin: 3rem;
+  margin: 1rem;
   justify-content: center;
   display: flex;
   
