@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import { models } from "../../DB.js";
 
-const Abogado=models.Abogado
+const Abogado = models.Abogado;
 
 const getAllAbogados = async (filters) => {
   //filters = acá me traigo req.query
@@ -25,7 +25,7 @@ const getAllAbogados = async (filters) => {
   delete filters.order;
   delete filters.field;
 
-  console.log("linea 26 getAllAB", Object.entries(filters));
+  // console.log("linea 26 getAllAB", Object.entries(filters));
   Object.entries(filters).forEach(([field, value]) => {
     // destructuro filters
 
@@ -68,6 +68,4 @@ const getAllAbogados = async (filters) => {
   return getAllAbogadosBd;
 };
 
-export {
-  getAllAbogados,
-};
+export { getAllAbogados };
