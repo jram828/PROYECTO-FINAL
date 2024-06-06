@@ -67,9 +67,9 @@ function generatePDF() {
 
   return (
     <div className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
-      <div className="flex self-start">
+      <div className="flex justify-between items-center w-full">
         <Link to={`/home/cases/${caso.idCaso}`}>
-          <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
+          <button className="btn btn-xs border border-accent bg-white hover:bg-white flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1.2em"
@@ -88,9 +88,10 @@ function generatePDF() {
             Volver
           </button>
         </Link>
+  
         <button
           onClick={generatePDF}
-          className="items-center self-end btn btn-xs border border-accent bg-white hover:bg-white"
+          className="btn btn-xs border border-success bg-white hover:bg-white flex items-center"
         >
           Guardar en PDF
         </button>
