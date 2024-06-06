@@ -1,0 +1,54 @@
+.review-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.new-comment-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.rating-container {
+  margin-top: 10px;
+}
+
+.rating-container label {
+  font-size: 30px;
+  color: #a1a0a0;
+  cursor: pointer;
+  
+}
+
+.rating-container input[type="radio"] {
+  display: none;
+}
+
+.rating-container .star {
+  display: inline-block;
+}
+
+.rating-container input[type="radio"]:checked ~ .star {
+  color: #f39c12;
+}
+
+.error-message {
+  color: red;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #55ac5a;
+}
