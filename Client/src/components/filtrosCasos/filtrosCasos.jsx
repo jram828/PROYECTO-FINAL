@@ -51,7 +51,6 @@ function FiltrosCasos() {
   return (
     <div className="flex w-full">
       <div className="md:flex md:flex-col md:space-y-4 w-full">
-
       <div className="flex justify-end p-2">
           {user.administrador === true || user.cedulaAbogado ? (
             <Link to='/home/cases/crearcaso' className='btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white'>
