@@ -10,13 +10,17 @@ function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
 }
 
 const getAllCita = async (filters) => {
-  console.log(filters.query);
-  const consulta =
-    !filters.query.todos || filters.query.todos === "false"
-      ? {
+  //console.log(filters.query);
+  const todos= filters.query.todos || 'true' 
+  //console.log(filters.query.todos.trim().toUpperCase())
+  //if (todos==='false') console.log('todos viene en false')
+  let getAllCitaBd=[]
+  if (todos.toUpperCase() === "FALSE") {
+    //console.log('Estoy en el true del if')
+    getAllCitaBd = await Cita.findAll({
           where: {
             fechaCita: {
-              [Sequelize.Op.gt]: new Date(),
+              [Sequelize.Op.gt]: Sequelize.literal("CURRENT_DATE")
             },
           },
           attributes: ["idCita", "titulo", "descripcion", "fechaCita"],
@@ -40,8 +44,10 @@ const getAllCita = async (filters) => {
               ],
             },
           ],
-        }
-      : {
+        })
+      } else { 
+      getAllCitaBd = await Cita.findAll(
+       {
           attributes: ["idCita", "titulo", "descripcion", "fechaCita"],
           include: {
             model: Caso,
@@ -65,9 +71,10 @@ const getAllCita = async (filters) => {
               },
             ],
           },
-        };
+        })
+      };
 
-  const getAllCitaBd = await Cita.findAll(consulta);
+  
 
   //Obtiene los campos a devolver
   let datos = getAllCitaBd.map((elemento) => ({
@@ -84,6 +91,8 @@ const getAllCita = async (filters) => {
     apellidoAbogado: elemento.Caso.Abogado.apellido,
     tipoCaso: elemento.Caso.TipoDeCaso.descripcion,
   }));
+
+  //console.log(datos)
 
   //Filtra de acuerdo a los parametros recibidos
   Object.entries(filters.query).forEach(([field, value]) => {
@@ -148,11 +157,10 @@ const getAllCita = async (filters) => {
 
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
 
-  let elementos = 3;
-  let offset = 1;
-  if (filters.query.porPagina) elementos = filters.query.porPagina;
-  if (filters.query.pagina)
-    offset = (filters.query.pagina - 1) * parseInt(elementos);
+  let elementos = filters.query.porPagina || 3;
+  let offset = filters.query.pagina || 1;
+  //if (filters.query.porPagina) elementos = filters.query.porPagina;
+  //if (filters.query.pagina) offset = (filters.query.pagina - 1) * parseInt(elementos);
   //console.log(arregloOrdenado)
   //console.log(datos)
   console.log("offset....", offset, "  elementos........", elementos);

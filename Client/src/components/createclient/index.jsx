@@ -97,8 +97,10 @@ const CreateCliente = () => {
     
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
     <div className="space-y-6 w-full max-w-3xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+
       <form className={style.datos} method="post" onSubmit={submitHandlerRegistro}>
         <h1 className="text-2xl font-bold text-black text-center">Crear Cliente</h1>
+        
         <div className="space-y-3">
           <div className="flex flex-wrap justify-around">
             <div className="mb-4">
@@ -119,7 +121,8 @@ const CreateCliente = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="nombre" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="nombre" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Nombre(s):
                 <input
                   type="text"
@@ -129,11 +132,17 @@ const CreateCliente = () => {
                   value={dataRegistro.nombre}
                   onChange={handleChangeRegistro}
                 />
-                {errors.nombre && <p className="error_form">{errors.nombre}</p>}
+               
+                {errors.nombre && (
+                  <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.nombre}</p>
+                )}
               </label>
             </div>
+
+
             <div className="mx-4">
-              <label htmlFor="apellidos" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="apellidos" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Apellido(s):
                 <input
                   type="text"
@@ -143,13 +152,15 @@ const CreateCliente = () => {
                   value={dataRegistro.apellido}
                   onChange={handleChangeRegistro}
                 />
-                {errors.apellido && <p className="error_form">{errors.apellido}</p>}
+                {errors.apellido && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.apellido}</p>}
+                
               </label>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="correo" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="correo" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Email:
                 <input
                   type="email"
@@ -159,11 +170,12 @@ const CreateCliente = () => {
                   value={dataRegistro.correo}
                   onChange={handleChangeRegistro}
                 />
-                {errors.correo && <p className="error_form">{errors.correo}</p>}
+                {errors.correo && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.correo}</p>}
+                
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="password" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              <label htmlFor="password" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Contraseña:
                 <input
                   type="password"
@@ -178,7 +190,8 @@ const CreateCliente = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="numerocedula" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+             
+              <label htmlFor="numerocedula" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Cédula n°:
                 <input
                   type="number"
@@ -188,11 +201,13 @@ const CreateCliente = () => {
                   value={dataRegistro.cedulaCliente}
                   onChange={handleChangeRegistro}
                 />
-                {errors.cedulaCliente && <p className="error_form">{errors.cedulaCliente}</p>}
+                {errors.cedulaCliente && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.cedulaCliente}</p>}
+                
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="telefono" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+            
+              <label htmlFor="telefono" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Teléfono:
                 <input
                   type="number"
@@ -202,13 +217,15 @@ const CreateCliente = () => {
                   value={dataRegistro.telefono}
                   onChange={handleChangeRegistro}
                 />
-                {errors.telefono && <p className="error_form">{errors.telefono}</p>}
+                {errors.telefono && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.telefono}</p>}
+                
               </label>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="calle" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="calle" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Calle:
                 <input
                   type="text"
@@ -218,11 +235,13 @@ const CreateCliente = () => {
                   value={dataRegistro.calle}
                   onChange={handleChangeRegistro}
                 />
-                {errors.calle && <p className="error_form">{errors.calle}</p>}
+                {errors.calle && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.calle}</p>}
+               
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="numero" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="numero" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Número:
                 <input
                   type="text"
@@ -232,13 +251,15 @@ const CreateCliente = () => {
                   value={dataRegistro.numero}
                   onChange={handleChangeRegistro}
                 />
-                {errors.numero && <p className="error_form">{errors.numero}</p>}
+                {errors.numero && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.numero}</p>}
+               
               </label>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="codigopostal" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="codigopostal" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 CP:
                 <input
                   type="number"
@@ -248,11 +269,13 @@ const CreateCliente = () => {
                   value={dataRegistro.codigoPostal}
                   onChange={handleChangeRegistro}
                 />
-                {errors.codigoPostal && <p className="error_form">{errors.codigoPostal}</p>}
+                {errors.codigoPostal && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.codigoPostal}</p>}
+               
               </label>
             </div>
             <div className="mx-4">
-              <label htmlFor="ciudad" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="ciudad" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 Ciudad:
                 <input
                   type="text"
@@ -262,13 +285,15 @@ const CreateCliente = () => {
                   value={dataRegistro.ciudad}
                   onChange={handleChangeRegistro}
                 />
-                {errors.ciudad && <p className="error_form">{errors.ciudad}</p>}
+                {errors.ciudad && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.ciudad}</p>}
+                
               </label>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="mx-4">
-              <label htmlFor="pais" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black">
+              
+              <label htmlFor="pais" className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative">
                 País:
                 <input
                   type="text"
@@ -278,7 +303,8 @@ const CreateCliente = () => {
                   value={dataRegistro.pais}
                   onChange={handleChangeRegistro}
                 />
-                {errors.pais && <p className="error_form">{errors.pais}</p>}
+                {errors.pais && <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">{errors.pais}</p>}
+                
               </label>
             </div>
           </div>

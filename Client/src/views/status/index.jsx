@@ -3,8 +3,7 @@ import "./status.module.css";
 import { Link, useLocation } from "react-router-dom";
 // import axios from "axios";
 import { verificarPago } from "../../handlers/verificarPago";
-import Layout from "../../components/layout/layout";
-import logo from "../../assets/logo-blue.png";
+
 import { printDivContent } from "../../utils/printDivContent";
 // const ACCESSTOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -59,108 +58,95 @@ function Status() {
 
   return (
     // <div className="comprobante">
-    <Layout>
+    
       <div
-        className="max-w-md mx-auto bg-primary text-white shadow-lg rounded-lg p-6"
+      className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black"
       >
-        <div id="comprobante">
-          <div className="logo-legaltech">
-            <img
-              src={logo}
-              alt="logo-legaltech"
-              style={{ width: "150px", height: "150px" }}
-            />
-          </div>
-          <br />
-          <div className="mb-4">
-            <p className="text-xl font-semibold">Estado de la transacción</p>
-          </div>
+        <div id="comprobante" className="space-y-6 w-full max-w-xl h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+          
+            <h1 className="text-2xl font-bold text-black text-center">Estado de la transacción</h1>
+          
 
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 gap-4">
-              <div>
-                <label className="input input-bordered flex items-center max-w-xs">
+          <div className="flex flex-col space-y-3 items-center">
+            
+             
+                <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   ID de pago:  
-                  <input value={datosPago.id} className="grow" readOnly />
+                  <input value={datosPago.id} className="grow ml-2 text-black" disabled />
                 </label>
-              </div>
+              
 
-              <div>
-                <label className="input input-bordered flex items-center max-w-xs">
+              
+                <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   Estado:  
-                  <input value={datosPago.status} className="grow" readOnly />
+                  <input value={datosPago.status} className="grow ml-2 text-black" disabled />
                 </label>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4">
-              <div>
-                <label className="input input-bordered flex items-center max-w-xs">
+              
+                <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   Valor:  
                   <input
                     value={datosPago.transaction_amount}
-                    className="grow"
-                    readOnly
+                    className="grow ml-2 text-black" disabled
                   />
                 </label>
-              </div>
-              <div>
-                <label className="input input-bordered flex items-center max-w-xs whitespace-nowrap">
+              
+              
+                <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   {" "}
                   Método de pago:  
                   <input
                     value={datosPago.payment_type_id}
-                    className="grow"
-                    readOnly
+                    className="grow ml-2 text-black" disabled
                   />
                 </label>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4">
-              <div className="">
-                <label className="input input-bordered flex items-center max-w-xs">
+            
+              
+                <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black text-xs">
                   Fecha:  
                   <input
-                    type="text"
+                    type="date"
                     value={datosPago.date_approved}
-                    className="grow"
-                    readOnly
+                    className="grow ml-2 text-black" disabled
                   />
                 </label>
-              </div>
-
-              <div>
+            
+              
                 <label className="">
-                  Descripción:  
+                   
                   <input
                     value={datosPago.description}
                     type="text"
-                    className="textarea textarea-bordered h-24 !w-full"
+                    className="textarea !w-80 !border-black !text-black text-xs h-24"
                     placeholder="Descripcion..."
-                    readOnly
+                    disabled
                   />
                 </label>
-              </div>
-            </div>
+             
           </div>
-        </div>
-        <div className="mt-6 flex justify-center">
-          <Link to="/home/payments">
-            <button className="btn btn-accent text-white">
-              Reintentar pago
+        
+
+        <div className="mt-6 flex justify-center gap-2">
+          {/* <Link to="/home">
+          <button className="btn btn-xs border border-accent bg-white hover:bg-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+              Volver
+              </button>
+            </Link> */}
+              
+            <Link to="/home/payments">
+              <button className="btn btn-xs bg-white text-black  border-error w-35 flex items-center justify-center">
+                Reintentar pago
+              </button>
+            </Link>
+
+            <button onClick={generatePDF} className="btn btn-xs  bg-white text-black  border-success w-35 flex items-center justify-center">
+              Guardar comprobante
             </button>
-          </Link>
-          <button onClick={generatePDF} className="btn btn-accent text-white">
-            Guardar comprobante
-          </button>
-          <Link to="/home">
-            <button className="btn btn-accent text-white">Volver</button>
-          </Link>
+          
         </div>
       </div>
-    </Layout>
-    // </div>
+   
+     </div>
   );
 }
 

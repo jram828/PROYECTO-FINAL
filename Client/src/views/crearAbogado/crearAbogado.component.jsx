@@ -152,7 +152,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="nombre"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Nombre(s):
                     <input
@@ -164,7 +164,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.nombre && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.nombre}
             </p>}
                   </label>
@@ -172,7 +172,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="apellidos"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Apellido(s):
                     <input
@@ -184,7 +184,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.apellido && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.apellido}
             </p>}
                   </label>
@@ -195,7 +195,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="numerocedula"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Cédula n°:
                     <input
@@ -207,7 +207,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.cedulaAbogado && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.cedulaAbogado}
             </p>}
                   </label>
@@ -215,7 +215,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="matricula"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Matricula:
                     <input
@@ -227,7 +227,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.matricula && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.matricula}
             </p>}
                   </label>
@@ -238,7 +238,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="correo"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Email:
                     <input
@@ -250,7 +250,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.correo && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.correo}
             </p>}
                   </label>
@@ -258,7 +258,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="password"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Contraseña:
                     <input
@@ -277,7 +277,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="telefono"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     {" "}
                     Teléfono:
@@ -290,7 +290,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.telefono && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.telefono}
             </p>}
                   </label>
@@ -299,7 +299,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="calle"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Calle:
                     <input
@@ -311,7 +311,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.calle && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.calle}
             </p>}
                   </label>
@@ -322,7 +322,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="numero"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Numero:
                     <input
@@ -334,7 +334,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.numero && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.numero}
             </p>}
                   </label>
@@ -342,7 +342,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="codigopostal"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     CP:
                     <input
@@ -354,7 +354,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.codigoPostal && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.codigoPostal}
             </p>}
                   </label>
@@ -365,7 +365,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="ciudad"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Ciudad:
                     <input
@@ -377,7 +377,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.ciudad && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.ciudad}
             </p>}
                   </label>
@@ -385,7 +385,7 @@ function CrearAbogado() {
                 <div className="mx-4">
                   <label
                     htmlFor="ciudad"
-                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black"
+                    className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black relative"
                   >
                     Pais:
                     <input
@@ -397,7 +397,7 @@ function CrearAbogado() {
                       onChange={handleChangeRegistro}
                     />
                     {errors.pais && 
-            <p className="error_form">
+            <p className="error_form absolute text-error text-xs -right-0.5 pe-2 top-0.5 mt-1">
             {errors.pais}
             </p>}
                   </label>

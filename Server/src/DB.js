@@ -11,6 +11,7 @@ import documentoLegalModel from "./models/DocumentoLegal.js";
 import documentoLegalModelTipoNoti from "./models/DocumentoLegalTipoNotificacion.js";
 import documentoLegalTemplateModel from "./models/DocumentoTemplate.js";
 import pagoClienteModel from "./models/pagoCliente.js";
+import reviewModel from "./models/Review.js";
 import tipoCasoModel from "./models/TipoDeCaso.js";
 import tipoNotificacionModel from "./models/TipoNotificacion.js";
 import usuarioModel from "./models/Usuario.js";
@@ -18,6 +19,8 @@ import usuarioModel from "./models/Usuario.js";
 config(); // Cargar variables de entorno desde el archivo .env
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
+
+
 
 // Obtener el nombre de este archivo
 // const __filename = fileURLToPath(import.meta.url);
@@ -50,6 +53,7 @@ const Consulta = consultaModel(sequelize);
 const Abogado = abogadoModel(sequelize);
 const Cliente = clienteModel(sequelize);
 const Contrato = contratoModel(sequelize);
+const Review = reviewModel(sequelize);
 const TipoDeCaso = tipoCasoModel(sequelize);
 const DocumentoTemplate = documentoLegalTemplateModel(sequelize);
 const DocumentoLegal = documentoLegalModel(sequelize);

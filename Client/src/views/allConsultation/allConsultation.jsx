@@ -1,5 +1,5 @@
 import './allConsultation.css';
-import Layout from '../../components/layout/layout';
+
 import { getConsultas } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState  } from 'react';
