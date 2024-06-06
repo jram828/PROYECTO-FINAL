@@ -132,12 +132,16 @@ const getAllCaso = async (filters) => {
   switch (filters.query.ordenarPor) {
     case "apellidoCliente": {
       arregloOrdenado = datos.slice().sort((a, b) => {
-        if (a.apellidoCliente < b.apellidoCliente) return -1;
-        if (a.apellidoCliente > b.apellidoCliente) return 1;
+        if (a.apellidoCliente.toUpperCase() < b.apellidoCliente.toUpperCase())
+          return -1;
+        if (a.apellidoCliente.toUpperCase() > b.apellidoCliente.toUpperCase())
+          return 1;
 
         // Si apellido es igual, ordena por nombre
-        if (a.nombreCliente < b.nombreCliente) return -1;
-        if (a.nombreCliente > b.nombreCliente) return 1;
+        if (a.nombreCliente.toUpperCase() < b.nombreCliente.toUpperCase())
+          return -1;
+        if (a.nombreCliente.toUpperCase() > b.nombreCliente.toUpperCase())
+          return 1;
 
         // Si ambos son iguales, no hay cambios en el orden
         return 0;
@@ -146,12 +150,16 @@ const getAllCaso = async (filters) => {
     }
     case "apellidoAbogado": {
       arregloOrdenado = datos.slice().sort((a, b) => {
-        if (a.apellidoAbogado < b.apellidoAbogado) return -1;
-        if (a.apellidoAbogado > b.apellidoAbogado) return 1;
+        if (a.apellidoAbogado.toUpperCase() < b.apellidoAbogado.toUpperCase())
+          return -1;
+        if (a.apellidoAbogado.toUpperCase() > b.apellidoAbogado.toUpperCase())
+          return 1;
 
         // Si apellido es igual, ordena por nombre
-        if (a.nombreAbogado < b.nombreAbogado) return -1;
-        if (a.nombreAbogado > b.nombreAbogado) return 1;
+        if (a.nombreAbogado.toUpperCase() < b.nombreAbogado.toUpperCase())
+          return -1;
+        if (a.nombreAbogado.toUpperCase() > b.nombreAbogado.toUpperCase())
+          return 1;
 
         // Si ambos son iguales, no hay cambios en el orden
         return 0;
