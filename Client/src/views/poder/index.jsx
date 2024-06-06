@@ -66,15 +66,34 @@ function generatePDF() {
 
 
   return (
-    
     <div className="flex flex-col items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
       <div className="flex self-start">
-      <Link to={`/home/cases/${caso.idCaso}`}>
-       <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 512 512"><path fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50.5} d="M244 400L100 256l144-144M120 256h292"></path></svg>
+        <Link to={`/home/cases/${caso.idCaso}`}>
+          <button className="items-center self-start btn btn-xs border border-accent bg-white hover:bg-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.2em"
+              height="1.2em"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="none"
+                stroke="black"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={50.5}
+                d="M244 400L100 256l144-144M120 256h292"
+              ></path>
+            </svg>
             Volver
-            </button>
-      </Link>
+          </button>
+        </Link>
+        <button
+          onClick={generatePDF}
+          className="items-center self-end btn btn-xs border border-accent bg-white hover:bg-white"
+        >
+          Guardar en PDF
+        </button>
       </div>
       <h1 className="text-2xl font-bold text-black text-center">Poder</h1>
       <br />
@@ -83,8 +102,8 @@ function generatePDF() {
           <b>
             CONTRATO DE PRESTACIÓN DE SERVICIOS ENTRE
             <br />
-            {caso?.Cliente?.nombre} {caso?.Cliente?.apellido} Y {caso?.Abogado?.nombre}{" "}
-            {caso?.Abogado?.apellido}.
+            {caso?.Cliente?.nombre} {caso?.Cliente?.apellido} Y{" "}
+            {caso?.Abogado?.nombre} {caso?.Abogado?.apellido}.
           </b>
         </p>
         <br />
@@ -101,22 +120,24 @@ function generatePDF() {
         </p>
         <p className="parrafopoder">
           <b>
-            {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()},{" "}
+            {caso?.Cliente?.nombre?.toUpperCase()}{" "}
+            {caso?.Cliente?.apellido?.toUpperCase()},{" "}
           </b>{" "}
           identificado/a como aparece al pie de mi firma, manifiesto que otorgo
           poder especial, amplio y suficiente al doctor{" "}
           <b>
-            {caso?.Abogado?.nombre?.toUpperCase()} {caso?.Abogado?.apellido?.toUpperCase()},{" "}
+            {caso?.Abogado?.nombre?.toUpperCase()}{" "}
+            {caso?.Abogado?.apellido?.toUpperCase()},{" "}
           </b>{" "}
           mayor de edad, identificado con cédula de ciudadanía No{" "}
-          <b>{caso?.CedulaAbogadoCedula}</b> abogado en ejercicio con T.P. No 81657
-          del Consejo Superior de la Judicatura. Para que me represente en el
-          proceso referido en los términos del Título IV del Código General del
-          Proceso, Ley 1564 de 2012, inicie y tramite el proceso de negociación
-          de deudas y convalidación de acuerdo (insolvencia) del suscrito, como
-          persona natural no comerciante, con todos y cada uno de los acreedores
-          que se relacionan en la solicitud, en la actualización de la misma o
-          cualquier otro.
+          <b>{caso?.CedulaAbogadoCedula}</b> abogado en ejercicio con T.P. No
+          81657 del Consejo Superior de la Judicatura. Para que me represente en
+          el proceso referido en los términos del Título IV del Código General
+          del Proceso, Ley 1564 de 2012, inicie y tramite el proceso de
+          negociación de deudas y convalidación de acuerdo (insolvencia) del
+          suscrito, como persona natural no comerciante, con todos y cada uno de
+          los acreedores que se relacionan en la solicitud, en la actualización
+          de la misma o cualquier otro.
         </p>
         <p>
           Mi apoderado cuenta con todas las facultades inherentes para el
@@ -138,10 +159,11 @@ function generatePDF() {
             <br />
             <br />
             <h2 className="firma">
-              {caso?.Cliente?.nombre?.toUpperCase()} {caso?.Cliente?.apellido?.toUpperCase()}{" "}
-              <br />
+              {caso?.Cliente?.nombre?.toUpperCase()}{" "}
+              {caso?.Cliente?.apellido?.toUpperCase()} <br />
               C.C. No. {caso?.ClienteCedulaCliente} <br />
-              {caso?.Cliente?.calle?.toUpperCase()} {caso?.Cliente?.numero}, {caso?.Cliente?.ciudad}
+              {caso?.Cliente?.calle?.toUpperCase()} {caso?.Cliente?.numero},{" "}
+              {caso?.Cliente?.ciudad}
               <br />
               Cel: {caso?.Cliente?.telefono}
             </h2>
@@ -152,8 +174,8 @@ function generatePDF() {
             <br />
             <br />
             <h2 className="firma">
-              {caso?.Abogado?.nombre?.toUpperCase()} {caso?.Abogado?.apellido?.toUpperCase()}{" "}
-              <br />
+              {caso?.Abogado?.nombre?.toUpperCase()}{" "}
+              {caso?.Abogado?.apellido?.toUpperCase()} <br />
               {caso?.CedulaAbogadoCedula}
               <br />
               CARRERA 15 No. 107 - 90 World Trade Center · Torre 3 · Oficina 202{" "}
@@ -170,24 +192,19 @@ function generatePDF() {
           Buenos Aires, Argentina Tel: - Celular: (57)- 300 1234567
           <br />
         </footer>
-        <div>
+        <div></div>
+        {/* <div className="documentoagenerar">
+          <input
+            className="inputbox2"
+            type="submit"
+            name="generar"
+            value="Generar PDF"
+            onClick={generatePDF}
+          />
+        </div> */}
       </div>
-      <div className="documentoagenerar">
-      <input
-        className="inputbox2"
-        type="submit"
-        name="generar"
-        value="Generar PDF"
-        onClick={generatePDF}
-      />
-      
     </div>
-    </div>
-    
-
-      
-  </div>
-  )
+  );
 }
 
 export default Poder;
