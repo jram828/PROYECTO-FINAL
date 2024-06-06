@@ -88,7 +88,6 @@ function generatePDF() {
             Volver
           </button>
         </Link>
-  
         <button
           onClick={generatePDF}
           className="btn btn-xs border border-success bg-white hover:bg-white flex items-center"
