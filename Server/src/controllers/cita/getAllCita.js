@@ -1,80 +1,77 @@
 import { Sequelize } from "sequelize";
 import { models } from "../../DB.js";
 
-const { Cita, Caso, Cliente, Abogado, TipoDeCaso } = models
+const { Cita, Caso, Cliente, Abogado, TipoDeCaso } = models;
 
 function paginarArreglo(arreglo, paginaActual, tamañoPagina) {
-  const indiceInicial = paginaActual * tamañoPagina;
-  const indiceFinal = indiceInicial + tamañoPagina;
+  const indiceInicial = parseInt(paginaActual) * parseInt(tamañoPagina);
+  const indiceFinal = indiceInicial + parseInt(tamañoPagina);
   return arreglo.slice(indiceInicial, indiceFinal);
 }
 
 const getAllCita = async (filters) => {
   //console.log(filters.query);
-  const todos= filters.query.todos || 'true' 
+  const todos = filters.query.todos || "true";
   //console.log(filters.query.todos.trim().toUpperCase())
   //if (todos==='false') console.log('todos viene en false')
-  let getAllCitaBd=[]
+  let getAllCitaBd = [];
   if (todos.toUpperCase() === "FALSE") {
     //console.log('Estoy en el true del if')
     getAllCitaBd = await Cita.findAll({
-          where: {
-            fechaCita: {
-              [Sequelize.Op.gt]: Sequelize.literal("CURRENT_DATE")
-            },
-          },
-          attributes: ["idCita", "titulo", "descripcion", "fechaCita"],
+      where: {
+        fechaCita: {
+          [Sequelize.Op.gt]: Sequelize.literal("CURRENT_DATE"),
+        },
+      },
+      attributes: ["idCita", "titulo", "descripcion", "fechaCita", "horaCita"],
+      include: [
+        {
+          model: Caso,
+          attributes: ["idCaso", "fecha", "descripcion"],
           include: [
             {
-              model: Caso,
-              attributes: ["idCaso", "fecha", "descripcion"],
-              include: [
-                {
-                  model: Cliente,
-                  attributes: ["apellido", "nombre"],
-                },
-                {
-                  model: Abogado,
-                  attributes: ["apellido", "nombre"],
-                },
-                {
-                  model: TipoDeCaso,
-                  attributes: ["descripcion"],
-                },
-              ],
+              model: Cliente,
+              attributes: ["apellido", "nombre"],
+            },
+            {
+              model: Abogado,
+              attributes: ["apellido", "nombre"],
+            },
+            {
+              model: TipoDeCaso,
+              attributes: ["descripcion"],
             },
           ],
-        })
-      } else { 
-      getAllCitaBd = await Cita.findAll(
-       {
-          attributes: ["idCita", "titulo", "descripcion", "fechaCita"],
-          include: {
-            model: Caso,
-            model: Caso,
-            as: "Caso",
-            foreignKey: "idCaso", // Especifica el campo de clave foránea en Cita
-            targetKey: "idCaso",
-            attributes: ["idCaso", "fecha", "descripcion"],
-            include: [
-              {
-                model: Cliente,
-                attributes: ["apellido", "nombre"],
-              },
-              {
-                model: Abogado,
-                attributes: ["apellido", "nombre"],
-              },
-              {
-                model: TipoDeCaso,
-                attributes: ["descripcion"],
-              },
-            ],
+        },
+      ],
+    });
+  } else {
+    getAllCitaBd = await Cita.findAll({
+      attributes: ["idCita", "titulo", "descripcion", "fechaCita", "horaCita"],
+      include: {
+        model: Caso,
+        model: Caso,
+        as: "Caso",
+        foreignKey: "idCaso", // Especifica el campo de clave foránea en Cita
+        targetKey: "idCaso",
+        attributes: ["idCaso", "fecha", "descripcion"],
+        include: [
+          {
+            model: Cliente,
+            attributes: ["apellido", "nombre"],
           },
-        })
-      };
-
-  
+          {
+            model: Abogado,
+            attributes: ["apellido", "nombre"],
+          },
+          {
+            model: TipoDeCaso,
+            attributes: ["descripcion"],
+          },
+        ],
+      },
+    });
+  }
 
   //Obtiene los campos a devolver
   let datos = getAllCitaBd.map((elemento) => ({
@@ -82,6 +79,7 @@ const getAllCita = async (filters) => {
     titulo: elemento.titulo,
     descripcion: elemento.descripcion,
     fechaCita: elemento.fechaCita,
+    horaCita: elemento.horaCita,
     idCaso: elemento.Caso.idCaso,
     fechaCaso: elemento.Caso.fecha,
     descripcionCaso: elemento.Caso.descripcion,
@@ -157,8 +155,8 @@ const getAllCita = async (filters) => {
 
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
 
-  let elementos = filters.query.porPagina || 3;
-  let offset = filters.query.pagina || 1;
+  let elementos = filters.query.porPagina || 3; // los elementos por pag por default
+  let offset = filters.query.pagina || 1; // manda pag 1 por default
   //if (filters.query.porPagina) elementos = filters.query.porPagina;
   //if (filters.query.pagina) offset = (filters.query.pagina - 1) * parseInt(elementos);
   //console.log(arregloOrdenado)
@@ -170,6 +168,4 @@ const getAllCita = async (filters) => {
   return { datosPagina: paginaActual, totalPaginas: totalPaginas };
 };
 
-export  {
-  getAllCita,
-};
+export { getAllCita };
