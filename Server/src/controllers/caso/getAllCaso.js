@@ -132,16 +132,19 @@ const getAllCaso = async (filters) => {
   switch (filters.query.ordenarPor) {
     case "apellidoCliente": {
       arregloOrdenado = datos.slice().sort((a, b) => {
-        if (a.apellidoCliente.toUpperCase() < b.apellidoCliente.toUpperCase())
+        let apellidoA=a.apellidoCliente.toUpperCase()
+        let apellidoB=a.apellidoCliente.toUpperCase()
+
+        if (apellidoA < apellidoB)
           return -1;
-        if (a.apellidoCliente.toUpperCase() > b.apellidoCliente.toUpperCase())
+        if (apellidoA > apellidoB)
           return 1;
 
         // Si apellido es igual, ordena por nombre
-        if (a.nombreCliente.toUpperCase() < b.nombreCliente.toUpperCase())
-          return -1;
-        if (a.nombreCliente.toUpperCase() > b.nombreCliente.toUpperCase())
-          return 1;
+        // if (a.nombreCliente.toUpperCase() < b.nombreCliente.toUpperCase())
+        //   return -1;
+        // if (a.nombreCliente.toUpperCase() > b.nombreCliente.toUpperCase())
+        //   return 1;
 
         // Si ambos son iguales, no hay cambios en el orden
         return 0;
@@ -149,17 +152,26 @@ const getAllCaso = async (filters) => {
       break;
     }
     case "apellidoAbogado": {
+      
       arregloOrdenado = datos.slice().sort((a, b) => {
+        let apellidoA=a.apellidoAbogado.toUpperCase()
+        let apellidoB=a.apellidoAbogado.toUpperCase()
         if (a.apellidoAbogado.toUpperCase() < b.apellidoAbogado.toUpperCase())
           return -1;
         if (a.apellidoAbogado.toUpperCase() > b.apellidoAbogado.toUpperCase())
           return 1;
 
         // Si apellido es igual, ordena por nombre
-        if (a.nombreAbogado.toUpperCase() < b.nombreAbogado.toUpperCase())
+        if (apellidoA < apellidoB)
           return -1;
-        if (a.nombreAbogado.toUpperCase() > b.nombreAbogado.toUpperCase())
+        if (apellidoA > apellidoB)
           return 1;
+
+        // Si apellido es igual, ordena por nombre
+        // if (a.nombreCliente.toUpperCase() < b.nombreCliente.toUpperCase())
+        //   return -1;
+        // if (a.nombreCliente.toUpperCase() > b.nombreCliente.toUpperCase())
+        //   return 1;
 
         // Si ambos son iguales, no hay cambios en el orden
         return 0;
