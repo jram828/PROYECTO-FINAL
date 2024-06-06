@@ -1,5 +1,4 @@
 import { getAllReview } from "../controllers/reviewsControllers/getAllReview.js";
-
 import { createReview } from "../controllers/reviewsControllers/postReview.js";
 
 const getreviewsHandler = async (req, res) => {
