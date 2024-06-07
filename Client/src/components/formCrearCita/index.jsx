@@ -18,6 +18,7 @@ function FormCita() {
     idCaso: "",
   });
 
+
   const [errors, setErrors]= useState({});
 
   const [isLoading, setIsLoading] = useState(true); // Estado para controlar la visualización del loading
@@ -33,6 +34,8 @@ function FormCita() {
       [name]: value,
     }))
   };
+
+  console.log(dataRegistro)
 
   const dispatch = useDispatch();
   const casos = useSelector(state => state.casos)
@@ -65,12 +68,7 @@ function FormCita() {
     );
   }
 
-  /*useEffect(() => {
-    if( dataRegistro.titulo !== '' || dataRegistro.fechaCita !== '' || dataRegistro.horaCita !== '' || dataRegistro.descripcion !== ''  ) {
-        const dataValidated = validation(dataRegistro);
-        setErrors(dataValidated);
-    }
- }, [dataRegistro])*/
+
 
   return (
     
@@ -109,7 +107,7 @@ function FormCita() {
             <div className="mx-4">
               <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72 relative">Hora:
               <input
-                type="time"
+                
                 name="horaCita"
                 id="horaCita"
                 value={dataRegistro.horaCita}
