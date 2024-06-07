@@ -69,7 +69,7 @@ const ReviewList = () => {
           </div>
         ))
       ) : (
-        <p>No hay reseñas disponibles</p>
+        undefined
       )}
 
       {/* Botones de paginación */}

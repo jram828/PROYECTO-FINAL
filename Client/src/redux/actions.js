@@ -82,7 +82,7 @@ export const fetchReviews = (page) => {
   return async (dispatch) => {
     try {
 
-      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=6`);
+      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=3`);
        console.log('response', response)                                        
 
 
