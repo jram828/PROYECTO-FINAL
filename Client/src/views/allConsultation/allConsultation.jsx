@@ -67,7 +67,7 @@ function AllConsultations() {
                     <button 
                       onClick={() => handlePageChange(currentPage - 1)}
                       className="join-item btn btn-xs btn-accent"
-                    >
+                    >  
                       &lt;&lt;
                     </button>
                   )}
