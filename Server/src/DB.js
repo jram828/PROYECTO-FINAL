@@ -24,7 +24,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
-// Configuración de Sequelize para entorno local
+//! Configuración de Sequelize para entorno local
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/legalTech`,
 //   {
@@ -33,7 +33,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 //   },
 // );
 
-// Configuración de Sequelize para despliegue en Render
+//! Configuración de Sequelize para despliegue en Render
 
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false,
