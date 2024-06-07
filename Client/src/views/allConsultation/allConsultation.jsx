@@ -61,8 +61,8 @@ function AllConsultations() {
               <p>No hay consultas disponibles</p>
             )}
               </div>
-              <div className='flex mt-4'>
-              <div className="pagination  mt-4 join self-center justify-center">
+              <div className='flex mt-8 items-center justify-center'>
+              <div className="pagination join ">
                   {currentPage > 1 && (
                     <button 
                       onClick={() => handlePageChange(currentPage - 1)}
