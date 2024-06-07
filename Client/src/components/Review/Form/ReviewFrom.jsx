@@ -35,6 +35,7 @@ const ReviewForm = () => {
         setNuevoComentario('');
         setPuntuacion(0);
         setError('');
+        window.alert('¡La reseña se ha creado exitosamente!');
       } catch (error) {
         console.error('Error al enviar la reseña:', error);
         setError('Error al enviar la reseña. Por favor, intenta nuevamente.');

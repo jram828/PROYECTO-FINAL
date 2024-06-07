@@ -53,9 +53,15 @@ export const GET_PAGOS = "GET_PAGOS";
 
 export const ADD_REVIEW = "ADD_REVIEW";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
+export const FETCH_REVIEWS_ALL = "FECHT_REVIEWS_ALL";
 export const FETCH_REVIEWS_SUCCESS = "FETCH_REVIEWS_SUCCESS";
 export const FETCH_REVIEWS_FAILURE = "FETCH_REVIEWS_FAILURE";
 export const ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
+
+
+//const URL = 'http://localhost:3001/'
+//const URL = 'https://legaltech-6u3y.onrender.com/'
+const URL = "https://legaltech-develop.onrender.com/"
 
 // agregar una reseña
 export const addReview = (content, rating) => {
@@ -70,10 +76,12 @@ export const addReview = (content, rating) => {
 };
 
 // obtener reseñas
-export const fetchReviews = () => {
+export const fetchReviews = (page) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}reviews`);
+      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=3`);
+       console.log('response', response)                                        
+
       dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: response.data });
     } catch (error) {
       dispatch({ type: FETCH_REVIEWS_FAILURE, payload: error.message });
@@ -81,9 +89,26 @@ export const fetchReviews = () => {
   };
 };
 
-//const URL = 'http://localhost:3001/'
-//const URL = 'https://legaltech-6u3y.onrender.com/'
-const URL = "https://legaltech-develop.onrender.com/";
+export const fetchReviewsAll = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=1&porPagina=100`);
+      return dispatch({
+        type: FETCH_REVIEWS_ALL,
+        payload: response.data, 
+      });
+    } catch (error) {
+    
+      console.error("Error al obtener reseñas:", error.message);
+      return dispatch({
+        type: FETCH_REVIEWS_FAILURE,
+        payload: error.message,
+      });
+    }
+  };
+};
+
+;
 
 export const setAuth = (auth) => {
   console.log("Verificar autenticacion:", auth);
