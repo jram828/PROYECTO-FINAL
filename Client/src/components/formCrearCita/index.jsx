@@ -65,7 +65,6 @@ function FormCita() {
   if (isLoading || !pages || !pages.datosPagina) {
     return (
       <div className="loading-container">
-        <h2 className="loading">Cargando...</h2>
         <img className="loading-image" src={loading} alt="loading" />
       </div>
     );

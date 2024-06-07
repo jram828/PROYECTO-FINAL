@@ -13,7 +13,7 @@ const ReviewForm = () => {
   const user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [dataReview, setDataReview] = useState({
-    puntuacion:'',
+    puntuacion: '',
     comentario:'',
     cedulaCliente: user.cedulaCliente,
     });
@@ -40,15 +40,22 @@ const ReviewForm = () => {
               setPuntuacion(rating);
               };
 
+              console.log('setPuntuacion',puntuacion)
+
+const datos = {puntuacion:puntuacion,
+  comentario:dataReview.comentario,
+  cedulaCliente: user.cedulaCliente,}
+
               const handleSubmit = async (event) => {
                 event.preventDefault();
-                dispatch(addReview(dataReview));
+                dispatch(addReview(datos));
                 };
-              console.log('lin 44' , dataReview)
+              console.log('lin 44' , datos)
 
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
      <div className="flex flex-row space-x-6 w-full max-w-6xl">
+
 
     {/* {user.matricula ? (
       <ReviewList reviews={reviews} />
@@ -65,6 +72,9 @@ const ReviewForm = () => {
                 placeholder="Escribe tu reseña"
                 className="w-full h-32 p-2 border border-black rounded-lg bg-secondary text-black focus:outline-none"
                 disabled={user.matricula}
+
+      
+
               />
             </div>
             <div>

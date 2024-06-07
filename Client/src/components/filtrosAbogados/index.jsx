@@ -40,7 +40,7 @@ function FiltrosAbogados() {
       dispatch(getAbogados(currentPage));
       const storedFilter = JSON.parse(localStorage.getItem('abogadoFilter'));
       if (storedFilter) {
-        setFilterApplied(true);
+        setFilterApplied(false);
       }
     }
   }, [dispatch, currentPage, order]);
@@ -101,7 +101,6 @@ function FiltrosAbogados() {
           )}
             {!searchPerformed && abogados.length === 0 && (
             <div className="loading-container">
-               <h2 className="loading">Cargando...</h2>
               <img className="loading-image" src={loading} alt="loading" />
             </div>
           )}

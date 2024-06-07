@@ -113,7 +113,6 @@ function FiltrosCasos() {
           <div className="flex flex-col">
             {isLoading ? (
               <div className="loading-container">
-                <h2 className="loading">Cargando...</h2>
                 <img className="loading-image" src={loading} alt="loading" />
               </div>
             ) : (

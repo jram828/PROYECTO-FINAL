@@ -85,7 +85,6 @@ function FiltrosClientes() {
                 <Cards items={clientes} />
               ) : (
                 <div className="loading-container">
-                  <h2 className="loading">Cargando...</h2>
                   <img className="loading-image" src={loading} alt="loading" />
                 </div>
               )}
