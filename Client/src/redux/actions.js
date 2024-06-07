@@ -339,7 +339,7 @@ export const getCasos = (page) => {
 };
 
 export const getCasosTodos = () => {
-  const endpoint = `${URL}casos?pagina=1&porPagina=50`;
+  const endpoint = `${URL}casos`;
   return async (dispatch) => {
     const { data } = await axios.get(endpoint);
     return dispatch({
