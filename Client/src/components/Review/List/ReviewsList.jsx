@@ -1,3 +1,6 @@
+
+
+
 // src/components/Review/List/ReviewList.jsx
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,14 +41,17 @@ const ReviewList = () => {
   console.log('pages', pages)
   console.log(totalPages)
 
+
   return (
     <div className="space-y-6">
       {reviews?.length > 0 ? (
         reviews.map((review, index) => (
+
           <div key={index} className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black mt-4">
             <h3 className="text-xl font-bold text-black text-center">Reseña #{(currentPage - 1) * 5 + index + 1}</h3>
+
             <p><strong>Comentario:</strong> {review.comentario}</p>
-            <div className="rating rating-lg rating-half">
+            <div className="rating rating-md rating-half">
               {[...Array(10)].map((_, starIndex) => (
                 <input
                   key={starIndex}

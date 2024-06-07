@@ -64,10 +64,11 @@ export const ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
 const URL = "https://legaltech-develop.onrender.com/"
 
 // agregar una reseña
-export const addReview = (content, rating) => {
+export const addReview = (PAYLOAD) => {
+   console.log('Review', PAYLOAD )
   return async (dispatch) => {
     try {
-      const response = await axios.post(`${URL}reviews`, { content, rating });
+      const response = await axios.post(`${URL}reviews`, PAYLOAD);
       dispatch({ type: ADD_REVIEW, payload: response.data });
     } catch (error) {
       dispatch({ type: ADD_REVIEW_FAILURE, payload: error.message });
@@ -79,8 +80,10 @@ export const addReview = (content, rating) => {
 export const fetchReviews = (page) => {
   return async (dispatch) => {
     try {
+
       const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=3`);
        console.log('response', response)                                        
+
 
       dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: response.data });
     } catch (error) {

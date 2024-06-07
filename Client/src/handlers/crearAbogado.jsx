@@ -15,7 +15,8 @@ export async function postAbogado(data) {
    numero,
    codigoPostal,
    ciudad,
-   pais
+    pais,
+   imagen,
     } = data;
 console.log("data del post", data)
 
@@ -23,7 +24,7 @@ console.log("data del post", data)
   try {
     await axios.post(URL, {
       correo: `${correo}`,
-      password:`${password}`,
+      password: `${password}`,
       nombre: `${nombre}`,
       apellido: `${apellido}`,
       cedulaAbogado: `${cedulaAbogado}`,
@@ -34,8 +35,9 @@ console.log("data del post", data)
       numero: `${numero}`,
       codigoPostal: `${codigoPostal}`,
       pais: `${pais}`,
+      imagen: `${imagen}`,
     });
-    window.alert("Se ha registrado el abogado con éxito.");
+    // window.alert("Se ha registrado el abogado con éxito.");
   } catch (error) {
     window.alert("No fue posible registrar el abogado.");
   }

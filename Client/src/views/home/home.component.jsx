@@ -1,8 +1,6 @@
 // import style from './home.module.css';
-import { Link,  } from 'react-router-dom';
-// import picture from "../../assets/homepic.jpg";
-import logo from '../../assets/logo.png'
-// import legaltech from "../../assets/legaltech.png";
+import { Link,  } from 'react-router-dom';;
+import logo from '../../assets/logo.png';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -41,7 +39,7 @@ function Home() {
         <ul className="menu bg-primary text-white rounded-md menu-lg w-full h-full flex flex-col justify-around" style={{ height: "75vh", width: "35vh" }}>
           <li>
             {(user.administrador === true || user.cedulaAbogado) && (
-              <Link to="/home/customers" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+              <Link to="/home/customers" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'clientes' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('clientes')}
@@ -51,20 +49,20 @@ function Home() {
               </Link>
             )}
           </li>
-          <li>
+          <li className=''>
             {user.administrador === true && (
-              <Link to="/home/lawyers" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+              <Link to="/home/lawyers" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'abogados' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('abogados')}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 20 20"><g fill="white" fillRule="evenodd" clipRule="evenodd"><path d="M5 9a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 1a3 3 0 1 0 0-6a3 3 0 0 0 0 6"></path><path d="M3.854 8.896a.5.5 0 0 1 0 .708l-.338.337A3.47 3.47 0 0 0 2.5 12.394v1.856a.5.5 0 1 1-1 0v-1.856a4.47 4.47 0 0 1 1.309-3.16l.337-.338a.5.5 0 0 1 .708 0m11.792-.3a.5.5 0 0 0 0 .708l.338.337A3.469 3.469 0 0 1 17 12.094v2.156a.5.5 0 0 0 1 0v-2.156a4.47 4.47 0 0 0-1.309-3.16l-.337-.338a.5.5 0 0 0-.708 0"></path><path d="M14 9a2 2 0 1 1 0-4a2 2 0 0 1 0 4m0 1a3 3 0 1 1 0-6a3 3 0 0 1 0 6m-4.5 3.25a2.5 2.5 0 0 0-2.5 2.5v1.3a.5.5 0 0 1-1 0v-1.3a3.5 3.5 0 0 1 7 0v1.3a.5.5 0 1 1-1 0v-1.3a2.5 2.5 0 0 0-2.5-2.5"></path><path d="M9.5 11.75a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 1a3 3 0 1 0 0-6a3 3 0 0 0 0 6"></path></g></svg>
-                <button>Abogados</button>
+                <button >Abogados</button>
               </Link>
             )}
           </li>
           <li>
-            <Link to="/home/datos" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+            <Link to="/home/datos" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'datosPersonales' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('datosPersonales')}>
@@ -74,7 +72,7 @@ function Home() {
           </li>
           <li>
             {/* {user.administrador === true || user.cedulaAbogado ? ( */}
-            <Link to="/home/cases" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+            <Link to="/home/cases" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'casos' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('casos')}>
@@ -89,7 +87,7 @@ function Home() {
             </Link> */}
           {/* </li> */}
           <li>
-            <Link to="/home/diary" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+            <Link to="/home/diary" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'agenda' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('agenda')}>
@@ -99,7 +97,7 @@ function Home() {
           </li>
           <li>
             {(user.administrador === true || user.cedulaCliente) && (
-              <Link to="/home/payments" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+              <Link to="/home/payments" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'pagos' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('pagos')}>
@@ -109,17 +107,17 @@ function Home() {
             )}
           </li>
           <li>
-            <Link to="/home/review" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+            <Link to="/home/review" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'review' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('review')}>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22"><path fill="currentColor" d="M2 1h18v1h1v14h-1v1H5v1H4v1H3v1H2v1H1V2h1zm1 2v13h1v-1h15V3zm2 3h12v2H5zm0 4h9v2H5z"/></svg>
               <button>Review</button>
             </Link>
-          </li>
+          </li> 
           <li>
             {user.administrador === true && (
-              <Link to="/home/allconsultations" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full ${
+              <Link to="/home/allconsultations" className={`flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full ${
                 selectedButton === 'consultas' ? 'bg-accent' : ''
               }`}
               onClick={() => handleButtonSelect('consultas')}>
@@ -129,7 +127,7 @@ function Home() {
             )}
           </li>
           <li>
-            <Link to="/" className="flex items-center justify-start text-white hover:text-white hover:bg-accent h-full w-full">
+            <Link to="/" className="flex items-center justify-start text-white hover:text-white hover:bg-accent focus:bg-accent focus:text-white h-full w-full">
             <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="white" d="M14 6h-1.7c-.2 0-.4-.1-.6-.2l-1.3-1.3c-.2-.3-.6-.5-1.1-.5H9c1.1 0 2-.9 2-2s-.9-2-2-2s-2 .9-2 2c0 .7.4 1.4 1 1.7l-.2.3h-2c-1.1 0-2.3.5-3 1.5l-.6.8c-.4.4-.2 1 .2 1.3c.4.2.9.1 1.2-.3l.5-.7c.3-.4.7-.6 1.2-.6h.8l-.7 1.6c-.3.6-.4 1.2-.4 1.9v2c0 .3-.2.5-.5.5H2c-.6 0-1 .4-1 1s.4 1 1 1h3.5c.8 0 1.5-.7 1.5-1.5V10l3.8 4.5c.6.9 1.7 1.5 2.8 1.5h.9L9.1 9.3c-.3-.4-.2-.8 0-1.3l.6-1.5l.7.8c.4.4 1 .7 1.6.7h2c.6 0 1-.4 1-1s-.4-1-1-1"></path></svg>
               <button onClick={handleSalir}>Salir</button>
             </Link>

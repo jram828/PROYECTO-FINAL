@@ -11,9 +11,10 @@ const ReviewForm = () => {
   const [puntuacion, setPuntuacion] = useState(0);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    dispatch(fetchReviews());
-  }, [dispatch]);
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
+
+
+ 
 
   const handleChange = (event) => {
     setNuevoComentario(event.target.value);
@@ -43,6 +44,7 @@ const ReviewForm = () => {
     }
   };
 
+
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
       <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
@@ -51,8 +53,9 @@ const ReviewForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <textarea
-              value={nuevoComentario}
-              onChange={handleChange}
+              name="comentario"
+              value={dataReview.comentario}
+              onChange={handleChangeReview}
               placeholder="Escribe tu reseña"
               className="w-full h-32 p-2 border border-black rounded-lg bg-secondary text-black focus:outline-none"
             />
@@ -62,8 +65,9 @@ const ReviewForm = () => {
               Puntuación:
               <input
                 type="number"
-                value={puntuacion}
-                onChange={(e) => handlePuntuacion(e.target.value)}
+                name="puntuacion"
+                value={dataReview.puntuacion}
+                onChange={handleChangeReview}
                 placeholder="Puntuación"
                 min="0"
                 max="5"
@@ -77,7 +81,7 @@ const ReviewForm = () => {
               <input
                 key={index}
                 type="radio"
-                name="rating-10"
+                name="comentario"
                 className={`bg-green-500 mask mask-star-2 ${index % 2 === 0 ? 'mask-half-1' : 'mask-half-2'}`}
                 checked={Math.ceil(puntuacion * 2) === index + 1}
                 onChange={() => handlePuntuacion((index + 1) / 2)}

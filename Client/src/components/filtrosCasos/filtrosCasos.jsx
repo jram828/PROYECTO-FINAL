@@ -23,8 +23,10 @@ function FiltrosCasos() {
     dispatch(getCasosTodos()); 
   }, [dispatch]);
 
-  const todos = pages?.datosPagina;
-  const totalPages = Math.ceil(todos?.length / 6);
+
+  const todos = pages?.datosPagina || [];
+  const totalPages = Math.ceil(todos.length / 6);
+
   console.log(totalPages)
 
   console.log('pages', pages)
