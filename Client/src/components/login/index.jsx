@@ -245,7 +245,7 @@ const dispatch = useDispatch();
   />
   <button
     onClick={() => handleSignIn(githubProvider)}
-    className="btn btn-sm w-1/2 h-10 bg-white"
+    className="btn btn-sm w-1/2 h-10 bg-white hover:bg-white "
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
