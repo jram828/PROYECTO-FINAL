@@ -37,7 +37,7 @@ console.log("data del post", data)
       pais: `${pais}`,
       imagen: `${imagen}`,
     });
-    window.alert("Se ha registrado el abogado con éxito.");
+    // window.alert("Se ha registrado el abogado con éxito.");
   } catch (error) {
     window.alert("No fue posible registrar el abogado.");
   }
