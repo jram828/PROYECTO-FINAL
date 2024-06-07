@@ -74,8 +74,8 @@ TipoNotificacion.belongsToMany(DocumentoLegal, {
   through: DocumentoLegalTipoNotificacion,
 });
 
-// DocumentoLegal.belongsTo(DocumentoTemplate);
-// DocumentoLegal.belongsTo(Caso);
+DocumentoLegal.belongsTo(DocumentoTemplate);
+DocumentoLegal.belongsTo(Caso);
 
 Cliente.hasMany(Caso);
 Caso.belongsTo(Cliente);
@@ -83,16 +83,16 @@ Caso.belongsTo(Cliente);
 Abogado.hasMany(Caso);
 Caso.belongsTo(Abogado);
 
-TipoDeCaso.hasMany(Caso);
-Caso.belongsTo(TipoDeCaso);
+// TipoDeCaso.hasMany(Caso);
+// Caso.belongsTo(TipoDeCaso);
 
-Caso.hasOne(Cotizacion);
+// Caso.hasOne(Cotizacion);
 
-Caso.hasMany(PagosCliente, { foreignKey: "idCaso" });
-PagosCliente.belongsTo(Caso, { foreignKey: "idCaso" });
+// Caso.hasMany(PagosCliente, { foreignKey: "idCaso" });
+// PagosCliente.belongsTo(Caso, { foreignKey: "idCaso" });
 
-Caso.hasMany(Cita, { foreignKey: "idCaso" });
-Cita.belongsTo(Caso, { foreignKey: "idCaso" });
+// Caso.hasMany(Cita, { foreignKey: "idCaso" });
+// Cita.belongsTo(Caso, { foreignKey: "idCaso" });
 
 Cotizacion.belongsTo(Caso);
 Cotizacion.hasOne(Contrato);
