@@ -2,7 +2,7 @@ import './filtrosClientes.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../cards/index';
-import { getClientes, filterCliente, orderClientes } from '../../redux/actions';
+import { getClientes, filterCliente, orderClientes, getClientesTodos } from '../../redux/actions';
 import SearchBar from '../searchBarClientes';
 import OrderClientes from '../orderCliente/orderCliente';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,22 @@ import loading from "../../assets/loading.gif";
 function FiltrosClientes() {
   const dispatch = useDispatch();
   const clientes = useSelector((state) => state.clientes);
+  const pages = useSelector((state)=> state.pages)
   const [filterApplied, setFilterApplied] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState('');
+
+
+  useEffect(() => {
+    dispatch(getClientesTodos()); // Obtener el total de clientes
+  }, [dispatch]);
+
+  
+  const totalPages = Math.ceil(pages?.length / 6);
+  console.log(totalPages)
+
+  console.log('pages', pages)
 
   useEffect(() => {
     if (order) {
@@ -88,14 +100,14 @@ function FiltrosClientes() {
                   </button>
                 )}
                 <span className="join-item btn btn-xs btn-accent">Página {currentPage}</span>
-                {clientes.length === 6 && (
-                  <button 
-                  className="join-item btn btn-xs btn-accent"
-                    onClick={() => handlePageChange(currentPage + 1)}
-                  >
-                    &gt;&gt;
-                  </button>
-                )}
+                {currentPage < totalPages && (
+               <button 
+                 onClick={() => handlePageChange(currentPage + 1)}
+                 className="join-item btn btn-xs btn-accent"
+                   >
+                &gt;&gt;
+                </button>
+               )}
               </div>
               )}
             </div>
