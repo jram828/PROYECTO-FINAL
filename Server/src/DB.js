@@ -74,8 +74,8 @@ TipoNotificacion.belongsToMany(DocumentoLegal, {
   through: DocumentoLegalTipoNotificacion,
 });
 
-DocumentoLegal.belongsTo(DocumentoTemplate);
-DocumentoLegal.belongsTo(Caso);
+// DocumentoLegal.belongsTo(DocumentoTemplate);
+// DocumentoLegal.belongsTo(Caso);
 
 Cliente.hasMany(Caso);
 Caso.belongsTo(Cliente);
