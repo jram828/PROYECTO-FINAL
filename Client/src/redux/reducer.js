@@ -10,7 +10,9 @@ import {
   SET_AUTHENTICATED,
   SET_USERTOKEN,
   GET_ABOGADOS,
+  GET_ABOGADOS_TODOS,
   GET_CLIENTES,
+  GET_CLIENTES_TODOS,
   GET_BY_ID_ABOGADO,
   GET_BY_ID_CLIENTE,
   FILTER_ABOGADO,
@@ -22,6 +24,7 @@ import {
   DELETE_CLIENTE,
   GET_TIPOSDECASOS,
   GET_CASOS,
+  GET_CASOS_TODOS,
   FILTER_CASOS,
   ORDER_CASOS,
   GET_CASO_BY_ID,
@@ -56,6 +59,7 @@ let initialState = {
   pagos:[],
   source: "cliente",
   reviews: [],
+  pages:{},
   reviewError: "",
   // userGit: null,
   loginError: "",
@@ -79,10 +83,20 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         abogados: action.payload,
       };
+      case GET_ABOGADOS_TODOS:
+      return {
+        ...state,
+        pages: action.payload,
+      };
     case GET_CLIENTES:
       return {
         ...state,
         clientes: action.payload,
+      };
+      case GET_CLIENTES_TODOS:
+      return {
+        ...state,
+        pages: action.payload,
       };
     case GET_BY_ID_ABOGADO:
       //window.localStorage.setItem("abogado", JSON.stringify(action.payload));
@@ -151,6 +165,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         casos: action.payload,
+      };
+      case GET_CASOS_TODOS:
+      return {
+        ...state,
+        pages: action.payload,
       };
     case FILTER_CASOS:
       return {

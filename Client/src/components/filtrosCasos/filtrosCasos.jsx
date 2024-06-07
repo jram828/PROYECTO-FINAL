@@ -2,7 +2,7 @@ import './filtrosCasos.css';
 import { useState, useEffect } from 'react';
 import TarjetasCasos from '../../components/tarjetasCasos/tarjetasCasos';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterCasos, getCasos, orderCasos } from '../../redux/actions';
+import { filterCasos, getCasos, orderCasos, getCasosTodos } from '../../redux/actions';
 import SearchBar from '../../components/searchBarCasos/searchBar';
 import OrderCasos from '../../components/orderCasos/orderCasos';
 import { Link } from 'react-router-dom';
@@ -12,10 +12,23 @@ function FiltrosCasos() {
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   const dispatch = useDispatch();
   const casos = useSelector((state) => state.casos);
+  const pages = useSelector((state)=> state.pages)
   const [filterApplied, setFilterApplied] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [order, setOrder] = useState('');
+
+
+  useEffect(() => {
+    dispatch(getCasosTodos()); 
+  }, [dispatch]);
+
+  const todos = pages?.datosPagina || [];
+  const totalPages = Math.ceil(todos.length / 6);
+  console.log(totalPages)
+
+  console.log('pages', pages)
+
 
 
   useEffect(() => {

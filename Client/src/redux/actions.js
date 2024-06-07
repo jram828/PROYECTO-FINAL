@@ -4,7 +4,9 @@ export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 export const SET_USERTOKEN = "SET_USERTOKEN";
 export const FILTER_ABOGADO = "FILTER_NAME_ABOGADO";
 export const GET_ABOGADOS = "GET_ABOGADOS";
+export const GET_ABOGADOS_TODOS = "GET_ABOGADOS_TODOS"
 export const GET_CLIENTES = "GET_CLIENTES";
+export const GET_CLIENTES_TODOS = "GET_CLIENTES_TODOS"
 export const GET_BY_ID_ABOGADO = "GET_BY_ID_ABOGADO";
 export const GET_BY_ID_CLIENTE = "GET_BY_ID_CLIENTE";
 export const FILTER_CLIENTE = "FILTER_NAME_CLIENTE";
@@ -15,6 +17,7 @@ export const DELETE_ABOGADO = "DELETE_ABOGADO";
 export const DELETE_CLIENTE = "DELETE_CLIENTES";
 export const GET_TIPOSDECASOS = "GET_TIPOSDECASOS";
 export const GET_CASOS = "GET_CASOS";
+export const GET_CASOS_TODOS = "GET_CASOS_TODOS";
 export const FILTER_CASOS = "FILTER_CASOS";
 export const ORDER_CASOS = "ORDER_CASOS";
 export const GET_CASO_BY_ID = "GET_CASO_BY_ID";
@@ -55,10 +58,11 @@ export const FETCH_REVIEWS_FAILURE = "FETCH_REVIEWS_FAILURE";
 export const ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
 
 // agregar una reseña
-export const addReview = (content, rating) => {
+export const addReview = (PAYLOAD) => {
+   console.log('Review', PAYLOAD )
   return async (dispatch) => {
     try {
-      const response = await axios.post(`${URL}reviews`, { content, rating });
+      const response = await axios.post(`${URL}reviews`, PAYLOAD);
       dispatch({ type: ADD_REVIEW, payload: response.data });
     } catch (error) {
       dispatch({ type: ADD_REVIEW_FAILURE, payload: error.message });
@@ -70,7 +74,7 @@ export const addReview = (content, rating) => {
 export const fetchReviews = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}reviews`);
+      const response = await axios.get(`${URL}reviews/?porPagina=100`);
       dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: response.data });
     } catch (error) {
       dispatch({ type: FETCH_REVIEWS_FAILURE, payload: error.message });
@@ -133,6 +137,17 @@ export const getClientes = (page) => {
   };
 };
 
+export const getClientesTodos = () => {
+  const endpoint = `${URL}clientes?pagina=1&porPagina=50`;
+  return async (dispatch) => {
+    const { data } = await axios.get(endpoint);
+    return dispatch({
+      type: GET_CLIENTES_TODOS,
+      payload: data,
+    });
+  };
+};
+
 export const getAbogados = (page) => {
   const endpoint = `${URL}abogados?pagina=${page}&porPagina=6`;
 
@@ -140,6 +155,18 @@ export const getAbogados = (page) => {
     const { data } = await axios.get(endpoint);
     return dispatch({
       type: GET_ABOGADOS,
+      payload: data,
+    });
+  };
+};
+
+export const getAbogadosTodos = () => {
+  const endpoint = `${URL}abogados?pagina=1&porPagina=50`;
+
+  return async (dispatch) => {
+    const { data } = await axios.get(endpoint);
+    return dispatch({
+      type: GET_ABOGADOS_TODOS,
       payload: data,
     });
   };
@@ -283,6 +310,18 @@ export const getCasos = (page) => {
     });
   };
 };
+
+export const getCasosTodos = () => {
+  const endpoint = `${URL}casos?pagina=1&porPagina=50`;
+  return async (dispatch) => {
+    const { data } = await axios.get(endpoint);
+    return dispatch({
+      type: GET_CASOS_TODOS,
+      payload: data,
+    });
+  };
+};
+
 
 export const filterCasos = (filtro) => {
   const endpoint = `${URL}casos?${filtro}`;
