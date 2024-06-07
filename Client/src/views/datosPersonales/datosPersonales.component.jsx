@@ -39,6 +39,7 @@ function Data() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(modificarDatos(userDataRegistro));
+    window.alert('Datos modificados')
     window.localStorage.setItem("loggedUser", JSON.stringify(userDataRegistro));
   };
 
