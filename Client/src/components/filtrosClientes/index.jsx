@@ -69,13 +69,14 @@ function FiltrosClientes() {
               Crear cliente
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="white" d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path></svg>
             </Link>
+            {filterApplied && <button className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white" onClick={handleVerTodosClick}>Ver todos</button>}
           </div>
         
         <div className="flex justify-between self-center">
               <div className="flex gap-4"> 
                 <OrderClientes onOrderChange={handleOrderChange} />
                 <SearchBar onFilter={handleFilter} />
-                {filterApplied && <button className="btn btn-sm w-40 bg-accent text-white hover:bg-primary hover:text-white" onClick={handleVerTodosClick}>Ver todos</button>}
+                
               </div>  
         </div>
 
