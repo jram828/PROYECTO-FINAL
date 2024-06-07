@@ -1,10 +1,9 @@
+// import style from './home.module.css';
+import { Link,  } from 'react-router-dom';;
+import logo from '../../assets/logo.png';
+import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
 
-import logo from '../../assets/logo.png'
-
-// import { Link,  } from 'react-router-dom';
-// import { useState } from 'react';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 
 function Home() {
