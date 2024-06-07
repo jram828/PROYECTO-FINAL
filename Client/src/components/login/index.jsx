@@ -44,7 +44,17 @@ const Login = ({ clickHandlerRecordatorio }) => {
           uid: user.uid,
         };
         dispatch(loginWithProvider(credentials));
-        window.localStorage.setItem("emailGithub", JSON.stringify(user.email));
+        const { rol } = userData;
+        console.log("Datos login:", user.email, rol);
+              const { data } = axios(
+        `/login/google/?email=${user.email}&rol=&${rol}`
+      );
+
+      console.log("Login 3:", data);
+      // const { access } = data;
+      // if (user.email === data[0].correo) {
+      window.localStorage.setItem("loggedUser", JSON.stringify(data.usuario));
+        navigate("/home");
       })
       .catch((error) => {
         console.error(error);
