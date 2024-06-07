@@ -11,36 +11,54 @@ const ReviewForm = () => {
   const [puntuacion, setPuntuacion] = useState(0);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    dispatch(fetchReviews());
-  }, [dispatch]);
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
 
-  const handleChange = (event) => {
-    setNuevoComentario(event.target.value);
-  };
-
-  const handlePuntuacion = (rating) => {
-    setPuntuacion(rating);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (puntuacion === 0) {
-      setError('Por favor, selecciona una puntuación antes de enviar tu comentario.');
-    } else {
-      try {
-        await dispatch(addReview(nuevoComentario, puntuacion));
-        await dispatch(fetchReviews());
-        setNuevoComentario('');
-        setPuntuacion(0);
-        setError('');
-      } catch (error) {
-        console.error('Error al enviar la reseña:', error);
-        setError('Error al enviar la reseña. Por favor, intenta nuevamente.');
-      }
-    }
-  };
+  const [dataReview, setDataReview] = useState({
+    puntuacion:'',
+    comentario:'',
+    cedulaCliente: user.cedulaCliente,
+    });
+    // const datos = {comentario}
+    
+    const handleChangeReview = (e) => {
+      setDataReview({
+        ...dataReview,
+        [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
+        });
+        }
+        
+        useEffect(() => {
+          dispatch(fetchReviews());
+          }, [dispatch]);
+          
+          const handleChange = (event) => {
+            setNuevoComentario(event.target.value);
+            };
+            
+            const handlePuntuacion = (rating) => {
+              setPuntuacion(rating);
+              };
+              
+              const handleSubmit = async (event) => {
+                event.preventDefault();
+                dispatch(addReview(dataReview));
+                };
+              console.log('lin 44' , dataReview.comentario)
+    // if (puntuacion === 0) {
+    //   setError('Por favor, selecciona una puntuación antes de enviar tu comentario.');
+    // } else {
+    //   try {
+    //     await dispatch(addReview(nuevoComentario, puntuacion));
+    //     await dispatch(fetchReviews());
+    //     setNuevoComentario('');
+    //     setPuntuacion(0);
+    //     setError('');
+    //   } catch (error) {
+    //     console.error('Error al enviar la reseña:', error);
+    //     setError('Error al enviar la reseña. Por favor, intenta nuevamente.');
+    //   }
+    // }
+ 
 
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
@@ -50,8 +68,9 @@ const ReviewForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <textarea
-              value={nuevoComentario}
-              onChange={handleChange}
+              name="comentario"
+              value={dataReview.comentario}
+              onChange={handleChangeReview}
               placeholder="Escribe tu reseña"
               className="w-full h-32 p-2 border border-black rounded-lg bg-secondary text-black focus:outline-none"
             />
@@ -61,8 +80,9 @@ const ReviewForm = () => {
               Puntuación:
               <input
                 type="number"
-                value={puntuacion}
-                onChange={(e) => handlePuntuacion(e.target.value)}
+                name="puntuacion"
+                value={dataReview.puntuacion}
+                onChange={handleChangeReview}
                 placeholder="Puntuación"
                 min="0"
                 max="5"
@@ -76,7 +96,7 @@ const ReviewForm = () => {
               <input
                 key={index}
                 type="radio"
-                name="rating-10"
+                name="comentario"
                 className={`bg-green-500 mask mask-star-2 ${index % 2 === 0 ? 'mask-half-1' : 'mask-half-2'}`}
                 checked={Math.ceil(puntuacion * 2) === index + 1}
                 onChange={() => handlePuntuacion((index + 1) / 2)}
