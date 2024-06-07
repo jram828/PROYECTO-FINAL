@@ -82,7 +82,6 @@ function AllConsultations() {
                   )}
                 </div>
               </div>
-              
           
         </div>
         
