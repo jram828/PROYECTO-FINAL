@@ -183,7 +183,6 @@ function Payments() {
      <div className="grid grid-cols-3 gap-8">
             {loadingState ? (
               <div className="loading-container">
-              <h2 className="loading">Cargando...</h2>
               <img className="loading-image" src={loading} alt="loading" />
             </div>
             ) : (

@@ -70,6 +70,7 @@ export const addReview = (PAYLOAD) => {
     try {
       const response = await axios.post(`${URL}reviews`, PAYLOAD);
       dispatch({ type: ADD_REVIEW, payload: response.data });
+      window.alert('Reseña creada con exito')
     } catch (error) {
       dispatch({ type: ADD_REVIEW_FAILURE, payload: error.message });
     }
@@ -81,7 +82,7 @@ export const fetchReviews = (page) => {
   return async (dispatch) => {
     try {
 
-      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=3`);
+      const response = await axios.get(`${URL}reviews?field=reviewId&order=DESC&pagina=${page}&porPagina=6`);
        console.log('response', response)                                        
 
 

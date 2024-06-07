@@ -13,7 +13,7 @@ const ReviewForm = () => {
   const user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [dataReview, setDataReview] = useState({
-    puntuacion:'',
+    puntuacion: '',
     comentario:'',
     cedulaCliente: user.cedulaCliente,
     });
@@ -40,11 +40,17 @@ const ReviewForm = () => {
               setPuntuacion(rating);
               };
 
+              console.log('setPuntuacion',puntuacion)
+
+const datos = {puntuacion:puntuacion,
+  comentario:dataReview.comentario,
+  cedulaCliente: user.cedulaCliente,}
+
               const handleSubmit = async (event) => {
                 event.preventDefault();
-                dispatch(addReview(dataReview));
+                dispatch(addReview(datos));
                 };
-              console.log('lin 44' , dataReview)
+              console.log('lin 44' , datos)
 
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
@@ -66,7 +72,7 @@ const ReviewForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="puntuacion" className="input input-md text-md !border-black !rounded-lg input-secondary flex items-center !text-black">
+            {/*<label htmlFor="puntuacion" className="input input-md text-md !border-black !rounded-lg input-secondary flex items-center !text-black">
               Puntuación:
               <input
                 type="number"
@@ -79,14 +85,14 @@ const ReviewForm = () => {
                 id="puntuacion"
                 className="grow ml-2 text-black"
               />
-            </label>
+            </label>*/}
           </div>
           <div className="rating rating-lg rating-half">
             {[...Array(10)].map((_, index) => (
               <input
                 key={index}
                 type="radio"
-                name="comentario"
+                name="estrellas"
                 className={`bg-green-500 mask mask-star-2 ${index % 2 === 0 ? 'mask-half-1' : 'mask-half-2'}`}
                 checked={Math.ceil(puntuacion * 2) === index + 1}
                 onChange={() => handlePuntuacion((index + 1) / 2)}
