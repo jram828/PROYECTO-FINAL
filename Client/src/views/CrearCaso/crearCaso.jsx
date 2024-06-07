@@ -17,7 +17,7 @@ function CrearCaso() {
     fecha: "",
     fechaFin: "",
     descripcion: "",
-    TipoDeCasoId: "",
+    TipoDeCasoid: "",
   });
   console.log(userDataRegistro);
 
@@ -61,6 +61,7 @@ function CrearCaso() {
         const listaTipos = await getTiposCasos();
         if (listaTipos && Array.isArray(listaTipos.allTipoDeCaso)) {
           setTipos(listaTipos);
+          console.log ('listaTipos', listaTipos)
         } else {
           console.error("Error: La respuesta no es un objeto esperado", listaTipos);
         }
@@ -72,6 +73,8 @@ function CrearCaso() {
     obtenerTipos();
   }, []);
 
+  console.log('tipos',tipos)
+ 
   
 
   const handleChangeRegistro = (e) => {
@@ -109,14 +112,14 @@ function CrearCaso() {
         {/* <div className="w-52 items-center px-2"> */}
           <label className="">
             <select
-              name="TipoDeCasoId"
-              id="TipoDeCasoId"
+              name="TipoDeCasoid"
+              id="TipoDeCasoid"
               className="!w-52 h-8 p-2 border text-xs border-black rounded-lg bg-secondary text-black focus:outline-none"
               onChange={(event) => handleChangeRegistro(event)}
             >
               <option value="" disabled selected className="text-black">Tipo de caso</option>
               {tipos.allTipoDeCaso.map((tipo) => (
-                <option key={tipo.TipoDeCasoId} value={tipo.TipoDeCasoId} className="text-black">
+                <option key={tipo.TipoDeCasoid} value={tipo.TipoDeCasoid} className="text-black">
                   {tipo.descripcion}
                 </option>
               ))}

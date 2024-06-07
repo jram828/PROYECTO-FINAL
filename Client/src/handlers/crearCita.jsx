@@ -10,7 +10,7 @@ export async function postCitaHandlers(data) {
   } = data;
   console.log("data del post", data);
 
-  const URL = "https://legaltech-develop.onrender.com/citas";
+  const URL = "/citas";
   try {
     await axios.post(URL, {
       titulo: `${titulo}`,
