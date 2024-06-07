@@ -96,7 +96,7 @@ function CrearAbogado() {
       const response = await axios.post(URL_CLOUDINARY, data);
 
       setUrlImage(response.data.secure_url);
-      console.log(response);
+      console.log("URL IMAGEN:", response.data.secure_url);
       setDataRegistro({
         ...dataRegistro,
         imagen: response.data.secure_url,
