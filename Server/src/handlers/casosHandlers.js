@@ -24,8 +24,8 @@ const createCasosHandler = async (req, res) => {
     descripcion,
     "TipoDeCasoId",
     TipoDeCasoId,
-    "importe",
-    importe,
+    // "importe",
+    // importe,
   );
 
   try {
@@ -35,7 +35,7 @@ const createCasosHandler = async (req, res) => {
       fecha,
       descripcion,
       TipoDeCasoId,
-      importe,
+      // importe,
     );
     res.status(200).json(response);
   } catch (error) {

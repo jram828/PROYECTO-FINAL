@@ -9,7 +9,7 @@ const createCaso = async (
   fecha,
   descripcion,
   TipoDeCasoId,
-  importe,
+  // importe,
 ) => {
   const estaCliente = await Cliente.findOne({
     where: {
@@ -50,7 +50,7 @@ const createCaso = async (
     TipoDeCasoTipoDeCasoid: TipoDeCasoId,
     ClienteCedulaCliente: cedulaCliente,
     AbogadoCedulaAbogado: cedulaAbogado,
-    importe: importe,
+    // importe: importe,
   });
 
   //  newAbogado.addCliente(clientes);
