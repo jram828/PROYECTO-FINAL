@@ -180,7 +180,7 @@ function Payments() {
         
         </div>
       ) : 
-     <div className="contenedorCasos">
+     <div className="grid grid-cols-3 gap-8">
             {loadingState ? (
               <div className="loading-container">
               <h2 className="loading">Cargando...</h2>
