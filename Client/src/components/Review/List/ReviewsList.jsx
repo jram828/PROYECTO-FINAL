@@ -91,7 +91,6 @@ const ReviewList = () => {
         )}
       </div>
       </div>
-      
     </div>
   );
 };
