@@ -73,7 +73,8 @@ const ReviewList = () => {
       )}
 
       {/* Botones de paginación */}
-      <div className="pagination mt-4 join self-center">
+      <div className='flex justify-center'>
+      <div className="pagination join self-center">
         {currentPage > 1 && (
           <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -91,6 +92,7 @@ const ReviewList = () => {
             &gt;&gt;
           </button>
         )}
+      </div>
       </div>
     </div>
   );
