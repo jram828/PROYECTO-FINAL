@@ -2,7 +2,7 @@ import './filtrosAbogados.css';
 import { useState, useEffect } from 'react';
 import Cards from '../cards';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterAbogado, getAbogados, orderAbogados } from '../../redux/actions';
+import { filterAbogado, getAbogados, orderAbogados, getAbogadosTodos } from '../../redux/actions';
 import SearchBar from '../../components/searchBarAbogado/index';
 import OrderAbogados from '../../components/orderAbogado/orderAbogado.jsx';
 import { Link  } from 'react-router-dom';
@@ -13,10 +13,20 @@ import loading from "../../assets/loading.gif";
 function FiltrosAbogados() {
   const dispatch = useDispatch();
   const abogados = useSelector((state) => state.abogados);
+  const pages = useSelector((state)=> state.pages)
   const [filterApplied, setFilterApplied] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [order, setOrder] = useState('');
+
+  useEffect(() => {
+    dispatch(getAbogadosTodos()); 
+  }, [dispatch]);
+
+  const totalPages = Math.ceil(pages?.length / 6);
+  console.log(totalPages)
+
+  console.log('pages', pages)
 
 
   useEffect(() => {
@@ -59,6 +69,7 @@ function FiltrosAbogados() {
     setOrder(newOrder);
     setCurrentPage(1); 
   };
+
 
   return (
     <div className="flex">
@@ -107,15 +118,14 @@ function FiltrosAbogados() {
                   </button>
                 )}
                 <span className="join-item btn btn-xs btn-accent">Página {currentPage}</span>
-                {abogados.length === 6 && (
-                  <button
-                    className="join-item btn btn-xs btn-accent"
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    
-                  >
-                    &gt;&gt;
-                  </button>
-                )}
+                {currentPage < totalPages && (
+               <button 
+                 onClick={() => handlePageChange(currentPage + 1)}
+                 className="join-item btn btn-xs btn-accent"
+                   >
+                &gt;&gt;
+                </button>
+               )}
               </div>
             )}
           </div>
