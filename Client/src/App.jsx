@@ -31,7 +31,8 @@ import Poder from './views/poder/index.jsx';
 // const URL = import.meta.env.VITE_URL_BACK;
 // const SECRETKEY = import.meta.env.VITE_SECRET_KEY;
 // axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
-axios.defaults.baseURL = "https://legaltech-develop.onrender.com";
+
+axios.defaults.baseURL = "https://localhost:3001";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 // const stripePromise = loadStripe('pk_test_51PKAEZRwrbUIzCaduqontm4eNfQOAizaLdB2SaxkMSzQeUiBIBYUJetxGEXuNihUg6y0kFibN3kGJai5Fec5jKWo00YKuqtYox');
