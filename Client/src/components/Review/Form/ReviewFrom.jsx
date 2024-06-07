@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview, fetchReviews } from '../../../redux/actions';
 import ReviewList from '../List/ReviewsList';
-
 const ReviewForm = () => {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
@@ -13,41 +12,47 @@ const ReviewForm = () => {
 
   const user = JSON.parse(localStorage.getItem("loggedUser"));
 
+  const [dataReview, setDataReview] = useState({
+    puntuacion:'',
+    comentario:'',
+    cedulaCliente: user.cedulaCliente,
+    });
+    // const datos = {comentario}
 
- 
+    const handleChangeReview = (e) => {
+      setDataReview({
+        ...dataReview,
+        [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
+        });
+        }
 
-  const handleChange = (event) => {
-    setNuevoComentario(event.target.value);
-  };
+        useEffect(() => {
+          dispatch(fetchReviews());
+          }, [dispatch]);
 
-  const handlePuntuacion = (rating) => {
-    setPuntuacion(rating);
-  };
+          
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+          const handleChange = (event) => {
+            setNuevoComentario(event.target.value);
+            };
 
-    if (puntuacion === 0) {
-      setError('Por favor, selecciona una puntuación antes de enviar tu comentario.');
-    } else {
-      try {
-        await dispatch(addReview(nuevoComentario, puntuacion));
-        await dispatch(fetchReviews());
-        setNuevoComentario('');
-        setPuntuacion(0);
-        setError('');
-        window.alert('¡La reseña se ha creado exitosamente!');
-      } catch (error) {
-        console.error('Error al enviar la reseña:', error);
-        setError('Error al enviar la reseña. Por favor, intenta nuevamente.');
-      }
-    }
-  };
+            const handlePuntuacion = (rating) => {
+              setPuntuacion(rating);
+              };
 
+              const handleSubmit = async (event) => {
+                event.preventDefault();
+                dispatch(addReview(dataReview));
+                };
+              console.log('lin 44' , dataReview)
 
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">
       <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
+
+        {user.matricula ? (
+        <ReviewList reviews={reviews} /> ) : (
+          <div className="space-y-6 h-full p-6 bg-secondary rounded-lg shadow-md text-black">
         <h1 className="text-2xl font-bold text-black text-center">Escribir una Reseña</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -99,7 +104,11 @@ const ReviewForm = () => {
         {reviewError && <p className="text-red-500">{reviewError}</p>}
         
         <ReviewList reviews={reviews} />
-      </div>
+        </div> 
+        ) 
+        
+        }
+      </div> 
     </div>
   );
 };

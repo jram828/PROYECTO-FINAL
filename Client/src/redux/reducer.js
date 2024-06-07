@@ -60,7 +60,7 @@ let initialState = {
   pagos:[],
   source: "cliente",
   reviews: [],
-  pages:{},
+  pages:[],
   reviewError: "",
   // userGit: null,
   loginError: "",

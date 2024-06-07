@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { crearPago } from '../../handlers/crearPago';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getPagos, getCasos  } from '../../redux/actions';
+import { getPagos, getCasosTodos  } from '../../redux/actions';
 import loading from "../../assets/loading.gif";
 
 function Payments() {
@@ -53,12 +53,12 @@ function Payments() {
 
   const dispatch = useDispatch();
   const pagos = useSelector((state) => state.pagos);
-  const casos = useSelector((state) => state.casos)
+  const pages = useSelector((state) => state.pages)
 
   useEffect(() => {
     const fetchData = async () => {
     setLoadingState(true);
-      await dispatch(getCasos());
+      await dispatch(getCasosTodos());
       setLoadingState(false);
     }
     fetchData()
@@ -84,7 +84,7 @@ function Payments() {
 
   const fechaFormateada = formatearFecha(pagos?.fechaDeAprobacion);
 
-  const userCasos = casos.datosPagina?.filter((caso)=>
+  const userCasos = pages.datosPagina?.filter((caso)=>
     (caso.nombreCliente === user.nombre && caso.apellidoCliente === user.apellido)
   )
 
@@ -126,7 +126,7 @@ function Payments() {
                 id="idCaso"
                 className="grow"
               /> */}
-              {casos.datosPagina ? (
+              {pages.datosPagina ? (
                 <label className="w-full">
                   <select
                     name="idCaso"

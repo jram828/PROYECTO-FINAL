@@ -1,6 +1,6 @@
 import "./formCrearCita.css";
 import { Link } from 'react-router-dom';
-import { getCasos } from "../../redux/actions";
+import { getCasosTodos } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { postCitaHandlers } from "../../handlers/crearCita";
@@ -39,10 +39,13 @@ function FormCita() {
 
   const dispatch = useDispatch();
   const casos = useSelector(state => state.casos)
+  const pages = useSelector((state) => state.pages)
 
   useEffect(() => {
-    dispatch(getCasos()).then(() => setIsLoading(false)); // Desactivar el loading después de cargar los casos
+    dispatch(getCasosTodos()).then(() => setIsLoading(false)); // Desactivar el loading después de cargar los casos
   }, [dispatch]);
+
+  console.log('pages', pages)
 
   const submitHandlerRegistro = async (e) => {
     e.preventDefault();
@@ -59,7 +62,7 @@ function FormCita() {
     }
   };
 
-  if (isLoading || !casos || !casos.datosPagina) {
+  if (isLoading || !pages || !pages.datosPagina) {
     return (
       <div className="loading-container">
         <h2 className="loading">Cargando...</h2>
@@ -68,6 +71,7 @@ function FormCita() {
     );
   }
 
+  console.log('casos',casos)
 
 
   return (
@@ -107,7 +111,7 @@ function FormCita() {
             <div className="mx-4">
               <label className="input input-sm !border-black input-secondary flex items-center max-w-xs !text-black !w-72 relative">Hora:
               <input
-                
+                type='time'
                 name="horaCita"
                 id="horaCita"
                 value={dataRegistro.horaCita}
@@ -127,7 +131,7 @@ function FormCita() {
                   className="!w-72 h-9 p-2 border text-sm border-black rounded-md bg-secondary text-black focus:outline-none"
                 >
                   <option value="" className="text-black">Seleccionar caso</option>
-                  {casos.datosPagina.map(caso => (
+                  {pages.datosPagina?.map(caso => (
                     <option key={caso.id} value={caso.id} className="text-black">
                       {`${caso.descripcion} - ${caso.apellidoAbogado}/${caso.apellidoCliente}`} 
                     </option>
