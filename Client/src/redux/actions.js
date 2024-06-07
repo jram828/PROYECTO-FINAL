@@ -82,9 +82,9 @@ export const fetchReviews = () => {
   };
 };
 
-//const URL = 'http://localhost:3001/'
+const URL = 'http://localhost:3001/'
 //const URL = 'https://legaltech-6u3y.onrender.com/'
-const URL = "https://legaltech-develop.onrender.com/";
+// const URL = "https://legaltech-develop.onrender.com/";
 
 export const setAuth = (auth) => {
   console.log("Verificar autenticacion:", auth);
