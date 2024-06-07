@@ -184,7 +184,7 @@ const getAllCaso = async (filters) => {
 
   //Devuelve desde la pagina solicitada y la cantidad de elementos solicitados
   console.log("Arreglo ordenado");
-  console.log(arregloOrdenado);
+  // console.log(arregloOrdenado);
   let elementos = filters.query.porPagina || 3;
   let offset = filters.query.pagina || 1;
   //if (filters.query.porPagina) elementos = filters.query.porPagina;
