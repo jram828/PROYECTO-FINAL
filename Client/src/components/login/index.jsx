@@ -261,6 +261,7 @@ const dispatch = useDispatch();
     Sign in with GitHub
   </button>
 </div>
+
       {/* <div className={style.github}></div> */}
     </div>
   );
