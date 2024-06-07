@@ -13,52 +13,37 @@ const ReviewForm = () => {
 
   const user = JSON.parse(localStorage.getItem("loggedUser"));
 
-  const [dataReview, setDataReview] = useState({
-    puntuacion:'',
-    comentario:'',
-    cedulaCliente: user.cedulaCliente,
-    });
-    // const datos = {comentario}
-    
-    const handleChangeReview = (e) => {
-      setDataReview({
-        ...dataReview,
-        [e.target.name]: e.target.value, // Sintaxis ES6 para actualizar la key correspondiente
-        });
-        }
-        
-        useEffect(() => {
-          dispatch(fetchReviews());
-          }, [dispatch]);
-          
-          const handleChange = (event) => {
-            setNuevoComentario(event.target.value);
-            };
-            
-            const handlePuntuacion = (rating) => {
-              setPuntuacion(rating);
-              };
-              
-              const handleSubmit = async (event) => {
-                event.preventDefault();
-                dispatch(addReview(dataReview));
-                };
-              console.log('lin 44' , dataReview.comentario)
-    // if (puntuacion === 0) {
-    //   setError('Por favor, selecciona una puntuación antes de enviar tu comentario.');
-    // } else {
-    //   try {
-    //     await dispatch(addReview(nuevoComentario, puntuacion));
-    //     await dispatch(fetchReviews());
-    //     setNuevoComentario('');
-    //     setPuntuacion(0);
-    //     setError('');
-    //   } catch (error) {
-    //     console.error('Error al enviar la reseña:', error);
-    //     setError('Error al enviar la reseña. Por favor, intenta nuevamente.');
-    //   }
-    // }
+
  
+
+  const handleChange = (event) => {
+    setNuevoComentario(event.target.value);
+  };
+
+  const handlePuntuacion = (rating) => {
+    setPuntuacion(rating);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (puntuacion === 0) {
+      setError('Por favor, selecciona una puntuación antes de enviar tu comentario.');
+    } else {
+      try {
+        await dispatch(addReview(nuevoComentario, puntuacion));
+        await dispatch(fetchReviews());
+        setNuevoComentario('');
+        setPuntuacion(0);
+        setError('');
+        window.alert('¡La reseña se ha creado exitosamente!');
+      } catch (error) {
+        console.error('Error al enviar la reseña:', error);
+        setError('Error al enviar la reseña. Por favor, intenta nuevamente.');
+      }
+    }
+  };
+
 
   return (
     <div className="flex items-center justify-center rounded-lg min-h-screen p-6 bg-white text-black">

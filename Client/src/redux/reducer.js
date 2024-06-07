@@ -1,5 +1,6 @@
 import {
   ADD_REVIEW,
+  FETCH_REVIEWS_ALL,
   FETCH_REVIEWS_SUCCESS,
   FETCH_REVIEWS_FAILURE,
   ADD_REVIEW_FAILURE,
@@ -258,6 +259,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         reviewError: action.payload,
       };
+    case FETCH_REVIEWS_ALL:
+      return {
+        ...state,
+        pages: action.payload,
+      }
 
     default:
       return state;
