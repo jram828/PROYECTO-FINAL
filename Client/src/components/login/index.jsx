@@ -11,14 +11,15 @@ import { loginWithProvider } from "../../redux/actions";
 
 // Configuración de Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCgmLrDf4mM13hD6f47Yeq8KE7IvnwusC4",
-  authDomain: "legal-tech1111.firebaseapp.com",
-  projectId: "legal-tech1111",
-  storageBucket: "legal-tech1111.appspot.com",
-  messagingSenderId: "1037769772117",
-  appId: "1:1037769772117:web:919ee3a58c4809fafe18dc",
-  measurementId: "G-G0WCGL9H5B",
+  apiKey: "AIzaSyBNO1_J61rsE4TCd3NPVNmcDXlqUmFikr4",
+  authDomain: "logeo-7ba08.firebaseapp.com",
+  projectId: "logeo-7ba08",
+  storageBucket: "logeo-7ba08.appspot.com",
+  messagingSenderId: "329891920858",
+  appId: "1:329891920858:web:191436a255a964ab79dee3",
+  measurementId: "G-S58BLCVZS5",
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
